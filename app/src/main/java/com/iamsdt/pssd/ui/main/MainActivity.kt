@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
         mainRcv.layoutManager = LinearLayoutManager(this)
-        val  adapter = MainAdapter()
+        val  adapter = MainAdapter(this)
         mainRcv.adapter = adapter
         viewModel.getData().observe(this, Observer {
             adapter.submitList(it)

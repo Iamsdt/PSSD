@@ -7,12 +7,14 @@
 package com.iamsdt.pssd.ui.main
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
+import com.iamsdt.pssd.ui.details.DetailsActivity
 
 class MainAdapter(val context:Context) :PagedListAdapter<WordTable, MyViewHolder>(DIFF_CALLBACK) {
 
@@ -24,11 +26,16 @@ class MainAdapter(val context:Context) :PagedListAdapter<WordTable, MyViewHolder
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        getItem(position)?.let {
+
+        val model:WordTable ?= getItem(position)
+
+        model?.let {
             holder.bind(it)
 
             holder.itemView.setOnClickListener {
-
+                val intent = Intent(context,DetailsActivity::class.java)
+                intent.putExtra(Intent.EXTRA_TEXT,model.id)
+                context.startActivity(intent)
             }
 
             //change favourite
