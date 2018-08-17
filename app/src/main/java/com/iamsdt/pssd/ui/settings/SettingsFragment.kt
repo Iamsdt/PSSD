@@ -36,6 +36,14 @@ class SettingsFragment : PreferenceFragmentCompat(),
                 .forEach {
                     bindPreferenceSummaryToValue(it)
                 }
+
+        // TODO: 8/17/2018 check this
+        val backup = findPreference(getString(R.string.bps_key))
+        val advance = findPreference(getString(R.string.advance_key))
+
+        backup.setSummary(R.string.bps_summery)
+        advance.setSummary(R.string.advance_summery)
+
     }
 
     override fun onStart() {
@@ -74,7 +82,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
         }
 
 
-        private fun bindPreferenceSummaryToValue(preference: androidx.preference.Preference) {
+        fun bindPreferenceSummaryToValue(preference: Preference) {
             // Set the listener to watch for value changes.
             preference.onPreferenceChangeListener = sBindPreferenceSummaryToValueListener
 

@@ -6,21 +6,43 @@
 
 package com.iamsdt.pssd.ui.settings
 
+import android.content.Context
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import android.os.Bundle
-import androidx.preference.ListPreference
-import androidx.preference.Preference
+import android.os.Environment
 import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.PreferenceManager
+import com.codekidlabs.storagechooser.StorageChooser
 import com.iamsdt.pssd.R
+import com.iamsdt.pssd.ext.ToastType
+import com.iamsdt.pssd.ext.showToast
+import com.iamsdt.pssd.ui.settings.SettingsFragment.Companion.bindPreferenceSummaryToValue
+import com.iamsdt.pssd.utils.FileImportExportUtils
+import javax.inject.Inject
 
 class BackupFragment : PreferenceFragmentCompat(),
         SharedPreferences.OnSharedPreferenceChangeListener {
+
+    //permission code
+    private val PERMISSIONS_REQUEST_READ_STORAGE_FAVOURITE = 12
+    private val PERMISSIONS_REQUEST_READ_STORAGE_ADDED = 14
+    private val PERMISSIONS_REQUEST_WRITE_STORAGE_FAVOURITE = 23
+    private val PERMISSIONS_REQUEST_WRITE_STORAGE_ADDED = 36
+
+    private var path: String = ""
+
+    @Inject
+    lateinit var utils: FileImportExportUtils
 
     override fun onSharedPreferenceChanged(sp: SharedPreferences?, key: String?) {
         findPreference(key)?.let {
             bindPreferenceSummaryToValue(it)
         }
+    }
+
+    // TODO: 8/17/2018 inject here
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
@@ -38,6 +60,146 @@ class BackupFragment : PreferenceFragmentCompat(),
                 }
     }
 
+    //read write favourite data
+    @Suppress("DEPRECATION")
+    private fun readFavouriteData() {
+        val state = Environment.getExternalStorageState()
+        if (Environment.MEDIA_MOUNTED == state || Environment.MEDIA_MOUNTED_READ_ONLY == state) {
+
+            val builder = StorageChooser.Builder()
+            builder.withActivity(activity)
+            //this is deprecated
+            builder.withFragmentManager(activity!!.fragmentManager)
+            builder.withMemoryBar(true)
+            builder.allowCustomPath(true)
+            builder.setType(StorageChooser.FILE_PICKER)
+            builder.setDialogTitle("Select file")
+
+            //if path is not empty then save that path as default path
+            if (path.isNotEmpty()) {
+                builder.withPredefinedPath(path)
+            }
+
+            val chooser = builder.build()
+
+            // Show dialog
+            chooser.show()
+
+            // get path that the user has chosen
+            chooser.setOnSelectListener { path ->
+                utils.importFile(context, path)
+            }
+
+
+        } else showMessage()
+    }
+
+    private fun writeFavouriteData() {
+        val state = Environment.getExternalStorageState()
+        if (Environment.MEDIA_MOUNTED == state) {
+            utils.exportFileFavourite(context)
+
+        } else showMessage()
+    }
+
+    //readWrite add word
+    private fun writeAddedWord() {
+        val state = Environment.getExternalStorageState()
+        if (Environment.MEDIA_MOUNTED == state) {
+            utils.exportFileUser(context)
+        } else showMessage()
+    }
+
+    @Suppress("DEPRECATION")
+    private fun readAddedWord() {
+        val state = Environment.getExternalStorageState()
+        if (Environment.MEDIA_MOUNTED == state || Environment.MEDIA_MOUNTED_READ_ONLY == state) {
+
+            val builder = StorageChooser.Builder()
+            builder.withActivity(activity)
+            builder.withFragmentManager(activity!!.fragmentManager)
+            builder.withMemoryBar(true)
+            builder.allowCustomPath(true)
+            builder.setType(StorageChooser.FILE_PICKER)
+            builder.setDialogTitle("Select file")
+
+            //if path is not null then save that path as default path
+            if (path.isNotEmpty()) {
+                builder.withPredefinedPath(path)
+            }
+
+            val chooser = builder.build()
+
+            // Show dialog whenever you want by
+            chooser.show()
+
+            // get path that the user has chosen
+            chooser.setOnSelectListener { path ->
+                utils.importFile(context, path)
+            }
+
+        } else showMessage()
+    }
+
+    private fun showMessage() {
+        val txt = "Something went wrong. " +
+                "Your storage is not readable and writable. " +
+                "Your storage option is different from others device." +
+                "Make sure you grant permission"
+        showToast(ToastType.WARNING, txt)
+    }
+
+
+    override fun onRequestPermissionsResult(requestCode: Int,
+                                            permissions: Array<String>,
+                                            grantResults: IntArray) {
+
+        val perTxt = "Oh! you did not give the permission to access storage."
+
+        when (requestCode) {
+            PERMISSIONS_REQUEST_READ_STORAGE_FAVOURITE ->
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //Permission added
+                    readFavouriteData()
+                } else {
+                    val txt = "$perTxt To import your favourite word, you must grant permission"
+                    showToast(ToastType.WARNING, txt)
+                }
+
+            PERMISSIONS_REQUEST_READ_STORAGE_ADDED ->
+
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    readAddedWord()
+
+                } else {
+                    val txt = "$perTxt To import your added word, you must grant permission"
+                    showToast(ToastType.WARNING, txt)
+                }
+
+            PERMISSIONS_REQUEST_WRITE_STORAGE_FAVOURITE ->
+
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    writeFavouriteData()
+
+                } else {
+                    val txt = "$perTxt To backup your favourite word, you must grant permission"
+                    showToast(ToastType.WARNING, txt)
+                }
+
+            PERMISSIONS_REQUEST_WRITE_STORAGE_ADDED ->
+
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    writeAddedWord()
+
+                } else {
+                    val txt = "$perTxt To backup your added word, you must grant permission"
+                    showToast(ToastType.WARNING, txt)
+                }
+
+            else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        }
+    }
+
     override fun onStart() {
         super.onStart()
         preferenceScreen.sharedPreferences.registerOnSharedPreferenceChangeListener(this)
@@ -46,45 +208,6 @@ class BackupFragment : PreferenceFragmentCompat(),
     override fun onStop() {
         super.onStop()
         preferenceScreen.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
-    }
-
-    companion object {
-
-        private val sBindPreferenceSummaryToValueListener = Preference.OnPreferenceChangeListener { preference, value ->
-            val stringValue = value.toString()
-
-            if (preference is ListPreference) {
-                // For list preferences, look up the correct display value in
-                // the preference's 'entries' list.
-                val index = preference.findIndexOfValue(stringValue)
-
-                // Set the summary to reflect the new value.
-                preference.setSummary(
-                        if (index >= 0)
-                            preference.entries[index]
-                        else
-                            null)
-
-            } else {
-                // For all other preferences, set the summary to the value's
-                // simple string representation.
-                preference.summary = stringValue
-            }
-            true
-        }
-
-
-        private fun bindPreferenceSummaryToValue(preference: androidx.preference.Preference) {
-            // Set the listener to watch for value changes.
-            preference.onPreferenceChangeListener = sBindPreferenceSummaryToValueListener
-
-            // Trigger the listener immediately with the preference's
-            // current value.
-            sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
-                    PreferenceManager
-                            .getDefaultSharedPreferences(preference.context)
-                            .getString(preference.key, ""))
-        }
     }
 
 }
