@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Developed By Shudipto Trafder
+  ~ on 8/17/18 11:19 PM
+  ~ Copyright (c) 2018 Shudipto Trafder.
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:key="@string/bps_ex_fav_key"
+        android:title="@string/bps_ex_fav_title" />
+
+    <Preference
+        android:key="@string/bps_im_fav_key"
+        android:summary="@string/bps_im_fav_summery"
+        android:title="@string/bps_im_fav_title" />
+
+    <Preference
+        android:key="@string/bps_ex_add_key"
+        android:title="@string/bps_ex_add_title" />
+
+    <Preference
+        android:key="@string/bps_im_add_key"
+        android:summary="@string/bps_im_add_summery"
+        android:title="@string/bps_im_add_title" />
+
+</PreferenceScreen>

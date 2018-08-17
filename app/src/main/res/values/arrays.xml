@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Developed By Shudipto Trafder
+  ~ on 8/17/18 10:27 PM
+  ~ Copyright (c) 2018 Shudipto Trafder.
+  -->
+
+<resources>
+    <!-- For text view -->
+    <!--############### START ###############-->
+    <string-array name="textSizeLabel">
+        <item>@string/sTextSmallLabel</item>
+        <item>@string/sTextMediumLabel</item>
+        <item>@string/sTextModerateLabel</item>
+        <item>@string/sTextLargeLabel</item>
+        <item>@string/sTextExtraLargeLabel</item>
+    </string-array>
+
+    <string-array name="textSizeValue">
+        <item>@string/sTextSmallValue</item>
+        <item>@string/sTextMediumValue</item>
+        <item>@string/sTextModerateValue</item>
+        <item>@string/sTextLargeValue</item>
+        <item>@string/sTextExtraLargeValue</item>
+    </string-array>
+    <!--############### FINISH ###############-->
+
+
+
+</resources>

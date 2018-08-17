@@ -29,7 +29,14 @@
         <activity
             android:name=".ui.details.DetailsActivity"
             android:label="@string/title_activity_details"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.search.SearchActivity"
+            android:label="@string/title_activity_search"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".ui.settings.BackupSettings" />
+        <activity android:name=".ui.settings.SettingsActivity" />
+        <activity android:name=".ui.settings.AdvanceSettings" />
     </application>
 
 </manifest>

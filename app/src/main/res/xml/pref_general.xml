@@ -1,0 +1,80 @@
+<!--
+  ~ Developed By Shudipto Trafder
+  ~ on 8/17/18 10:17 PM
+  ~ Copyright (c) 2018 Shudipto Trafder.
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:defaultValue="@string/sTextModerateValue"
+        android:entries="@array/textSizeLabel"
+        android:entryValues="@array/textSizeValue"
+        android:key="@string/textSizeKey"
+        android:title="@string/textSizeLabel"/>
+
+    <PreferenceCategory android:title="Share Data">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/switchShare"
+            android:summaryOff="@string/switchShareOFF"
+            android:summaryOn="@string/switchShareON"
+            android:title="@string/switchShareLabel"/>
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory
+        android:summary="Import and export your data.
+        You can backup your data into your SD Card"
+        android:title="Backup Data">
+
+        <Preference android:title="@string/bps_title"
+            android:key="@string/bps_key">
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetClass="com.iamsdt.pssd.ui.settings.BackupSettings"
+                android:targetPackage="com.iamsdt.pssd" />
+
+        </Preference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Advance Settings">
+
+        <Preference android:title="Advance Settings"
+            android:key="@string/advance_key"
+            android:summary="@string/advance_summery">
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetClass="com.iamsdt.pssd.ui.settings.AdvanceSettings"
+                android:targetPackage="com.iamsdt.pssd" />
+
+        </Preference>
+
+    </PreferenceCategory>
+
+    <!-- todo update link -->
+
+    <PreferenceCategory android:title="Links">
+
+        <Preference android:title="About">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetClass="com.blogspot.shudiptotrafder.soilscience.AboutActivity"
+                android:targetPackage="com.blogspot.shudiptotrafder.soilscience" />
+        </Preference>
+
+        <Preference android:title="Developer">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetClass="com.blogspot.shudiptotrafder.soilscience.DeveloperActivity"
+                android:targetPackage="com.blogspot.shudiptotrafder.soilscience" />
+        </Preference>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

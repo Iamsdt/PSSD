@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Developed By Shudipto Trafder
+  ~ on 8/17/18 11:19 PM
+  ~ Copyright (c) 2018 Shudipto Trafder.
+  -->
+
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:key="@string/advance_dir_add_key"
+        android:summary="@string/advance_dir_summery"
+        android:title="@string/advance_dir_title"
+        android:selectable="true" />
+
+</PreferenceScreen>
