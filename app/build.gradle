@@ -102,7 +102,7 @@ dependencies {
     //timber for logger
     implementation 'com.jakewharton.timber:timber:4.6.0'
 
-    testCompile "org.mockito:mockito-core:2.21.0"
-    androidTestCompile "org.mockito:mockito-android:2.21.0"
+    testImplementation "org.mockito:mockito-core:2.21.0"
+    androidTestImplementation "org.mockito:mockito-android:2.21.0"
 
 }
