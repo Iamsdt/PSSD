@@ -10,4 +10,5 @@
     <string name="title_activity_details">DetailsActivity</string>
     <string name="title_activity_favourite">FavouriteActivity</string>
     <string name="title_activity_flash_card">FlashCardActivity</string>
+    <string name="favourite_icon">favourite icon</string>
 </resources>

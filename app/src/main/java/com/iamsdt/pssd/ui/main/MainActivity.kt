@@ -14,12 +14,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.content_main.*
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -27,10 +29,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     @Inject
     lateinit var factory: ViewModelFactory
 
-    val viewModel:MainVM by lazy {
+    private val viewModel:MainVM by lazy {
         ViewModelProviders.of(this,factory).get(MainVM::class.java)
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +39,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
 
 
-
-        viewModel.getData.observe(this, Observer {
-
+        mainRcv.layoutManager = LinearLayoutManager(this)
+        val  adapter = MainAdapter()
+        mainRcv.adapter = adapter
+        viewModel.getData().observe(this, Observer {
+            adapter.submitList(it)
         })
 
         fab.setOnClickListener { view ->

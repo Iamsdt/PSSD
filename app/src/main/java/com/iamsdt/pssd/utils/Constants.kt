@@ -12,4 +12,12 @@ class Constants{
         const val DB_NAME = "SS.db"
     }
 
+    object SP{
+        const val appSp = "App"
+        const val FIRST_TIME= "first"
+        const val DATA_INSERT = "data"
+
+        const val DATA_VOLUME = "volume"
+    }
+
 }

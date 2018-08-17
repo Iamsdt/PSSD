@@ -23,6 +23,8 @@
             android:name=".ui.main.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <service android:name=".ui.service.DataInsertService" />
     </application>
 
 </manifest>

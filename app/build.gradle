@@ -107,4 +107,6 @@ dependencies {
     testImplementation "org.mockito:mockito-core:2.21.0"
     androidTestImplementation "org.mockito:mockito-android:2.21.0"
 
+    //gson
+    implementation 'com.google.code.gson:gson:2.8.5'
 }
