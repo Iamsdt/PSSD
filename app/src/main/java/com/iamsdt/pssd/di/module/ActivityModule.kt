@@ -8,9 +8,9 @@ package com.iamsdt.pssd.di.module
 
 import com.iamsdt.pssd.ui.SplashActivity
 import com.iamsdt.pssd.ui.main.MainActivity
+import com.iamsdt.pssd.ui.service.DataInsertService
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import dagger.android.DaggerIntentService
 
 @Module
 abstract class ActivityModule {
@@ -22,6 +22,6 @@ abstract class ActivityModule {
     abstract fun main(): MainActivity
 
     @ContributesAndroidInjector
-    abstract fun dataInsert(): DaggerIntentService
+    abstract fun dataInsert(): DataInsertService
 
 }

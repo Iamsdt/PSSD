@@ -49,23 +49,21 @@ class DataInsertService:Service(){
         Handler(thread.looper).post {
             val data = Gson().fromJson(reader.buffered(4096),JsonModel::class.java)
 
-            var addItem = 0
+            var count = 0L
 
             data?.let {
                 spUtils.setDataVolume(it.volume)
                 it.collection.forEach {
                     val wordTable = WordTable(word = it.word,des = it.des)
-                    val count= wordTableDao.add(wordTable)
-                    Timber.i("Add $count")
-                    addItem++
+                    count= wordTableDao.add(wordTable)
                 }
             }
 
-            if (addItem > 0){
+            if (count > 0){
                 spUtils.setDataInserted()
             }
 
-            Timber.i("Total added: $addItem")
+            Timber.i("Total added: $count")
         }
 
         thread.quitSafely()

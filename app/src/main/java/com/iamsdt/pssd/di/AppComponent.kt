@@ -8,6 +8,7 @@ package com.iamsdt.pssd.di
 
 import android.app.Application
 import com.iamsdt.pssd.di.module.ActivityModule
+import com.iamsdt.pssd.di.module.AppModule
 import com.iamsdt.pssd.di.module.DBModule
 import com.iamsdt.pssd.di.module.ViewModelModule
 import dagger.BindsInstance
@@ -22,6 +23,7 @@ import javax.inject.Singleton
     AndroidInjectionModule::class,
     ViewModelModule::class,
     ActivityModule::class,
+    AppModule::class,
     DBModule::class])
 interface AppComponent : AndroidInjector<DaggerApplication> {
 
