@@ -6,7 +6,7 @@
 
 package com.iamsdt.pssd.database
 
-import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.room.*
 
 @Dao
@@ -21,11 +21,10 @@ interface WordTableDao{
     fun delete(pageTable: WordTable):Int
 
     @Query("Select * From WordTable")
-    fun getAllData():LiveData<List<WordTable>>
+    fun getAllData():DataSource.Factory<Int,WordTable>
 
     @Query("Select * From WordTable")
     fun getAllList():List<WordTable>
-
 
     @Query("Update WordTable set bookmark = 1 where id = :id ")
     fun setBookMark(id:Int):Int
@@ -34,7 +33,7 @@ interface WordTableDao{
     fun deleteBookMark(id:Int):Int
 
     @Query("Select * From WordTable where bookmark = 1")
-    fun getBookmarkData():LiveData<List<WordTable>>
+    fun getBookmarkData():DataSource.Factory<Int,WordTable>
 
     @Query("Select * From WordTable where bookmark = 1")
     fun getBookmarkList():List<WordTable>
