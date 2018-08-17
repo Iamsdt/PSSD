@@ -21,7 +21,7 @@ class MyViewHolder(view:View)
 
     fun bind(wordTable: WordTable){
         wordTV.addStr(wordTable.word)
-        desTV.addStr(wordTable.word)
+        desTV.addStr(wordTable.des)
 
         // TODO: 8/17/2018 favourite icon
         if (wordTable.bookmark){
