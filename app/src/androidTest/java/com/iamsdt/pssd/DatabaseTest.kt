@@ -12,6 +12,7 @@ import androidx.test.runner.AndroidJUnit4
 import com.iamsdt.pssd.database.MyDatabase
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
+import com.iamsdt.pssd.ext.blockingObserve
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -36,6 +37,10 @@ class DatabaseTest{
         println("Data add: $add")
 
         //now access data
+        val data = wordTableDao.getAllData()
+        data.blockingObserve()?.forEach {
+            println("Word: ${it.word}")
+        }
 
     }
 
