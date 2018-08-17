@@ -38,17 +38,19 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    implementation 'androidx.appcompat:appcompat:1.0.0-rc01'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
     //settings
     implementation 'androidx.preference:preference:1.0.0-rc01'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-rc01'
+    implementation 'com.google.android.material:material:1.0.0-rc01'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha3'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
 
 
     //lifecycle
-    def lifecycle_version = "2.0.0-beta01"
+    def lifecycle_version = "2.0.0-rc01"
 
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
@@ -58,7 +60,7 @@ dependencies {
     testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
 
     //room
-    def room_version = "2.0.0-beta01"
+    def room_version = "2.0.0-rc01"
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
