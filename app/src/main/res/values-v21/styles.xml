@@ -1,0 +1,14 @@
+<!--
+  ~ Developed By Shudipto Trafder
+  ~ on 8/17/18 12:49 PM
+  ~ Copyright (c) 2018 Shudipto Trafder.
+  -->
+
+<resources>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+</resources>
