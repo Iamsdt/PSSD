@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.iamsdt.pssd.di.ViewModelKey
 import com.iamsdt.pssd.ext.ViewModelFactory
+import com.iamsdt.pssd.ui.details.DetailsVM
 import com.iamsdt.pssd.ui.main.MainVM
 import dagger.Binds
 import dagger.Module
@@ -16,6 +17,11 @@ abstract class ViewModelModule{
     @IntoMap
     @ViewModelKey(MainVM::class)
     internal abstract fun mainVM(mainVM: MainVM):ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(DetailsVM::class)
+    internal abstract fun detailsVM(mainVM: DetailsVM):ViewModel
 
     @Binds
     internal abstract fun bindViewModelFactory(factory: ViewModelFactory)

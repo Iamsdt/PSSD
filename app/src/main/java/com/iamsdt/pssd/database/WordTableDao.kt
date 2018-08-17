@@ -6,6 +6,7 @@
 
 package com.iamsdt.pssd.database
 
+import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.room.*
 
@@ -38,4 +39,6 @@ interface WordTableDao{
     @Query("Select * From WordTable where bookmark = 1")
     fun getBookmarkList():List<WordTable>
 
+    @Query("Select * From WordTable where id =:id")
+    fun getSingleWord(id: Int):LiveData<WordTable>
 }
