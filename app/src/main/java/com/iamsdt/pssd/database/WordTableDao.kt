@@ -1,0 +1,33 @@
+/*
+ * Developed By Shudipto Trafder
+ * on 8/17/18 10:40 AM
+ * Copyright (c) 2018 Shudipto Trafder.
+ */
+
+package com.iamsdt.pssd.database
+
+import androidx.lifecycle.LiveData
+import androidx.room.*
+
+@Dao
+interface WordTableDao{
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun add(table: WordTable):Long
+
+    @Update
+    fun update(table: WordTable):Int
+
+    @Delete
+    fun delete(pageTable: WordTable):Int
+
+    @Query("Select * From WordTable")
+    fun getAllData():LiveData<List<WordTable>>
+
+
+    @Query("Update WordTable set bookmark = 1 where id = :id ")
+    fun setBookMark(id:Int):Int
+
+    @Query("Update WordTable set bookmark = 0 where id = :id ")
+    fun deleteBookMark(id:Int):Int
+
+}
