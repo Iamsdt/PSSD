@@ -81,19 +81,19 @@ class BackupFragment : PreferenceFragmentCompat(),
 
         exportFavourite.summary = "File saved on $path directory"
         exportAddWord.summary = "File saved on $path directory"
+        importFavourite.summary = context?.getString(
+                R.string.bps_im_fav_summery)
+
+        importAddWord.summary = context?.getString(
+                R.string.bps_im_add_summery)
 
 
         //export favourite
         exportFavourite.setOnPreferenceClickListener {
 
             if (Build.VERSION.SDK_INT >= 23) {
-//                if (PackageManager.PERMISSION_GRANTED !=
-////                        context?.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-////
-////                }
                 requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
                         PERMISSIONS_REQUEST_WRITE_STORAGE_FAVOURITE)
-
             } else {
                 writeFavouriteData()
             }
@@ -101,7 +101,7 @@ class BackupFragment : PreferenceFragmentCompat(),
         }
 
         //import favourite
-        importFavourite.setOnPreferenceClickListener { preference ->
+        importFavourite.setOnPreferenceClickListener {
             if (Build.VERSION.SDK_INT >= 23) {
                 requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), PERMISSIONS_REQUEST_READ_STORAGE_FAVOURITE)
             } else {
@@ -112,7 +112,7 @@ class BackupFragment : PreferenceFragmentCompat(),
         }
 
         //export added word
-        exportAddWord.setOnPreferenceClickListener { preference ->
+        exportAddWord.setOnPreferenceClickListener {
 
             if (Build.VERSION.SDK_INT >= 23) {
                 requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
@@ -125,7 +125,7 @@ class BackupFragment : PreferenceFragmentCompat(),
         }
 
         //import added word
-        importAddWord.setOnPreferenceClickListener { preference ->
+        importAddWord.setOnPreferenceClickListener {
 
             if (Build.VERSION.SDK_INT >= 23) {
                 requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),

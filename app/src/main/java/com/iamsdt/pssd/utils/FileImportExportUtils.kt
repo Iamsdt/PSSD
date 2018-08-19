@@ -88,12 +88,14 @@ class FileImportExportUtils(val wordTableDao: WordTableDao,
      * export in a text file just favourite word only
      */
     fun exportFileUser() {
-        val list = wordTableDao.getAddedWordList()
-        if (list.isNotEmpty()) {
-            generateFile(list, "Added")
-        } else {
-            ioStatus.postValue(StatusModel(false,
-                    EXPORT_FAV, "No Added words found. Please add some"))
+        AsyncTask.execute {
+            val list = wordTableDao.getAddedWordList()
+            if (list.isNotEmpty()) {
+                generateFile(list, "Added")
+            } else {
+                ioStatus.postValue(StatusModel(false,
+                        EXPORT_FAV, "No Added words found. Please add some"))
+            }
         }
     }
 
