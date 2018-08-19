@@ -19,6 +19,8 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.ViewModelFactory
+import com.iamsdt.pssd.ext.toNextActivity
+import com.iamsdt.pssd.ui.settings.SettingsActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -77,9 +79,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        when (item.itemId) {
-            R.id.action_settings -> return true
-            else -> return super.onOptionsItemSelected(item)
+        return when (item.itemId) {
+            R.id.action_settings -> {
+                toNextActivity(SettingsActivity::class)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

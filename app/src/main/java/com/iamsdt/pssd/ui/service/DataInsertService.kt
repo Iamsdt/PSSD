@@ -15,6 +15,7 @@ import com.google.gson.Gson
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.utils.SpUtils
+import com.iamsdt.pssd.utils.model.JsonModel
 import dagger.android.AndroidInjection
 import timber.log.Timber
 import java.io.InputStreamReader
@@ -47,7 +48,7 @@ class DataInsertService:Service(){
         val thread = HandlerThread("data insert")
         thread.start()
         Handler(thread.looper).post {
-            val data = Gson().fromJson(reader.buffered(4096),JsonModel::class.java)
+            val data = Gson().fromJson(reader.buffered(4096), JsonModel::class.java)
 
             var count = 0L
 

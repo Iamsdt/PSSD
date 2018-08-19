@@ -38,7 +38,7 @@ class AdvanceFragment : PreferenceFragmentCompat(),
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         // Add 'general' preferences, defined in the XML file
-        addPreferencesFromResource(R.xml.pref_general)
+        addPreferencesFromResource(R.xml.pref_advance)
 
         changeDirPref = findPreference(getString(R.string.advance_dir_add_key))
 

@@ -132,6 +132,11 @@
     <string name="advance_dir_title">Change Default Directory</string>
     <string name="advance_dir_summery">Default directory location for your data backup</string>
 
+    <string name="NameShare">ShareName</string>
+    <string name="NameShareLabel">Share as anonymous</string>
+    <string name="NameShareON">Your name will not shared</string>
+    <string name="NameShareOFF">Your name will share</string>
+
     <!-- ***************FINISH************* -->
 
     <!-- ***************APP intro************* -->

@@ -6,9 +6,11 @@
 
 package com.iamsdt.pssd.ui.settings
 
+import android.Manifest
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import androidx.preference.PreferenceFragmentCompat
@@ -17,11 +19,16 @@ import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ui.settings.SettingsFragment.Companion.bindPreferenceSummaryToValue
+import com.iamsdt.pssd.utils.Constants.IO.IMPORT_ADD
+import com.iamsdt.pssd.utils.Constants.IO.IMPORT_FAV
 import com.iamsdt.pssd.utils.FileImportExportUtils
+import com.iamsdt.pssd.utils.SettingsUtils
+import dagger.android.support.AndroidSupportInjection
+import timber.log.Timber
 import javax.inject.Inject
 
 class BackupFragment : PreferenceFragmentCompat(),
-        SharedPreferences.OnSharedPreferenceChangeListener {
+        SharedPreferences.OnSharedPreferenceChangeListener{
 
     //permission code
     private val PERMISSIONS_REQUEST_READ_STORAGE_FAVOURITE = 12
@@ -29,10 +36,13 @@ class BackupFragment : PreferenceFragmentCompat(),
     private val PERMISSIONS_REQUEST_WRITE_STORAGE_FAVOURITE = 23
     private val PERMISSIONS_REQUEST_WRITE_STORAGE_ADDED = 36
 
-    private var path: String = ""
-
     @Inject
     lateinit var utils: FileImportExportUtils
+
+    @Inject
+    lateinit var settingUtils: SettingsUtils
+
+    var path = ""
 
     override fun onSharedPreferenceChanged(sp: SharedPreferences?, key: String?) {
         findPreference(key)?.let {
@@ -40,14 +50,15 @@ class BackupFragment : PreferenceFragmentCompat(),
         }
     }
 
-    // TODO: 8/17/2018 inject here
+    // complete: 8/17/2018 inject here
     override fun onAttach(context: Context?) {
         super.onAttach(context)
+        AndroidSupportInjection.inject(this)
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         // Add 'general' preferences, defined in the XML file
-        addPreferencesFromResource(R.xml.pref_general)
+        addPreferencesFromResource(R.xml.pref_backup)
 
 
         val count = preferenceScreen.preferenceCount
@@ -58,11 +69,80 @@ class BackupFragment : PreferenceFragmentCompat(),
                 .forEach {
                     bindPreferenceSummaryToValue(it)
                 }
+
+
+        //my all preference
+        val exportFavourite = findPreference(getString(R.string.bps_ex_fav_key))
+        val importFavourite = findPreference(getString(R.string.bps_im_fav_key))
+        val exportAddWord = findPreference(getString(R.string.bps_ex_add_key))
+        val importAddWord = findPreference(getString(R.string.bps_im_add_key))
+
+        path = settingUtils.getPath
+
+        exportFavourite.summary = "File saved on $path directory"
+        exportAddWord.summary = "File saved on $path directory"
+
+
+        //export favourite
+        exportFavourite.setOnPreferenceClickListener {
+
+            if (Build.VERSION.SDK_INT >= 23) {
+//                if (PackageManager.PERMISSION_GRANTED !=
+////                        context?.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+////
+////                }
+                requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                        PERMISSIONS_REQUEST_WRITE_STORAGE_FAVOURITE)
+
+            } else {
+                writeFavouriteData()
+            }
+            false
+        }
+
+        //import favourite
+        importFavourite.setOnPreferenceClickListener { preference ->
+            if (Build.VERSION.SDK_INT >= 23) {
+                requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), PERMISSIONS_REQUEST_READ_STORAGE_FAVOURITE)
+            } else {
+                readFavouriteData()
+            }
+
+            false
+        }
+
+        //export added word
+        exportAddWord.setOnPreferenceClickListener { preference ->
+
+            if (Build.VERSION.SDK_INT >= 23) {
+                requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                        PERMISSIONS_REQUEST_WRITE_STORAGE_ADDED)
+            } else {
+                writeAddedWord()
+            }
+
+            false
+        }
+
+        //import added word
+        importAddWord.setOnPreferenceClickListener { preference ->
+
+            if (Build.VERSION.SDK_INT >= 23) {
+                requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                        PERMISSIONS_REQUEST_READ_STORAGE_ADDED)
+            } else {
+                readAddedWord()
+            }
+
+            false
+        }
+
     }
 
     //read write favourite data
     @Suppress("DEPRECATION")
     private fun readFavouriteData() {
+        Timber.i("call")
         val state = Environment.getExternalStorageState()
         if (Environment.MEDIA_MOUNTED == state || Environment.MEDIA_MOUNTED_READ_ONLY == state) {
 
@@ -87,7 +167,7 @@ class BackupFragment : PreferenceFragmentCompat(),
 
             // get path that the user has chosen
             chooser.setOnSelectListener { path ->
-                utils.importFile(context, path)
+                utils.importFile(path,IMPORT_FAV)
             }
 
 
@@ -95,23 +175,26 @@ class BackupFragment : PreferenceFragmentCompat(),
     }
 
     private fun writeFavouriteData() {
+        Timber.i("call")
         val state = Environment.getExternalStorageState()
         if (Environment.MEDIA_MOUNTED == state) {
-            utils.exportFileFavourite(context)
+            utils.exportFileFavourite()
 
         } else showMessage()
     }
 
     //readWrite add word
     private fun writeAddedWord() {
+        Timber.i("call")
         val state = Environment.getExternalStorageState()
         if (Environment.MEDIA_MOUNTED == state) {
-            utils.exportFileUser(context)
+            utils.exportFileUser()
         } else showMessage()
     }
 
     @Suppress("DEPRECATION")
     private fun readAddedWord() {
+        Timber.i("call")
         val state = Environment.getExternalStorageState()
         if (Environment.MEDIA_MOUNTED == state || Environment.MEDIA_MOUNTED_READ_ONLY == state) {
 
@@ -135,7 +218,7 @@ class BackupFragment : PreferenceFragmentCompat(),
 
             // get path that the user has chosen
             chooser.setOnSelectListener { path ->
-                utils.importFile(context, path)
+                utils.importFile(path, IMPORT_ADD)
             }
 
         } else showMessage()

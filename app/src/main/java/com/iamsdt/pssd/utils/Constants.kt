@@ -23,8 +23,10 @@ class Constants{
     }
 
     object Settings{
-        const val SETTING_IMOUT_OPTION_FAVOURITE = "favourite.txt"
-        const val SETTING_IMOUT_OPTION_USER = "user.txt"
+        const val EXT = ".ss"
+
+        val SETTING_IMOUT_OPTION_FAVOURITE = "favourite$EXT"
+        const val SETTING_IMOUT_OPTION_USER = "user$EXT"
 
 
         val DEFAULT_PATH_STORAGE = Environment.getExternalStorageDirectory()
@@ -33,6 +35,16 @@ class Constants{
         const val STORAGE_PATH_KEY = "storage"
         const val STORAGE_PATH = "path"
 
+    }
+
+    object IO{
+        const val EXPORT_FAV = "Export_Fav"
+        const val EXPORT_ADD = "Export_Add"
+
+        const val IMPORT_ADD = "IMPORT_Add"
+        const val IMPORT_FAV = "IMPORT_Fav"
+
+        const val BACKUP = "backup"
     }
 
 }

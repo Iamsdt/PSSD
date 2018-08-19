@@ -1,10 +1,10 @@
 /*
  * Developed By Shudipto Trafder
- * on 8/17/18 3:25 PM
+ * on 8/19/18 10:14 AM
  * Copyright (c) 2018 Shudipto Trafder.
  */
 
-package com.iamsdt.pssd.ui.service
+package com.iamsdt.pssd.utils.model
 
 import com.google.gson.annotations.SerializedName
 

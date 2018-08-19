@@ -58,7 +58,8 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     companion object {
 
-        private val sBindPreferenceSummaryToValueListener = Preference.OnPreferenceChangeListener { preference, value ->
+        private val sBindPreferenceSummaryToValueListener
+                = Preference.OnPreferenceChangeListener { preference, value ->
             val stringValue = value.toString()
 
             if (preference is ListPreference) {

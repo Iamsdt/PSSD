@@ -15,4 +15,11 @@
         android:title="@string/advance_dir_title"
         android:selectable="true" />
 
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="@string/NameShare"
+        android:summaryOff="@string/NameShareOFF"
+        android:summaryOn="@string/NameShareON"
+        android:title="@string/NameShareLabel"/>
+
 </PreferenceScreen>

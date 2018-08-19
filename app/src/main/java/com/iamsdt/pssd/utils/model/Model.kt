@@ -4,7 +4,7 @@
  * Copyright (c) 2018 Shudipto Trafder.
  */
 
-package com.iamsdt.pssd.ui.service
+package com.iamsdt.pssd.utils.model
 
 import com.google.gson.annotations.SerializedName
 
