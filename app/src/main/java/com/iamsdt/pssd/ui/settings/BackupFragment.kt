@@ -90,10 +90,16 @@ class BackupFragment : PreferenceFragmentCompat(),
 
         //export favourite
         exportFavourite.setOnPreferenceClickListener {
-
             if (Build.VERSION.SDK_INT >= 23) {
-                requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                        PERMISSIONS_REQUEST_WRITE_STORAGE_FAVOURITE)
+                if (context?.checkCallingOrSelfPermission(
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
+                    requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                            PERMISSIONS_REQUEST_WRITE_STORAGE_FAVOURITE)
+                } else{
+                    //permission already granted
+                    writeFavouriteData()
+                }
+
             } else {
                 writeFavouriteData()
             }
