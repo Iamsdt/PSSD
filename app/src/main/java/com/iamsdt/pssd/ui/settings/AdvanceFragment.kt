@@ -62,7 +62,11 @@ class AdvanceFragment : PreferenceFragmentCompat(),
     private val sBindPreferenceSummaryToValueListener
             = Preference.OnPreferenceChangeListener { preference, value ->
         val stringValue = value.toString()
-        preference.summary = stringValue
+        if (preference is CheckBoxPreference){
+            preference.summary = stringValue
+        } else{
+            preference.summary = "path: stringValue"
+        }
         true
     }
 
@@ -162,7 +166,7 @@ class AdvanceFragment : PreferenceFragmentCompat(),
                                             permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if (requestCode == PERMISSIONS_REQUEST_READ_STORAGE) {
+        if (requestCode == PERMISSIONS_REQUEST_READ_STORAGE && grantResults.isNotEmpty()) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 //Permission added
                 selectDir()
