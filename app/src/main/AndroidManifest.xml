@@ -41,11 +41,17 @@
             android:name=".ui.search.SearchActivity"
             android:label="@string/title_activity_search"
             android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity android:name=".ui.settings.BackupSettings"
+            android:label="@string/sbackup"
             android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity android:name=".ui.settings.SettingsActivity"
+            android:label="@string/action_settings"
             android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity android:name=".ui.settings.AdvanceSettings"
+            android:label="@string/sAdvance"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 

@@ -7,6 +7,7 @@
 package com.iamsdt.pssd.utils
 
 import android.content.Context
+import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.iamsdt.pssd.R
 
@@ -33,8 +34,14 @@ class SettingsUtils(val context: Context) {
             settingsSp.getString(context.getString(R.string.advance_dir_add_key),
                     Constants.Settings.DEFAULT_PATH_STORAGE)
 
+    fun savePath(string: String){
+        settingsSp.edit {
+            putString(context.getString(R.string.advance_dir_add_key),string)
+        }
+    }
 
-    val settingsSp
+
+    private val settingsSp
         get() =
             PreferenceManager.getDefaultSharedPreferences(context)
 

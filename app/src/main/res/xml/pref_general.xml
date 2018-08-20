@@ -13,17 +13,6 @@
         android:key="@string/textSizeKey"
         android:title="@string/textSizeLabel"/>
 
-    <PreferenceCategory android:title="Share Data">
-
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="@string/switchShare"
-            android:summaryOff="@string/switchShareOFF"
-            android:summaryOn="@string/switchShareON"
-            android:title="@string/switchShareLabel"/>
-
-    </PreferenceCategory>
-
 
     <PreferenceCategory
         android:summary="Import and export your data.

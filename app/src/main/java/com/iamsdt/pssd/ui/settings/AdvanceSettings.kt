@@ -9,10 +9,20 @@ package com.iamsdt.pssd.ui.settings
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.iamsdt.pssd.R
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_settings_advance.*
+import javax.inject.Inject
 
-class AdvanceSettings : AppCompatActivity() {
+class AdvanceSettings : AppCompatActivity(),HasSupportFragmentInjector {
+
+    @Inject
+    lateinit var di:DispatchingAndroidInjector<Fragment>
+
+    override fun supportFragmentInjector(): AndroidInjector<Fragment> = di
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

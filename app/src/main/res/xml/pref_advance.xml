@@ -6,20 +6,31 @@
   ~ Copyright (c) 2018 Shudipto Trafder.
   -->
 
-<PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <Preference
         android:key="@string/advance_dir_add_key"
+        android:selectable="true"
         android:summary="@string/advance_dir_summery"
-        android:title="@string/advance_dir_title"
-        android:selectable="true" />
+        android:title="@string/advance_dir_title" />
 
-    <CheckBoxPreference
-        android:defaultValue="false"
-        android:key="@string/NameShare"
-        android:summaryOff="@string/NameShareOFF"
-        android:summaryOn="@string/NameShareON"
-        android:title="@string/NameShareLabel"/>
+    <PreferenceCategory android:title="Share Data">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/switchShare"
+            android:summaryOff="@string/switchShareOFF"
+            android:summaryOn="@string/switchShareON"
+            android:title="@string/switchShareLabel" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="@string/NameShare"
+            android:summaryOff="@string/NameShareOFF"
+            android:summaryOn="@string/NameShareON"
+            android:title="@string/NameShareLabel" />
+
+    </PreferenceCategory>
+
 
 </PreferenceScreen>

@@ -10,7 +10,10 @@ import com.iamsdt.pssd.ui.SplashActivity
 import com.iamsdt.pssd.ui.details.DetailsActivity
 import com.iamsdt.pssd.ui.main.MainActivity
 import com.iamsdt.pssd.ui.service.DataInsertService
-import com.iamsdt.pssd.ui.settings.*
+import com.iamsdt.pssd.ui.settings.AdvanceFragment
+import com.iamsdt.pssd.ui.settings.AdvanceSettings
+import com.iamsdt.pssd.ui.settings.BackupFragment
+import com.iamsdt.pssd.ui.settings.BackupSettings
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -30,9 +33,6 @@ abstract class ActivityModule {
     abstract fun dataInsert(): DataInsertService
 
     @ContributesAndroidInjector
-    abstract fun settings(): SettingsActivity
-
-    @ContributesAndroidInjector
     abstract fun settingsAdvance(): AdvanceSettings
 
     @ContributesAndroidInjector
@@ -43,8 +43,5 @@ abstract class ActivityModule {
 
     @ContributesAndroidInjector
     abstract fun settingsFragAdvance(): AdvanceFragment
-
-    @ContributesAndroidInjector
-    abstract fun settingsFrag(): SettingsFragment
 
 }

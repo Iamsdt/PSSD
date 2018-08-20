@@ -12,16 +12,20 @@ import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import androidx.preference.CheckBoxPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceManager
 import com.codekidlabs.storagechooser.StorageChooser
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.showToast
-import com.iamsdt.pssd.ui.settings.SettingsFragment.Companion.bindPreferenceSummaryToValue
 import com.iamsdt.pssd.utils.Constants.Settings.DEFAULT_PATH_STORAGE
 import com.iamsdt.pssd.utils.Constants.Settings.STORAGE_PATH_KEY
+import com.iamsdt.pssd.utils.SettingsUtils
+import dagger.android.support.AndroidSupportInjection
 import java.io.File
+import javax.inject.Inject
 
 class AdvanceFragment : PreferenceFragmentCompat(),
         SharedPreferences.OnSharedPreferenceChangeListener {
@@ -29,10 +33,57 @@ class AdvanceFragment : PreferenceFragmentCompat(),
     private val PERMISSIONS_REQUEST_READ_STORAGE = 0
     private var changeDirPref: Preference? = null
 
+    @Inject
+    lateinit var settingUtils: SettingsUtils
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        AndroidSupportInjection.inject(this)
+    }
 
     override fun onSharedPreferenceChanged(sp: SharedPreferences?, key: String?) {
         findPreference(key)?.let {
+            if (key == getString(R.string.switchShare)){
+                val value = sp?.getBoolean(
+                        getString(R.string.switchShare),true) ?: true
+                val pre = findPreference(getString(R.string.NameShare))
+                if (!value){
+                    pre?.isEnabled = false
+                    pre.shouldDisableView = true
+                } else{
+                    pre.shouldDisableView = false
+                    pre?.isEnabled = true
+                }
+            }
             bindPreferenceSummaryToValue(it)
+        }
+    }
+
+    private val sBindPreferenceSummaryToValueListener
+            = Preference.OnPreferenceChangeListener { preference, value ->
+        val stringValue = value.toString()
+        preference.summary = stringValue
+        true
+    }
+
+
+    private fun bindPreferenceSummaryToValue(preference: Preference) {
+        // Set the listener to watch for value changes.
+        preference.onPreferenceChangeListener = sBindPreferenceSummaryToValueListener
+
+        // Trigger the listener immediately with the preference's
+        // current value.
+        //if preference cheekbook
+        if (preference is CheckBoxPreference){
+            sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
+                    PreferenceManager
+                            .getDefaultSharedPreferences(preference.context)
+                            .getBoolean(preference.key, false))
+        } else{
+            sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
+                    PreferenceManager
+                            .getDefaultSharedPreferences(preference.context)
+                            .getString(preference.key, ""))
         }
     }
 
@@ -42,7 +93,8 @@ class AdvanceFragment : PreferenceFragmentCompat(),
 
         changeDirPref = findPreference(getString(R.string.advance_dir_add_key))
 
-        changeDirPref?.summary = DEFAULT_PATH_STORAGE
+        //load from sp
+        changeDirPref?.summary = "path: ${settingUtils.getPath}"
 
         changeDirPref?.setOnPreferenceClickListener {
 
@@ -55,6 +107,15 @@ class AdvanceFragment : PreferenceFragmentCompat(),
 
             true
         }
+
+        val value = settingUtils.shareStatus
+        if (!value){
+            val pre = findPreference(getString(R.string.NameShare))
+            pre?.isEnabled = false
+            pre.shouldDisableView = true
+        }
+
+
     }
 
     @Suppress("DEPRECATION")
@@ -91,7 +152,9 @@ class AdvanceFragment : PreferenceFragmentCompat(),
 
     private fun refreshSummery(s: String) {
         if (changeDirPref != null) {
-            changeDirPref?.summary = s
+            changeDirPref?.summary = "path: $s"
+            //save on sp
+            settingUtils.savePath(s)
         }
     }
 
@@ -110,5 +173,15 @@ class AdvanceFragment : PreferenceFragmentCompat(),
             }
         }
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        preferenceScreen.sharedPreferences.registerOnSharedPreferenceChangeListener(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        preferenceScreen.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
     }
 }
