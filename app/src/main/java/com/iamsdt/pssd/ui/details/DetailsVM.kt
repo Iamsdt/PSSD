@@ -22,7 +22,7 @@ class DetailsVM @Inject constructor(val wordTableDao: WordTableDao):
 
     private fun setBookmark(id: Int) {
         AsyncTask.execute {
-            val update = wordTableDao.setBookMark(id)
+            val update = wordTableDao.setBookmark(id)
             if (update != -1)
                 singleLiveEvent.postValue(Bookmark.SET)
         }
@@ -30,7 +30,7 @@ class DetailsVM @Inject constructor(val wordTableDao: WordTableDao):
 
     private fun deleteBookmark(id: Int) {
         AsyncTask.execute {
-            val delete = wordTableDao.deleteBookMark(id)
+            val delete = wordTableDao.deleteBookmark(id)
             if (delete != -1)
                 singleLiveEvent.postValue(Bookmark.DELETE)
         }

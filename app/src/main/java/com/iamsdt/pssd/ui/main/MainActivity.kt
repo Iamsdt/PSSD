@@ -22,6 +22,7 @@ import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.ViewModelFactory
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ext.toNextActivity
+import com.iamsdt.pssd.ui.favourite.FavouriteActivity
 import com.iamsdt.pssd.ui.settings.SettingsActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -94,7 +95,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_favourite -> {
-                showDummyMessage()
+                toNextActivity(FavouriteActivity::class)
             }
             R.id.nav_card -> {
                 showDummyMessage()

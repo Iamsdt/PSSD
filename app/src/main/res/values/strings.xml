@@ -14,7 +14,7 @@
     <string name="description">Description:</string>
     <string name="details_menu_text">increase text size</string>
     <string name="details_share">Share</string>
-    <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_search">Search</string>
 
     <!-- used by Recycle View -->
     <string name="rec_userName">User Name</string>
@@ -22,6 +22,7 @@
     <string name="title_activity_settings">Settings</string>
     <string name="title_activity_developer">Developer</string>
     <string name="title_activity_favourite">Favourite</string>
+    <string name="title_activity_flash">Flash Cards</string>
     <string name="title_activity_user_add">Add Own word</string>
 
     <!-- details fragment -->

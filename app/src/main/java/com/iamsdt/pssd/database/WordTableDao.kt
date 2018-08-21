@@ -28,13 +28,13 @@ interface WordTableDao{
     fun getAllList():List<WordTable>
 
     @Query("Update WordTable set bookmark = 1 where id = :id ")
-    fun setBookMark(id:Int):Int
+    fun setBookmark(id:Int):Int
 
     @Query("Update WordTable set bookmark = 0 where id = :id ")
-    fun deleteBookMark(id:Int):Int
+    fun deleteBookmark(id:Int):Int
 
     @Query("Select * From WordTable where bookmark = 1")
-    fun getBookmarkData():LiveData<List<WordTable>>
+    fun getBookmarkData():DataSource.Factory<Int,WordTable>
 
     @Query("Select * From WordTable where bookmark = 1")
     fun getBookmarkList():List<WordTable>

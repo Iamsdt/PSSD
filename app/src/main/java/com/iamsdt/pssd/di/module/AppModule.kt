@@ -10,6 +10,7 @@ import android.app.Application
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.iamsdt.pssd.database.WordTableDao
+import com.iamsdt.pssd.ui.favourite.FavouriteAdapter
 import com.iamsdt.pssd.utils.FileImportExportUtils
 import com.iamsdt.pssd.utils.SettingsUtils
 import com.iamsdt.pssd.utils.SpUtils
@@ -20,6 +21,11 @@ import javax.inject.Singleton
 @Module
 class AppModule {
 
+
+    @Provides
+    @Singleton
+    fun getAdapter(application: Application,
+                   wordTableDao: WordTableDao): FavouriteAdapter = FavouriteAdapter(application, wordTableDao)
 
     @Provides
     @Singleton

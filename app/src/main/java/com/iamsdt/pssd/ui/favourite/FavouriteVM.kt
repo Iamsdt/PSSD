@@ -6,41 +6,34 @@
 
 package com.iamsdt.pssd.ui.favourite
 
-import android.os.AsyncTask
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
+import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
-import com.iamsdt.pssd.ext.SingleLiveEvent
-import com.iamsdt.pssd.utils.Bookmark
 import javax.inject.Inject
 
 class FavouriteVM @Inject constructor(
         val wordTableDao: WordTableDao):ViewModel(){
 
-    val singleLiveEvent = SingleLiveEvent<Bookmark>()
+    fun getData(): LiveData<PagedList<WordTable>> {
 
-    val data get() = wordTableDao.getBookmarkData()
+        val source = wordTableDao.getBookmarkData()
 
-    private fun setBookmark(id: Int) {
-        AsyncTask.execute {
-            val update = wordTableDao.setBookMark(id)
-            if (update != -1)
-                singleLiveEvent.postValue(Bookmark.SET)
-        }
+        val config = PagedList.Config.Builder()
+                .setPageSize(10)
+                .setInitialLoadSizeHint(20)//by default page size * 3
+                .setPrefetchDistance(10) // default page size
+                .setEnablePlaceholders(true) //default true
+                // that's means scroll bar is not jump and all data set show on the
+                //recycler view first after 30 it will show empty view
+                // when load it will update with animation
+                .build()
+
+
+        return LivePagedListBuilder(source, config).build()
     }
 
-    private fun deleteBookmark(id: Int) {
-        AsyncTask.execute {
-            val delete = wordTableDao.deleteBookMark(id)
-            if (delete != -1)
-                singleLiveEvent.postValue(Bookmark.DELETE)
-        }
-    }
-
-    fun requestBookmark(id: Int, bookmarked: Boolean) {
-        if (bookmarked)
-            deleteBookmark(id)
-        else
-            setBookmark(id)
-    }
 
 }

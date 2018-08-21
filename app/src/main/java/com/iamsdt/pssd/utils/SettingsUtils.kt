@@ -17,7 +17,7 @@ class SettingsUtils(val context: Context) {
     val textSize
         get():String = settingsSp.getString(
                 context.getString(R.string.textSizeKey),
-                context.getString(R.string.sTextModerateValue))
+                context.getString(R.string.sTextModerateValue))?:"20"
 
     val shareStatus
         get():Boolean = settingsSp.getBoolean(
@@ -31,8 +31,8 @@ class SettingsUtils(val context: Context) {
 
     val getPath
         get():String =
-            settingsSp.getString(context.getString(R.string.advance_dir_add_key),
-                    Constants.Settings.DEFAULT_PATH_STORAGE)
+            settingsSp?.getString(context.getString(R.string.advance_dir_add_key),
+                    Constants.Settings.DEFAULT_PATH_STORAGE) ?: ""
 
     fun savePath(string: String){
         settingsSp.edit {
