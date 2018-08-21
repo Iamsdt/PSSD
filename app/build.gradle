@@ -32,7 +32,7 @@ android {
         androidTest.java.srcDirs += "src/test-common/java"
         test.java.srcDirs += "src/test-common/java"
     }
-    buildToolsVersion '28.0.1'
+    buildToolsVersion '28.0.2'
 }
 
 dependencies {

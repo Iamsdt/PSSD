@@ -68,8 +68,10 @@ class FileImportExportUtils(val wordTableDao: WordTableDao,
 
         if (file.exists())
             file.setWritable(true)
-        else
+        else {
             file.createNewFile()
+            file.setWritable(true)
+        }
 
         val writer = FileWriter(file)
         writer.write(string)
