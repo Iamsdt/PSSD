@@ -1,0 +1,46 @@
+/*
+ * Developed By Shudipto Trafder
+ *  on 8/21/18 6:26 PM
+ *  Copyright (c) 2018  Shudipto Trafder.
+ */
+
+package com.iamsdt.pssd.ui.favourite
+
+import android.os.AsyncTask
+import androidx.lifecycle.ViewModel
+import com.iamsdt.pssd.database.WordTableDao
+import com.iamsdt.pssd.ext.SingleLiveEvent
+import com.iamsdt.pssd.utils.Bookmark
+import javax.inject.Inject
+
+class FavouriteVM @Inject constructor(
+        val wordTableDao: WordTableDao):ViewModel(){
+
+    val singleLiveEvent = SingleLiveEvent<Bookmark>()
+
+    val data get() = wordTableDao.getBookmarkData()
+
+    private fun setBookmark(id: Int) {
+        AsyncTask.execute {
+            val update = wordTableDao.setBookMark(id)
+            if (update != -1)
+                singleLiveEvent.postValue(Bookmark.SET)
+        }
+    }
+
+    private fun deleteBookmark(id: Int) {
+        AsyncTask.execute {
+            val delete = wordTableDao.deleteBookMark(id)
+            if (delete != -1)
+                singleLiveEvent.postValue(Bookmark.DELETE)
+        }
+    }
+
+    fun requestBookmark(id: Int, bookmarked: Boolean) {
+        if (bookmarked)
+            deleteBookmark(id)
+        else
+            setBookmark(id)
+    }
+
+}

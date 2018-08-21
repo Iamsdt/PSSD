@@ -4,7 +4,7 @@
  *  Copyright (c) 2018  Shudipto Trafder.
  */
 
-package com.iamsdt.pssd.ui.favourite
+package com.iamsdt.pssd.ui.flash
 
 import android.os.Bundle
 import android.view.MenuItem

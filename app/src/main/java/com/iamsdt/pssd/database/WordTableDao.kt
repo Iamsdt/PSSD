@@ -34,7 +34,7 @@ interface WordTableDao{
     fun deleteBookMark(id:Int):Int
 
     @Query("Select * From WordTable where bookmark = 1")
-    fun getBookmarkData():DataSource.Factory<Int,WordTable>
+    fun getBookmarkData():LiveData<List<WordTable>>
 
     @Query("Select * From WordTable where bookmark = 1")
     fun getBookmarkList():List<WordTable>
