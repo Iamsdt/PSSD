@@ -8,6 +8,8 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- todo add icon -->
+
     <Preference
         android:key="@string/advance_dir_add_key"
         android:selectable="true"

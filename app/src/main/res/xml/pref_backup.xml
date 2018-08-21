@@ -7,6 +7,8 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- todo add icon -->
+
     <Preference
         android:key="@string/bps_ex_fav_key"
         android:title="@string/bps_ex_fav_title" />

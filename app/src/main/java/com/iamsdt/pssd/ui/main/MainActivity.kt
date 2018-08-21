@@ -18,7 +18,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.iamsdt.pssd.R
+import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.ViewModelFactory
+import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ext.toNextActivity
 import com.iamsdt.pssd.ui.settings.SettingsActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -31,8 +33,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     @Inject
     lateinit var factory: ViewModelFactory
 
-    private val viewModel:MainVM by lazy {
-        ViewModelProviders.of(this,factory).get(MainVM::class.java)
+    private val viewModel: MainVM by lazy {
+        ViewModelProviders.of(this, factory).get(MainVM::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +44,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
         mainRcv.layoutManager = LinearLayoutManager(this)
-        val  adapter = MainAdapter(this)
+        val adapter = MainAdapter(this)
         mainRcv.adapter = adapter
         viewModel.getData().observe(this, Observer {
             adapter.submitList(it)
@@ -91,27 +93,43 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
-                // Handle the camera action
+            R.id.nav_favourite -> {
+                showDummyMessage()
             }
-            R.id.nav_gallery -> {
-
+            R.id.nav_card -> {
+                showDummyMessage()
             }
-            R.id.nav_slideshow -> {
-
+            R.id.nav_add -> {
+                showDummyMessage()
             }
-            R.id.nav_manage -> {
-
+            R.id.nav_settings -> {
+                toNextActivity(SettingsActivity::class)
             }
-            R.id.nav_share -> {
-
+            R.id.nav_themes -> {
+                showDummyMessage()
             }
-            R.id.nav_send -> {
-
+            R.id.nav_notice -> {
+                showDummyMessage()
+            }
+            R.id.nav_police -> {
+                showDummyMessage()
+            }
+            R.id.nav_use -> {
+                showDummyMessage()
+            }
+            R.id.nav_about -> {
+                showDummyMessage()
+            }
+            R.id.nav_developer -> {
+                showDummyMessage()
             }
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun showDummyMessage(){
+        showToast(ToastType.SUCCESSFUL,"Not available yet")
     }
 }

@@ -9,35 +9,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <!-- todo add icon -->
+
+    <group>
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:id="@+id/nav_favourite"
+            android:title="Favourites" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:id="@+id/nav_card"
+            android:title="Flash Card" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_add"
+            android:title="Add Words" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Settings">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_settings"
+                android:title="Settings" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/nav_themes"
+                android:title="Choose Themes" />
+        </menu>
+    </item>
+
+    <item android:title="Polices">
+        <menu>
+            <item android:id="@+id/nav_notice"
+                android:title="Legal Notice"/>
+
+            <item android:id="@+id/nav_police"
+                android:title="Privacy Polices"/>
+
+            <item android:id="@+id/nav_use"
+                android:title="Terms of Uses"/>
+
+        </menu>
+    </item>
+
+    <item android:title="About">
+        <menu>
+            <item
+                android:id="@+id/nav_about"
+                android:title="About App"/>
+            <item
+                android:id="@+id/nav_developer"
+                android:title="Developers"/>
+
         </menu>
     </item>
 
