@@ -20,6 +20,8 @@ class FlashCardActivity:AppCompatActivity(){
         setContentView(R.layout.activity_flash_card)
         setSupportActionBar(toolbar)
 
+        //val manager = GridLayoutManager
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 

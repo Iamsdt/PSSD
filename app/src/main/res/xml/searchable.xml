@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Developed By Shudipto Trafder
+  ~  on 8/21/18 10:36 PM
+  ~  Copyright (c) 2018  Shudipto Trafder.
+  -->
+
+<searchable xmlns:android="http://schemas.android.com/apk/res/android"
+    android:label="@string/app_name"
+    android:hint="@string/search"
+    android:voiceSearchMode="showVoiceSearchButton|launchRecognizer"
+    android:voicePromptText="@string/speak_voice"
+    android:searchSuggestAuthority="com.iamsdt.pssd.MySuggestionProvider"
+    android:searchSuggestSelection=" ?" />

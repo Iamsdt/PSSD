@@ -11,6 +11,7 @@ import com.iamsdt.pssd.ui.details.DetailsActivity
 import com.iamsdt.pssd.ui.favourite.FavouriteActivity
 import com.iamsdt.pssd.ui.flash.FlashCardActivity
 import com.iamsdt.pssd.ui.main.MainActivity
+import com.iamsdt.pssd.ui.search.SearchActivity
 import com.iamsdt.pssd.ui.service.DataInsertService
 import com.iamsdt.pssd.ui.settings.AdvanceFragment
 import com.iamsdt.pssd.ui.settings.AdvanceSettings
@@ -51,4 +52,7 @@ abstract class ActivityModule {
 
     @ContributesAndroidInjector
     abstract fun flash():FlashCardActivity
+
+    @ContributesAndroidInjector
+    abstract fun search():SearchActivity
 }

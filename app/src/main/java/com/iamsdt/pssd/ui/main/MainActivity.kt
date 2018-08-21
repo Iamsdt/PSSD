@@ -87,6 +87,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 toNextActivity(SettingsActivity::class)
                 true
             }
+            R.id.action_search -> {
+                toNextActivity(SettingsActivity::class)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

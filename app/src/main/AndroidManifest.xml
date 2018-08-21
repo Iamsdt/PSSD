@@ -37,10 +37,6 @@
             android:name=".ui.details.DetailsActivity"
             android:label="@string/title_activity_details"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ui.search.SearchActivity"
-            android:label="@string/title_activity_search"
-            android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name=".ui.settings.BackupSettings"
             android:label="@string/sbackup"
@@ -61,6 +57,25 @@
         <activity android:name=".ui.flash.FlashCardActivity"
             android:label="@string/title_activity_flash"
             android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".ui.search.SearchActivity"
+            android:launchMode="singleTop"
+            android:label="@string/search"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+
+        <!-- providers -->
+        <provider
+            android:authorities="com.iamsdt.pssd"
+            android:name=".ui.search.MySuggestionProvider"
+            android:exported="false" />
     </application>
 
 </manifest>

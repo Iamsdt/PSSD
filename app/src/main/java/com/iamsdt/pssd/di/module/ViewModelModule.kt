@@ -8,6 +8,7 @@ import com.iamsdt.pssd.ui.details.DetailsVM
 import com.iamsdt.pssd.ui.favourite.FavouriteVM
 import com.iamsdt.pssd.ui.flash.FlashVM
 import com.iamsdt.pssd.ui.main.MainVM
+import com.iamsdt.pssd.ui.search.SearchVM
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -34,6 +35,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(FlashVM::class)
     internal abstract fun falshVM(mainVM: FlashVM): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SearchVM::class)
+    internal abstract fun searchVM(mainVM: SearchVM): ViewModel
 
     @Binds
     internal abstract fun bindViewModelFactory(factory: ViewModelFactory)

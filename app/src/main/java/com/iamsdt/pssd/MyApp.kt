@@ -45,8 +45,8 @@ class MyApp:DaggerApplication(){
             override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
                 super.onActivityCreated(activity, savedInstanceState)
                 activity?.let {
-                    //is their any option to check
-                    // is ContributesAndroidInjector available for this activity first
+                    //try to inject in the activity
+                    //if not found catch the exception
                     try {
                         AndroidInjection.inject(it)
                     }catch (e:Exception){
