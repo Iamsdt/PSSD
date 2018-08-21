@@ -12,6 +12,8 @@ class Constants{
 
     companion object {
         const val DB_NAME = "SS.db"
+
+        const val SEARCH = "Search"
     }
 
     object SP{
@@ -26,7 +28,7 @@ class Constants{
         const val EXT = ".ss"
 
         val SETTING_IMOUT_OPTION_FAVOURITE = "favourite$EXT"
-        const val SETTING_IMOUT_OPTION_USER = "user$EXT"
+        val SETTING_IMOUT_OPTION_USER = "user$EXT"
 
 
         val DEFAULT_PATH_STORAGE = Environment.getExternalStorageDirectory()

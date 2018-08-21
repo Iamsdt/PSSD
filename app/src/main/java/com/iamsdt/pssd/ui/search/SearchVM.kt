@@ -6,19 +6,29 @@
 
 package com.iamsdt.pssd.ui.search
 
-import androidx.lifecycle.MediatorLiveData
+import android.os.AsyncTask
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
+import com.iamsdt.pssd.ext.SingleLiveEvent
+import com.iamsdt.pssd.utils.Constants.Companion.SEARCH
+import com.iamsdt.pssd.utils.model.StatusModel
+import timber.log.Timber
 import javax.inject.Inject
 
-class SearchVM @Inject constructor(val wordTableDao: WordTableDao):ViewModel(){
+class SearchVM @Inject constructor(val wordTableDao: WordTableDao) : ViewModel() {
 
-    var data = MediatorLiveData<PagedList<WordTable>>()
+    var data = SingleLiveEvent<LiveData<PagedList<WordTable>>>()
 
-    fun requestSearch(query: String) {
+    val event = SingleLiveEvent<StatusModel>()
+
+    fun requestSearch(query: String){
+
+        Timber.i("Query: ${SearchActivity.query}")
+
         val source = wordTableDao.getSearchData(query)
 
         val config = PagedList.Config.Builder()
@@ -31,8 +41,21 @@ class SearchVM @Inject constructor(val wordTableDao: WordTableDao):ViewModel(){
 
         val liveData = LivePagedListBuilder(source, config).build()
 
-        //change the data
-        data.addSource(liveData) {}
+        data.postValue(liveData)
+    }
+
+    fun submit(query: String?) {
+        query?.let {
+            AsyncTask.execute {
+                val word: WordTable? = wordTableDao.getSearchResult(it)
+                Timber.i("Word:$word")
+                if (word != null) {
+                    event.postValue(StatusModel(true, SEARCH, "${word.id}"))
+                } else {
+                    event.postValue(StatusModel(false, SEARCH, "Word not found!"))
+                }
+            }
+        }
     }
 
 }
