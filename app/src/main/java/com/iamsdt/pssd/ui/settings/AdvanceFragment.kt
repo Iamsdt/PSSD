@@ -65,7 +65,7 @@ class AdvanceFragment : PreferenceFragmentCompat(),
         if (preference is CheckBoxPreference){
             preference.summary = stringValue
         } else{
-            preference.summary = "path: stringValue"
+            preference.summary = "path: $stringValue"
         }
         true
     }
