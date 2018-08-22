@@ -26,7 +26,6 @@ import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ui.details.DetailsActivity
 import com.iamsdt.pssd.ui.main.MainAdapter
 import com.iamsdt.pssd.utils.Constants
-import com.iamsdt.pssd.utils.Constants.Companion.SEARCH_DATA
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.content_search.*
 import timber.log.Timber
@@ -57,7 +56,12 @@ class SearchActivity : AppCompatActivity() {
         // performance issue
         // complete: 8/22/18 fix latter make single live data
 
-        //takeAlook: I am not happy with this solution
+        viewModel.liveData.observe(this, Observer {
+            Timber.i("size: ${it.size}")
+            adapter.submitList(it)
+        })
+
+        //complete: I am not happy with this solution
         viewModel.event.observe(this, Observer {
             it?.let {
                 if (it.title == Constants.SEARCH){
@@ -70,11 +74,6 @@ class SearchActivity : AppCompatActivity() {
                         Timber.i(it.message)
                         showToast(ToastType.ERROR,it.message)
                     }
-                } else if (it.title == SEARCH_DATA){
-                    viewModel.getData(it.message).observe(this, Observer {
-                        Timber.i("size: ${it.size}")
-                        adapter.submitList(it)
-                    })
                 }
             }
         })

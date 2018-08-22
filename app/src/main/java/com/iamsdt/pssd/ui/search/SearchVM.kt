@@ -7,14 +7,13 @@
 package com.iamsdt.pssd.ui.search
 
 import android.os.AsyncTask
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.SingleLiveEvent
-import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.Constants.Companion.SEARCH
 import com.iamsdt.pssd.utils.model.StatusModel
 import timber.log.Timber
@@ -24,7 +23,16 @@ class SearchVM @Inject constructor(val wordTableDao: WordTableDao) : ViewModel()
 
     val event = SingleLiveEvent<StatusModel>()
 
-    fun getData(query: String):LiveData<PagedList<WordTable>>{
+    lateinit var liveData: MediatorLiveData<PagedList<WordTable>>
+
+    init {
+        if (!::liveData.isInitialized){
+            liveData = MediatorLiveData()
+            getData("")
+        }
+    }
+
+    private fun getData(query: String){
 
         val source = wordTableDao.getSearchData(query)
 
@@ -36,13 +44,15 @@ class SearchVM @Inject constructor(val wordTableDao: WordTableDao) : ViewModel()
                 .build()
 
 
-        return LivePagedListBuilder(source, config).build()
+        val data = LivePagedListBuilder(source, config).build()
+
+        liveData.addSource(data) {
+            liveData.value = it
+        }
     }
 
     fun requestSearch(query: String){
-        AsyncTask.execute {
-            event.postValue(StatusModel(true, Constants.SEARCH_DATA,query))
-        }
+        getData(query)
     }
 
     fun submit(query: String?) {
