@@ -14,6 +14,7 @@ import androidx.paging.PagedList
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.SingleLiveEvent
+import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.Constants.Companion.SEARCH
 import com.iamsdt.pssd.utils.model.StatusModel
 import timber.log.Timber
@@ -21,13 +22,9 @@ import javax.inject.Inject
 
 class SearchVM @Inject constructor(val wordTableDao: WordTableDao) : ViewModel() {
 
-    var data = SingleLiveEvent<LiveData<PagedList<WordTable>>>()
-
     val event = SingleLiveEvent<StatusModel>()
 
-    fun requestSearch(query: String){
-
-        Timber.i("Query: ${SearchActivity.query}")
+    fun getData(query: String):LiveData<PagedList<WordTable>>{
 
         val source = wordTableDao.getSearchData(query)
 
@@ -39,9 +36,13 @@ class SearchVM @Inject constructor(val wordTableDao: WordTableDao) : ViewModel()
                 .build()
 
 
-        val liveData = LivePagedListBuilder(source, config).build()
+        return LivePagedListBuilder(source, config).build()
+    }
 
-        data.postValue(liveData)
+    fun requestSearch(query: String){
+        AsyncTask.execute {
+            event.postValue(StatusModel(true, Constants.SEARCH_DATA,query))
+        }
     }
 
     fun submit(query: String?) {

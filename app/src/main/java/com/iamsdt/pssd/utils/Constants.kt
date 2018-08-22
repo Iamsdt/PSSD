@@ -14,6 +14,7 @@ class Constants{
         const val DB_NAME = "SS.db"
 
         const val SEARCH = "Search"
+        const val SEARCH_DATA = "Search_Data"
     }
 
     object SP{

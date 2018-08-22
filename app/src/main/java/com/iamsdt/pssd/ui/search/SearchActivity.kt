@@ -25,6 +25,8 @@ import com.iamsdt.pssd.ext.ViewModelFactory
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ui.details.DetailsActivity
 import com.iamsdt.pssd.ui.main.MainAdapter
+import com.iamsdt.pssd.utils.Constants
+import com.iamsdt.pssd.utils.Constants.Companion.SEARCH_DATA
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.content_search.*
 import timber.log.Timber
@@ -53,24 +55,26 @@ class SearchActivity : AppCompatActivity() {
 
         //this is suck
         // performance issue
-        // FIXME: 8/22/18 fix latter make single live data
-        viewModel.data.observe(this, Observer {
-            it.observe(this, Observer {
-                Timber.i("")
-                adapter.submitList(it)
-            })
-        })
+        // complete: 8/22/18 fix latter make single live data
 
+        //takeAlook: I am not happy with this solution
         viewModel.event.observe(this, Observer {
             it?.let {
-                if (it.status){
-                    Timber.i("Status is true")
-                    val intent = Intent(this, DetailsActivity::class.java)
-                    intent.putExtra(Intent.EXTRA_TEXT, it.message.toInt())
-                    startActivity(intent)
-                } else{
-                    Timber.i(it.message)
-                    showToast(ToastType.ERROR,it.message)
+                if (it.title == Constants.SEARCH){
+                    if (it.status){
+                        Timber.i("Status is true")
+                        val intent = Intent(this, DetailsActivity::class.java)
+                        intent.putExtra(Intent.EXTRA_TEXT, it.message.toInt())
+                        startActivity(intent)
+                    } else{
+                        Timber.i(it.message)
+                        showToast(ToastType.ERROR,it.message)
+                    }
+                } else if (it.title == SEARCH_DATA){
+                    viewModel.getData(it.message).observe(this, Observer {
+                        Timber.i("size: ${it.size}")
+                        adapter.submitList(it)
+                    })
                 }
             }
         })
@@ -146,7 +150,6 @@ class SearchActivity : AppCompatActivity() {
                 Timber.i("call")
                 newText?.let {
                     Timber.i("new text is $newText")
-                    query = it
                     viewModel.requestSearch(it)
                 }
                 return true
@@ -161,9 +164,5 @@ class SearchActivity : AppCompatActivity() {
         if (item.itemId == android.R.id.home)
             onBackPressed()
         return super.onOptionsItemSelected(item)
-    }
-
-    companion object {
-        var query:String = ""
     }
 }
