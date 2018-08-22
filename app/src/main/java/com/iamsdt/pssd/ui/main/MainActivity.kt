@@ -178,12 +178,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Timber.i("call")
                 newText?.let {
                     Timber.i("new text is $newText")
-                    viewModel.requestSearch(it)
+                    if (newText.isNotEmpty()) viewModel.requestSearch(it)
                 }
                 return true
             }
 
         })
+
+        searchView.setOnCloseListener {
+            Timber.i("Search view closed")
+            viewModel.requestSearch("")
+            true
+        }
 
         return true
     }

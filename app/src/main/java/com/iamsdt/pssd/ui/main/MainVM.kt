@@ -54,7 +54,6 @@ class MainVM @Inject constructor(val wordTableDao: WordTableDao) : ViewModel() {
 
     fun requestSearch(query: String) {
 
-        if (query.isEmpty()) return
 
         val source = wordTableDao.getSearchData(query)
 
