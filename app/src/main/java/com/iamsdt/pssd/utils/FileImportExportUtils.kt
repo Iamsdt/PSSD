@@ -18,14 +18,15 @@ import com.iamsdt.pssd.utils.Constants.Settings.SETTING_IMOUT_OPTION_FAVOURITE
 import com.iamsdt.pssd.utils.Constants.Settings.SETTING_IMOUT_OPTION_USER
 import com.iamsdt.pssd.utils.model.OutputModel
 import com.iamsdt.pssd.utils.model.StatusModel
+import timber.log.Timber
 import java.io.File
 import java.io.FileFilter
 import java.io.FileWriter
 import java.util.*
 
-class FileImportExportUtils(val wordTableDao: WordTableDao,
-                            val settingsUtils: SettingsUtils,
-                            val gson: Gson) {
+class FileImportExportUtils(private val wordTableDao: WordTableDao,
+                            private val settingsUtils: SettingsUtils,
+                            private val gson: Gson) {
 
     /**
      * Export user favourite data
@@ -66,11 +67,16 @@ class FileImportExportUtils(val wordTableDao: WordTableDao,
             File(dir, SETTING_IMOUT_OPTION_FAVOURITE)
         else File(dir, SETTING_IMOUT_OPTION_USER)
 
-        if (file.exists())
-            file.setWritable(true)
-        else {
-            file.createNewFile()
-            file.setWritable(true)
+        try {
+            if (file.exists())
+                file.setWritable(true)
+            else {
+                file.createNewFile()
+                file.setWritable(true)
+            }
+        } catch (e:Exception){
+            Timber.i(e,"file error: ${file.absolutePath}")
+            // TODO: 8/22/18 add default location
         }
 
         val writer = FileWriter(file)
