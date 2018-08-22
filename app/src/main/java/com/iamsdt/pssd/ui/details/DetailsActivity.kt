@@ -7,7 +7,9 @@
 package com.iamsdt.pssd.ui.details
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +17,6 @@ import androidx.appcompat.widget.ShareActionProvider
 import androidx.core.view.MenuItemCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.google.android.material.snackbar.Snackbar
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.ViewModelFactory
@@ -24,9 +25,10 @@ import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.utils.Bookmark
 import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.content_details.*
+import java.util.*
 import javax.inject.Inject
 
-class DetailsActivity : AppCompatActivity() {
+class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener  {
 
     @Inject
     lateinit var factory: ViewModelFactory
@@ -46,6 +48,11 @@ class DetailsActivity : AppCompatActivity() {
     var word = "Word"
     var des = "des"
 
+    private lateinit var textToSpeech: TextToSpeech
+
+    private var wordTxt = ""
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
@@ -53,6 +60,7 @@ class DetailsActivity : AppCompatActivity() {
 
         id = intent.getIntExtra(Intent.EXTRA_TEXT, 0)
 
+        textToSpeech = TextToSpeech(this,this)
 
         viewModel.getWord(id).observe(this, Observer {
             it?.let {
@@ -91,12 +99,51 @@ class DetailsActivity : AppCompatActivity() {
         })
 
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+        fab.setOnClickListener {
+            speakOut()
         }
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun speakOut(){
+
+        if (!::textToSpeech.isInitialized){
+            showToast(ToastType.ERROR,"Can not speak right now. Try again")
+            return
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            textToSpeech.speak(wordTxt, TextToSpeech.QUEUE_FLUSH, null, null)
+
+        } else {
+            textToSpeech.speak(wordTxt, TextToSpeech.QUEUE_FLUSH, null)
+        }
+    }
+
+    override fun onInit(status: Int) {
+        if (status != TextToSpeech.ERROR && ::textToSpeech.isInitialized) {
+
+            val result = textToSpeech.setLanguage(Locale.US)
+
+            if (result == TextToSpeech.LANG_MISSING_DATA ||
+                    result == TextToSpeech.LANG_NOT_SUPPORTED ||
+                    result == TextToSpeech.ERROR_NOT_INSTALLED_YET) {
+
+                val installIntent = Intent()
+                installIntent.action = TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA
+                startActivity(installIntent)
+            }
+
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (::textToSpeech.isInitialized){
+            textToSpeech.stop()
+            textToSpeech.shutdown()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
