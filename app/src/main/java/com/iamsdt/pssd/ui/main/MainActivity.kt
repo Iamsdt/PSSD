@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
 import com.iamsdt.pssd.R
+import com.iamsdt.pssd.R.drawable.dercoration
 import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.ViewModelFactory
 import com.iamsdt.pssd.ext.showToast
@@ -63,7 +64,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         mainRcv.adapter = adapter
 
         val deco= DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-        deco.setDrawable(resources.getDrawable(R.drawable.dercoration))
+        @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+        deco.setDrawable(getDrawable(dercoration))
 
         // Complete: 8/22/18 add item decoration
         mainRcv.addItemDecoration(deco)
@@ -178,7 +180,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Timber.i("call")
                 newText?.let {
                     Timber.i("new text is $newText")
-                    if (newText.isNotEmpty()) viewModel.requestSearch(it)
+                    viewModel.requestSearch(it)
                 }
                 return true
             }

@@ -25,6 +25,13 @@ class MainVM @Inject constructor(val wordTableDao: WordTableDao) : ViewModel() {
 
     lateinit var liveData: MediatorLiveData<PagedList<WordTable>>
 
+    private val config = PagedList.Config.Builder()
+            .setPageSize(10)
+            .setInitialLoadSizeHint(20)//by default page size * 3
+            .setPrefetchDistance(10) // default page size
+            .setEnablePlaceholders(false) //default true
+            .build()
+
     init {
         if (!::liveData.isInitialized) {
             liveData = MediatorLiveData()
@@ -35,14 +42,6 @@ class MainVM @Inject constructor(val wordTableDao: WordTableDao) : ViewModel() {
     private fun getData() {
 
         val source = wordTableDao.getAllData()
-
-        val config = PagedList.Config.Builder()
-                .setPageSize(10)
-                .setInitialLoadSizeHint(20)//by default page size * 3
-                .setPrefetchDistance(10) // default page size
-                .setEnablePlaceholders(true) //default true
-                .build()
-
 
         val date = LivePagedListBuilder(source, config)
                 .build()
@@ -56,14 +55,6 @@ class MainVM @Inject constructor(val wordTableDao: WordTableDao) : ViewModel() {
 
 
         val source = wordTableDao.getSearchData(query)
-
-        val config = PagedList.Config.Builder()
-                .setPageSize(10)
-                .setInitialLoadSizeHint(20)//by default page size * 3
-                .setPrefetchDistance(10) // default page size
-                .setEnablePlaceholders(true) //default true
-                .build()
-
 
         val data = LivePagedListBuilder(source, config).build()
 
