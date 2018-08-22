@@ -37,8 +37,6 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
     private lateinit var textToSpeech: TextToSpeech
 
-    private var bookmark = false
-
     private var wordTxt = ""
 
 
@@ -67,8 +65,6 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
                 wordTv.addStr(it.word)
                 desTV.addStr(it.des)
 
-                //save bookmark
-                bookmark = it.bookmark
                 //save word
                 wordTxt = it.word
 
