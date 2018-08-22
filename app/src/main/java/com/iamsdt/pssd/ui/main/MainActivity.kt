@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
@@ -23,6 +24,7 @@ import com.iamsdt.pssd.ext.ViewModelFactory
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ext.toNextActivity
 import com.iamsdt.pssd.ui.favourite.FavouriteActivity
+import com.iamsdt.pssd.ui.flash.FlashCardActivity
 import com.iamsdt.pssd.ui.search.SearchActivity
 import com.iamsdt.pssd.ui.settings.SettingsActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -48,6 +50,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         mainRcv.layoutManager = LinearLayoutManager(this)
         val adapter = MainAdapter(this)
         mainRcv.adapter = adapter
+
+        val deco= DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        deco.setDrawable(resources.getDrawable(R.drawable.dercoration))
+
+        // TODO: 8/22/18 add item decoration
+
         viewModel.getData().observe(this, Observer {
             adapter.submitList(it)
         })
@@ -103,7 +111,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 toNextActivity(FavouriteActivity::class)
             }
             R.id.nav_card -> {
-                showDummyMessage()
+                toNextActivity(FlashCardActivity::class)
             }
             R.id.nav_add -> {
                 showDummyMessage()

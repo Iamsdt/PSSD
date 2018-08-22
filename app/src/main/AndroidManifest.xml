@@ -73,7 +73,7 @@
 
         <!-- providers -->
         <provider
-            android:authorities="com.iamsdt.pssd"
+            android:authorities="com.iamsdt.pssd.MySuggestionProvider"
             android:name=".ui.search.MySuggestionProvider"
             android:exported="false" />
     </application>

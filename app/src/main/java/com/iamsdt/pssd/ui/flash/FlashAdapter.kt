@@ -7,41 +7,47 @@
 package com.iamsdt.pssd.ui.flash
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.paging.PagedList
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
-import com.iamsdt.pssd.ui.details.DetailsActivity
-import com.iamsdt.pssd.ui.main.MyViewHolder
+import com.iamsdt.pssd.ext.addStr
+import kotlinx.android.synthetic.main.flash_item.view.*
 
-class FlashAdapter(val context: Context) : ListAdapter<WordTable, MyViewHolder>(DIFF_CALLBACK) {
+class FlashAdapter(val context: Context) :
+        RecyclerView.Adapter<FlashAdapter.MyVH>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+    private var dataList:PagedList<WordTable> ?= null
+
+    override fun getItemCount(): Int = dataList?.size ?: 0
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyVH {
         val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.main_item, parent, false)
+                .inflate(R.layout.flash_item, parent, false)
 
-        return MyViewHolder(view)
+        return MyVH(view)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    fun submitList(list: PagedList<WordTable>){
+        dataList = list
+        AsyncListDiffer<WordTable>(this, DIFF_CALLBACK).submitList(list)
+    }
 
-        val model: WordTable?= getItem(position)
+    override fun onBindViewHolder(holder: MyVH, position: Int) {
+
+        val model: WordTable? = dataList?.get(position)
 
         model?.let {
             holder.bind(it)
 
             holder.itemView.setOnClickListener {
-                val intent = Intent(context, DetailsActivity::class.java)
-                intent.putExtra(Intent.EXTRA_TEXT,model.id)
-                context.startActivity(intent)
-            }
 
-            //change favourite
-            holder.favIcon.setOnClickListener {
-                // TODO: 8/17/2018 implement fav icon click
             }
         }
     }
@@ -63,6 +69,14 @@ class FlashAdapter(val context: Context) : ListAdapter<WordTable, MyViewHolder>(
                                             newConcert: WordTable): Boolean {
                 return oldConcert == newConcert
             }
+        }
+    }
+
+    inner class MyVH(view:View):RecyclerView.ViewHolder(view){
+        val word:TextView = view.word
+
+        fun bind(wordTable: WordTable){
+            word.addStr(wordTable.word)
         }
     }
 }
