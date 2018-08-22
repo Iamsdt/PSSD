@@ -15,6 +15,8 @@ class Constants{
 
         const val SEARCH = "Search"
         const val SEARCH_DATA = "Search_Data"
+
+        const val WORD_ID = "ID"
     }
 
     object SP{

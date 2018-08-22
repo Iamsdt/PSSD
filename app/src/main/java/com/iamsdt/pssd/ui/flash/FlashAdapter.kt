@@ -6,7 +6,6 @@
 
 package com.iamsdt.pssd.ui.flash
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,13 +18,18 @@ import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.ext.addStr
 import kotlinx.android.synthetic.main.flash_item.view.*
+import timber.log.Timber
 
-class FlashAdapter(val context: Context) :
+class FlashAdapter(val click:ClickListener) :
         RecyclerView.Adapter<FlashAdapter.MyVH>() {
 
     private var dataList:PagedList<WordTable> ?= null
 
     override fun getItemCount(): Int = dataList?.size ?: 0
+
+    interface ClickListener{
+        fun click(id:Int)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyVH {
         val view = LayoutInflater.from(parent.context)
@@ -47,7 +51,8 @@ class FlashAdapter(val context: Context) :
             holder.bind(it)
 
             holder.itemView.setOnClickListener {
-
+                click.click(model.id)
+                Timber.i("Tag set:${model.id}")
             }
         }
     }
@@ -73,6 +78,7 @@ class FlashAdapter(val context: Context) :
     }
 
     inner class MyVH(view:View):RecyclerView.ViewHolder(view){
+
         val word:TextView = view.word
 
         fun bind(wordTable: WordTable){

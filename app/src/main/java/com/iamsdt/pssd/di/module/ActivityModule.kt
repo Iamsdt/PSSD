@@ -11,6 +11,7 @@ import com.iamsdt.pssd.ui.details.DetailsActivity
 import com.iamsdt.pssd.ui.favourite.FavouriteActivity
 import com.iamsdt.pssd.ui.flash.FlashCardActivity
 import com.iamsdt.pssd.ui.main.MainActivity
+import com.iamsdt.pssd.ui.flash.FlashSheet
 import com.iamsdt.pssd.ui.search.SearchActivity
 import com.iamsdt.pssd.ui.service.DataInsertService
 import com.iamsdt.pssd.ui.settings.AdvanceFragment
@@ -28,6 +29,9 @@ abstract class ActivityModule {
 
     @ContributesAndroidInjector
     abstract fun main(): MainActivity
+
+    @ContributesAndroidInjector
+    abstract fun random(): FlashSheet
 
     @ContributesAndroidInjector
     abstract fun details(): DetailsActivity
@@ -48,11 +52,11 @@ abstract class ActivityModule {
     abstract fun settingsFragAdvance(): AdvanceFragment
 
     @ContributesAndroidInjector
-    abstract fun favSettings():FavouriteActivity
+    abstract fun favSettings(): FavouriteActivity
 
     @ContributesAndroidInjector
-    abstract fun flash():FlashCardActivity
+    abstract fun flash(): FlashCardActivity
 
     @ContributesAndroidInjector
-    abstract fun search():SearchActivity
+    abstract fun search(): SearchActivity
 }

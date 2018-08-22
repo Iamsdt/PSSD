@@ -18,6 +18,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -35,13 +36,21 @@ import com.iamsdt.pssd.ui.flash.FlashCardActivity
 import com.iamsdt.pssd.ui.search.MySuggestionProvider
 import com.iamsdt.pssd.ui.settings.SettingsActivity
 import com.iamsdt.pssd.utils.Constants
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import timber.log.Timber
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(),
+        NavigationView.OnNavigationItemSelectedListener,
+        HasSupportFragmentInjector {
+
+    @Inject
+    lateinit var di: DispatchingAndroidInjector<Fragment>
 
     @Inject
     lateinit var factory: ViewModelFactory
@@ -49,6 +58,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private val viewModel: MainVM by lazy {
         ViewModelProviders.of(this, factory).get(MainVM::class.java)
     }
+
+    override fun supportFragmentInjector(): AndroidInjector<Fragment> = di
 
     private var suggestions: SearchRecentSuggestions? = null
 
@@ -63,7 +74,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val adapter = MainAdapter(this)
         mainRcv.adapter = adapter
 
-        val deco= DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        val deco = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
         deco.setDrawable(getDrawable(dercoration))
 
@@ -76,15 +87,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         viewModel.event.observe(this, Observer {
             it?.let {
-                if (it.title == Constants.SEARCH){
-                    if (it.status){
+                if (it.title == Constants.SEARCH) {
+                    if (it.status) {
                         Timber.i("Status is true")
                         val intent = Intent(this, DetailsActivity::class.java)
                         intent.putExtra(Intent.EXTRA_TEXT, it.message.toInt())
                         startActivity(intent)
-                    } else{
+                    } else {
                         Timber.i(it.message)
-                        showToast(ToastType.ERROR,it.message)
+                        showToast(ToastType.ERROR, it.message)
                     }
                 }
             }
@@ -116,7 +127,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         Timber.i("Call")
     }
 
-    private fun handleSearch(intent: Intent){
+    private fun handleSearch(intent: Intent) {
         if (Intent.ACTION_SEARCH == intent.action) {
             val query = intent.getStringExtra(SearchManager.QUERY)
             // complete: 6/14/2018 search
@@ -169,7 +180,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         })
 
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 Timber.i("call")
                 viewModel.submit(query)
@@ -235,7 +246,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    private fun showDummyMessage(){
-        showToast(ToastType.SUCCESSFUL,"Not available yet")
+    private fun showDummyMessage() {
+        showToast(ToastType.SUCCESSFUL, "Not available yet")
     }
 }

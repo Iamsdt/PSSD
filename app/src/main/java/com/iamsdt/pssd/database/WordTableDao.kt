@@ -55,5 +55,5 @@ interface WordTableDao{
     fun getSearchResult(word:String):WordTable
 
     @Query("Select * From WordTable order by Random() limit 1")
-    fun getRandomData():List<WordTable>
+    fun getRandomData():LiveData<WordTable>
 }
