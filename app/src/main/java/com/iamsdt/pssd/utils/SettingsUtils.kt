@@ -7,6 +7,7 @@
 package com.iamsdt.pssd.utils
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import com.iamsdt.pssd.R
@@ -14,10 +15,16 @@ import com.iamsdt.pssd.R
 class SettingsUtils(val context: Context) {
 
     //general
-    val textSize
-        get():String = settingsSp.getString(
+
+    fun getTextSize():Pair<Float,Float>{
+        val txt = settingsSp.getString(
                 context.getString(R.string.textSizeKey),
                 context.getString(R.string.sTextModerateValue))?:"20"
+
+        val size = txt.toFloat()
+
+        return Pair(size,size-2)
+    }
 
     val shareStatus
         get():Boolean = settingsSp.getBoolean(
@@ -31,7 +38,7 @@ class SettingsUtils(val context: Context) {
 
     val getPath
         get():String =
-            settingsSp?.getString(context.getString(R.string.advance_dir_add_key),
+            settingsSp.getString(context.getString(R.string.advance_dir_add_key),
                     Constants.Settings.DEFAULT_PATH_STORAGE) ?: ""
 
     fun savePath(string: String){
@@ -42,7 +49,7 @@ class SettingsUtils(val context: Context) {
 
 
     private val settingsSp
-        get() =
+        get():SharedPreferences =
             PreferenceManager.getDefaultSharedPreferences(context)
 
 }

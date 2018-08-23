@@ -89,7 +89,7 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener  {
                         }
 
                         Bookmark.DELETE -> {
-                            showToast(ToastType.WARNING, "Bookmark removed")
+                            showToast(ToastType.INFO, "Bookmark removed")
                             menuItem.setIcon(R.drawable.ic_like_blank)
                             false
                         }

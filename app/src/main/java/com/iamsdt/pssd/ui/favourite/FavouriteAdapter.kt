@@ -68,7 +68,7 @@ class FavouriteAdapter(context: Application,
 
                 Handler(Looper.getMainLooper()).post {
                     if (delete > 0) {
-                        Toasty.warning(context, "Bookmark deleted", Toast.LENGTH_SHORT, true).show()
+                        Toasty.info(context, "Bookmark deleted", Toast.LENGTH_SHORT, true).show()
                         //holder.bookmarkImg.setImageDrawable(context.getDrawable(R.drawable.ic_bookmark))
                         if (itemsPendingRemoval.contains(model)) {
                             itemsPendingRemoval.remove(model)

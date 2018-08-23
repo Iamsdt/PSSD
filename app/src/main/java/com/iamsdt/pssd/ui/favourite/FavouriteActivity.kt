@@ -34,7 +34,7 @@ class FavouriteActivity:AppCompatActivity(){
         ViewModelProviders.of(this, factory).get(FavouriteVM::class.java)
     }
 
-    // TODO: 8/21/18 add swap option
+    // complete: 8/21/18 add swap option
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

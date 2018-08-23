@@ -24,6 +24,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.R.drawable.dercoration
 import com.iamsdt.pssd.ext.ToastType
@@ -63,7 +64,6 @@ class MainActivity : AppCompatActivity(),
 
     private var suggestions: SearchRecentSuggestions? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -101,8 +101,10 @@ class MainActivity : AppCompatActivity(),
             }
         })
 
-        fab.setOnClickListener { view ->
+        fab.setOnClickListener { _ ->
             // TODO: 8/22/18 add random layout
+            val dialog = RandomDialog()
+            dialog.show(supportFragmentManager,"Random")
         }
 
         suggestions = SearchRecentSuggestions(this,
@@ -134,13 +136,13 @@ class MainActivity : AppCompatActivity(),
             viewModel.submit(query)
             setRecentQuery(query)
 
-//            //Search
-//            val bundle = Bundle()
-//            bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "Search Data")
-//            bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "User search query")
-//            bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Search $query")
-//            FirebaseAnalytics.getInstance(this)
-//                    .logEvent(FirebaseAnalytics.Event.SEARCH,bundle)
+            //Search
+            val bundle = Bundle()
+            bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "Search Data")
+            bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "User search query")
+            bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Search $query")
+            FirebaseAnalytics.getInstance(this)
+                    .logEvent(FirebaseAnalytics.Event.SEARCH,bundle)
         }
     }
 

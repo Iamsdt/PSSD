@@ -6,6 +6,7 @@
 
 package com.iamsdt.pssd.ui.flash
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -46,6 +47,10 @@ class FlashCardActivity:AppCompatActivity(),HasSupportFragmentInjector,FlashAdap
 
         val manager = GridLayoutManager(this,2,
                 GridLayoutManager.VERTICAL,false)
+
+        if(resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE){
+            manager.spanCount = 3
+        }
 
         flash_rcv.layoutManager = manager
 

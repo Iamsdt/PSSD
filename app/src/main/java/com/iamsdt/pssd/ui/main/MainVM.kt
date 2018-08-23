@@ -63,6 +63,8 @@ class MainVM @Inject constructor(val wordTableDao: WordTableDao) : ViewModel() {
         }
     }
 
+    val randomData get() = wordTableDao.getRandomData()
+
 
     fun submit(query: String?) {
         query?.let {
