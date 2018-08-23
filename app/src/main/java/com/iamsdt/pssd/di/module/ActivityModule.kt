@@ -15,6 +15,7 @@ import com.iamsdt.pssd.ui.main.MainActivity
 import com.iamsdt.pssd.ui.main.RandomDialog
 import com.iamsdt.pssd.ui.search.SearchActivity
 import com.iamsdt.pssd.ui.service.DataInsertService
+import com.iamsdt.pssd.ui.service.UploadService
 import com.iamsdt.pssd.ui.settings.AdvanceFragment
 import com.iamsdt.pssd.ui.settings.AdvanceSettings
 import com.iamsdt.pssd.ui.settings.BackupFragment
@@ -42,6 +43,10 @@ abstract class ActivityModule {
 
     @ContributesAndroidInjector
     abstract fun dataInsert(): DataInsertService
+
+    @ContributesAndroidInjector
+    abstract fun dataUpload(): UploadService
+
 
     @ContributesAndroidInjector
     abstract fun settingsAdvance(): AdvanceSettings

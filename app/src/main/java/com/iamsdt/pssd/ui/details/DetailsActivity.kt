@@ -50,8 +50,6 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener  {
 
     private lateinit var textToSpeech: TextToSpeech
 
-    private var wordTxt = ""
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -114,10 +112,10 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener  {
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            textToSpeech.speak(wordTxt, TextToSpeech.QUEUE_FLUSH, null, null)
+            textToSpeech.speak(word, TextToSpeech.QUEUE_FLUSH, null, null)
 
         } else {
-            textToSpeech.speak(wordTxt, TextToSpeech.QUEUE_FLUSH, null)
+            textToSpeech.speak(word, TextToSpeech.QUEUE_FLUSH, null)
         }
     }
 

@@ -14,6 +14,7 @@ import com.iamsdt.pssd.ui.favourite.FavouriteAdapter
 import com.iamsdt.pssd.utils.FileImportExportUtils
 import com.iamsdt.pssd.utils.SettingsUtils
 import com.iamsdt.pssd.utils.SpUtils
+import com.iamsdt.pssd.utils.upload.SyncTask
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -21,6 +22,11 @@ import javax.inject.Singleton
 @Module
 class AppModule {
 
+
+    @Provides
+    @Singleton
+    fun sync(wordTableDao: WordTableDao,gson: Gson):SyncTask
+            = SyncTask(wordTableDao,gson)
 
     @Provides
     @Singleton

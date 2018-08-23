@@ -17,5 +17,6 @@ class WordTable(
         var word: String = "",
         var des: String = "",
         var bookmark: Boolean = false,
-        var addByUser: Boolean = false
+        var addByUser: Boolean = false,
+        var uploaded:Boolean = false
 )

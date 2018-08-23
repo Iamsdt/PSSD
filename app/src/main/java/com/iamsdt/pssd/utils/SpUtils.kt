@@ -7,10 +7,13 @@
 package com.iamsdt.pssd.utils
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.core.content.edit
+import com.iamsdt.pssd.utils.Constants.REMOTE.DATE
 import com.iamsdt.pssd.utils.Constants.SP.DATA_INSERT
 import com.iamsdt.pssd.utils.Constants.SP.DATA_VOLUME
 import com.iamsdt.pssd.utils.Constants.SP.FIRST_TIME
+import java.util.*
 
 class SpUtils(val context: Context) {
 
@@ -39,10 +42,26 @@ class SpUtils(val context: Context) {
         }
     }
 
-
     //app sp
     private val appSp
-        get() =
+        get():SharedPreferences =
             context.getSharedPreferences(Constants.SP.appSp,
+                    Context.MODE_PRIVATE)
+
+
+
+    //get date
+    val date = remoteSp.getLong(DATE,0)
+
+    //save date
+    fun saveDate(){
+        remoteSp.edit {
+            putLong(DATE,Date().time)
+        }
+    }
+
+    private val remoteSp
+        get():SharedPreferences =
+            context.getSharedPreferences(Constants.REMOTE.SP,
                     Context.MODE_PRIVATE)
 }

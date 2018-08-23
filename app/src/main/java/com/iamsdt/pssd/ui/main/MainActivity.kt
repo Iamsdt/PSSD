@@ -37,6 +37,7 @@ import com.iamsdt.pssd.ui.flash.FlashCardActivity
 import com.iamsdt.pssd.ui.search.MySuggestionProvider
 import com.iamsdt.pssd.ui.settings.SettingsActivity
 import com.iamsdt.pssd.utils.Constants
+import com.iamsdt.pssd.utils.upload.SyncTask
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
@@ -52,6 +53,9 @@ class MainActivity : AppCompatActivity(),
 
     @Inject
     lateinit var di: DispatchingAndroidInjector<Fragment>
+
+    @Inject
+    lateinit var syncTask: SyncTask
 
     @Inject
     lateinit var factory: ViewModelFactory
@@ -117,6 +121,11 @@ class MainActivity : AppCompatActivity(),
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        syncTask.initialize(this)
     }
 
     private fun setRecentQuery(query: String) {

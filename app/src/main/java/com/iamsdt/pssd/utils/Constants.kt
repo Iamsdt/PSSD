@@ -8,7 +8,7 @@ package com.iamsdt.pssd.utils
 
 import android.os.Environment
 
-class Constants{
+class Constants {
 
     companion object {
         const val DB_NAME = "SS.db"
@@ -17,17 +17,28 @@ class Constants{
         const val SEARCH_DATA = "Search_Data"
 
         const val WORD_ID = "ID"
+
+
     }
 
-    object SP{
+    object REMOTE {
+        const val FB_REMOTE_CONFIG_STORAGE_KEY = "addData"
+        const val USER = "user"
+        const val ADMIN = "admin"
+
+        const val SP = "remote_sp"
+        const val DATE = "date"
+    }
+
+    object SP {
         const val appSp = "App"
-        const val FIRST_TIME= "first"
+        const val FIRST_TIME = "first"
         const val DATA_INSERT = "data"
 
         const val DATA_VOLUME = "volume"
     }
 
-    object Settings{
+    object Settings {
         const val EXT = ".ss"
 
         val SETTING_IMOUT_OPTION_FAVOURITE = "favourite$EXT"
@@ -42,7 +53,7 @@ class Constants{
 
     }
 
-    object IO{
+    object IO {
         const val EXPORT_FAV = "Export_Fav"
         const val EXPORT_ADD = "Export_Add"
 
