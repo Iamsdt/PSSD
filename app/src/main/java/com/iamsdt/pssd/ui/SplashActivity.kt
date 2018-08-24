@@ -17,6 +17,7 @@ import com.iamsdt.pssd.ext.runThread
 import com.iamsdt.pssd.ui.main.MainActivity
 import com.iamsdt.pssd.utils.SpUtils
 import com.iamsdt.pssd.utils.worker.DataInsertWorker
+import org.joda.time.DateTime
 import org.koin.android.ext.android.inject
 
 class SplashActivity : AppCompatActivity() {
@@ -44,5 +45,13 @@ class SplashActivity : AppCompatActivity() {
 
         runThread(time, next)
 
+    }
+
+    //debugOnly:8/24/18 Debug only remove latter
+    //send current date
+    fun saveAppStartDate(){
+        val date = DateTime(2018,8,17,0,0)
+        spUtils.saveDownloadDate(date.toDate().time)
+        spUtils.saveUploadDate(date.toDate().time)
     }
 }

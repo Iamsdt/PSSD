@@ -92,7 +92,20 @@
     <string name="textSizeKey" translatable="false">textSize</string>
     <string name="textSizeLabel">Text Size</string>
 
-    <string name="switchKey">NightMode</string>
+    <!-- sync interval -->
+    <string name="syncWeek">7 days</string>
+    <string name="syncWeekTwo">15 days</string>
+    <string name="syncMonth">30 days</string>
+
+    <string name="syncWeekValue">7</string>
+    <string name="syncWeekTwoValue">15</string>
+    <string name="syncMonthValue">30</string>
+
+    <string name="syncKey" translatable="false">sync</string>
+    <string name="syncLabel">Sync Interval</string>
+
+
+    <string name="switchKey" translatable="false">NightMode</string>
     <string name="switchLabel">Night Mode</string>
     <string name="switchON">Night Mode ON</string>
     <string name="switchOFF">Night Mode OFF</string>

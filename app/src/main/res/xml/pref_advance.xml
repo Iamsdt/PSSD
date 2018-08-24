@@ -25,13 +25,6 @@
             android:summaryOn="@string/switchShareON"
             android:title="@string/switchShareLabel" />
 
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="@string/NameShare"
-            android:summaryOff="@string/NameShareOFF"
-            android:summaryOn="@string/NameShareON"
-            android:title="@string/NameShareLabel" />
-
     </PreferenceCategory>
 
 

@@ -6,7 +6,7 @@
   -->
 
 <resources>
-    <!-- For text view -->
+    <!-- For text size -->
     <!--############### START ###############-->
     <string-array name="textSizeLabel">
         <item>@string/sTextSmallLabel</item>
@@ -25,6 +25,18 @@
     </string-array>
     <!--############### FINISH ###############-->
 
+    <!-- For sync interval -->
+    <string-array name="syncLabel">
+        <item>@string/syncWeek</item>
+        <item>@string/syncWeekTwo</item>
+        <item>@string/syncMonth</item>
+    </string-array>
+
+    <string-array name="syncLabelValue">
+        <item>@string/syncWeekValue</item>
+        <item>@string/syncWeekTwoValue</item>
+        <item>@string/syncMonthValue</item>
+    </string-array>
 
 
 </resources>

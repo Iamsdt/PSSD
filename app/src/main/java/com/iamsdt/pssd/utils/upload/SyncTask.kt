@@ -15,6 +15,7 @@ import com.iamsdt.pssd.BuildConfig
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.utils.Constants.REMOTE.FB_REMOTE_CONFIG_STORAGE_KEY
 import com.iamsdt.pssd.utils.DateUtils
+import com.iamsdt.pssd.utils.SettingsUtils
 import com.iamsdt.pssd.utils.SpUtils
 import com.iamsdt.pssd.utils.worker.DownloadWorker
 import com.iamsdt.pssd.utils.worker.UploadWorker
@@ -24,7 +25,8 @@ import java.util.*
 
 class SyncTask(private val wordTableDao: WordTableDao,
                private val gson: Gson,
-               private val spUtils: SpUtils) {
+               private val spUtils: SpUtils,
+               private val settingsSpUtils:SettingsUtils) {
 
     fun initialize(context: Activity) {
         if (!isNetworkAvailable(context)) return
@@ -62,8 +64,8 @@ class SyncTask(private val wordTableDao: WordTableDao,
         val interval = DateUtils.getDayInterval(date)
 
         //if greater than 7 days
-        // TODO: 8/24/18 make a settings
-        return interval >= 7
+        // complete: 8/24/18 make a settings
+        return interval >= settingsSpUtils.interval()
     }
 
     private fun isRunDownload(): Boolean {
@@ -71,8 +73,8 @@ class SyncTask(private val wordTableDao: WordTableDao,
         val interval = DateUtils.getDayInterval(date)
 
         //if greater than 7 days
-        // TODO: 8/24/18 make a settings
-        return interval >= 7
+        // complete: 8/24/18 make a settings
+        return interval >= settingsSpUtils.interval()
     }
 
     private fun isNetworkAvailable(context: Activity): Boolean {

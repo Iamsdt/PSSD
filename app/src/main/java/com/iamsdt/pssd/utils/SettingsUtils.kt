@@ -16,34 +16,40 @@ class SettingsUtils(val context: Context) {
 
     //general
 
-    fun getTextSize():Pair<Float,Float>{
+    fun getTextSize(): Pair<Float, Float> {
         val txt = settingsSp.getString(
                 context.getString(R.string.textSizeKey),
-                context.getString(R.string.sTextModerateValue))?:"20"
+                context.getString(R.string.sTextModerateValue)) ?: "20"
 
         val size = txt.toFloat()
 
-        return Pair(size,size-2)
+        return Pair(size, size - 2)
+    }
+
+    fun interval(): Int {
+        val days:String = settingsSp.getString(
+                context.getString(R.string.syncKey),
+                context.getString(R.string.syncWeekValue)
+        )?: "7" //default 7
+
+        return days.toInt()
     }
 
     val shareStatus
         get():Boolean = settingsSp.getBoolean(
-                    context.getString(R.string.switchShare), true)
+                context.getString(R.string.switchShare), true)
 
 
     //advance
-    val share
-        get():Boolean = settingsSp.getBoolean(
-                context.getString(R.string.NameShare), false)
 
     val getPath
         get():String =
             settingsSp.getString(context.getString(R.string.advance_dir_add_key),
                     Constants.Settings.DEFAULT_PATH_STORAGE) ?: ""
 
-    fun savePath(string: String){
+    fun savePath(string: String) {
         settingsSp.edit {
-            putString(context.getString(R.string.advance_dir_add_key),string)
+            putString(context.getString(R.string.advance_dir_add_key), string)
         }
     }
 

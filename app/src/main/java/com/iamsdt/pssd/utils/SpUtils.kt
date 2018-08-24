@@ -14,7 +14,6 @@ import com.iamsdt.pssd.utils.Constants.REMOTE.DATE_UPLOAD
 import com.iamsdt.pssd.utils.Constants.SP.DATA_INSERT
 import com.iamsdt.pssd.utils.Constants.SP.DATA_VOLUME
 import com.iamsdt.pssd.utils.Constants.SP.FIRST_TIME
-import java.util.*
 
 class SpUtils(val context: Context) {
 
@@ -56,15 +55,19 @@ class SpUtils(val context: Context) {
     val dateDownload = remoteSp.getLong(DATE_DOWNLOAD,0)
 
     //save date
-    fun saveUploadDate(){
+    //debugOnly:8/24/18 Debug only remove latter
+    //remove parameter
+    fun saveUploadDate(date:Long){
         remoteSp.edit {
-            putLong(DATE_UPLOAD,Date().time)
+            putLong(DATE_UPLOAD,date)
         }
     }
 
-    fun saveDownloadDate(){
+    //debugOnly:8/24/18 Debug only remove latter
+    //remove parameter
+    fun saveDownloadDate(date:Long){
         remoteSp.edit {
-            putLong(DATE_DOWNLOAD,Date().time)
+            putLong(DATE_DOWNLOAD,date)
         }
     }
 

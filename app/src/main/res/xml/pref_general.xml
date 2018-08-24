@@ -13,6 +13,13 @@
         android:key="@string/textSizeKey"
         android:title="@string/textSizeLabel"/>
 
+    <ListPreference
+        android:defaultValue="@string/syncWeekValue"
+        android:entries="@array/syncLabel"
+        android:entryValues="@array/syncLabelValue"
+        android:key="@string/syncKey"
+        android:title="@string/syncLabel"/>
+
     <!-- todo add icon -->
 
     <PreferenceCategory
