@@ -1,4 +1,4 @@
-package com.iamsdt.pssd.di.module
+package com.iamsdt.pssd.di
 
 import androidx.room.Room
 import com.google.gson.Gson

@@ -100,14 +100,6 @@ dependencies {
 
     //implementation "androidx.collection:collection-ktx:$ktx_version"
 
-    //dagger
-    def dagger = "2.15"
-    implementation "com.google.dagger:dagger:$dagger"
-    kapt "com.google.dagger:dagger-compiler:$dagger"
-    implementation "com.google.dagger:dagger-android:$dagger"
-    implementation "com.google.dagger:dagger-android-support:$dagger"
-    kapt "com.google.dagger:dagger-android-processor:$dagger"
-
     // Koin for Android
     implementation('org.koin:koin-android:0.9.3')
     // or Koin for Android Architecture

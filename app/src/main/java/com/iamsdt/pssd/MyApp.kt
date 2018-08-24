@@ -7,9 +7,9 @@
 package com.iamsdt.pssd
 
 import android.app.Application
-import com.iamsdt.pssd.di.module.appModule
-import com.iamsdt.pssd.di.module.dbModule
-import com.iamsdt.pssd.di.module.vmModule
+import com.iamsdt.pssd.di.appModule
+import com.iamsdt.pssd.di.dbModule
+import com.iamsdt.pssd.di.vmModule
 import com.iamsdt.pssd.ext.DebugLogTree
 import com.iamsdt.pssd.ext.ReleaseLogTree
 import com.rohitss.uceh.UCEHandler
@@ -27,21 +27,6 @@ class MyApp : Application() {
         else Timber.plant(ReleaseLogTree())
 
         startKoin(this, listOf(dbModule, appModule, vmModule))
-
-//        registerActivityLifecycleCallbacks(object : LifeCycle() {
-//            override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
-//                super.onActivityCreated(activity, savedInstanceState)
-//                activity?.let {
-//                    //try to inject in the activity
-//                    //if not found catch the exception
-//                    try {
-//                        AndroidInjection.inject(it)
-//                    }catch (e:Exception){
-//                        //Timber.d(e,"Inject error")
-//                    }
-//                }
-//            }
-//        })
     }
 
 }
