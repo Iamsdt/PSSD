@@ -21,7 +21,7 @@ import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.FileImportExportUtils
 import com.iamsdt.pssd.utils.SettingsUtils
 import com.iamsdt.pssd.utils.SpUtils
-import com.iamsdt.pssd.utils.upload.SyncTask
+import com.iamsdt.pssd.utils.sync.SyncTask
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
@@ -62,7 +62,7 @@ val appModule = module {
     }
 
     single {
-        SyncTask(get(), get(), get())
+        SyncTask(get(), get(), get(),get())
     }
 }
 

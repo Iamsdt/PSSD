@@ -17,7 +17,7 @@ import com.iamsdt.pssd.ext.runThread
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.main.MainActivity
 import com.iamsdt.pssd.utils.SpUtils
-import com.iamsdt.pssd.utils.worker.DataInsertWorker
+import com.iamsdt.pssd.utils.sync.worker.DataInsertWorker
 import org.joda.time.DateTime
 import org.koin.android.ext.android.inject
 

@@ -4,7 +4,7 @@
  *  Copyright (c)2018  Shudipto Trafder.
  */
 
-package com.iamsdt.pssd.utils.worker
+package com.iamsdt.pssd.utils.sync.worker
 
 import android.os.AsyncTask
 import androidx.work.Worker

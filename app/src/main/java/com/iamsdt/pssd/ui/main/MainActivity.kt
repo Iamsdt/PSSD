@@ -37,7 +37,7 @@ import com.iamsdt.pssd.ui.flash.FlashCardActivity
 import com.iamsdt.pssd.ui.search.MySuggestionProvider
 import com.iamsdt.pssd.ui.settings.SettingsActivity
 import com.iamsdt.pssd.utils.Constants
-import com.iamsdt.pssd.utils.upload.SyncTask
+import com.iamsdt.pssd.utils.sync.SyncTask
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*

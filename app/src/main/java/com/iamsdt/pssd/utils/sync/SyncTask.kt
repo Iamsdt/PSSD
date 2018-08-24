@@ -1,4 +1,4 @@
-package com.iamsdt.pssd.utils.upload
+package com.iamsdt.pssd.utils.sync
 
 import android.app.Activity
 import android.content.Context
@@ -17,8 +17,8 @@ import com.iamsdt.pssd.utils.Constants.REMOTE.FB_REMOTE_CONFIG_STORAGE_KEY
 import com.iamsdt.pssd.utils.DateUtils
 import com.iamsdt.pssd.utils.SettingsUtils
 import com.iamsdt.pssd.utils.SpUtils
-import com.iamsdt.pssd.utils.worker.DownloadWorker
-import com.iamsdt.pssd.utils.worker.UploadWorker
+import com.iamsdt.pssd.utils.sync.worker.DownloadWorker
+import com.iamsdt.pssd.utils.sync.worker.UploadWorker
 import timber.log.Timber
 import java.util.*
 

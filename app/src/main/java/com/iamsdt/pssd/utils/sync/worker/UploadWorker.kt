@@ -1,4 +1,4 @@
-package com.iamsdt.pssd.utils.worker
+package com.iamsdt.pssd.utils.sync.worker
 
 import android.net.Uri
 import androidx.work.Worker
