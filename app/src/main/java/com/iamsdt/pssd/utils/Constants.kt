@@ -21,6 +21,13 @@ class Constants {
 
     }
 
+    object COLOR{
+        const val colorSp = "colorSp"
+        const val themeKey = "themeKey"
+        const val NIGHT_MODE_SP_KEY: String = "NightModeSp"
+        const val NIGHT_MODE_VALUE_KEY: String = "NightSP"
+    }
+
     object REMOTE {
         const val FB_REMOTE_CONFIG_STORAGE_KEY = "addData"
         const val USER = "user"

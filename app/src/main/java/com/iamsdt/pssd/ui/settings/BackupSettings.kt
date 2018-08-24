@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.showToast
+import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.utils.FileImportExportUtils
 import kotlinx.android.synthetic.main.activity_settings_backup.*
 
@@ -20,7 +21,7 @@ class BackupSettings : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //ThemeUtils.initialize(this)
+        ThemeUtils.initialize(this)
         setContentView(R.layout.activity_settings_backup)
         setSupportActionBar(toolbar)
 

@@ -14,6 +14,7 @@ import androidx.work.WorkManager
 import com.iamsdt.pssd.BuildConfig
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.runThread
+import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.main.MainActivity
 import com.iamsdt.pssd.utils.SpUtils
 import com.iamsdt.pssd.utils.worker.DataInsertWorker
@@ -26,6 +27,7 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ThemeUtils.initialize(this)
         setContentView(R.layout.activity_splash)
 
         //save data
@@ -49,8 +51,8 @@ class SplashActivity : AppCompatActivity() {
 
     //debugOnly:8/24/18 Debug only remove latter
     //send current date
-    fun saveAppStartDate(){
-        val date = DateTime(2018,8,17,0,0)
+    fun saveAppStartDate() {
+        val date = DateTime(2018, 8, 17, 0, 0)
         spUtils.saveDownloadDate(date.toDate().time)
         spUtils.saveUploadDate(date.toDate().time)
     }

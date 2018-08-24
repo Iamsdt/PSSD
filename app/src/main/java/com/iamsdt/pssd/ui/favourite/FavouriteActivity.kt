@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.iamsdt.pssd.R
+import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.utils.SwipeUtil
 import kotlinx.android.synthetic.main.activity_favourite.*
 import kotlinx.android.synthetic.main.content_favourite.*
@@ -31,7 +32,7 @@ class FavouriteActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //ThemeUtils.initialize(this)
+        ThemeUtils.initialize(this)
         setContentView(R.layout.activity_favourite)
         setSupportActionBar(toolbar)
 

@@ -6,6 +6,7 @@
 
 package com.iamsdt.pssd.ui.main
 
+import android.app.Activity
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
@@ -28,6 +29,8 @@ import com.iamsdt.pssd.R.drawable.dercoration
 import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ext.toNextActivity
+import com.iamsdt.pssd.ui.color.ColorActivity
+import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.details.DetailsActivity
 import com.iamsdt.pssd.ui.favourite.FavouriteActivity
 import com.iamsdt.pssd.ui.flash.FlashCardActivity
@@ -51,8 +54,11 @@ class MainActivity : AppCompatActivity(),
 
     private var suggestions: SearchRecentSuggestions? = null
 
+    private val themeRequestCode = 121
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ThemeUtils.initialize(this)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
@@ -89,7 +95,7 @@ class MainActivity : AppCompatActivity(),
         })
 
         fab.setOnClickListener { _ ->
-            // TODO: 8/22/18 add random layout
+            // complete: 8/22/18 add random layout
             val dialog = RandomDialog()
             dialog.show(supportFragmentManager, "Random")
         }
@@ -125,7 +131,7 @@ class MainActivity : AppCompatActivity(),
         if (Intent.ACTION_SEARCH == intent.action) {
             val query = intent.getStringExtra(SearchManager.QUERY)
             // complete: 6/14/2018 search
-            viewModel.submit(query)
+            viewModel.submit(query, null)
             setRecentQuery(query)
 
             //Search
@@ -177,7 +183,7 @@ class MainActivity : AppCompatActivity(),
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 Timber.i("call")
-                viewModel.submit(query)
+                viewModel.submit(query, suggestions)
                 return true
             }
 
@@ -217,7 +223,8 @@ class MainActivity : AppCompatActivity(),
                 toNextActivity(SettingsActivity::class)
             }
             R.id.nav_themes -> {
-                showDummyMessage()
+                startActivityForResult(ColorActivity.createIntent(this),
+                        themeRequestCode)
             }
             R.id.nav_notice -> {
                 showDummyMessage()
@@ -238,6 +245,15 @@ class MainActivity : AppCompatActivity(),
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+
+    //recreate the activity
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == themeRequestCode && resultCode == Activity.RESULT_OK) {
+            recreate()
+        }
     }
 
     private fun showDummyMessage() {

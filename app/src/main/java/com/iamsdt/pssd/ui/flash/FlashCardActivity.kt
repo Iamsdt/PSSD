@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.iamsdt.pssd.R
+import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.favourite.FavouriteVM
 import kotlinx.android.synthetic.main.activity_flash_card.*
 import kotlinx.android.synthetic.main.content_flash_card.*
@@ -26,7 +27,7 @@ class FlashCardActivity : AppCompatActivity(), FlashAdapter.ClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //ThemeUtils.initialize(this)
+        ThemeUtils.initialize(this)
         setContentView(R.layout.activity_flash_card)
         setSupportActionBar(toolbar)
 
