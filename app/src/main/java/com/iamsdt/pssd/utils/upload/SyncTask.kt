@@ -2,66 +2,78 @@ package com.iamsdt.pssd.utils.upload
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.os.AsyncTask
+import androidx.work.ExistingWorkPolicy
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
-import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.Gson
 import com.iamsdt.pssd.BuildConfig
 import com.iamsdt.pssd.database.WordTableDao
-import com.iamsdt.pssd.ui.service.UploadService
-import com.iamsdt.pssd.utils.Constants.REMOTE.ADMIN
 import com.iamsdt.pssd.utils.Constants.REMOTE.FB_REMOTE_CONFIG_STORAGE_KEY
-import com.iamsdt.pssd.utils.model.OutputModel
+import com.iamsdt.pssd.utils.DateUtils
+import com.iamsdt.pssd.utils.SpUtils
+import com.iamsdt.pssd.utils.worker.DownloadWorker
+import com.iamsdt.pssd.utils.worker.UploadWorker
 import timber.log.Timber
-import java.io.File
 import java.util.*
 
 
 class SyncTask(private val wordTableDao: WordTableDao,
-               val gson: Gson) {
+               private val gson: Gson,
+               private val spUtils: SpUtils) {
 
     fun initialize(context: Activity) {
         if (!isNetworkAvailable(context)) return
 
-        if (getRemoteConfigStatus(context)) {
+        //do this task once in a week
+        if (isRunUpload()) {
             AsyncTask.execute {
                 val data = wordTableDao.upload()
                 if (data.isNotEmpty()) {
-                    //do upload task
-                    //first login to the firebase
-                    context.startService(Intent(context, UploadService::class.java))
+                    //start worker
+                    // complete: 8/24/18 worker
+                    val request = OneTimeWorkRequest
+                            .Builder(UploadWorker::class.java).build()
+                    WorkManager.getInstance().beginUniqueWork("Upload",
+                            ExistingWorkPolicy.REPLACE, request).enqueue()
                 }
+            }
+        }
+
+        //if status is available
+        //then download the file
+        //do this task once in a week
+        if (isRunDownload()) {
+            if (getRemoteConfigStatus(context)) {
+                val request = OneTimeWorkRequest
+                        .Builder(DownloadWorker::class.java).build()
+                WorkManager.getInstance().beginUniqueWork("Download",
+                        ExistingWorkPolicy.REPLACE, request).enqueue()
             }
         }
     }
 
-    private fun getFile() {
-        val storage = FirebaseStorage.getInstance()
-        val ref = storage.reference.child(ADMIN)
+    private fun isRunUpload(): Boolean {
+        val date = spUtils.dateUpload
+        val interval = DateUtils.getDayInterval(date)
 
-        val file = File.createTempFile("download", ".json")
-
-        ref.getFile(file).addOnSuccessListener {
-            val data = gson.fromJson(file.bufferedReader(bufferSize = 4096),
-                    OutputModel::class.java)
-
-            data?.let {
-                AsyncTask.execute {
-                    var insert = 0L
-                    it.list.map { insert = wordTableDao.add(it) }
-
-                    if (insert > 0) {
-                        // TODO: 8/23/18 set to sp
-                    }
-                }
-            }
-        }
+        //if greater than 7 days
+        // TODO: 8/24/18 make a settings
+        return interval >= 7
     }
 
+    private fun isRunDownload(): Boolean {
+        val date = spUtils.dateDownload
+        val interval = DateUtils.getDayInterval(date)
+
+        //if greater than 7 days
+        // TODO: 8/24/18 make a settings
+        return interval >= 7
+    }
 
     private fun isNetworkAvailable(context: Activity): Boolean {
         val manager = context.getSystemService(

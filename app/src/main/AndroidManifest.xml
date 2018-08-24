@@ -31,9 +31,6 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <service android:name=".ui.service.DataInsertService" />
-        <service android:name=".ui.service.UploadService" />
-
         <activity
             android:name=".ui.details.DetailsActivity"
             android:label="@string/title_activity_details"

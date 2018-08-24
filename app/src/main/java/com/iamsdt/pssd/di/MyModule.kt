@@ -1,3 +1,9 @@
+/*
+ * Developed By Shudipto Trafder
+ *  on 8/24/18 4:54 PM
+ *  Copyright (c)2018  Shudipto Trafder.
+ */
+
 package com.iamsdt.pssd.di
 
 import androidx.room.Room
@@ -52,11 +58,11 @@ val appModule = module {
     single {
         FavouriteAdapter(
                 androidContext(),
-                get()as WordTableDao)
+                get() as WordTableDao)
     }
 
     single {
-        SyncTask(get(),get())
+        SyncTask(get(), get(), get())
     }
 }
 

@@ -27,7 +27,8 @@ class Constants {
         const val ADMIN = "admin"
 
         const val SP = "remote_sp"
-        const val DATE = "date"
+        const val DATE_UPLOAD = "date_upload"
+        const val DATE_DOWNLOAD = "date_download"
     }
 
     object SP {

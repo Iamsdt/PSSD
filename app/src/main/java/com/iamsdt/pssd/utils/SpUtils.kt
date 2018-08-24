@@ -9,7 +9,8 @@ package com.iamsdt.pssd.utils
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
-import com.iamsdt.pssd.utils.Constants.REMOTE.DATE
+import com.iamsdt.pssd.utils.Constants.REMOTE.DATE_DOWNLOAD
+import com.iamsdt.pssd.utils.Constants.REMOTE.DATE_UPLOAD
 import com.iamsdt.pssd.utils.Constants.SP.DATA_INSERT
 import com.iamsdt.pssd.utils.Constants.SP.DATA_VOLUME
 import com.iamsdt.pssd.utils.Constants.SP.FIRST_TIME
@@ -51,12 +52,19 @@ class SpUtils(val context: Context) {
 
 
     //get date
-    val date = remoteSp.getLong(DATE,0)
+    val dateUpload = remoteSp.getLong(DATE_UPLOAD,0)
+    val dateDownload = remoteSp.getLong(DATE_DOWNLOAD,0)
 
     //save date
-    fun saveDate(){
+    fun saveUploadDate(){
         remoteSp.edit {
-            putLong(DATE,Date().time)
+            putLong(DATE_UPLOAD,Date().time)
+        }
+    }
+
+    fun saveDownloadDate(){
+        remoteSp.edit {
+            putLong(DATE_DOWNLOAD,Date().time)
         }
     }
 

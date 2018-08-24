@@ -6,15 +6,17 @@
 
 package com.iamsdt.pssd.ui
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.work.ExistingWorkPolicy
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
 import com.iamsdt.pssd.BuildConfig
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.runThread
 import com.iamsdt.pssd.ui.main.MainActivity
-import com.iamsdt.pssd.ui.service.DataInsertService
 import com.iamsdt.pssd.utils.SpUtils
+import com.iamsdt.pssd.utils.worker.DataInsertWorker
 import org.koin.android.ext.android.inject
 
 class SplashActivity : AppCompatActivity() {
@@ -31,7 +33,10 @@ class SplashActivity : AppCompatActivity() {
 
         if (!spUtils.isDatabaseInserted) {
             //save database
-            startService(Intent(this, DataInsertService::class.java))
+            val request = OneTimeWorkRequest.Builder(
+                    DataInsertWorker::class.java).build()
+            WorkManager.getInstance().beginUniqueWork("DataInsert",
+                    ExistingWorkPolicy.REPLACE, request).enqueue()
         }
 
         val time = if (BuildConfig.DEBUG) 100L
