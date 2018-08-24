@@ -11,6 +11,7 @@ import androidx.work.Worker
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.Gson
+import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.SpUtils
@@ -49,7 +50,11 @@ class DownloadWorker : Worker(), KoinComponent {
                     data?.let {
                         AsyncTask.execute {
                             var insert = 0L
-                            it.list.map { insert = wordTableDao.add(it) }
+                            it.list.map {
+                                insert = wordTableDao.add(
+                                        WordTable(word = it.word, des = it.des)
+                                )
+                            }
 
                             if (insert > 0) {
                                 spUtils.saveDownloadDate()

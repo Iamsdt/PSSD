@@ -17,6 +17,6 @@
     <!-- Regular Layout-->
     <include
         android:id="@+id/regular_layout"
-        layout="@layout/main_item" />
+        layout="@layout/fav_list" />
 
 </FrameLayout>

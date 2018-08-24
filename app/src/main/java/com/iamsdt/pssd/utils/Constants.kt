@@ -21,6 +21,12 @@ class Constants {
 
     }
 
+    object ADD{
+        const val WORD = "word"
+        const val DES = "des"
+        const val DIALOG = "Dialog"
+    }
+
     object COLOR{
         const val colorSp = "colorSp"
         const val themeKey = "themeKey"

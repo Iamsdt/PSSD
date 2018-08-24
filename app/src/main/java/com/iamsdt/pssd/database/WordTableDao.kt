@@ -46,7 +46,7 @@ interface WordTableDao{
     fun getAddedWordList():List<WordTable>
 
     @Query("Select * From WordTable where addByUser = 1")
-    fun getAddedWordByUser():LiveData<List<WordTable>>
+    fun getAddedWordByUser():DataSource.Factory<Int,WordTable>
 
     @Query("Select * From WordTable where word like '%' ||:query|| '%'")
     fun getSearchData(query: String):DataSource.Factory<Int,WordTable>

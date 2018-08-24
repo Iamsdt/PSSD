@@ -37,11 +37,6 @@ class MainAdapter(val context:Context) :PagedListAdapter<WordTable, MyViewHolder
                 intent.putExtra(Intent.EXTRA_TEXT,model.id)
                 context.startActivity(intent)
             }
-
-            //change favourite
-            holder.favIcon.setOnClickListener {
-                // TODO: 8/17/2018 implement fav icon click
-            }
         }
     }
 

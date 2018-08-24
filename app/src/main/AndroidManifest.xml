@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.iamsdt.pssd">
 
-    <!--All permissions-->
+    <!-- All permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -30,53 +30,60 @@
             android:name=".ui.main.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".ui.details.DetailsActivity"
             android:label="@string/title_activity_details"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity android:name=".ui.settings.BackupSettings"
+        <activity
+            android:name=".ui.settings.BackupSettings"
             android:label="@string/sbackup"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name=".ui.settings.SettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.settings.SettingsActivity"
             android:label="@string/action_settings"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name=".ui.settings.AdvanceSettings"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.settings.AdvanceSettings"
             android:label="@string/sAdvance"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name=".ui.favourite.FavouriteActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.favourite.FavouriteActivity"
             android:label="@string/title_activity_favourite"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name=".ui.flash.FlashCardActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.flash.FlashCardActivity"
             android:label="@string/title_activity_flash"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name=".ui.search.SearchActivity"
-            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.search.SearchActivity"
             android:label="@string/search"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".ui.color.ColorActivity"
+        <activity
+            android:name=".ui.color.ColorActivity"
             android:label="@string/title_activity_color"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <!-- providers -->
         <provider
-            android:authorities="com.iamsdt.pssd.MySuggestionProvider"
             android:name=".ui.search.MySuggestionProvider"
+            android:authorities="com.iamsdt.pssd.MySuggestionProvider"
             android:exported="false" />
+
+        <activity
+            android:name=".ui.add.AddActivity"
+            android:label="@string/title_activity_add"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -8,6 +8,7 @@ package com.iamsdt.pssd.ui.main
 
 import android.os.AsyncTask
 import android.provider.SearchRecentSuggestions
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
@@ -18,8 +19,9 @@ import com.iamsdt.pssd.ext.SingleLiveEvent
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.model.StatusModel
 import timber.log.Timber
+import java.util.*
 
-class MainVM (val wordTableDao: WordTableDao) : ViewModel() {
+class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
 
     val event = SingleLiveEvent<StatusModel>()
 
@@ -51,6 +53,17 @@ class MainVM (val wordTableDao: WordTableDao) : ViewModel() {
         }
     }
 
+    fun getRandomWord(): LiveData<WordTable>? {
+        var liveData:LiveData<WordTable> ?= null
+        AsyncTask.execute {
+            val size = wordTableDao.getAllList().size
+            val random = Random()
+            val id = random.nextInt(size)
+            liveData = wordTableDao.getSingleWord(id)
+        }
+        return liveData
+    }
+
     fun requestSearch(query: String) {
 
 
@@ -66,7 +79,7 @@ class MainVM (val wordTableDao: WordTableDao) : ViewModel() {
     val randomData get() = wordTableDao.getRandomData()
 
 
-    fun submit(query: String?,suggestions: SearchRecentSuggestions?) {
+    fun submit(query: String?, suggestions: SearchRecentSuggestions?) {
         query?.let {
             AsyncTask.execute {
                 val word: WordTable? = wordTableDao.getSearchResult(it)
