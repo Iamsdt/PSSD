@@ -16,26 +16,19 @@ import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.utils.SpUtils
 import com.iamsdt.pssd.utils.model.JsonModel
-import dagger.android.AndroidInjection
+import org.koin.android.ext.android.inject
 import timber.log.Timber
 import java.io.InputStreamReader
-import javax.inject.Inject
 
 
-class DataInsertService:Service(){
+class DataInsertService : Service() {
 
-    @Inject
-    lateinit var wordTableDao: WordTableDao
+    val wordTableDao: WordTableDao by inject()
 
-    @Inject
-    lateinit var spUtils: SpUtils
+    val spUtils: SpUtils by inject()
 
     override fun onBind(p0: Intent?): IBinder? = null
 
-    override fun onCreate() {
-        super.onCreate()
-        AndroidInjection.inject(this)
-    }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         //command
@@ -55,12 +48,12 @@ class DataInsertService:Service(){
             data?.let {
                 spUtils.setDataVolume(it.volume)
                 it.collection.forEach {
-                    val wordTable = WordTable(word = it.word,des = it.des)
-                    count= wordTableDao.add(wordTable)
+                    val wordTable = WordTable(word = it.word, des = it.des)
+                    count = wordTableDao.add(wordTable)
                 }
             }
 
-            if (count > 0){
+            if (count > 0) {
                 spUtils.setDataInserted()
             }
 

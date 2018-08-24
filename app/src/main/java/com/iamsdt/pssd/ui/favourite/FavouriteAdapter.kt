@@ -6,7 +6,6 @@
 
 package com.iamsdt.pssd.ui.favourite
 
-import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.os.Handler
@@ -26,7 +25,7 @@ import com.iamsdt.pssd.ui.details.DetailsActivity
 import es.dmoral.toasty.Toasty
 import timber.log.Timber
 
-class FavouriteAdapter(context: Application,
+class FavouriteAdapter(var context: Context,
                        val wordTableDao: WordTableDao) :
         PagedListAdapter<WordTable,FavouriteVH>(DIFF_CALLBACK) {
 
@@ -35,8 +34,6 @@ class FavouriteAdapter(context: Application,
     private val pendingRunables: MutableMap<WordTable?, Runnable> = HashMap() // map of items to pending runnables, so we can cancel a removal if need be
 
     private var itemsPendingRemoval: ArrayList<WordTable?> = ArrayList()
-
-    private var context: Context = context.baseContext
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavouriteVH {
         val view = LayoutInflater.from(parent.context)

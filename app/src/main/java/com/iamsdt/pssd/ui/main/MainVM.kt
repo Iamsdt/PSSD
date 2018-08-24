@@ -17,9 +17,8 @@ import com.iamsdt.pssd.ext.SingleLiveEvent
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.model.StatusModel
 import timber.log.Timber
-import javax.inject.Inject
 
-class MainVM @Inject constructor(val wordTableDao: WordTableDao) : ViewModel() {
+class MainVM (val wordTableDao: WordTableDao) : ViewModel() {
 
     val event = SingleLiveEvent<StatusModel>()
 

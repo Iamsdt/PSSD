@@ -6,55 +6,42 @@
 
 package com.iamsdt.pssd
 
-import android.app.Activity
-import android.os.Bundle
-import com.iamsdt.pssd.di.AppComponent
-import com.iamsdt.pssd.di.DaggerAppComponent
+import android.app.Application
+import com.iamsdt.pssd.di.module.appModule
+import com.iamsdt.pssd.di.module.dbModule
+import com.iamsdt.pssd.di.module.vmModule
 import com.iamsdt.pssd.ext.DebugLogTree
-import com.iamsdt.pssd.ext.LifeCycle
 import com.iamsdt.pssd.ext.ReleaseLogTree
 import com.rohitss.uceh.UCEHandler
-import dagger.android.AndroidInjection
-import dagger.android.AndroidInjector
-import dagger.android.DaggerApplication
+import org.koin.android.ext.android.startKoin
 import timber.log.Timber
 
-class MyApp:DaggerApplication(){
-
-    private val component: AppComponent by lazy {
-        DaggerAppComponent.builder()
-                .application(this)
-                .build()
-    }
-
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication>
-            = component
-
+class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
-        component.inject(this)
 
         UCEHandler.Builder(applicationContext).build()
 
         if (BuildConfig.DEBUG) Timber.plant(DebugLogTree())
         else Timber.plant(ReleaseLogTree())
 
-        registerActivityLifecycleCallbacks(object : LifeCycle() {
-            override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
-                super.onActivityCreated(activity, savedInstanceState)
-                activity?.let {
-                    //try to inject in the activity
-                    //if not found catch the exception
-                    try {
-                        AndroidInjection.inject(it)
-                    }catch (e:Exception){
-                        //Timber.d(e,"Inject error")
-                    }
-                }
-            }
-        })
+        startKoin(this, listOf(dbModule, appModule, vmModule))
+
+//        registerActivityLifecycleCallbacks(object : LifeCycle() {
+//            override fun onActivityCreated(activity: Activity?, savedInstanceState: Bundle?) {
+//                super.onActivityCreated(activity, savedInstanceState)
+//                activity?.let {
+//                    //try to inject in the activity
+//                    //if not found catch the exception
+//                    try {
+//                        AndroidInjection.inject(it)
+//                    }catch (e:Exception){
+//                        //Timber.d(e,"Inject error")
+//                    }
+//                }
+//            }
+//        })
     }
 
 }

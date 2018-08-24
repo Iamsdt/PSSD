@@ -7,7 +7,6 @@
 package com.iamsdt.pssd.ui.settings
 
 import android.Manifest
-import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
@@ -23,12 +22,11 @@ import com.iamsdt.pssd.utils.Constants.IO.IMPORT_ADD
 import com.iamsdt.pssd.utils.Constants.IO.IMPORT_FAV
 import com.iamsdt.pssd.utils.FileImportExportUtils
 import com.iamsdt.pssd.utils.SettingsUtils
-import dagger.android.support.AndroidSupportInjection
+import org.koin.android.ext.android.inject
 import timber.log.Timber
-import javax.inject.Inject
 
 class BackupFragment : PreferenceFragmentCompat(),
-        SharedPreferences.OnSharedPreferenceChangeListener{
+        SharedPreferences.OnSharedPreferenceChangeListener {
 
     //permission code
     private val PERMISSIONS_REQUEST_READ_STORAGE_FAVOURITE = 12
@@ -36,11 +34,9 @@ class BackupFragment : PreferenceFragmentCompat(),
     private val PERMISSIONS_REQUEST_WRITE_STORAGE_FAVOURITE = 23
     private val PERMISSIONS_REQUEST_WRITE_STORAGE_ADDED = 36
 
-    @Inject
-    lateinit var utils: FileImportExportUtils
+    val utils: FileImportExportUtils by inject()
 
-    @Inject
-    lateinit var settingUtils: SettingsUtils
+    val settingUtils: SettingsUtils by inject()
 
     var path = ""
 
@@ -48,12 +44,6 @@ class BackupFragment : PreferenceFragmentCompat(),
         findPreference(key)?.let {
             bindPreferenceSummaryToValue(it)
         }
-    }
-
-    // complete: 8/17/2018 inject here
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        AndroidSupportInjection.inject(this)
     }
 
     // TODO: 8/21/18 fix app crash on memory card reading
@@ -95,10 +85,10 @@ class BackupFragment : PreferenceFragmentCompat(),
         exportFavourite.setOnPreferenceClickListener {
             if (Build.VERSION.SDK_INT >= 23) {
                 if (context?.checkCallingOrSelfPermission(
-                                Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
                     requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
                             PERMISSIONS_REQUEST_WRITE_STORAGE_FAVOURITE)
-                } else{
+                } else {
                     //permission already granted
                     writeFavouriteData()
                 }
@@ -176,7 +166,7 @@ class BackupFragment : PreferenceFragmentCompat(),
 
             // get path that the user has chosen
             chooser.setOnSelectListener { path ->
-                utils.importFile(path,IMPORT_FAV)
+                utils.importFile(path, IMPORT_FAV)
             }
 
 

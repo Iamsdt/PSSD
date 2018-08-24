@@ -6,7 +6,6 @@
 
 package com.iamsdt.pssd.ui.flash
 
-import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -23,27 +22,20 @@ import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.addStr
 import com.iamsdt.pssd.ext.showToast
-import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.flash_sheet.view.*
+import org.koin.android.ext.android.inject
 import timber.log.Timber
 import java.util.*
-import javax.inject.Inject
 
 
 class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
-    @Inject
-    lateinit var wordTableDao: WordTableDao
+    val wordTableDao: WordTableDao by inject()
 
     private lateinit var textToSpeech: TextToSpeech
 
     private var wordTxt = ""
 
-
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        AndroidSupportInjection.inject(this)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 

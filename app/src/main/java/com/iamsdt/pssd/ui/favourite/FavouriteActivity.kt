@@ -11,28 +11,21 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.ext.ViewModelFactory
 import com.iamsdt.pssd.utils.SwipeUtil
 import kotlinx.android.synthetic.main.activity_favourite.*
 import kotlinx.android.synthetic.main.content_favourite.*
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FavouriteActivity:AppCompatActivity(){
+class FavouriteActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var adapter:FavouriteAdapter
+    val adapter: FavouriteAdapter by inject()
 
-    @Inject
-    lateinit var factory: ViewModelFactory
-
-    private val viewModel: FavouriteVM by lazy {
-        ViewModelProviders.of(this, factory).get(FavouriteVM::class.java)
-    }
+    val viewModel: FavouriteVM by viewModel()
 
     // complete: 8/21/18 add swap option
 

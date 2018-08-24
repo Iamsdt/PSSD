@@ -18,9 +18,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.GravityCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
@@ -28,7 +26,6 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.R.drawable.dercoration
 import com.iamsdt.pssd.ext.ToastType
-import com.iamsdt.pssd.ext.ViewModelFactory
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ext.toNextActivity
 import com.iamsdt.pssd.ui.details.DetailsActivity
@@ -38,33 +35,19 @@ import com.iamsdt.pssd.ui.search.MySuggestionProvider
 import com.iamsdt.pssd.ui.settings.SettingsActivity
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.upload.SyncTask
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
-import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(),
-        NavigationView.OnNavigationItemSelectedListener,
-        HasSupportFragmentInjector {
+        NavigationView.OnNavigationItemSelectedListener {
 
-    @Inject
-    lateinit var di: DispatchingAndroidInjector<Fragment>
+    val syncTask: SyncTask by inject()
 
-    @Inject
-    lateinit var syncTask: SyncTask
-
-    @Inject
-    lateinit var factory: ViewModelFactory
-
-    private val viewModel: MainVM by lazy {
-        ViewModelProviders.of(this, factory).get(MainVM::class.java)
-    }
-
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> = di
+    private val viewModel: MainVM by viewModel()
 
     private var suggestions: SearchRecentSuggestions? = null
 
@@ -108,7 +91,7 @@ class MainActivity : AppCompatActivity(),
         fab.setOnClickListener { _ ->
             // TODO: 8/22/18 add random layout
             val dialog = RandomDialog()
-            dialog.show(supportFragmentManager,"Random")
+            dialog.show(supportFragmentManager, "Random")
         }
 
         suggestions = SearchRecentSuggestions(this,
@@ -151,7 +134,7 @@ class MainActivity : AppCompatActivity(),
             bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "User search query")
             bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Search $query")
             FirebaseAnalytics.getInstance(this)
-                    .logEvent(FirebaseAnalytics.Event.SEARCH,bundle)
+                    .logEvent(FirebaseAnalytics.Event.SEARCH, bundle)
         }
     }
 

@@ -16,26 +16,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.ShareActionProvider
 import androidx.core.view.MenuItemCompat
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.ToastType
-import com.iamsdt.pssd.ext.ViewModelFactory
 import com.iamsdt.pssd.ext.addStr
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.utils.Bookmark
 import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.content_details.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
-import javax.inject.Inject
 
-class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener  {
+class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
-    @Inject
-    lateinit var factory: ViewModelFactory
 
-    private val viewModel: DetailsVM by lazy {
-        ViewModelProviders.of(this, factory).get(DetailsVM::class.java)
-    }
+    val viewModel: DetailsVM by viewModel()
 
     var id = 0
 
@@ -58,7 +52,7 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener  {
 
         id = intent.getIntExtra(Intent.EXTRA_TEXT, 0)
 
-        textToSpeech = TextToSpeech(this,this)
+        textToSpeech = TextToSpeech(this, this)
 
         viewModel.getWord(id).observe(this, Observer {
             it?.let {
@@ -104,10 +98,10 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener  {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    private fun speakOut(){
+    private fun speakOut() {
 
-        if (!::textToSpeech.isInitialized){
-            showToast(ToastType.ERROR,"Can not speak right now. Try again")
+        if (!::textToSpeech.isInitialized) {
+            showToast(ToastType.ERROR, "Can not speak right now. Try again")
             return
         }
 
@@ -138,7 +132,7 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener  {
 
     override fun onDestroy() {
         super.onDestroy()
-        if (::textToSpeech.isInitialized){
+        if (::textToSpeech.isInitialized) {
             textToSpeech.stop()
             textToSpeech.shutdown()
         }

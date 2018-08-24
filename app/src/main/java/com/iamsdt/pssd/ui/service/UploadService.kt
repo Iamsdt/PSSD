@@ -13,27 +13,18 @@ import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.SpUtils
 import com.iamsdt.pssd.utils.model.OutputModel
-import dagger.android.AndroidInjection
+import org.koin.android.ext.android.inject
 import java.io.File
 import java.io.FileWriter
 import java.util.*
-import javax.inject.Inject
 
 class UploadService : Service() {
 
-    @Inject
-    lateinit var gson: Gson
+    val gson: Gson by inject()
 
-    @Inject
-    lateinit var wordTableDao: WordTableDao
+    val wordTableDao: WordTableDao by inject()
 
-    @Inject
-    lateinit var spUtils: SpUtils
-
-    override fun onCreate() {
-        super.onCreate()
-        AndroidInjection.inject(this)
-    }
+    val spUtils: SpUtils by inject()
 
     override fun onBind(intent: Intent?): IBinder? = null
 
@@ -75,7 +66,7 @@ class UploadService : Service() {
                                 up = wordTableDao.update((word))
                             }
 
-                            if (up > 0){
+                            if (up > 0) {
                                 spUtils.saveDate()
                             }
                         }

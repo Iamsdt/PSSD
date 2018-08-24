@@ -108,6 +108,12 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:$dagger"
     kapt "com.google.dagger:dagger-android-processor:$dagger"
 
+    // Koin for Android
+    implementation('org.koin:koin-android:0.9.3')
+    // or Koin for Android Architecture
+    //implementation 'org.koin:koin-android-architecture:0.9.3'
+    implementation "org.koin:koin-androidx-viewmodel:1.0.0-beta-3"
+
     //error handler
     implementation 'com.github.RohitSurwase.UCE-Handler:uce_handler:1.3'
 

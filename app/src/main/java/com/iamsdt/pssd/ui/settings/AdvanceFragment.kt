@@ -23,9 +23,8 @@ import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.utils.Constants.Settings.DEFAULT_PATH_STORAGE
 import com.iamsdt.pssd.utils.Constants.Settings.STORAGE_PATH_KEY
 import com.iamsdt.pssd.utils.SettingsUtils
-import dagger.android.support.AndroidSupportInjection
+import org.koin.android.ext.android.inject
 import java.io.File
-import javax.inject.Inject
 
 class AdvanceFragment : PreferenceFragmentCompat(),
         SharedPreferences.OnSharedPreferenceChangeListener {
@@ -33,24 +32,19 @@ class AdvanceFragment : PreferenceFragmentCompat(),
     private val PERMISSIONS_REQUEST_READ_STORAGE = 0
     private var changeDirPref: Preference? = null
 
-    @Inject
-    lateinit var settingUtils: SettingsUtils
+    val settingUtils: SettingsUtils by inject()
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        AndroidSupportInjection.inject(this)
-    }
 
     override fun onSharedPreferenceChanged(sp: SharedPreferences?, key: String?) {
         findPreference(key)?.let {
-            if (key == getString(R.string.switchShare)){
+            if (key == getString(R.string.switchShare)) {
                 val value = sp?.getBoolean(
-                        getString(R.string.switchShare),true) ?: true
+                        getString(R.string.switchShare), true) ?: true
                 val pre = findPreference(getString(R.string.NameShare))
-                if (!value){
+                if (!value) {
                     pre?.isEnabled = false
                     pre.shouldDisableView = true
-                } else{
+                } else {
                     pre.shouldDisableView = false
                     pre?.isEnabled = true
                 }
@@ -59,12 +53,11 @@ class AdvanceFragment : PreferenceFragmentCompat(),
         }
     }
 
-    private val sBindPreferenceSummaryToValueListener
-            = Preference.OnPreferenceChangeListener { preference, value ->
+    private val sBindPreferenceSummaryToValueListener = Preference.OnPreferenceChangeListener { preference, value ->
         val stringValue = value.toString()
-        if (preference is CheckBoxPreference){
+        if (preference is CheckBoxPreference) {
             preference.summary = stringValue
-        } else{
+        } else {
             preference.summary = "path: $stringValue"
         }
         true
@@ -78,12 +71,12 @@ class AdvanceFragment : PreferenceFragmentCompat(),
         // Trigger the listener immediately with the preference's
         // current value.
         //if preference cheekbook
-        if (preference is CheckBoxPreference){
+        if (preference is CheckBoxPreference) {
             sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
                     PreferenceManager
                             .getDefaultSharedPreferences(preference.context)
                             .getBoolean(preference.key, false))
-        } else{
+        } else {
             sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
                     PreferenceManager
                             .getDefaultSharedPreferences(preference.context)
@@ -113,7 +106,7 @@ class AdvanceFragment : PreferenceFragmentCompat(),
         }
 
         val value = settingUtils.shareStatus
-        if (!value){
+        if (!value) {
             val pre = findPreference(getString(R.string.NameShare))
             pre?.isEnabled = false
             pre.shouldDisableView = true

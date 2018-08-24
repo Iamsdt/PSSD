@@ -17,28 +17,22 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.ToastType
-import com.iamsdt.pssd.ext.ViewModelFactory
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ui.details.DetailsActivity
 import com.iamsdt.pssd.ui.main.MainAdapter
 import com.iamsdt.pssd.utils.Constants
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.content_search.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
-import javax.inject.Inject
 
 class SearchActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var factory: ViewModelFactory
 
-    private val viewModel: SearchVM by lazy {
-        ViewModelProviders.of(this, factory).get(SearchVM::class.java)
-    }
+    private val viewModel: SearchVM by viewModel()
 
     private var suggestions: SearchRecentSuggestions? = null
 
