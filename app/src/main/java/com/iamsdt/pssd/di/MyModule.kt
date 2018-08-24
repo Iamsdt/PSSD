@@ -11,6 +11,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.iamsdt.pssd.database.MyDatabase
 import com.iamsdt.pssd.database.WordTableDao
+import com.iamsdt.pssd.ui.add.AddVM
 import com.iamsdt.pssd.ui.details.DetailsVM
 import com.iamsdt.pssd.ui.favourite.FavouriteAdapter
 import com.iamsdt.pssd.ui.favourite.FavouriteVM
@@ -62,7 +63,7 @@ val appModule = module {
     }
 
     single {
-        SyncTask(get(), get(), get(),get())
+        SyncTask(get(), get(), get(), get())
     }
 }
 
@@ -73,4 +74,5 @@ val vmModule = module {
     viewModel { FavouriteVM(get()) }
     viewModel { FlashVM(get()) }
     viewModel { SearchVM(get()) }
+    viewModel { AddVM(get()) }
 }

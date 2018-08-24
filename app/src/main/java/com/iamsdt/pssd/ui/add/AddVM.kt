@@ -21,32 +21,31 @@ import com.iamsdt.pssd.utils.model.StatusModel
 
 class AddVM(private val wordTableDao: WordTableDao) : ViewModel() {
 
-    val fragmentStatus = SingleLiveEvent<StatusModel>()
-    val activityStatus = SingleLiveEvent<StatusModel>()
+    val dialogStatus = SingleLiveEvent<StatusModel>()
 
     fun addData(word: String, des: String) {
 
         if (word.isEmpty() || word.length <= 2) {
-            fragmentStatus.value = StatusModel(false,
+            dialogStatus.value = StatusModel(false,
                     WORD, "Please input correct word")
 
             return
         }
 
         if (des.isEmpty() || des.length <= 2) {
-            fragmentStatus.value = StatusModel(false,
+            dialogStatus.value = StatusModel(false,
                     DES, "Please input correct description")
 
             return
         }
 
 
-        val wordTable = WordTable(word = word, des = des, addByUser = false)
+        val wordTable = WordTable(word = word, des = des, addByUser = true)
 
         AsyncTask.execute {
             val status = wordTableDao.add(wordTable)
             if (status >= 0) {
-                activityStatus.postValue(StatusModel(true, DIALOG,
+                dialogStatus.postValue(StatusModel(true, DIALOG,
                         "Word added successfully"))
             }
         }
@@ -61,7 +60,7 @@ class AddVM(private val wordTableDao: WordTableDao) : ViewModel() {
                 .setEnablePlaceholders(false) //default true
                 .build()
 
-        val source = wordTableDao.getAllData()
+        val source = wordTableDao.getAddedWordByUser()
 
         return LivePagedListBuilder(source, config)
                 .build()

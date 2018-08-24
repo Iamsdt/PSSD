@@ -32,10 +32,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        staging{
+            initWith debug
+            applicationIdSuffix ".alpha-01"
+        }
     }
     kapt {
         useBuildCache = true
-        //generateStubs = true
         correctErrorTypes = true
     }
     sourceSets {
@@ -54,8 +57,11 @@ dependencies {
 
     //settings
     implementation 'androidx.preference:preference:1.0.0-rc01'
+
     implementation 'androidx.legacy:legacy-support-v4:1.0.0-rc01'
     implementation 'com.google.android.material:material:1.0.0-rc01'
+
+    //test
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
@@ -129,13 +135,12 @@ dependencies {
 
     //firebase
     //Analytics
-    implementation "com.google.firebase:firebase-core:16.0.1"
-    //database
-    implementation "com.google.firebase:firebase-database:16.0.1"
+    implementation "com.google.firebase:firebase-core:16.0.3"
     //storage
     implementation "com.google.firebase:firebase-storage:16.0.1"
     //crash
-    implementation "com.google.firebase:firebase-crash:16.0.1"
+    implementation "com.google.firebase:firebase-crash:16.2.0"
+    //implementation "com.crashlytics.sdk.android:crashlytics:2.9.3"
     //auth
     implementation "com.google.firebase:firebase-auth:16.0.3"
     //messaging

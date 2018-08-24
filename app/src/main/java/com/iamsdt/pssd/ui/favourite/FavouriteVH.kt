@@ -14,7 +14,7 @@ import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.ext.addStr
 import kotlinx.android.synthetic.main.bookmark_list.view.*
-import kotlinx.android.synthetic.main.main_item.view.*
+import kotlinx.android.synthetic.main.fav_list.view.*
 import kotlinx.android.synthetic.main.undo_layout.view.*
 
 class FavouriteVH(val view: View)

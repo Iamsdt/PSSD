@@ -29,6 +29,7 @@ import com.iamsdt.pssd.R.drawable.dercoration
 import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ext.toNextActivity
+import com.iamsdt.pssd.ui.add.AddActivity
 import com.iamsdt.pssd.ui.color.ColorActivity
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.details.DetailsActivity
@@ -217,7 +218,7 @@ class MainActivity : AppCompatActivity(),
                 toNextActivity(FlashCardActivity::class)
             }
             R.id.nav_add -> {
-                showDummyMessage()
+                toNextActivity(AddActivity::class)
             }
             R.id.nav_settings -> {
                 toNextActivity(SettingsActivity::class)
