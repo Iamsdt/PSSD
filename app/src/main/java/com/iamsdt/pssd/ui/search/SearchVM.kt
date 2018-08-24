@@ -17,22 +17,21 @@ import com.iamsdt.pssd.ext.SingleLiveEvent
 import com.iamsdt.pssd.utils.Constants.Companion.SEARCH
 import com.iamsdt.pssd.utils.model.StatusModel
 import timber.log.Timber
-import javax.inject.Inject
 
-class SearchVM @Inject constructor(val wordTableDao: WordTableDao) : ViewModel() {
+class SearchVM(val wordTableDao: WordTableDao) : ViewModel() {
 
     val event = SingleLiveEvent<StatusModel>()
 
     lateinit var liveData: MediatorLiveData<PagedList<WordTable>>
 
     init {
-        if (!::liveData.isInitialized){
+        if (!::liveData.isInitialized) {
             liveData = MediatorLiveData()
             getData("")
         }
     }
 
-    private fun getData(query: String){
+    private fun getData(query: String) {
 
         val source = wordTableDao.getSearchData(query)
 
@@ -51,7 +50,7 @@ class SearchVM @Inject constructor(val wordTableDao: WordTableDao) : ViewModel()
         }
     }
 
-    fun requestSearch(query: String){
+    fun requestSearch(query: String) {
         getData(query)
     }
 

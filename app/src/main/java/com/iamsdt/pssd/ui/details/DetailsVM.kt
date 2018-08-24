@@ -11,9 +11,8 @@ import androidx.lifecycle.ViewModel
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.SingleLiveEvent
 import com.iamsdt.pssd.utils.Bookmark
-import javax.inject.Inject
 
-class DetailsVM @Inject constructor(val wordTableDao: WordTableDao):
+class DetailsVM (val wordTableDao: WordTableDao):
         ViewModel(){
 
     val singleLiveEvent = SingleLiveEvent<Bookmark>()

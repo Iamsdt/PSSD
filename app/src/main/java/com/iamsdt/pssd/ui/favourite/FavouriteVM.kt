@@ -12,10 +12,9 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
-import javax.inject.Inject
 
-class FavouriteVM @Inject constructor(
-        val wordTableDao: WordTableDao):ViewModel(){
+class FavouriteVM(
+        val wordTableDao: WordTableDao) : ViewModel() {
 
     fun getData(): LiveData<PagedList<WordTable>> {
 

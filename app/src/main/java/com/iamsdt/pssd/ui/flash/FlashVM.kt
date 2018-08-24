@@ -8,9 +8,8 @@ package com.iamsdt.pssd.ui.flash
 
 import androidx.lifecycle.ViewModel
 import com.iamsdt.pssd.database.WordTableDao
-import javax.inject.Inject
 
-class FlashVM @Inject constructor(val wordTableDao: WordTableDao):ViewModel(){
+class FlashVM(val wordTableDao: WordTableDao) : ViewModel() {
 
     val data get() = wordTableDao.getBookmarkData()
 
