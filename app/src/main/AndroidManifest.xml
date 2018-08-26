@@ -83,6 +83,10 @@
         <activity
             android:name=".ui.add.AddActivity"
             android:label="@string/title_activity_add"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.AppAboutActivity"
+            android:label="@string/title_activity_app_about"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

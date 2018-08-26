@@ -211,6 +211,7 @@
     <string name="clear_history">clear history</string>
     <string name="speak_voice">Speak now</string>
     <string name="title_activity_add">AddActivity</string>
+    <string name="title_activity_app_about">AppAboutActivity</string>
 
 
 </resources>
