@@ -17,6 +17,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.showToast
@@ -65,6 +66,12 @@ class AddActivity : AppCompatActivity() {
                     if (::dialog.isInitialized && dialog.isShowing) {
                         dialog.dismiss()
                         showToast(ToastType.SUCCESSFUL, it.message)
+
+                        //add analytics
+                        val ana = FirebaseAnalytics.getInstance(this@AddActivity)
+                        val bundle = Bundle()
+                        bundle.putString("Data_added","Data Put in the local database")
+                        ana.logEvent("add_data",bundle)
                     }
                 }
             }

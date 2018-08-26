@@ -35,7 +35,7 @@ class Constants {
     }
 
     object REMOTE {
-        const val FB_REMOTE_CONFIG_STORAGE_KEY = "addData"
+        const val FB_REMOTE_CONFIG_STORAGE_KEY = "storage_key"
         const val USER = "user"
         const val ADMIN = "admin"
 

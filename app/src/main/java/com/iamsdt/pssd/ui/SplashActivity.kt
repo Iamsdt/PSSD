@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.BuildConfig
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.runThread
@@ -47,6 +48,11 @@ class SplashActivity : AppCompatActivity() {
 
         runThread(time, next)
 
+        //put data on analytics
+        val ana = FirebaseAnalytics.getInstance(this)
+        val bundle = Bundle()
+        bundle.putString("app_open","App open")
+        ana.logEvent(FirebaseAnalytics.Event.APP_OPEN,bundle)
     }
 
     //debugOnly:8/24/18 Debug only remove latter

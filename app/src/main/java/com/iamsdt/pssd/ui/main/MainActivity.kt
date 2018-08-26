@@ -99,6 +99,12 @@ class MainActivity : AppCompatActivity(),
             // complete: 8/22/18 add random layout
             val dialog = RandomDialog()
             dialog.show(supportFragmentManager, "Random")
+
+            //rand shown
+            val ana = FirebaseAnalytics.getInstance(this@MainActivity)
+            val bundle = Bundle()
+            bundle.putString("search","Random data shown")
+            ana.logEvent("Random_Data",bundle)
         }
 
         suggestions = SearchRecentSuggestions(this,
@@ -185,6 +191,13 @@ class MainActivity : AppCompatActivity(),
             override fun onQueryTextSubmit(query: String?): Boolean {
                 Timber.i("call")
                 viewModel.submit(query, suggestions)
+                //search data
+
+                val ana = FirebaseAnalytics.getInstance(this@MainActivity)
+                val bundle = Bundle()
+                bundle.putString("search",query)
+                ana.logEvent(FirebaseAnalytics.Event.SEARCH,bundle)
+
                 return true
             }
 

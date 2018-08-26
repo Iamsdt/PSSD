@@ -12,6 +12,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.favourite.FavouriteVM
@@ -57,6 +58,11 @@ class FlashCardActivity : AppCompatActivity(), FlashAdapter.ClickListener {
         Timber.i("Tag rec: $id")
         val dialog = FlashSheet()
         dialog.show(supportFragmentManager, id.toString())
+
+        val ana = FirebaseAnalytics.getInstance(this@FlashCardActivity)
+        val bundle = Bundle()
+        bundle.putString("Flash_Card","Showing flash card")
+        ana.logEvent("flash_card",bundle)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
