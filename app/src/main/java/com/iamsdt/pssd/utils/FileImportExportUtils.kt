@@ -11,6 +11,7 @@ import com.google.gson.Gson
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.SingleLiveEvent
+import com.iamsdt.pssd.ui.settings.BackupSettings
 import com.iamsdt.pssd.utils.Constants.IO.EXPORT_ADD
 import com.iamsdt.pssd.utils.Constants.IO.EXPORT_FAV
 import com.iamsdt.pssd.utils.Constants.Settings.EXT
@@ -22,6 +23,7 @@ import timber.log.Timber
 import java.io.File
 import java.io.FileFilter
 import java.io.FileWriter
+import java.io.IOException
 import java.util.*
 
 class FileImportExportUtils(private val wordTableDao: WordTableDao,
@@ -38,6 +40,7 @@ class FileImportExportUtils(private val wordTableDao: WordTableDao,
             if (list.isNotEmpty()) {
                 generateFile(list, "favourite")
             } else {
+                BackupSettings.isShown = false
                 ioStatus.postValue(StatusModel(false,
                         EXPORT_FAV, "No favourite words found. Please add some"))
             }
@@ -63,7 +66,7 @@ class FileImportExportUtils(private val wordTableDao: WordTableDao,
             dir.mkdirs()
         }
 
-        val file = if (type == "favourite")
+        var file = if (type == "favourite")
             File(dir, SETTING_IMOUT_OPTION_FAVOURITE)
         else File(dir, SETTING_IMOUT_OPTION_USER)
 
@@ -74,21 +77,47 @@ class FileImportExportUtils(private val wordTableDao: WordTableDao,
                 file.createNewFile()
                 file.setWritable(true)
             }
-        } catch (e:Exception){
-            Timber.i(e,"file error: ${file.absolutePath}")
-            // TODO: 8/22/18 add default location
+        } catch (e: IOException) {
+            Timber.i(e, "file error: ${file.absolutePath}")
+            // Complete: 8/22/18 add default location
+            //show message.
+            BackupSettings.isShown = false
+            ioStatus.postValue(StatusModel(false,
+                    EXPORT_FAV, "Can not able to save file to this ${file.absolutePath} location." +
+                    " Saving file in the default location"))
+            val name = file.name
+            file = File(Constants.Settings.DEFAULT_PATH_STORAGE, name)
+        } finally {
+            if (file.exists()) {
+                file.setWritable(true)
+
+            } else {
+                file.createNewFile()
+                file.setWritable(true)
+
+            }
+
+            val writer = FileWriter(file)
+            writer.write(string)
+            writer.close()
+
+            Thread {
+                try {
+                    Thread.sleep(1000)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                } finally {
+                    BackupSettings.isShown = false
+                    val model = if (type == "favourite") {
+                        StatusModel(true, EXPORT_FAV,
+                                "Favourite words saved on ${file.absolutePath}")
+                    } else StatusModel(true, EXPORT_ADD, "Your Added words saved on ${file.absolutePath}")
+
+                    ioStatus.postValue(model)
+                }
+            }.start()
+
         }
-
-        val writer = FileWriter(file)
-        writer.write(string)
-        writer.close()
-
-        val model = if (type == "favourite") {
-            StatusModel(true, EXPORT_FAV,
-                    "Favourite words saved on ${file.absolutePath}")
-        } else StatusModel(true, EXPORT_ADD, "Your Added words saved on ${file.absolutePath}")
-
-        ioStatus.postValue(model)
     }
 
     /**
@@ -101,15 +130,16 @@ class FileImportExportUtils(private val wordTableDao: WordTableDao,
             if (list.isNotEmpty()) {
                 generateFile(list, "Added")
             } else {
+                BackupSettings.isShown = false
                 ioStatus.postValue(StatusModel(false,
-                        EXPORT_FAV, "No Added words found. Please add some"))
+                        EXPORT_ADD, "No Added words found. Please add some"))
             }
         }
     }
 
     //import file and added to database
     fun importFile(path: String?, title: String) {
-
+        BackupSettings.isShown = false
         if (path == null) {
             ioStatus.value = StatusModel(false, title,
                     "File not selected correctly")

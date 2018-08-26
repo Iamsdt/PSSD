@@ -29,9 +29,12 @@ class BackupSettings : AppCompatActivity() {
         //boiler plate code
         FileImportExportUtils.ioStatus.observe(this, Observer {
             it?.let {
-                (if (it.status) ToastType.SUCCESSFUL
-                else ToastType.ERROR).apply {
-                    showToast(this, it.message)
+                if (!isShown) {
+                    (if (it.status) ToastType.SUCCESSFUL
+                    else ToastType.ERROR).apply {
+                        showToast(this, it.message)
+                        isShown = true
+                    }
                 }
             }
         })
@@ -48,5 +51,8 @@ class BackupSettings : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    companion object {
+        var isShown = false
+    }
 
 }

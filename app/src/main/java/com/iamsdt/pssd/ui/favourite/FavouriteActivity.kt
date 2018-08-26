@@ -11,6 +11,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +20,7 @@ import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.utils.SwipeUtil
 import kotlinx.android.synthetic.main.activity_favourite.*
 import kotlinx.android.synthetic.main.content_favourite.*
+import kotlinx.android.synthetic.main.content_main.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -46,6 +48,12 @@ class FavouriteActivity : AppCompatActivity() {
         // TODO: 8/21/18 add empty view
         //emptyView()
 
+        val deco = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+        deco.setDrawable(getDrawable(R.drawable.dercoration))
+
+        // Complete: 8/22/18 add item decoration
+        mainRcv.addItemDecoration(deco)
         setSwipeForRecyclerView(fav_rcv)
 
         viewModel.getData().observe(this, Observer {
