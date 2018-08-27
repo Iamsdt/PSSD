@@ -32,7 +32,7 @@ import java.util.*
 class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
 
-    val viewModel: DetailsVM by viewModel()
+    private val viewModel: DetailsVM by viewModel()
 
     var id = 0
 
