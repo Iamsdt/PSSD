@@ -20,7 +20,6 @@ import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.utils.SwipeUtil
 import kotlinx.android.synthetic.main.activity_favourite.*
 import kotlinx.android.synthetic.main.content_favourite.*
-import kotlinx.android.synthetic.main.content_main.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -53,7 +52,7 @@ class FavouriteActivity : AppCompatActivity() {
         deco.setDrawable(getDrawable(R.drawable.dercoration))
 
         // Complete: 8/22/18 add item decoration
-        mainRcv.addItemDecoration(deco)
+        fav_rcv.addItemDecoration(deco)
         setSwipeForRecyclerView(fav_rcv)
 
         viewModel.getData().observe(this, Observer {
