@@ -63,7 +63,7 @@ val appModule = module {
     }
 
     single {
-        SyncTask(get(), get(), get(), get())
+        SyncTask(get(), get(), get())
     }
 }
 

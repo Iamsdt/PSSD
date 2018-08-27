@@ -10,7 +10,6 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
-import com.google.gson.Gson
 import com.iamsdt.pssd.BuildConfig
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.utils.Constants.REMOTE.DOWNLOAD_TAG
@@ -25,12 +24,17 @@ import java.util.*
 
 
 class SyncTask(private val wordTableDao: WordTableDao,
-               private val gson: Gson,
                private val spUtils: SpUtils,
                private val settingsSpUtils: SettingsUtils) {
 
     fun initialize(context: Activity) {
         if (!isNetworkAvailable(context)) return
+
+        /*
+            isNetworkAvailable method call replaced by constraints
+            but if network is not available i don't want to fetch remote config
+            but still it can handle no internet issue
+         */
 
         //do this task once in a week
         if (isRunUpload()) {
