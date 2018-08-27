@@ -12,11 +12,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.AsyncListDiffer
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.ext.addStr
+import com.iamsdt.pssd.ui.main.MainAdapter.Companion.DIFF_CALLBACK
 import kotlinx.android.synthetic.main.flash_item.view.*
 import timber.log.Timber
 
@@ -53,26 +53,6 @@ class FlashAdapter(val click:ClickListener) :
             holder.itemView.setOnClickListener {
                 click.click(model.id)
                 Timber.i("Tag set:${model.id}")
-            }
-        }
-    }
-
-    companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<WordTable>() {
-            // Concert details may have changed if reloaded from the database,
-            // but ID is fixed.
-            override fun areItemsTheSame(oldConcert: WordTable,
-                                         newConcert: WordTable): Boolean {
-
-//                Timber.i("compare callback item ${oldConcert.id}:${newConcert.id} " +
-//                        "${oldConcert.bookmark}:${newConcert.bookmark}")
-
-                return oldConcert.id == newConcert.id && oldConcert.bookmark == newConcert.bookmark
-            }
-
-            override fun areContentsTheSame(oldConcert: WordTable,
-                                            newConcert: WordTable): Boolean {
-                return oldConcert == newConcert
             }
         }
     }
