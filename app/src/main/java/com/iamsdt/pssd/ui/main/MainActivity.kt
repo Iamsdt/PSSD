@@ -43,7 +43,6 @@ import com.iamsdt.pssd.ui.search.MySuggestionProvider
 import com.iamsdt.pssd.ui.settings.SettingsActivity
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.sync.SyncTask
-import com.iamsdt.pssd.utils.sync.worker.DownloadWorker
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -90,7 +89,7 @@ class MainActivity : AppCompatActivity(),
                     if (it.status) {
                         Timber.i("Status is true")
                         val intent = Intent(this, DetailsActivity::class.java)
-                        intent.putExtra(Intent.EXTRA_TEXT, it.message.toInt())
+                        intent.putExtra(Intent.EXTRA_TEXT, it.message)
                         startActivity(intent)
                     } else {
                         Timber.i(it.message)
@@ -285,11 +284,11 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun getRemoteDataStatus() {
-        WorkManager.getInstance().getStatusById(DownloadWorker().id)
+        WorkManager.getInstance().getStatusesForUniqueWork("Download")
                 .observe(this, Observer {
                     it?.let {
 
-                        if (it.state.isFinished && !isShown) {
+                        if (it.isNotEmpty()&& it[0].state.isFinished && !isShown) {
 
                             val builder = NotificationCompat
                                     .Builder(this, packageName)

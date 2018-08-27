@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.iamsdt.pssd.R
+import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.addStr
@@ -28,15 +29,14 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
     private var wordTxt = ""
 
-    var size = 100
+    lateinit var list: List<WordTable>
 
     var bookmark = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AsyncTask.execute {
-            size = wordTableDao.getAllList().size
-            Timber.i("Size found: $size")
+            list = wordTableDao.getAllList()
         }
     }
 
@@ -51,42 +51,42 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
         val favIcon: ImageButton = view.like
         val speak: ImageButton = view.speak
 
-        val id = getRandomID()
+        val word = getRandomWord()
 
-        Timber.i("ID get: $id")
+        Timber.i("ID get: $word")
 
         //draw ui
-        wordTableDao.getSingleWord(id).observe(this, Observer { wordTable ->
+        wordTableDao.getSingleWord(word).observe(this, Observer { wordTable ->
+            wordTable?.let {
+                //save bookmark
+                bookmark = wordTable.bookmark
 
-            //save bookmark
-            bookmark = wordTable.bookmark
+                //save word txt
+                wordTxt = wordTable.word
 
-            //save word txt
-            wordTxt = wordTable.word
+                wordTV.addStr(wordTable.word)
+                desTV.addStr(wordTable.des)
 
-            wordTV.addStr(wordTable.word)
-            desTV.addStr(wordTable.des)
-
-            // complete: 8/17/2018 favourite icon
-            if (wordTable.bookmark) {
-                favIcon.setImageDrawable(view.context.getDrawable(R.drawable.ic_like_fill))
-            } else {
-                favIcon.setImageDrawable(view.context.getDrawable(R.drawable.ic_like_blank))
+                // complete: 8/17/2018 favourite icon
+                if (wordTable.bookmark) {
+                    favIcon.setImageDrawable(view.context.getDrawable(R.drawable.ic_like_fill))
+                } else {
+                    favIcon.setImageDrawable(view.context.getDrawable(R.drawable.ic_like_blank))
+                }
             }
-
         })
 
         favIcon.setOnClickListener {
             AsyncTask.execute {
                 if (bookmark) {
-                    val status = wordTableDao.deleteBookmark(id)
+                    val status = wordTableDao.deleteBookmark(word)
                     if (status > 0) {
                         Handler(Looper.getMainLooper()).post {
                             showToast(ToastType.INFO, "Bookmark Delete")
                         }
                     }
                 } else {
-                    val status = wordTableDao.setBookmark(id)
+                    val status = wordTableDao.setBookmark(word)
                     if (status > 0) {
                         Handler(Looper.getMainLooper()).post {
                             showToast(ToastType.SUCCESSFUL, "Bookmarked")
@@ -103,9 +103,16 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
         return view
     }
 
-    private fun getRandomID(): Int {
-        val random = Random()
-        return random.nextInt(size)
+    private fun getRandomWord(): String {
+        if (::list.isInitialized) {
+            val random = Random()
+            val id = random.nextInt(list.size - 1)
+
+            //we need live data
+            //so we don't have option to use this word table
+            return list[id].word
+        }
+        return ""
     }
 
     private fun speakOut() {
@@ -119,6 +126,7 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
             textToSpeech.speak(wordTxt, TextToSpeech.QUEUE_FLUSH, null, null)
 
         } else {
+            @Suppress("DEPRECATION")
             textToSpeech.speak(wordTxt, TextToSpeech.QUEUE_FLUSH, null)
         }
     }

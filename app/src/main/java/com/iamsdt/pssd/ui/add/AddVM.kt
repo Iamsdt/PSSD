@@ -55,8 +55,8 @@ class AddVM(private val wordTableDao: WordTableDao) : ViewModel() {
     fun getWord(): LiveData<PagedList<WordTable>> {
         val config = PagedList.Config.Builder()
                 .setPageSize(10)
-                .setInitialLoadSizeHint(20)//by default page size * 3
-                .setPrefetchDistance(10) // default page size
+                .setInitialLoadSizeHint(20)//by default page list * 3
+                .setPrefetchDistance(10) // default page list
                 .setEnablePlaceholders(false) //default true
                 .build()
 

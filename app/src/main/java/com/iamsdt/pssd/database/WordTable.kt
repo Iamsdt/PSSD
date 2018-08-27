@@ -12,8 +12,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 class WordTable(
-        @PrimaryKey(autoGenerate = true)
-        var id: Int = 0,
+        @PrimaryKey
         var word: String = "",
         var des: String = "",
         var bookmark: Boolean = false,

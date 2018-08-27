@@ -27,11 +27,11 @@ interface WordTableDao{
     @Query("Select * From WordTable")
     fun getAllList():List<WordTable>
 
-    @Query("Update WordTable set bookmark = 1 where id = :id ")
-    fun setBookmark(id:Int):Int
+    @Query("Update WordTable set bookmark = 1 where word = :word ")
+    fun setBookmark(word: String):Int
 
-    @Query("Update WordTable set bookmark = 0 where id = :id ")
-    fun deleteBookmark(id:Int):Int
+    @Query("Update WordTable set bookmark = 0 where word = :word ")
+    fun deleteBookmark(word:String):Int
 
     @Query("Select * From WordTable where bookmark = 1")
     fun getBookmarkData():DataSource.Factory<Int,WordTable>
@@ -39,8 +39,8 @@ interface WordTableDao{
     @Query("Select * From WordTable where bookmark = 1")
     fun getBookmarkList():List<WordTable>
 
-    @Query("Select * From WordTable where id =:id")
-    fun getSingleWord(id: Int):LiveData<WordTable>
+    @Query("Select * From WordTable where word =:word")
+    fun getSingleWord(word: String):LiveData<WordTable>
 
     @Query("Select * From WordTable where addByUser = 1")
     fun getAddedWordList():List<WordTable>
