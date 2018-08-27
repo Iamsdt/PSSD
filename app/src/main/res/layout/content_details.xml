@@ -48,6 +48,7 @@
         android:padding="5dp"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textColor="@color/txtColor"
+        android:textIsSelectable="true"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView2"
@@ -64,6 +65,7 @@
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         tools:text="This is description"
         android:padding="5dp"
+        android:textIsSelectable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
