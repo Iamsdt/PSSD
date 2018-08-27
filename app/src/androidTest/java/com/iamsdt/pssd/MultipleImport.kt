@@ -1,7 +1,7 @@
 /*
  * Developed By Shudipto Trafder
- * on 8/17/18 10:45 AM
- * Copyright (c) 2018 Shudipto Trafder.
+ *  on 8/27/18 10:19 PM
+ *  Copyright (c)2018  Shudipto Trafder.
  */
 
 package com.iamsdt.pssd
@@ -18,7 +18,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class DatabaseTest {
+class MultipleImport {
 
     lateinit var wordTableDao: WordTableDao
     lateinit var appContext: Context
@@ -32,6 +32,7 @@ class DatabaseTest {
                 .build()
 
         wordTableDao = db.wordTableDao
+
     }
 
     @Test
@@ -39,36 +40,22 @@ class DatabaseTest {
         val add = add()
         println("Data add: $add")
 
-        //now access data
-        val data = wordTableDao.getAllData()
+        val word = "Word 1"
+        val des = "This is update des"
 
-        //this is not working on jetpack
-//        data.blockingObserve()?.forEach {
-//            println("Word: ${it.word}")
-//        }
-
-        val data3 = wordTableDao.getBookmarkList()
-        data3.forEach {
-            println("Word: ${it.word}")
+        //first search
+        var data: WordTable? = wordTableDao.getWord(word)
+        if (data == null) {
+            data = WordTable(word = word, des = des)
+        } else {
+            data.des = des
         }
 
+        wordTableDao.add(data)
 
-        //update bookmark
-        wordTableDao.setBookmark(4)
-        wordTableDao.setBookmark(7)
-        wordTableDao.setBookmark(5)
-
-        //now again access
-        val data2 = wordTableDao.getBookmarkData()
-        //this is not working on jetpack
-//        data2.blockingObserve()?.forEach {
-//            println("Word: ${it.word}: ${it.bookmark}")
-//        }
-
-        val data4 = wordTableDao.getBookmarkList()
-        data4.forEach {
-            println("Word: ${it.word}: ${it.bookmark}")
-        }
+        //check data inserted or not
+        val insert = wordTableDao.getWord(word)
+        println("Insert:$insert")
     }
 
 

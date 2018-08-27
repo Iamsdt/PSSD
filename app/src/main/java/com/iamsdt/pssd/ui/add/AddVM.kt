@@ -39,12 +39,17 @@ class AddVM(private val wordTableDao: WordTableDao) : ViewModel() {
             return
         }
 
-
-        val wordTable = WordTable(word = word, des = des, addByUser = true)
-
         AsyncTask.execute {
 
-            val status = wordTableDao.add(wordTable)
+            var data: WordTable? = wordTableDao.getWord(word)
+            if (data == null) {
+                data = WordTable(word = word, des = des, addByUser = true)
+            } else {
+                data.des = des
+                data.addByUser = true
+            }
+
+            val status = wordTableDao.add(data)
             if (status >= 0) {
                 dialogStatus.postValue(StatusModel(true, DIALOG,
                         "Word added successfully"))

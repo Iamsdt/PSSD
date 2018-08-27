@@ -62,8 +62,15 @@ class DownloadWorker : Worker(), KoinComponent {
                         AsyncTask.execute {
                             var insert = 0L
                             it.list.map {
+                                var table: WordTable? = wordTableDao.getWord(it.word)
+                                if (table == null) {
+                                    table = WordTable(word = it.word, des = it.des)
+                                } else {
+                                    table.des = it.des
+                                }
+
                                 insert = wordTableDao.add(
-                                        WordTable(word = it.word, des = it.des)
+                                        table
                                 )
                             }
 

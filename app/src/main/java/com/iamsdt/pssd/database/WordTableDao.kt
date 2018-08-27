@@ -42,6 +42,8 @@ interface WordTableDao{
     @Query("Select * From WordTable where id =:id")
     fun getSingleWord(id: Int):LiveData<WordTable>
 
+    @Query("Select * From WordTable where word =:word")
+    fun getWord(word: String):WordTable
 
     @Query("Select * From WordTable where addByUser = 1")
     fun getAddedWordList():List<WordTable>
