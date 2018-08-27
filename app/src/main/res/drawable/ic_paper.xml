@@ -1,0 +1,10 @@
+<!--
+  ~ Developed By Shudipto Trafder
+  ~  on 8/27/18 12:54 PM
+  ~  Copyright (c)2018  Shudipto Trafder.
+  -->
+
+<vector android:height="24dp" android:viewportHeight="511"
+    android:viewportWidth="512" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#FF000000" android:pathData="m512,47.5h-365.719v73.141h-73.141v73.141h-73.141v269.898h365.719v-73.145h73.141v-73.141h73.141zM30,433.68v-209.898h228.484v77.23h77.23v132.668zM288.484,244.996 L314.504,271.016h-26.02zM408.859,360.535h-43.145v-80.734l-86.016,-86.02h-176.559v-43.141h305.719zM482,287.395h-43.141v-166.754h-262.578v-43.141h305.719zM482,287.395"/>
+</vector>

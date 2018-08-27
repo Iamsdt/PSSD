@@ -4,31 +4,38 @@
   ~ Copyright (c) 2018 Shudipto Trafder.
   -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ListPreference
         android:defaultValue="@string/sTextModerateValue"
         android:entries="@array/textSizeLabel"
         android:entryValues="@array/textSizeValue"
+        android:icon="@drawable/ic_021_decrease_font_size"
         android:key="@string/textSizeKey"
-        android:title="@string/textSizeLabel"/>
+        android:title="@string/textSizeLabel" />
 
     <ListPreference
         android:defaultValue="@string/syncWeekValue"
         android:entries="@array/syncLabel"
         android:entryValues="@array/syncLabelValue"
+        android:icon="@drawable/ic_023_sync"
         android:key="@string/syncKey"
-        android:title="@string/syncLabel"/>
+        android:title="@string/syncLabel" />
 
-    <!-- todo add icon -->
+    <!-- complete add icon -->
 
     <PreferenceCategory
+        android:iconSpaceReserved="false"
         android:summary="Import and export your data.
         You can backup your data into your SD Card"
-        android:title="Backup Data">
+        android:title="Backup Data"
+        tools:targetApi="o">
 
-        <Preference android:title="@string/bps_title"
-            android:key="@string/bps_key">
+        <Preference
+            android:icon="@drawable/ic_databases_symbol"
+            android:key="@string/bps_key"
+            android:title="@string/bps_title">
 
             <intent
                 android:action="android.intent.action.VIEW"
@@ -39,11 +46,16 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="Advance Settings">
+    <PreferenceCategory
+        android:iconSpaceReserved="false"
+        android:title="Advance Settings"
+        tools:targetApi="o">
 
-        <Preference android:title="Advance Settings"
+        <Preference
             android:key="@string/advance_key"
-            android:summary="@string/advance_summery">
+            android:summary="@string/advance_summery"
+            android:title="Advance Settings"
+            android:icon="@drawable/ic_folder_settings_button">
 
             <intent
                 android:action="android.intent.action.VIEW"
@@ -58,14 +70,18 @@
 
     <PreferenceCategory android:title="Links">
 
-        <Preference android:title="About">
+        <Preference
+            android:icon="@drawable/ic_019_information_button"
+            android:title="About">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:targetClass="com.blogspot.shudiptotrafder.soilscience.AboutActivity"
                 android:targetPackage="com.blogspot.shudiptotrafder.soilscience" />
         </Preference>
 
-        <Preference android:title="Developer">
+        <Preference
+            android:icon="@drawable/ic_coding"
+            android:title="Developer">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:targetClass="com.blogspot.shudiptotrafder.soilscience.DeveloperActivity"

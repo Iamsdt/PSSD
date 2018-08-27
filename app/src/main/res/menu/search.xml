@@ -5,12 +5,12 @@
   ~  Copyright (c) 2018  Shudipto Trafder.
   -->
 
-<!-- todo add search icon -->
+<!-- complete add search icon -->
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/search"
         android:title="@string/search"
-        android:icon="@drawable/ic_menu_share"
+        android:icon="@drawable/ic_search"
         app:showAsAction="collapseActionView|ifRoom"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
 </menu>

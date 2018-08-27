@@ -6,20 +6,25 @@
   ~ Copyright (c) 2018 Shudipto Trafder.
   -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- todo add icon -->
+    <!-- complete add icon -->
 
     <Preference
+        android:icon="@drawable/ic_025_cloud_1"
         android:key="@string/advance_dir_add_key"
         android:selectable="true"
         android:summary="@string/advance_dir_summery"
         android:title="@string/advance_dir_title" />
 
-    <PreferenceCategory android:title="Share Data">
+    <PreferenceCategory android:title="Share Data"
+        android:iconSpaceReserved="false"
+        tools:targetApi="o">
 
         <CheckBoxPreference
             android:defaultValue="true"
+            android:icon="@drawable/ic_024_cloud"
             android:key="@string/switchShare"
             android:summaryOff="@string/switchShareOFF"
             android:summaryOn="@string/switchShareON"

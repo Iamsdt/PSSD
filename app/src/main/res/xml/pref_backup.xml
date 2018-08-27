@@ -7,22 +7,26 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- todo add icon -->
+    <!-- complete add icon -->
 
     <Preference
+        android:icon="@drawable/ic_032_export_1"
         android:key="@string/bps_ex_fav_key"
         android:title="@string/bps_ex_fav_title" />
 
     <Preference
+        android:icon="@drawable/ic_029_import"
         android:key="@string/bps_im_fav_key"
         android:summary="@string/bps_im_fav_summery"
         android:title="@string/bps_im_fav_title" />
 
     <Preference
+        android:icon="@drawable/ic_032_export_1"
         android:key="@string/bps_ex_add_key"
         android:title="@string/bps_ex_add_title" />
 
     <Preference
+        android:icon="@drawable/ic_029_import"
         android:key="@string/bps_im_add_key"
         android:summary="@string/bps_im_add_summery"
         android:title="@string/bps_im_add_title" />

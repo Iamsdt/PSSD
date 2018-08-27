@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Developed By Shudipto Trafder
   ~ on 8/17/18 12:49 PM
   ~ Copyright (c) 2018 Shudipto Trafder.
@@ -9,53 +8,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <!-- todo add icon -->
+    <!-- complete add icon -->
 
     <group>
         <item
             android:id="@+id/nav_favourite"
-            android:title="Favourites" />
+            android:icon="@drawable/ic_no_favorite_heart_button"
+            android:title="@string/nav_favourites" />
         <item
             android:id="@+id/nav_card"
-            android:title="Flash Card" />
+            android:icon="@drawable/ic_paper"
+            android:title="@string/nav_flash" />
         <item
             android:id="@+id/nav_add"
-            android:title="Add Words" />
+            android:icon="@drawable/ic_036_pencil"
+            android:title="@string/nav_add_words" />
     </group>
 
-    <item android:title="Settings">
+    <item android:title="@string/nav_settings">
         <menu>
             <item
                 android:id="@+id/nav_settings"
-                android:title="Settings" />
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="@string/nav_settings" />
             <item
                 android:id="@+id/nav_themes"
-                android:title="Choose Themes" />
+                android:icon="@drawable/ic_color_lens_black_24dp"
+                android:title="@string/nav_choose_themes" />
         </menu>
     </item>
 
-    <item android:title="Polices">
+    <item android:title="@string/nav_polices">
         <menu>
-            <item android:id="@+id/nav_notice"
-                android:title="Legal Notice"/>
+            <item
+                android:id="@+id/nav_notice"
+                android:icon="@drawable/ic_039_legal_hammer"
+                android:title="@string/nav_legal_notice" />
 
-            <item android:id="@+id/nav_police"
-                android:title="Privacy Polices"/>
+            <item
+                android:id="@+id/nav_police"
+                android:icon="@drawable/ic_044_padlock_1"
+                android:title="@string/nav_privacy_polices" />
 
-            <item android:id="@+id/nav_use"
-                android:title="Terms of Uses"/>
+            <item
+                android:id="@+id/nav_use"
+                android:icon="@drawable/ic_smartphone"
+                android:title="@string/nav_terms_of_uses" />
 
         </menu>
     </item>
 
-    <item android:title="About">
+    <item android:title="@string/nav_about">
         <menu>
             <item
                 android:id="@+id/nav_about"
-                android:title="About App"/>
+                android:icon="@drawable/ic_019_information_button"
+                android:title="@string/nav_about_app" />
             <item
                 android:id="@+id/nav_developer"
-                android:title="Developers"/>
+                android:icon="@drawable/ic_coding"
+                android:title="@string/nav_developers" />
 
         </menu>
     </item>
