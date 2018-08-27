@@ -48,7 +48,7 @@
         app:layout_constraintBottom_toTopOf="@+id/desTV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/link" />
+        app:srcCompat="@drawable/ic_speaker" />
 
     <ImageButton
         android:id="@+id/like"

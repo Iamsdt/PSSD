@@ -38,8 +38,8 @@
 
     <ImageButton
         android:id="@+id/speak"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
@@ -47,5 +47,5 @@
         app:layout_constraintBottom_toTopOf="@+id/desTV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/link" />
+        app:srcCompat="@drawable/ic_speaker"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
