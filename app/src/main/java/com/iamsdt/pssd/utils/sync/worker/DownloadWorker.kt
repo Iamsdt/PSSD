@@ -14,10 +14,12 @@ import com.google.gson.Gson
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.utils.Constants
+import com.iamsdt.pssd.utils.Constants.REMOTE.DOWNLOAD_FILE_NAME
 import com.iamsdt.pssd.utils.SpUtils
-import com.iamsdt.pssd.utils.model.OutputModel
+import com.iamsdt.pssd.utils.model.RemoteModel
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
+import timber.log.Timber
 import java.io.File
 
 class DownloadWorker : Worker(), KoinComponent {
@@ -30,22 +32,30 @@ class DownloadWorker : Worker(), KoinComponent {
 
     override fun doWork(): Result {
 
-        var result = Result.SUCCESS
+        Timber.i("Download worker begin")
+
+        var result = Result.FAILURE
 
         val auth = FirebaseAuth.getInstance()
         auth.signInAnonymously().addOnCompleteListener {
             if (it.isSuccessful) {
                 //write in  the database
 
+                Timber.i("Logged in")
+                //Download
                 val db = FirebaseStorage.getInstance()
-                val ref = db.reference.child(Constants.REMOTE.ADMIN)
+                val ref = db.reference
+                        .child(Constants.REMOTE.ADMIN)
+                        .child(DOWNLOAD_FILE_NAME)
 
                 val file = File.createTempFile("download", ".json")
 
                 ref.getFile(file).addOnSuccessListener {
 
+                    Timber.i("Data found")
+
                     val data = gson.fromJson(file.bufferedReader(bufferSize = 4096),
-                            OutputModel::class.java)
+                            RemoteModel::class.java)
 
                     data?.let {
                         AsyncTask.execute {
@@ -56,10 +66,12 @@ class DownloadWorker : Worker(), KoinComponent {
                                 )
                             }
 
-                            if (insert > 0) {
+                            result = if (insert > 0) {
+                                Timber.i("Inserted: $insert")
                                 spUtils.saveDownloadDate()
+                                Result.SUCCESS
                             } else {
-                                result = Result.RETRY
+                                Result.RETRY
                             }
                         }
                     }

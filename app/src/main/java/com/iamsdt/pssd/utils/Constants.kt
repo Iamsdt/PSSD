@@ -18,7 +18,6 @@ class Constants {
 
         const val WORD_ID = "ID"
 
-
     }
 
     object ADD{
@@ -38,6 +37,9 @@ class Constants {
         const val FB_REMOTE_CONFIG_STORAGE_KEY = "storage_key"
         const val USER = "user"
         const val ADMIN = "admin"
+        const val DOWNLOAD_FILE_NAME = "download.json"
+
+        const val DOWNLOAD_TAG = "download_tag"
 
         const val SP = "remote_sp"
         const val DATE_UPLOAD = "date_upload"

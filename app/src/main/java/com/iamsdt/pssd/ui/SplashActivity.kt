@@ -17,14 +17,20 @@ import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.runThread
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.main.MainActivity
+import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.SpUtils
+import com.iamsdt.pssd.utils.sync.SyncTask
 import com.iamsdt.pssd.utils.sync.worker.DataInsertWorker
+import com.iamsdt.pssd.utils.sync.worker.DownloadWorker
+import com.iamsdt.pssd.utils.sync.worker.UploadWorker
 import org.joda.time.DateTime
 import org.koin.android.ext.android.inject
 
 class SplashActivity : AppCompatActivity() {
 
     val spUtils: SpUtils by inject()
+
+    val syncTask: SyncTask by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,22 +50,51 @@ class SplashActivity : AppCompatActivity() {
         }
 
         val time = if (BuildConfig.DEBUG) 100L
-        else 1000L
+        else 100L
 
         runThread(time, next)
 
         //put data on analytics
         val ana = FirebaseAnalytics.getInstance(this)
         val bundle = Bundle()
-        bundle.putString("app_open","App open")
-        ana.logEvent(FirebaseAnalytics.Event.APP_OPEN,bundle)
+        bundle.putString("app_open", "App open")
+        ana.logEvent(FirebaseAnalytics.Event.APP_OPEN, bundle)
+
+        //saveAppStartDate()
+
+        //fakeUpload()
+
+        fakeDownload()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        //syncTask.initialize(this)
+        //todo move this one main activity
+        //add constrain to worker
     }
 
     //debugOnly:8/24/18 Debug only remove latter
     //send current date
-    fun saveAppStartDate() {
+    private fun saveAppStartDate() {
         val date = DateTime(2018, 8, 17, 0, 0)
         spUtils.saveDownloadDate(date.toDate().time)
         spUtils.saveUploadDate(date.toDate().time)
+    }
+
+    private fun fakeUpload() {
+        val request = OneTimeWorkRequest
+                .Builder(UploadWorker::class.java).build()
+        WorkManager.getInstance().beginUniqueWork("Upload",
+                ExistingWorkPolicy.REPLACE, request).enqueue()
+    }
+
+    private fun fakeDownload() {
+        val request = OneTimeWorkRequest
+                .Builder(DownloadWorker::class.java)
+                .addTag(Constants.REMOTE.DOWNLOAD_TAG)
+                .build()
+        WorkManager.getInstance().beginUniqueWork("Download",
+                ExistingWorkPolicy.REPLACE, request).enqueue()
     }
 }

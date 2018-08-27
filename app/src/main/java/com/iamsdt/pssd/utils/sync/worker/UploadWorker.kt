@@ -1,6 +1,7 @@
 package com.iamsdt.pssd.utils.sync.worker
 
 import android.net.Uri
+import android.os.AsyncTask
 import androidx.work.Worker
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
@@ -8,12 +9,15 @@ import com.google.gson.Gson
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.SpUtils
-import com.iamsdt.pssd.utils.model.OutputModel
+import com.iamsdt.pssd.utils.model.Model
+import com.iamsdt.pssd.utils.model.RemoteModel
+import org.joda.time.DateTime
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 import java.io.File
 import java.io.FileWriter
 import java.util.*
+import kotlin.collections.ArrayList
 
 class UploadWorker : Worker(), KoinComponent {
 
@@ -25,6 +29,23 @@ class UploadWorker : Worker(), KoinComponent {
 
     override fun doWork(): Result {
 
+        val data = wordTableDao.upload()
+
+        val list:ArrayList<Model> = ArrayList()
+        data.map {
+            list.add(Model(it.word,it.des))
+        }
+
+        val outputData = RemoteModel(
+                "User", Date().time, list)
+
+        val string = gson.toJson(outputData)
+
+        val file = File.createTempFile("upload", ".json")
+        val writer = FileWriter(file)
+        writer.write(string)
+        writer.close()
+
         var result = Result.SUCCESS
 
         val auth = FirebaseAuth.getInstance()
@@ -32,35 +53,27 @@ class UploadWorker : Worker(), KoinComponent {
             if (it.isSuccessful) {
                 //write in  the database
 
+                //file name
+                val fileName = it.result.user.uid + "-${DateTime().dayOfMonth}"
                 val db = FirebaseStorage.getInstance()
                 val ref = db.reference.child(Constants.REMOTE.USER)
-                        .child(it.result.user.uid)
-
-                val data = wordTableDao.upload()
-
-                val outputData = OutputModel(
-                        "User", Date().time, data)
-
-                val string = gson.toJson(outputData)
-
-                val file = File.createTempFile("upload", ".json")
-                val writer = FileWriter(file)
-                writer.write(string)
-                writer.close()
+                        .child(fileName)
 
                 ref.putFile(Uri.fromFile(file)).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        var up = 0
-                        data.forEach {
-                            val word = it
-                            word.uploaded = true
-                            up = wordTableDao.update((word))
-                        }
+                        AsyncTask.execute {
+                            var up = 0
+                            data.forEach {
+                                val word = it
+                                word.uploaded = true
+                                up = wordTableDao.update((word))
+                            }
 
-                        if (up <= 0) {
-                            spUtils.saveUploadDate()
-                        } else{
-                            result = Result.RETRY
+                            if (up <= 0) {
+                                spUtils.saveUploadDate()
+                            } else{
+                                result = Result.RETRY
+                            }
                         }
                     } else{
                         result = Result.RETRY

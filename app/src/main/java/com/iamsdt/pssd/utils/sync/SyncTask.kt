@@ -13,6 +13,7 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.google.gson.Gson
 import com.iamsdt.pssd.BuildConfig
 import com.iamsdt.pssd.database.WordTableDao
+import com.iamsdt.pssd.utils.Constants.REMOTE.DOWNLOAD_TAG
 import com.iamsdt.pssd.utils.Constants.REMOTE.FB_REMOTE_CONFIG_STORAGE_KEY
 import com.iamsdt.pssd.utils.DateUtils
 import com.iamsdt.pssd.utils.SettingsUtils
@@ -26,7 +27,7 @@ import java.util.*
 class SyncTask(private val wordTableDao: WordTableDao,
                private val gson: Gson,
                private val spUtils: SpUtils,
-               private val settingsSpUtils:SettingsUtils) {
+               private val settingsSpUtils: SettingsUtils) {
 
     fun initialize(context: Activity) {
         if (!isNetworkAvailable(context)) return
@@ -52,7 +53,9 @@ class SyncTask(private val wordTableDao: WordTableDao,
         if (isRunDownload()) {
             if (getRemoteConfigStatus(context)) {
                 val request = OneTimeWorkRequest
-                        .Builder(DownloadWorker::class.java).build()
+                        .Builder(DownloadWorker::class.java)
+                        .addTag(DOWNLOAD_TAG)
+                        .build()
                 WorkManager.getInstance().beginUniqueWork("Download",
                         ExistingWorkPolicy.REPLACE, request).enqueue()
             }

@@ -7,6 +7,7 @@
 package com.iamsdt.pssd.ui.main
 
 import android.app.Activity
+import android.app.PendingIntent
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
@@ -18,10 +19,13 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.work.WorkManager
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
@@ -38,18 +42,15 @@ import com.iamsdt.pssd.ui.flash.FlashCardActivity
 import com.iamsdt.pssd.ui.search.MySuggestionProvider
 import com.iamsdt.pssd.ui.settings.SettingsActivity
 import com.iamsdt.pssd.utils.Constants
-import com.iamsdt.pssd.utils.sync.SyncTask
+import com.iamsdt.pssd.utils.sync.worker.DownloadWorker
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity(),
         NavigationView.OnNavigationItemSelectedListener {
-
-    val syncTask: SyncTask by inject()
 
     private val viewModel: MainVM by viewModel()
 
@@ -103,13 +104,16 @@ class MainActivity : AppCompatActivity(),
             //rand shown
             val ana = FirebaseAnalytics.getInstance(this@MainActivity)
             val bundle = Bundle()
-            bundle.putString("search","Random data shown")
-            ana.logEvent("Random_Data",bundle)
+            bundle.putString("search", "Random data shown")
+            ana.logEvent("Random_Data", bundle)
         }
 
         suggestions = SearchRecentSuggestions(this,
                 MySuggestionProvider.AUTHORITY, MySuggestionProvider.MODE)
         handleSearch(intent)
+
+        //show notification
+        getRemoteDataStatus()
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -117,11 +121,6 @@ class MainActivity : AppCompatActivity(),
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        syncTask.initialize(this)
     }
 
     private fun setRecentQuery(query: String) {
@@ -195,8 +194,8 @@ class MainActivity : AppCompatActivity(),
 
                 val ana = FirebaseAnalytics.getInstance(this@MainActivity)
                 val bundle = Bundle()
-                bundle.putString("search",query)
-                ana.logEvent(FirebaseAnalytics.Event.SEARCH,bundle)
+                bundle.putString("search", query)
+                ana.logEvent(FirebaseAnalytics.Event.SEARCH, bundle)
 
                 return true
             }
@@ -272,5 +271,44 @@ class MainActivity : AppCompatActivity(),
 
     private fun showDummyMessage() {
         showToast(ToastType.SUCCESSFUL, "Not available yet")
+    }
+
+    private fun getRemoteDataStatus() {
+        WorkManager.getInstance().getStatusById(DownloadWorker().id)
+                .observe(this, Observer {
+                    it?.let {
+
+                        if (it.state.isFinished && !isShown) {
+
+                            val builder = NotificationCompat
+                                    .Builder(this, packageName)
+                            builder.setContentTitle("New Data")
+                            builder.setContentText("Data added remotely")
+                            builder.priority = NotificationCompat.PRIORITY_DEFAULT
+                            builder.setSmallIcon(R.drawable.ic_019_information_button,
+                                    NotificationCompat.PRIORITY_DEFAULT)
+
+                            val intent = Intent(this, MainActivity::class.java)
+                            intent.putExtra(Intent.EXTRA_TEXT, true)
+
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            val pendingIntent = PendingIntent.getActivity(this,
+                                    0, intent, 0)
+
+                            builder.setContentIntent(pendingIntent)
+                            builder.setAutoCancel(true)
+
+                            val manager = NotificationManagerCompat.from(this)
+                            manager.notify(121, builder.build())
+
+                            //shown
+                            isShown = true
+                        }
+                    }
+                })
+    }
+
+    companion object {
+        var isShown = false
     }
 }
