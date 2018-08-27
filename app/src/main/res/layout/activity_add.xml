@@ -26,7 +26,14 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_add" />
+    <include
+        android:id="@+id/regular_view"
+        layout="@layout/content_add" />
+
+    <include
+        android:id="@+id/empty_view"
+        layout="@layout/empty_add_lay"
+        android:visibility="gone"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

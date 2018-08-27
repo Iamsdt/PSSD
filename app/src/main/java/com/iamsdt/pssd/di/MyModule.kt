@@ -11,6 +11,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.iamsdt.pssd.database.MyDatabase
 import com.iamsdt.pssd.database.WordTableDao
+import com.iamsdt.pssd.ui.add.AddAdapter
 import com.iamsdt.pssd.ui.add.AddVM
 import com.iamsdt.pssd.ui.details.DetailsVM
 import com.iamsdt.pssd.ui.favourite.FavouriteAdapter
@@ -58,6 +59,12 @@ val appModule = module {
 
     single {
         FavouriteAdapter(
+                androidContext(),
+                get() as WordTableDao)
+    }
+
+    single {
+        AddAdapter(
                 androidContext(),
                 get() as WordTableDao)
     }

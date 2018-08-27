@@ -224,7 +224,8 @@
     <string name="nav_terms_of_uses">Terms of Uses</string>
     <string name="nav_settings">Settings</string>
     <string name="nav_choose_themes">Choose Themes</string>
-    <string name="noti_channel">Soil science dicionary</string>
+    <string name="noti_channel">Soil science dictionary</string>
+    <string name="add_word_empty_tv">You don\'t add any word yet.\nYou can add your own custom word and make your personal dictionary</string>
 
 
 </resources>

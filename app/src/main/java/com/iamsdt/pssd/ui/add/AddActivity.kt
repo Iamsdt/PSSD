@@ -13,29 +13,37 @@ import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageButton
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.ToastType
+import com.iamsdt.pssd.ext.gone
+import com.iamsdt.pssd.ext.show
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ui.color.ThemeUtils
-import com.iamsdt.pssd.ui.main.MainAdapter
 import com.iamsdt.pssd.utils.Constants.ADD.DES
 import com.iamsdt.pssd.utils.Constants.ADD.DIALOG
 import com.iamsdt.pssd.utils.Constants.ADD.WORD
+import com.iamsdt.pssd.utils.SwipeUtil
 import kotlinx.android.synthetic.main.activity_add.*
 import kotlinx.android.synthetic.main.add_dialog.view.*
 import kotlinx.android.synthetic.main.content_add.*
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddActivity : AppCompatActivity() {
 
-    val model: AddVM by viewModel()
+    private val adapter: AddAdapter by inject()
 
-    lateinit var dialog: AlertDialog
+    private val model: AddVM by viewModel()
+
+    private lateinit var dialog: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,11 +51,15 @@ class AddActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add)
         setSupportActionBar(toolbar)
 
-        // TODO: 8/24/18 add empty view
+        // complete: 8/24/18 add empty view
+
+        //change context
+        adapter.changeContext(this)
 
         addRcv.layoutManager = LinearLayoutManager(this)
-        val adapter = MainAdapter(this)
         addRcv.adapter = adapter
+
+        setSwipeForRecyclerView(addRcv)
 
         val deco = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
@@ -56,7 +68,12 @@ class AddActivity : AppCompatActivity() {
 
         model.getWord().observe(this, Observer {
             it?.let {
-                adapter.submitList(it)
+                if (it.isNotEmpty()) {
+                    regularView()
+                    adapter.submitList(it)
+                } else {
+                    emptyView()
+                }
             }
         })
 
@@ -70,8 +87,8 @@ class AddActivity : AppCompatActivity() {
                         //add analytics
                         val ana = FirebaseAnalytics.getInstance(this@AddActivity)
                         val bundle = Bundle()
-                        bundle.putString("Data_added","Data Put in the local database")
-                        ana.logEvent("add_data",bundle)
+                        bundle.putString("Data_added", "Data Put in the local database")
+                        ana.logEvent("add_data", bundle)
                     }
                 }
             }
@@ -82,6 +99,44 @@ class AddActivity : AppCompatActivity() {
         }
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun regularView() {
+        regular_view.show()
+        empty_view.gone()
+    }
+
+    private fun emptyView() {
+        regular_view.gone()
+        empty_view.show()
+    }
+
+    private fun setSwipeForRecyclerView(recyclerView: RecyclerView) {
+
+        val swipeHelper = object : SwipeUtil(0, ItemTouchHelper.START or ItemTouchHelper.END, this) {
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val swipedPosition = viewHolder.adapterPosition
+                val adapter = recyclerView.adapter as AddAdapter
+                adapter.pendingRemoval(swipedPosition)
+            }
+
+            override fun getSwipeDirs(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
+                val position = viewHolder.adapterPosition
+                val adapter = recyclerView.adapter as AddAdapter
+                return if (adapter.isPendingRemoval(position)) {
+                    0
+                } else super.getSwipeDirs(recyclerView, viewHolder)
+            }
+        }
+
+        val mItemTouchHelper = ItemTouchHelper(swipeHelper)
+        mItemTouchHelper.attachToRecyclerView(recyclerView)
+
+        //set swipe label
+        swipeHelper.leftSwipeLabel = "Bookmark removed"
+        //set swipe background-Color
+        swipeHelper.leftColorCode = ContextCompat.getColor(this, R.color.red_300)
+
     }
 
     @SuppressLint("InflateParams")
