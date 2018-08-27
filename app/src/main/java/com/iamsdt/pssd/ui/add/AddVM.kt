@@ -43,6 +43,7 @@ class AddVM(private val wordTableDao: WordTableDao) : ViewModel() {
         val wordTable = WordTable(word = word, des = des, addByUser = true)
 
         AsyncTask.execute {
+
             val status = wordTableDao.add(wordTable)
             if (status >= 0) {
                 dialogStatus.postValue(StatusModel(true, DIALOG,
@@ -55,8 +56,8 @@ class AddVM(private val wordTableDao: WordTableDao) : ViewModel() {
     fun getWord(): LiveData<PagedList<WordTable>> {
         val config = PagedList.Config.Builder()
                 .setPageSize(10)
-                .setInitialLoadSizeHint(20)//by default page list * 3
-                .setPrefetchDistance(10) // default page list
+                .setInitialLoadSizeHint(20)//by default page size * 3
+                .setPrefetchDistance(10) // default page size
                 .setEnablePlaceholders(false) //default true
                 .build()
 

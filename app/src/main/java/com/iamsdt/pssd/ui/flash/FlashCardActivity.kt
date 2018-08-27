@@ -54,15 +54,15 @@ class FlashCardActivity : AppCompatActivity(), FlashAdapter.ClickListener {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    override fun click(word: String) {
-        Timber.i("Tag rec: $word")
+    override fun click(id: Int) {
+        Timber.i("Tag rec: $id")
         val dialog = FlashSheet()
-        dialog.show(supportFragmentManager, word)
+        dialog.show(supportFragmentManager, id.toString())
 
         val ana = FirebaseAnalytics.getInstance(this@FlashCardActivity)
         val bundle = Bundle()
-        bundle.putString("Flash_Card", "Showing flash card")
-        ana.logEvent("flash_card", bundle)
+        bundle.putString("Flash_Card","Showing flash card")
+        ana.logEvent("flash_card",bundle)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -8,6 +8,7 @@ package com.iamsdt.pssd.ui.main
 
 import android.os.AsyncTask
 import android.provider.SearchRecentSuggestions
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
@@ -18,6 +19,7 @@ import com.iamsdt.pssd.ext.SingleLiveEvent
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.model.StatusModel
 import timber.log.Timber
+import java.util.*
 
 class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
 
@@ -27,8 +29,8 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
 
     private val config = PagedList.Config.Builder()
             .setPageSize(10)
-            .setInitialLoadSizeHint(20)//by default page list * 3
-            .setPrefetchDistance(10) // default page list
+            .setInitialLoadSizeHint(20)//by default page size * 3
+            .setPrefetchDistance(10) // default page size
             .setEnablePlaceholders(false) //default true
             .build()
 
@@ -51,16 +53,16 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
         }
     }
 
-//    fun getRandomWord(): LiveData<WordTable>? {
-//        var liveData:LiveData<WordTable> ?= null
-//        AsyncTask.execute {
-//            val list = wordTableDao.getAllList().list
-//            val random = Random()
-//            val id = random.nextInt(list)
-//            liveData = wordTableDao.getSingleWord(id)
-//        }
-//        return liveData
-//    }
+    fun getRandomWord(): LiveData<WordTable>? {
+        var liveData:LiveData<WordTable> ?= null
+        AsyncTask.execute {
+            val size = wordTableDao.getAllList().size
+            val random = Random()
+            val id = random.nextInt(size)
+            liveData = wordTableDao.getSingleWord(id)
+        }
+        return liveData
+    }
 
     fun requestSearch(query: String) {
 
@@ -84,7 +86,7 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
                 Timber.i("Word:$word")
                 if (word != null) {
                     suggestions?.saveRecentQuery(query, null)
-                    event.postValue(StatusModel(true, Constants.SEARCH, word.word))
+                    event.postValue(StatusModel(true, Constants.SEARCH, "${word.id}"))
                 } else {
                     event.postValue(StatusModel(false, Constants.SEARCH, "Word not found!"))
                 }

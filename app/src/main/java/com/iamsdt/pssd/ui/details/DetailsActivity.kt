@@ -34,6 +34,8 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     val viewModel: DetailsVM by viewModel()
 
+    var id = 0
+
     private lateinit var shareActionProvider: ShareActionProvider
 
     private lateinit var menuItem: MenuItem
@@ -52,16 +54,17 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         setContentView(R.layout.activity_details)
         setSupportActionBar(toolbar)
 
-        word = intent.getStringExtra(Intent.EXTRA_TEXT)
+        id = intent.getIntExtra(Intent.EXTRA_TEXT, 0)
 
         textToSpeech = TextToSpeech(this, this)
 
-        viewModel.getWord(word).observe(this, Observer {
+        viewModel.getWord(id).observe(this, Observer {
             it?.let {
                 details_word.addStr(it.word)
                 details_des.addStr(it.des)
 
-                //save des
+                //save
+                word = it.word
                 des = it.des
 
                 //reset share action provider
@@ -180,7 +183,7 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             android.R.id.home -> onBackPressed()
 
             R.id.action_favourite ->
-                viewModel.requestBookmark(word, isBookmarked)
+                viewModel.requestBookmark(id, isBookmarked)
 
             R.id.action_settings -> {
                 toNextActivity(SettingsActivity::class)

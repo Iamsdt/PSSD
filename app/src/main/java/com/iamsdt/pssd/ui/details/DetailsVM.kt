@@ -17,29 +17,29 @@ class DetailsVM (val wordTableDao: WordTableDao):
 
     val singleLiveEvent = SingleLiveEvent<Bookmark>()
 
-    fun getWord(word:String) = wordTableDao.getSingleWord(word)
+    fun getWord(id:Int) = wordTableDao.getSingleWord(id)
 
-    private fun setBookmark(word: String) {
+    private fun setBookmark(id: Int) {
         AsyncTask.execute {
-            val update = wordTableDao.setBookmark(word)
+            val update = wordTableDao.setBookmark(id)
             if (update != -1)
                 singleLiveEvent.postValue(Bookmark.SET)
         }
     }
 
-    private fun deleteBookmark(word: String) {
+    private fun deleteBookmark(id: Int) {
         AsyncTask.execute {
-            val delete = wordTableDao.deleteBookmark(word)
+            val delete = wordTableDao.deleteBookmark(id)
             if (delete != -1)
                 singleLiveEvent.postValue(Bookmark.DELETE)
         }
     }
 
-    fun requestBookmark(word: String, bookmarked: Boolean) {
+    fun requestBookmark(id: Int, bookmarked: Boolean) {
         if (bookmarked)
-            deleteBookmark(word)
+            deleteBookmark(id)
         else
-            setBookmark(word)
+            setBookmark(id)
     }
 
 }

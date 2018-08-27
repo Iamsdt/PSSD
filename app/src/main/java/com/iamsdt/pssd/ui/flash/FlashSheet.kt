@@ -34,28 +34,32 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
     private lateinit var textToSpeech: TextToSpeech
 
-    private var word = ""
+    private var wordTxt = ""
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.flash_sheet, container, false)
 
-        textToSpeech = TextToSpeech(context, this)
+        textToSpeech = TextToSpeech(context,this)
 
         val wordTv: TextView = view.wordTV
         val desTV: TextView = view.desTV
         val speakBtn: ImageButton = view.speak
 
-        word = tag ?: ""
+        val id = tag?.toInt() ?: 0
 
         Timber.i("Tag: $id")
 
         //draw ui
-        wordTableDao.getSingleWord(word).observe(this, Observer {
+        wordTableDao.getSingleWord(id).observe(this, Observer {
             it?.let {
                 wordTv.addStr(it.word)
                 desTV.addStr(it.des)
+
+                //save word
+                wordTxt = it.word
+
             }
         })
 
@@ -67,19 +71,18 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
         return view
     }
 
-    private fun speakOut() {
+    private fun speakOut(){
 
-        if (!::textToSpeech.isInitialized) {
-            showToast(ToastType.ERROR, "Can not speak right now. Try again")
+        if (!::textToSpeech.isInitialized){
+            showToast(ToastType.ERROR,"Can not speak right now. Try again")
             return
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            textToSpeech.speak(word, TextToSpeech.QUEUE_FLUSH, null, null)
+            textToSpeech.speak(wordTxt, TextToSpeech.QUEUE_FLUSH, null, null)
 
         } else {
-            @Suppress("DEPRECATION")
-            textToSpeech.speak(word, TextToSpeech.QUEUE_FLUSH, null)
+            textToSpeech.speak(wordTxt, TextToSpeech.QUEUE_FLUSH, null)
         }
     }
 
@@ -102,7 +105,7 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
     override fun onDestroy() {
         super.onDestroy()
-        if (::textToSpeech.isInitialized) {
+        if (::textToSpeech.isInitialized){
             textToSpeech.stop()
             textToSpeech.shutdown()
         }

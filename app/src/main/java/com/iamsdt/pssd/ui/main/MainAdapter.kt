@@ -34,7 +34,7 @@ class MainAdapter(val context:Context) :PagedListAdapter<WordTable, MyViewHolder
 
             holder.itemView.setOnClickListener {
                 val intent = Intent(context,DetailsActivity::class.java)
-                intent.putExtra(Intent.EXTRA_TEXT,model.word)
+                intent.putExtra(Intent.EXTRA_TEXT,model.id)
                 context.startActivity(intent)
             }
         }
@@ -50,7 +50,7 @@ class MainAdapter(val context:Context) :PagedListAdapter<WordTable, MyViewHolder
 //                Timber.i("compare callback item ${oldConcert.id}:${newConcert.id} " +
 //                        "${oldConcert.bookmark}:${newConcert.bookmark}")
 
-                return oldConcert.word == newConcert.word && oldConcert.bookmark == newConcert.bookmark
+                return oldConcert.id == newConcert.id && oldConcert.bookmark == newConcert.bookmark
             }
 
             override fun areContentsTheSame(oldConcert: WordTable,

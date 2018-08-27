@@ -11,7 +11,6 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.addStr
@@ -29,14 +28,14 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
     private var wordTxt = ""
 
-    lateinit var list: List<WordTable>
+    var size = 100
 
     var bookmark = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AsyncTask.execute {
-            list = wordTableDao.getAllList()
+            size = wordTableDao.getAllList().size
         }
     }
 
@@ -51,12 +50,12 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
         val favIcon: ImageButton = view.like
         val speak: ImageButton = view.speak
 
-        val word = getRandomWord()
+        val id = getRandomID()
 
-        Timber.i("ID get: $word")
+        Timber.i("ID get: $id")
 
         //draw ui
-        wordTableDao.getSingleWord(word).observe(this, Observer { wordTable ->
+        wordTableDao.getSingleWord(id).observe(this, Observer { wordTable ->
             wordTable?.let {
                 //save bookmark
                 bookmark = wordTable.bookmark
@@ -79,14 +78,14 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
         favIcon.setOnClickListener {
             AsyncTask.execute {
                 if (bookmark) {
-                    val status = wordTableDao.deleteBookmark(word)
+                    val status = wordTableDao.deleteBookmark(id)
                     if (status > 0) {
                         Handler(Looper.getMainLooper()).post {
                             showToast(ToastType.INFO, "Bookmark Delete")
                         }
                     }
                 } else {
-                    val status = wordTableDao.setBookmark(word)
+                    val status = wordTableDao.setBookmark(id)
                     if (status > 0) {
                         Handler(Looper.getMainLooper()).post {
                             showToast(ToastType.SUCCESSFUL, "Bookmarked")
@@ -103,16 +102,9 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
         return view
     }
 
-    private fun getRandomWord(): String {
-        if (::list.isInitialized) {
-            val random = Random()
-            val id = random.nextInt(list.size - 1)
-
-            //we need live data
-            //so we don't have option to use this word table
-            return list[id].word
-        }
-        return ""
+    private fun getRandomID(): Int {
+        val random = Random()
+        return random.nextInt(size)
     }
 
     private fun speakOut() {
