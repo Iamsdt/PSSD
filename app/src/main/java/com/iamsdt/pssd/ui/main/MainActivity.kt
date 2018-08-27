@@ -42,15 +42,19 @@ import com.iamsdt.pssd.ui.flash.FlashCardActivity
 import com.iamsdt.pssd.ui.search.MySuggestionProvider
 import com.iamsdt.pssd.ui.settings.SettingsActivity
 import com.iamsdt.pssd.utils.Constants
+import com.iamsdt.pssd.utils.sync.SyncTask
 import com.iamsdt.pssd.utils.sync.worker.DownloadWorker
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity(),
         NavigationView.OnNavigationItemSelectedListener {
+
+    private val syncTask: SyncTask by inject()
 
     private val viewModel: MainVM by viewModel()
 
@@ -156,6 +160,13 @@ class MainActivity : AppCompatActivity(),
         } else {
             super.onBackPressed()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        syncTask.initialize(this)
+        //todo move this one main activity
+        //add constrain to worker
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -309,6 +320,6 @@ class MainActivity : AppCompatActivity(),
     }
 
     companion object {
-        var isShown = false
+        var isShown = true
     }
 }

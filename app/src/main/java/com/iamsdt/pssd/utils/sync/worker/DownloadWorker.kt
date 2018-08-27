@@ -13,6 +13,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.Gson
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
+import com.iamsdt.pssd.ui.main.MainActivity
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.Constants.REMOTE.DOWNLOAD_FILE_NAME
 import com.iamsdt.pssd.utils.SpUtils
@@ -67,6 +68,7 @@ class DownloadWorker : Worker(), KoinComponent {
                             }
 
                             result = if (insert > 0) {
+                                MainActivity.isShown = false
                                 Timber.i("Inserted: $insert")
                                 spUtils.saveDownloadDate()
                                 Result.SUCCESS

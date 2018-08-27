@@ -19,7 +19,6 @@ import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.main.MainActivity
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.SpUtils
-import com.iamsdt.pssd.utils.sync.SyncTask
 import com.iamsdt.pssd.utils.sync.worker.DataInsertWorker
 import com.iamsdt.pssd.utils.sync.worker.DownloadWorker
 import com.iamsdt.pssd.utils.sync.worker.UploadWorker
@@ -29,8 +28,6 @@ import org.koin.android.ext.android.inject
 class SplashActivity : AppCompatActivity() {
 
     val spUtils: SpUtils by inject()
-
-    val syncTask: SyncTask by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,14 +61,9 @@ class SplashActivity : AppCompatActivity() {
 
         //fakeUpload()
 
-        fakeDownload()
-    }
-
-    override fun onStart() {
-        super.onStart()
-        //syncTask.initialize(this)
-        //todo move this one main activity
-        //add constrain to worker
+        //fakeDownload()
+        // TODO: 8/27/18 add this
+        //saveAppStartDate()
     }
 
     //debugOnly:8/24/18 Debug only remove latter
