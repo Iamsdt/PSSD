@@ -72,7 +72,10 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
         val data = LivePagedListBuilder(source, config).build()
 
         liveData.addSource(data) {
-            liveData.value = it
+            if (liveData.value != it) {
+                //prevent multiple update
+                liveData.value = it
+            }
         }
     }
 
@@ -88,7 +91,7 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
                     suggestions?.saveRecentQuery(query, null)
                     event.postValue(StatusModel(true, Constants.SEARCH, "${word.id}"))
                 } else {
-                    event.postValue(StatusModel(false, Constants.SEARCH, "Word not found!"))
+                    event.postValue(StatusModel(false, Constants.SEARCH, query))
                 }
             }
         }

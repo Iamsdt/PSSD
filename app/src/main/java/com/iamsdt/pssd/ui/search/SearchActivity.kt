@@ -23,6 +23,7 @@ import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.details.DetailsActivity
+import com.iamsdt.pssd.ui.main.MainAdapter
 import com.iamsdt.pssd.utils.Constants
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.content_search.*
@@ -37,6 +38,8 @@ class SearchActivity : AppCompatActivity() {
     private var suggestions: SearchRecentSuggestions? = null
 
 
+    lateinit var searchView: SearchView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ThemeUtils.initialize(this)
@@ -44,30 +47,29 @@ class SearchActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         searchRcv.layoutManager = LinearLayoutManager(this)
-//        val adapter= MainAdapter(this)
-//        searchRcv.adapter = adapter
+        val adapter = MainAdapter(this)
+        searchRcv.adapter = adapter
 
-        //this is suck
         // performance issue
         // complete: 8/22/18 fix latter make single live data
 
         viewModel.liveData.observe(this, Observer {
             Timber.i("size: ${it.size}")
-           // adapter.submitList(it)
+            adapter.submitList(it)
         })
 
         //complete: I am not happy with this solution
         viewModel.event.observe(this, Observer {
             it?.let {
-                if (it.title == Constants.SEARCH){
-                    if (it.status){
+                if (it.title == Constants.SEARCH) {
+                    if (it.status) {
                         Timber.i("Status is true")
                         val intent = Intent(this, DetailsActivity::class.java)
                         intent.putExtra(Intent.EXTRA_TEXT, it.message.toInt())
                         startActivity(intent)
-                    } else{
+                    } else {
                         Timber.i(it.message)
-                        showToast(ToastType.ERROR,it.message)
+                        showToast(ToastType.ERROR, it.message)
                     }
                 }
             }
@@ -89,27 +91,19 @@ class SearchActivity : AppCompatActivity() {
         Timber.i("Call")
     }
 
-    private fun handleSearch(intent: Intent){
+    private fun handleSearch(intent: Intent) {
         if (Intent.ACTION_SEARCH == intent.action) {
             val query = intent.getStringExtra(SearchManager.QUERY)
             // complete: 6/14/2018 search
             viewModel.submit(query)
             setRecentQuery(query)
-
-//            //Search
-//            val bundle = Bundle()
-//            bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "Search Data")
-//            bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "User search query")
-//            bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Search $query")
-//            FirebaseAnalytics.getInstance(this)
-//                    .logEvent(FirebaseAnalytics.Event.SEARCH,bundle)
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.search, menu)
 
-        val searchView = menu?.findItem(R.id.search)?.actionView as SearchView
+        searchView = menu?.findItem(R.id.search)?.actionView as SearchView
         //search
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
@@ -133,7 +127,7 @@ class SearchActivity : AppCompatActivity() {
             }
         })
 
-        searchView.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 Timber.i("call")
                 viewModel.submit(query)
@@ -151,12 +145,41 @@ class SearchActivity : AppCompatActivity() {
 
         })
 
+        searchView.setOnCloseListener {
+            showToast(ToastType.INFO, "Search view closed")
+
+            false
+        }
+
+        searchView.setOnFocusChangeListener { v, hasFocus ->
+            if (v.isFocused) {
+                showToast(ToastType.INFO, "Search view closed")
+            }
+
+            if (!hasFocus){
+                showToast(ToastType.INFO, "Search view closed")
+            }
+        }
+
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home)
             onBackPressed()
+        else if (searchView.isIconified) {
+            searchView.close()
+        }
+
         return super.onOptionsItemSelected(item)
+    }
+
+    fun SearchView.show() {
+        this.isIconified = false
+    }
+
+    fun SearchView.close() {
+        this.isIconified = true
+        searchView.clearFocus()
     }
 }

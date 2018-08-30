@@ -47,7 +47,7 @@ class BackupFragment : PreferenceFragmentCompat(),
     }
 
     // TODO: 8/21/18 fix app crash on memory card reading
-    // TODO: 8/21/18 fix multiple time showing toast
+    // complete: 8/21/18 fix multiple time showing toast
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         // Add 'general' preferences, defined in the XML file

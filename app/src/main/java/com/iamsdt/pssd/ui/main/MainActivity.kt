@@ -40,6 +40,7 @@ import com.iamsdt.pssd.ui.details.DetailsActivity
 import com.iamsdt.pssd.ui.favourite.FavouriteActivity
 import com.iamsdt.pssd.ui.flash.FlashCardActivity
 import com.iamsdt.pssd.ui.search.MySuggestionProvider
+import com.iamsdt.pssd.ui.search.SearchActivity
 import com.iamsdt.pssd.ui.settings.SettingsActivity
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.sync.SyncTask
@@ -60,6 +61,8 @@ class MainActivity : AppCompatActivity(),
     private var suggestions: SearchRecentSuggestions? = null
 
     private val themeRequestCode = 121
+
+    lateinit var searchView: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,7 +96,10 @@ class MainActivity : AppCompatActivity(),
                         startActivity(intent)
                     } else {
                         Timber.i(it.message)
-                        showToast(ToastType.ERROR, it.message)
+                        showToast(ToastType.ERROR, "Word not found")
+                        if (::searchView.isInitialized) {
+                            searchView.setQuery(it.message, false)
+                        }
                     }
                 }
             }
@@ -133,7 +139,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun onNewIntent(intent: Intent) {
         handleSearch(intent)
-        Timber.i("Call")
+        Timber.i("voice search")
     }
 
     private fun handleSearch(intent: Intent) {
@@ -154,29 +160,33 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onBackPressed() {
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
+        when {
+            drawer_layout.isDrawerOpen(GravityCompat.START) -> drawer_layout.closeDrawer(GravityCompat.START)
+            searchView.isFocused -> {
+                searchView.clearFocus()
+                searchView.isIconified = true
+            }
+            else -> super.onBackPressed()
         }
     }
 
     override fun onStart() {
         super.onStart()
         syncTask.initialize(this)
-        //todo move this one main activity
-        //add constrain to worker
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
 
-        val searchView = menu.findItem(R.id.search)?.actionView as SearchView
+        searchView = menu.findItem(R.id.search)?.actionView as SearchView
         //search
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
-        searchView.setIconifiedByDefault(false)
+
+        //todo  make settings
+        searchView.setIconifiedByDefault(true)
+
         searchView.isQueryRefinementEnabled = true
         searchView.requestFocus()
 
@@ -223,7 +233,7 @@ class MainActivity : AppCompatActivity(),
 
         searchView.setOnCloseListener {
             Timber.i("Search view closed")
-            viewModel.requestSearch("")
+            //viewModel.requestSearch("")
             true
         }
 
@@ -250,7 +260,7 @@ class MainActivity : AppCompatActivity(),
                         themeRequestCode)
             }
             R.id.nav_notice -> {
-                showDummyMessage()
+                toNextActivity(SearchActivity::class)
             }
             R.id.nav_police -> {
                 showDummyMessage()
