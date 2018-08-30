@@ -90,7 +90,7 @@
     <string name="sTextExtraLargeValue">26</string>
 
     <string name="textSizeKey" translatable="false">textSize</string>
-    <string name="textSizeLabel">Text Size</string>
+    <string name="textSizeLabel">Sheet Text Size</string>
 
     <!-- sync interval -->
     <string name="syncWeek">7 days</string>
