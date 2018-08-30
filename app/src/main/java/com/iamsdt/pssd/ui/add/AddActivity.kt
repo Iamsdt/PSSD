@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.textfield.TextInputLayout
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.ToastType
@@ -147,13 +147,13 @@ class AddActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setView(view)
 
-        val wordTV: TextInputLayout = view.add_word
-        val desTV: TextInputLayout = view.add_des
+        val wordTV: TextInputEditText = view.add_word
+        val desTV: TextInputEditText = view.add_des
         val button: AppCompatImageButton = view.add_btn
 
         button.setOnClickListener {
-            val word = wordTV.editText?.text ?: ""
-            val des = desTV.editText?.text ?: ""
+            val word = wordTV.text ?: ""
+            val des = desTV.text ?: ""
 
             model.addData(word.toString(), des.toString())
         }
