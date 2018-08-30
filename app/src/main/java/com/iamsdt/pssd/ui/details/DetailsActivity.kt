@@ -47,6 +47,8 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private lateinit var textToSpeech: TextToSpeech
 
+    var size = 18F
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -188,6 +190,10 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             R.id.action_settings -> {
                 toNextActivity(SettingsActivity::class)
             }
+
+            R.id.action_txt -> {
+                textIncrease()
+            }
         }
 
         return super.onOptionsItemSelected(item)
@@ -195,7 +201,8 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
 
     private fun textIncrease() {
-        // TODO: 8/17/2018 add increase option from settings
+        size++
+        details_des.textSize = size
     }
 
 
