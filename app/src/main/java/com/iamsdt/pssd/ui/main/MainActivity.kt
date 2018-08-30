@@ -31,6 +31,7 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.R.drawable.dercoration
 import com.iamsdt.pssd.ext.ToastType
+import com.iamsdt.pssd.ext.gone
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ext.toNextActivity
 import com.iamsdt.pssd.ui.add.AddActivity
@@ -62,7 +63,7 @@ class MainActivity : AppCompatActivity(),
 
     private val themeRequestCode = 121
 
-    lateinit var searchView: SearchView
+    lateinit var searchView: androidx.appcompat.widget.SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,12 +94,16 @@ class MainActivity : AppCompatActivity(),
                         Timber.i("Status is true")
                         val intent = Intent(this, DetailsActivity::class.java)
                         intent.putExtra(Intent.EXTRA_TEXT, it.message.toInt())
+
+                        //save recent query
+                        setRecentQuery(it.extra)
+
                         startActivity(intent)
                     } else {
                         Timber.i(it.message)
-                        showToast(ToastType.ERROR, "Word not found")
+                        showToast(ToastType.ERROR, it.message)
                         if (::searchView.isInitialized) {
-                            searchView.setQuery(it.message, false)
+                            searchView.setQuery(it.extra, false)
                         }
                     }
                 }
@@ -146,8 +151,7 @@ class MainActivity : AppCompatActivity(),
         if (Intent.ACTION_SEARCH == intent.action) {
             val query = intent.getStringExtra(SearchManager.QUERY)
             // complete: 6/14/2018 search
-            viewModel.submit(query, null)
-            setRecentQuery(query)
+            viewModel.submit(query)
 
             //Search
             val bundle = Bundle()
@@ -162,8 +166,7 @@ class MainActivity : AppCompatActivity(),
     override fun onBackPressed() {
         when {
             drawer_layout.isDrawerOpen(GravityCompat.START) -> drawer_layout.closeDrawer(GravityCompat.START)
-            searchView.isFocused -> {
-                searchView.clearFocus()
+            !(searchView.isIconified) -> {
                 searchView.isIconified = true
             }
             else -> super.onBackPressed()
@@ -188,7 +191,6 @@ class MainActivity : AppCompatActivity(),
         searchView.setIconifiedByDefault(true)
 
         searchView.isQueryRefinementEnabled = true
-        searchView.requestFocus()
 
         searchView.setOnSuggestionListener(object : SearchView.OnSuggestionListener {
             override fun onSuggestionSelect(position: Int): Boolean {
@@ -209,7 +211,7 @@ class MainActivity : AppCompatActivity(),
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 Timber.i("call")
-                viewModel.submit(query, suggestions)
+                viewModel.submit(query)
                 //search data
 
                 val ana = FirebaseAnalytics.getInstance(this@MainActivity)
@@ -226,14 +228,22 @@ class MainActivity : AppCompatActivity(),
                     Timber.i("new text is $newText")
                     viewModel.requestSearch(it)
                 }
+
+                fab.gone()
                 return true
             }
 
         })
 
+        searchView.setOnClickListener {
+
+        }
+
         searchView.setOnCloseListener {
+            searchView.onActionViewCollapsed()
             Timber.i("Search view closed")
             //viewModel.requestSearch("")
+            fab.show()
             true
         }
 

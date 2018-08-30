@@ -7,7 +7,6 @@
 package com.iamsdt.pssd.ui.main
 
 import android.os.AsyncTask
-import android.provider.SearchRecentSuggestions
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
@@ -82,16 +81,17 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
     val randomData get() = wordTableDao.getRandomData()
 
 
-    fun submit(query: String?, suggestions: SearchRecentSuggestions?) {
+    fun submit(query: String?) {
         query?.let {
             AsyncTask.execute {
                 val word: WordTable? = wordTableDao.getSearchResult(it)
                 Timber.i("Word:$word")
                 if (word != null) {
-                    suggestions?.saveRecentQuery(query, null)
-                    event.postValue(StatusModel(true, Constants.SEARCH, "${word.id}"))
+                    event.postValue(StatusModel(true, Constants.SEARCH,
+                            "${word.id}",extra = query))
                 } else {
-                    event.postValue(StatusModel(false, Constants.SEARCH, query))
+                    event.postValue(StatusModel(false, Constants.SEARCH,
+                            "Word not found",extra = query))
                 }
             }
         }

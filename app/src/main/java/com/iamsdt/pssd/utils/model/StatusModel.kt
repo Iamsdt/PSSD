@@ -6,6 +6,7 @@
 
 package com.iamsdt.pssd.utils.model
 
-class StatusModel(val status:Boolean,
-                  val title:String,
-                  val message:String)
+class StatusModel(var status:Boolean = false,
+                  var title:String ="",
+                  var message:String ="",
+                  var extra:String = "")

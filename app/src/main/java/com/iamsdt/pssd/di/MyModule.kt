@@ -19,10 +19,7 @@ import com.iamsdt.pssd.ui.favourite.FavouriteVM
 import com.iamsdt.pssd.ui.flash.FlashVM
 import com.iamsdt.pssd.ui.main.MainVM
 import com.iamsdt.pssd.ui.search.SearchVM
-import com.iamsdt.pssd.utils.Constants
-import com.iamsdt.pssd.utils.FileImportExportUtils
-import com.iamsdt.pssd.utils.SettingsUtils
-import com.iamsdt.pssd.utils.SpUtils
+import com.iamsdt.pssd.utils.*
 import com.iamsdt.pssd.utils.sync.SyncTask
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.ext.koin.viewModel
@@ -39,6 +36,11 @@ val dbModule = module {
 }
 
 val appModule = module {
+
+    single {
+        TxtHelper(get() as SettingsUtils)
+    }
+
     single {
         SpUtils(androidContext())
     }
