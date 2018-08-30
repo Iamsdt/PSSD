@@ -15,6 +15,7 @@ import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.addStr
 import com.iamsdt.pssd.ext.showToast
+import com.iamsdt.pssd.utils.TxtHelper
 import kotlinx.android.synthetic.main.random_sheet.view.*
 import org.koin.android.ext.android.inject
 import timber.log.Timber
@@ -22,7 +23,9 @@ import java.util.*
 
 class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
-    val wordTableDao: WordTableDao by inject()
+    private val wordTableDao: WordTableDao by inject()
+
+    private val txtHelper: TxtHelper by inject()
 
     private lateinit var textToSpeech: TextToSpeech
 
@@ -65,6 +68,8 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
                 wordTV.addStr(wordTable.word)
                 desTV.addStr(wordTable.des)
+
+                txtHelper.setSize(wordTV, desTV)
 
                 // complete: 8/17/2018 favourite icon
                 if (wordTable.bookmark) {

@@ -25,9 +25,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavouriteActivity : AppCompatActivity() {
 
-    val adapter: FavouriteAdapter by inject()
+    private val adapter: FavouriteAdapter by inject()
 
-    val viewModel: FavouriteVM by viewModel()
+    private val viewModel: FavouriteVM by viewModel()
 
     // complete: 8/21/18 add swap option
 

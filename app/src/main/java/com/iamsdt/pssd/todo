@@ -9,7 +9,7 @@ complete 3:
 fix backup crash issue
 fix backup toast multiple time
 
-todo 4:
+complete 4:
 test download and upload
 
 todo 5:
@@ -20,3 +20,6 @@ app intro
 
 todo 7:
 splash activity
+
+complete 8:
+add text size to text view

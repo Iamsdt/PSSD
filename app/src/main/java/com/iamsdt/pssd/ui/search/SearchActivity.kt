@@ -23,7 +23,6 @@ import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.details.DetailsActivity
-import com.iamsdt.pssd.ui.main.MainAdapter
 import com.iamsdt.pssd.utils.Constants
 import kotlinx.android.synthetic.main.activity_search.*
 import kotlinx.android.synthetic.main.content_search.*
@@ -45,8 +44,8 @@ class SearchActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         searchRcv.layoutManager = LinearLayoutManager(this)
-        val adapter= MainAdapter(this)
-        searchRcv.adapter = adapter
+//        val adapter= MainAdapter(this)
+//        searchRcv.adapter = adapter
 
         //this is suck
         // performance issue
@@ -54,7 +53,7 @@ class SearchActivity : AppCompatActivity() {
 
         viewModel.liveData.observe(this, Observer {
             Timber.i("size: ${it.size}")
-            adapter.submitList(it)
+           // adapter.submitList(it)
         })
 
         //complete: I am not happy with this solution

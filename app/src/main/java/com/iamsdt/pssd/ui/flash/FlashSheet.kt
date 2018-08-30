@@ -22,6 +22,7 @@ import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.addStr
 import com.iamsdt.pssd.ext.showToast
+import com.iamsdt.pssd.utils.TxtHelper
 import kotlinx.android.synthetic.main.flash_sheet.view.*
 import org.koin.android.ext.android.inject
 import timber.log.Timber
@@ -30,7 +31,9 @@ import java.util.*
 
 class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
-    val wordTableDao: WordTableDao by inject()
+    private val wordTableDao: WordTableDao by inject()
+
+    private val txtHelper: TxtHelper by inject()
 
     private lateinit var textToSpeech: TextToSpeech
 
@@ -41,7 +44,7 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
         val view = inflater.inflate(R.layout.flash_sheet, container, false)
 
-        textToSpeech = TextToSpeech(context,this)
+        textToSpeech = TextToSpeech(context, this)
 
         val wordTv: TextView = view.wordTV
         val desTV: TextView = view.desTV
@@ -57,6 +60,8 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
                 wordTv.addStr(it.word)
                 desTV.addStr(it.des)
 
+                txtHelper.setSize(wordTv, desTV)
+
                 //save word
                 wordTxt = it.word
 
@@ -71,10 +76,10 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
         return view
     }
 
-    private fun speakOut(){
+    private fun speakOut() {
 
-        if (!::textToSpeech.isInitialized){
-            showToast(ToastType.ERROR,"Can not speak right now. Try again")
+        if (!::textToSpeech.isInitialized) {
+            showToast(ToastType.ERROR, "Can not speak right now. Try again")
             return
         }
 
@@ -105,7 +110,7 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
     override fun onDestroy() {
         super.onDestroy()
-        if (::textToSpeech.isInitialized){
+        if (::textToSpeech.isInitialized) {
             textToSpeech.stop()
             textToSpeech.shutdown()
         }
