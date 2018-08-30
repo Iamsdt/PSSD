@@ -27,6 +27,11 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_favourite" />
+    <include
+        android:id="@+id/regular_view"
+        layout="@layout/content_favourite" />
+
+    <include layout="@layout/empty_fav"
+        android:id="@+id/empty_view"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

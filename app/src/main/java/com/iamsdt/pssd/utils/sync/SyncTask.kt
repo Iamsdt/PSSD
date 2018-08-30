@@ -19,7 +19,6 @@ import com.iamsdt.pssd.utils.SettingsUtils
 import com.iamsdt.pssd.utils.SpUtils
 import com.iamsdt.pssd.utils.sync.worker.DownloadWorker
 import com.iamsdt.pssd.utils.sync.worker.UploadWorker
-import timber.log.Timber
 import java.util.*
 
 
@@ -120,11 +119,6 @@ class SyncTask(private val wordTableDao: WordTableDao,
             remoteConfig.activateFetched()
         }
 
-        val state = remoteConfig.getBoolean(FB_REMOTE_CONFIG_STORAGE_KEY)
-
-        //debugOnly:8/23/18 Debug only remove latter
-        Timber.i("Remote data: $state")
-
-        return state
+        return remoteConfig.getBoolean(FB_REMOTE_CONFIG_STORAGE_KEY)
     }
 }

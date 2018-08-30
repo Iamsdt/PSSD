@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Developed By Shudipto Trafder
   ~  on 8/21/18 5:57 PM
   ~  Copyright (c) 2018  Shudipto Trafder.
@@ -26,6 +25,12 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_flash_card" />
+    <include
+        android:id="@+id/regular_view"
+        layout="@layout/content_flash_card" />
+
+    <include
+        android:id="@+id/empty_view"
+        layout="@layout/empty_fav"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

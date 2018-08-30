@@ -22,8 +22,8 @@ import com.iamsdt.pssd.utils.SpUtils
 import com.iamsdt.pssd.utils.sync.worker.DataInsertWorker
 import com.iamsdt.pssd.utils.sync.worker.DownloadWorker
 import com.iamsdt.pssd.utils.sync.worker.UploadWorker
-import org.joda.time.DateTime
 import org.koin.android.ext.android.inject
+import java.util.*
 
 class SplashActivity : AppCompatActivity() {
 
@@ -36,18 +36,20 @@ class SplashActivity : AppCompatActivity() {
 
         //save data
 
-        val next = MainActivity::class
-
         if (!spUtils.isDatabaseInserted) {
             //save database
             val request = OneTimeWorkRequest.Builder(
                     DataInsertWorker::class.java).build()
             WorkManager.getInstance().beginUniqueWork("DataInsert",
                     ExistingWorkPolicy.REPLACE, request).enqueue()
+
+            //save app start date
+            saveAppStartDate()
         }
 
         val time = if (BuildConfig.DEBUG) 100L
         else 100L
+        val next = MainActivity::class
 
         runThread(time, next)
 
@@ -57,21 +59,15 @@ class SplashActivity : AppCompatActivity() {
         bundle.putString("app_open", "App open")
         ana.logEvent(FirebaseAnalytics.Event.APP_OPEN, bundle)
 
-        //saveAppStartDate()
 
-        //fakeUpload()
-
-        //fakeDownload()
-        // TODO: 8/27/18 add this
-        //saveAppStartDate()
     }
 
-    //debugOnly:8/24/18 Debug only remove latter
+    //complete:8/24/18 Debug only remove latter
     //send current date
     private fun saveAppStartDate() {
-        val date = DateTime(2018, 8, 17, 0, 0)
-        spUtils.saveDownloadDate(date.toDate().time)
-        spUtils.saveUploadDate(date.toDate().time)
+        val date = Date()
+        spUtils.saveDownloadDate(date.time)
+        spUtils.saveUploadDate(date.time)
     }
 
     private fun fakeUpload() {

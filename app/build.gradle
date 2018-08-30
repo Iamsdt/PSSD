@@ -102,6 +102,9 @@ dependencies {
     def ktx_version = "1.0.0-rc01"
     implementation "androidx.core:core-ktx:$ktx_version"
 
+    //custom tab
+    implementation 'androidx.browser:browser:1.0.0-rc02'
+
     //implementation "androidx.fragment:fragment-ktx:$ktx_version"
 
     //implementation "androidx.collection:collection-ktx:$ktx_version"

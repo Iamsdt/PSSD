@@ -7,7 +7,10 @@
 package com.iamsdt.pssd.ext
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
+import androidx.browser.customtabs.CustomTabsIntent
+import com.iamsdt.pssd.R
 import kotlin.reflect.KClass
 
 
@@ -42,16 +45,16 @@ fun AppCompatActivity.toNextActivity(
 }
 
 
-//fun AppCompatActivity.customTab(link: String) {
-//    val builder = CustomTabsIntent.Builder()
-//    builder.setToolbarColor(R.attr.colorPrimary)
-//    builder.setShowTitle(true)
-//    builder.addDefaultShareMenuItem()
-//    //builder.setCloseButtonIcon(BitmapFactory.decodeResource(
-//            //resources, R.drawable.dialog_back))
-//    val customTabsIntent = builder.build()
-//    customTabsIntent.launchUrl(this, Uri.parse(link))
-//}
+fun AppCompatActivity.customTab(link: String) {
+    val builder = CustomTabsIntent.Builder()
+    builder.setToolbarColor(R.attr.colorPrimary)
+    builder.setShowTitle(true)
+    builder.addDefaultShareMenuItem()
+    //builder.setCloseButtonIcon(BitmapFactory.decodeResource(
+            //resources, R.drawable.dialog_back))
+    val customTabsIntent = builder.build()
+    customTabsIntent.launchUrl(this, Uri.parse(link))
+}
 
 
 

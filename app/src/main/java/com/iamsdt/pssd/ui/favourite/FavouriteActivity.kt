@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.iamsdt.pssd.R
+import com.iamsdt.pssd.ext.gone
+import com.iamsdt.pssd.ext.show
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.utils.SwipeUtil
 import kotlinx.android.synthetic.main.activity_favourite.*
@@ -44,8 +46,8 @@ class FavouriteActivity : AppCompatActivity() {
 
         fav_rcv.adapter = adapter
 
-        // TODO: 8/21/18 add empty view
-        //emptyView()
+        // complete: 8/21/18 add empty view
+        emptyView()
 
         val deco = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
@@ -56,16 +58,27 @@ class FavouriteActivity : AppCompatActivity() {
         setSwipeForRecyclerView(fav_rcv)
 
         viewModel.getData().observe(this, Observer {
-            //bookmarkView()
-            adapter.submitList(it)
-
-            if (it?.size ?: 0 == 0) {
-                //emptyView()
+            if (it.isNotEmpty()) {
+                regularView()
+                adapter.submitList(it)
+            } else {
+                emptyView()
             }
         })
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
+
+    private fun regularView() {
+        regular_view.show()
+        empty_view.gone()
+    }
+
+    private fun emptyView() {
+        regular_view.gone()
+        empty_view.show()
+    }
+
 
     private fun setSwipeForRecyclerView(recyclerView: RecyclerView) {
 

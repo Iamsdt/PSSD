@@ -7,23 +7,32 @@
 package com.iamsdt.pssd.ui
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity;
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.iamsdt.pssd.R
-
+import com.iamsdt.pssd.ui.color.ThemeUtils
 import kotlinx.android.synthetic.main.activity_app_about.*
 
 class AppAboutActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ThemeUtils.initialize(this)
         setContentView(R.layout.activity_app_about)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        if (item.itemId == android.R.id.home) {
+            onBackPressed()
         }
+
+        return super.onOptionsItemSelected(item)
     }
 
 }

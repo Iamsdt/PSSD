@@ -14,6 +14,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
+import com.iamsdt.pssd.ext.gone
+import com.iamsdt.pssd.ext.show
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.favourite.FavouriteVM
 import kotlinx.android.synthetic.main.activity_flash_card.*
@@ -47,11 +49,26 @@ class FlashCardActivity : AppCompatActivity(), FlashAdapter.ClickListener {
 
         viewModel.getData().observe(this, Observer {
             it?.let {
-                adapter.submitList(it)
+                if (it.isNotEmpty()) {
+                    regularView()
+                    adapter.submitList(it)
+                } else {
+                    emptyView()
+                }
             }
         })
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun regularView() {
+        regular_view.show()
+        empty_view.gone()
+    }
+
+    private fun emptyView() {
+        regular_view.gone()
+        empty_view.show()
     }
 
     override fun click(id: Int) {
@@ -61,8 +78,8 @@ class FlashCardActivity : AppCompatActivity(), FlashAdapter.ClickListener {
 
         val ana = FirebaseAnalytics.getInstance(this@FlashCardActivity)
         val bundle = Bundle()
-        bundle.putString("Flash_Card","Showing flash card")
-        ana.logEvent("flash_card",bundle)
+        bundle.putString("Flash_Card", "Showing flash card")
+        ana.logEvent("flash_card", bundle)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

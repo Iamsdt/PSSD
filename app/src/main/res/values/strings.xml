@@ -230,11 +230,19 @@
     <string name="nav_choose_themes">Choose Themes</string>
 
 
-
     <string name="noti_channel">Soil science dictionary</string>
     <string name="add_word_empty_tv">You don\'t add any word yet.\nYou can add your own custom word and make your personal dictionary.</string>
     <string name="increase_textsize">Increase TextSize</string>
 
+    <!-- dev -->
+    <string name="dev1">Shudipto Trafder</string>
+    <string name="dev1_bio">Learner, Programmer, Dreamer.</string>
+    <string name="dev1_work">Work as Android App Developer.</string>
+
     <string name="dev2">Md Mahabubur Rahaman</string>
+    <string name="dev2_bio">Thinker, Learner, Dreamer.</string>
+    <string name="dev2_work">Work as Database Expert.</string>
+    <string name="dev_find_me">Find me:</string>
+    <string name="empty_fav_txt">You don\'t added any favourite word yet</string>
 
 </resources>

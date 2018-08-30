@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity(),
                         startActivity(intent)
                     } else {
                         Timber.i(it.message)
-                        showToast(ToastType.ERROR, it.message)
+                        showToast(ToastType.WARNING, it.message)
                         if (::searchView.isInitialized) {
                             searchView.setQuery(it.extra, false)
                         }
@@ -206,6 +206,7 @@ class MainActivity : AppCompatActivity(),
                 searchView.setQuery(cursor.getString(index), true)
                 return true
             }
+
         })
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {

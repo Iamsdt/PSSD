@@ -75,8 +75,8 @@
             android:title="About">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:targetClass="com.blogspot.shudiptotrafder.soilscience.AboutActivity"
-                android:targetPackage="com.blogspot.shudiptotrafder.soilscience" />
+                android:targetClass="com.iamsdt.pssd.ui.AppAboutActivity"
+                android:targetPackage="com.iamsdt.pssd" />
         </Preference>
 
         <Preference
@@ -84,8 +84,8 @@
             android:title="Developer">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:targetClass="com.blogspot.shudiptotrafder.soilscience.DeveloperActivity"
-                android:targetPackage="com.blogspot.shudiptotrafder.soilscience" />
+                android:targetClass="com.iamsdt.pssd.ui.DeveloperActivity"
+                android:targetPackage="com.iamsdt.pssd" />
         </Preference>
 
     </PreferenceCategory>
