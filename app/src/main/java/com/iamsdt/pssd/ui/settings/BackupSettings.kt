@@ -8,6 +8,7 @@ package com.iamsdt.pssd.ui.settings
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.iamsdt.pssd.R
@@ -30,10 +31,12 @@ class BackupSettings : AppCompatActivity() {
         FileImportExportUtils.ioStatus.observe(this, Observer {
             it?.let {
                 if (!isShown) {
-                    (if (it.status) ToastType.SUCCESSFUL
-                    else ToastType.ERROR).apply {
-                        showToast(this, it.message)
-                        isShown = true
+                    isShown = if (it.status) {
+                        showToast(ToastType.SUCCESSFUL, it.message)
+                        true
+                    } else {
+                        showToast(ToastType.ERROR, it.message, Toast.LENGTH_LONG)
+                        true
                     }
                 }
             }

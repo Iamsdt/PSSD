@@ -87,6 +87,7 @@ class FileImportExportUtils(private val wordTableDao: WordTableDao,
                     " Saving file in the default location"))
             val name = file.name
             file = File(Constants.Settings.DEFAULT_PATH_STORAGE, name)
+
         } finally {
             if (file.exists()) {
                 file.setWritable(true)
