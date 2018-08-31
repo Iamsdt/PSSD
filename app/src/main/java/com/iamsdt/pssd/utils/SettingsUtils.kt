@@ -39,6 +39,10 @@ class SettingsUtils(val context: Context) {
         get():Boolean = settingsSp.getBoolean(
                 context.getString(R.string.switchShare), true)
 
+    val searchIcon get():Boolean =
+        settingsSp.getBoolean(context.getString(R.string.switchSearch),
+                false)
+
 
     //advance
 

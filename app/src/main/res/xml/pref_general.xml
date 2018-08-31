@@ -23,6 +23,14 @@
         android:key="@string/syncKey"
         android:title="@string/syncLabel" />
 
+    <SwitchPreference
+        android:defaultValue="false"
+        android:icon="@drawable/ic_search"
+        android:key="@string/switchSearch"
+        android:summaryOff="@string/switchSearchOFF"
+        android:summaryOn="@string/switchSearchON"
+        android:title="@string/switchSearchLabel" />
+
     <!-- complete add icon -->
 
     <PreferenceCategory

@@ -46,6 +46,7 @@ import com.iamsdt.pssd.ui.search.MySuggestionProvider
 import com.iamsdt.pssd.ui.search.SearchActivity
 import com.iamsdt.pssd.ui.settings.SettingsActivity
 import com.iamsdt.pssd.utils.Constants
+import com.iamsdt.pssd.utils.SettingsUtils
 import com.iamsdt.pssd.utils.sync.SyncTask
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -58,6 +59,8 @@ class MainActivity : AppCompatActivity(),
         NavigationView.OnNavigationItemSelectedListener {
 
     private val syncTask: SyncTask by inject()
+
+    private val settingsUtils: SettingsUtils by inject()
 
     private val viewModel: MainVM by viewModel()
 
@@ -169,7 +172,8 @@ class MainActivity : AppCompatActivity(),
         when {
             drawer_layout.isDrawerOpen(GravityCompat.START) -> drawer_layout.closeDrawer(GravityCompat.START)
             !(searchView.isIconified) -> {
-                searchView.isIconified = true
+                searchView.onActionViewCollapsed()
+                fab.show()
             }
             else -> super.onBackPressed()
         }
@@ -189,8 +193,12 @@ class MainActivity : AppCompatActivity(),
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
 
-        //todo  make settings
-        searchView.setIconifiedByDefault(true)
+        //complete  make settings
+        if (isIconifiedDefault()) {
+            searchView.setIconifiedByDefault(true)
+        } else {
+            searchView.setIconifiedByDefault(false)
+        }
 
         searchView.isQueryRefinementEnabled = true
 
@@ -240,14 +248,6 @@ class MainActivity : AppCompatActivity(),
 
         searchView.setOnClickListener {
 
-        }
-
-        searchView.setOnCloseListener {
-            searchView.onActionViewCollapsed()
-            Timber.i("Search view closed")
-            //viewModel.requestSearch("")
-            fab.show()
-            true
         }
 
         return true
@@ -305,6 +305,8 @@ class MainActivity : AppCompatActivity(),
     private fun showDummyMessage() {
         showToast(ToastType.SUCCESSFUL, "Not available yet")
     }
+
+    private fun isIconifiedDefault() = !settingsUtils.searchIcon
 
     private fun getRemoteDataStatus() {
         WorkManager.getInstance().getStatusesForUniqueWork("Download")
