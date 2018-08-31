@@ -273,7 +273,7 @@ class MainActivity : AppCompatActivity(),
                         themeRequestCode)
             }
             R.id.nav_notice -> {
-                toNextActivity(SearchActivity::class)
+                showDummyMessage()
             }
             R.id.nav_police -> {
                 showDummyMessage()
@@ -282,7 +282,7 @@ class MainActivity : AppCompatActivity(),
                 showDummyMessage()
             }
             R.id.nav_about -> {
-                toNextActivity(AppAboutActivity::class)
+                showDummyMessage()
             }
             R.id.nav_developer -> {
                 toNextActivity(DeveloperActivity::class)

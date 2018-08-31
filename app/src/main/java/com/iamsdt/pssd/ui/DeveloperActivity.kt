@@ -26,7 +26,7 @@ class DeveloperActivity : AppCompatActivity() {
         setContentView(R.layout.activity_developer)
         setSupportActionBar(toolbar)
 
-        // TODO: 8/30/18 update link
+        // complete: 8/30/18 update link
 
         //Todo update name pssd
 
@@ -34,7 +34,7 @@ class DeveloperActivity : AppCompatActivity() {
 
         //dev 1
         dev_fb.click("https://www.facebook.com/iamsdt/")
-        dev2_ln.click("https://www.linkedin.com/in/iamsdt")
+        dev_ln.click("https://www.linkedin.com/in/iamsdt")
         dev_git.click("https://github.com/Iamsdt")
         dev_em.setOnClickListener {
             sendEmail("Shudiptotrafder@gmail.com",
@@ -44,11 +44,11 @@ class DeveloperActivity : AppCompatActivity() {
         // TODO: 8/31/18 add dev 2
 
         //dev 2
-        dev2_fb.click("")
-        dev2_ln.click("")
-        dev2_git.click("")
+        dev2_fb.click("https://www.facebook.com/")
+        dev2_ln.click("https://www.linkedin.com/")
+        dev2_git.click("https://github.com/")
         dev2_em.setOnClickListener {
-            sendEmail("", subject)
+            sendEmail("Shudiptotrafder@gmail.com", subject)
         }
 
 

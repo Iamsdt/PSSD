@@ -53,17 +53,16 @@ class SyncTask(private val wordTableDao: WordTableDao,
         //if status is available
         //then download the file
         //do this task once in a week
-        if (isRunDownload()) {
-            if (getRemoteConfigStatus(context)) {
-                val request = OneTimeWorkRequest
-                        .Builder(DownloadWorker::class.java)
-                        .addTag(DOWNLOAD_TAG)
-                        .build()
-                WorkManager.getInstance().beginUniqueWork("Download",
-                        ExistingWorkPolicy.REPLACE, request).enqueue()
-            }
+        if (isRunDownload() && getRemoteConfigStatus(context)) {
+            val request = OneTimeWorkRequest
+                    .Builder(DownloadWorker::class.java)
+                    .addTag(DOWNLOAD_TAG)
+                    .build()
+            WorkManager.getInstance().beginUniqueWork("Download",
+                    ExistingWorkPolicy.REPLACE, request).enqueue()
         }
     }
+
 
     private fun isRunUpload(): Boolean {
         val date = spUtils.dateUpload
