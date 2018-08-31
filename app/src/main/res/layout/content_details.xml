@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Developed By Shudipto Trafder
   ~ on 8/17/18 4:29 PM
   ~ Copyright (c) 2018 Shudipto Trafder.
@@ -20,10 +19,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/word"
-        android:textColor="@color/txtColor"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:padding="10dp"
+        android:text="@string/word"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="?attr/colorAccent"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,8 +35,9 @@
         android:layout_marginTop="24dp"
         android:padding="10dp"
         android:text="@string/description"
-        android:textColor="@color/txtColor"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        android:textColor="?attr/colorAccent"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -46,6 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif"
         android:padding="5dp"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textColor="@color/txtColor"
@@ -63,12 +65,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-        tools:text="This is description"
+        android:fontFamily="@font/roboto_r"
         android:padding="5dp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:textColor="@color/txtColor"
         android:textIsSelectable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:text="@string/license" />
 </androidx.constraintlayout.widget.ConstraintLayout>
