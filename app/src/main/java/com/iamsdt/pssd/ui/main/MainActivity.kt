@@ -34,6 +34,8 @@ import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.gone
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ext.toNextActivity
+import com.iamsdt.pssd.ui.AppAboutActivity
+import com.iamsdt.pssd.ui.DeveloperActivity
 import com.iamsdt.pssd.ui.add.AddActivity
 import com.iamsdt.pssd.ui.color.ColorActivity
 import com.iamsdt.pssd.ui.color.ThemeUtils
@@ -280,10 +282,10 @@ class MainActivity : AppCompatActivity(),
                 showDummyMessage()
             }
             R.id.nav_about -> {
-                showDummyMessage()
+                toNextActivity(AppAboutActivity::class)
             }
             R.id.nav_developer -> {
-                showDummyMessage()
+                toNextActivity(DeveloperActivity::class)
             }
         }
 

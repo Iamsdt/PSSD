@@ -37,7 +37,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
                     bindPreferenceSummaryToValue(it)
                 }
 
-        // TODO: 8/17/2018 check this
+        // complete: 8/17/2018 check this
         val backup = findPreference(getString(R.string.bps_key))
         val advance = findPreference(getString(R.string.advance_key))
 

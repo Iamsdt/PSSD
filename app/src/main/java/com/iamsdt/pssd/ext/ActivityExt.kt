@@ -30,16 +30,16 @@ fun AppCompatActivity.toNextActivity(
         clazz: KClass<out AppCompatActivity>,
         extraKey: String = "",
         extra: String = "",
-        finish:Boolean = false) {
+        finish: Boolean = false) {
     val intent = Intent(this, clazz.java)
 
     if (extraKey.isNotEmpty()) {
-        intent.putExtra(extraKey,extra)
+        intent.putExtra(extraKey, extra)
     }
 
     startActivity(intent)
 
-    if (finish){
+    if (finish) {
         finish()
     }
 }
@@ -51,9 +51,20 @@ fun AppCompatActivity.customTab(link: String) {
     builder.setShowTitle(true)
     builder.addDefaultShareMenuItem()
     //builder.setCloseButtonIcon(BitmapFactory.decodeResource(
-            //resources, R.drawable.dialog_back))
+    //resources, R.drawable.dialog_back))
     val customTabsIntent = builder.build()
     customTabsIntent.launchUrl(this, Uri.parse(link))
+}
+
+fun AppCompatActivity.sendEmail(
+        email: String,
+        subject: String) {
+
+    val intent = Intent(Intent.ACTION_SENDTO)
+    intent.type = "text/plain"
+    intent.data = Uri.parse("mailto:$email")
+    intent.putExtra(Intent.EXTRA_SUBJECT, subject)
+    startActivity(Intent.createChooser(intent, "Send Email"))
 }
 
 

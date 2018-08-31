@@ -36,6 +36,8 @@ class SplashActivity : AppCompatActivity() {
 
         //save data
 
+        // TODO: 8/31/18 add animation
+
         if (!spUtils.isDatabaseInserted) {
             //save database
             val request = OneTimeWorkRequest.Builder(
@@ -48,7 +50,7 @@ class SplashActivity : AppCompatActivity() {
         }
 
         val time = if (BuildConfig.DEBUG) 100L
-        else 100L
+        else 1000L
         val next = MainActivity::class
 
         runThread(time, next)
