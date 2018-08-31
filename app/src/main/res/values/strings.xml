@@ -212,8 +212,8 @@
     <string name="clear_history">clear history</string>
     <string name="speak_voice">Speak now</string>
 
-    <string name="title_activity_add">AddActivity</string>
-    <string name="title_activity_app_about">AppAboutActivity</string>
+    <string name="title_activity_add">Add Words</string>
+    <string name="title_activity_app_about">App About</string>
 
     <!-- Navigation -->
     <string name="nav_favourites">Favourites</string>
@@ -244,5 +244,6 @@
     <string name="dev2_work">Work as Database Expert.</string>
     <string name="dev_find_me">Find me:</string>
     <string name="empty_fav_txt">You don\'t added any favourite word yet</string>
+    <string name="add_word">Add Word</string>
 
 </resources>
