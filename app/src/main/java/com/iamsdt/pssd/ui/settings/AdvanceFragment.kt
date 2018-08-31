@@ -32,23 +32,11 @@ class AdvanceFragment : PreferenceFragmentCompat(),
     private val PERMISSIONS_REQUEST_READ_STORAGE = 0
     private var changeDirPref: Preference? = null
 
-    val settingUtils: SettingsUtils by inject()
+    private val settingUtils: SettingsUtils by inject()
 
 
     override fun onSharedPreferenceChanged(sp: SharedPreferences?, key: String?) {
         findPreference(key)?.let {
-            if (key == getString(R.string.switchShare)) {
-                val value = sp?.getBoolean(
-                        getString(R.string.switchShare), true) ?: true
-                val pre = findPreference(getString(R.string.NameShare))
-                if (!value) {
-                    pre?.isEnabled = false
-                    pre.shouldDisableView = true
-                } else {
-                    pre.shouldDisableView = false
-                    pre?.isEnabled = true
-                }
-            }
             bindPreferenceSummaryToValue(it)
         }
     }
@@ -104,15 +92,6 @@ class AdvanceFragment : PreferenceFragmentCompat(),
 
             true
         }
-
-        val value = settingUtils.shareStatus
-        if (!value) {
-            val pre = findPreference(getString(R.string.NameShare))
-            pre?.isEnabled = false
-            pre.shouldDisableView = true
-        }
-
-
     }
 
     @Suppress("DEPRECATION")

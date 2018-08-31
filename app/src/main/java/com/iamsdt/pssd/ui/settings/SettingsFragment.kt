@@ -8,10 +8,7 @@ package com.iamsdt.pssd.ui.settings
 
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.preference.ListPreference
-import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.PreferenceManager
+import androidx.preference.*
 import com.iamsdt.pssd.R
 
 class SettingsFragment : PreferenceFragmentCompat(),
@@ -58,8 +55,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
     companion object {
 
-        private val sBindPreferenceSummaryToValueListener
-                = Preference.OnPreferenceChangeListener { preference, value ->
+        private val sBindPreferenceSummaryToValueListener = Preference.OnPreferenceChangeListener { preference, value ->
             val stringValue = value.toString()
 
             if (preference is ListPreference) {
@@ -89,10 +85,19 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
             // Trigger the listener immediately with the preference's
             // current value.
-            sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
-                    PreferenceManager
-                            .getDefaultSharedPreferences(preference.context)
-                            .getString(preference.key, ""))
+
+            //checkbox and switch pref
+            if (preference is SwitchPreference) {
+                sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
+                        PreferenceManager
+                                .getDefaultSharedPreferences(preference.context)
+                                .getBoolean(preference.key, false))
+            } else {
+                sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
+                        PreferenceManager
+                                .getDefaultSharedPreferences(preference.context)
+                                .getString(preference.key, ""))
+            }
         }
     }
 
