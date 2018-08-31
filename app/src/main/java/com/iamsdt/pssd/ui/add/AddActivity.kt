@@ -8,8 +8,8 @@ package com.iamsdt.pssd.ui.add
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.MenuItem
+import android.util.DisplayMetrics
+import android.view.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageButton
@@ -37,6 +37,7 @@ import kotlinx.android.synthetic.main.content_add.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+
 class AddActivity : AppCompatActivity() {
 
     private val adapter: AddAdapter by inject()
@@ -44,6 +45,8 @@ class AddActivity : AppCompatActivity() {
     private val model: AddVM by viewModel()
 
     private lateinit var dialog: AlertDialog
+
+    private lateinit var dialogView: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -141,15 +144,15 @@ class AddActivity : AppCompatActivity() {
 
     @SuppressLint("InflateParams")
     private fun showDialog() {
-        val view = LayoutInflater.from(this)
+        val dialogView = LayoutInflater.from(this)
                 .inflate(R.layout.add_dialog, null)
 
         val builder = AlertDialog.Builder(this)
-        builder.setView(view)
+        builder.setView(dialogView)
 
-        val wordTV: TextInputEditText = view.add_word
-        val desTV: TextInputEditText = view.add_des
-        val button: AppCompatImageButton = view.add_btn
+        val wordTV: TextInputEditText = dialogView.add_word
+        val desTV: TextInputEditText = dialogView.add_des
+        val button: AppCompatImageButton = dialogView.add_btn
 
         button.setOnClickListener {
             val word = wordTV.text ?: ""
@@ -169,7 +172,22 @@ class AddActivity : AppCompatActivity() {
         })
 
         dialog = builder.create()
+
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+
+        val window = dialog.window
+        val wlp = WindowManager.LayoutParams()
+
+        wlp.copyFrom(dialog.window?.attributes)
+
+        wlp.gravity = Gravity.BOTTOM
+        wlp.width = displayMetrics.widthPixels
+        dialog.window?.attributes = wlp
+
+        window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
         dialog.setCanceledOnTouchOutside(false)
+
         dialog.show()
     }
 
