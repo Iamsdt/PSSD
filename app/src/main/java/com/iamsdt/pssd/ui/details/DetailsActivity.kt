@@ -10,6 +10,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
+import android.text.Layout
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -64,6 +65,10 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             it?.let {
                 details_word.addStr(it.word)
                 details_des.addStr(it.des)
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    details_des.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
+                }
 
                 //save
                 word = it.word
