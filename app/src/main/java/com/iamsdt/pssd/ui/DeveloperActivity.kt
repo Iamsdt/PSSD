@@ -26,6 +26,10 @@ class DeveloperActivity : AppCompatActivity() {
         setContentView(R.layout.activity_developer)
         setSupportActionBar(toolbar)
 
+
+        //scroll
+        dev_scroll.background.alpha = 30
+
         // complete: 8/30/18 update link
 
         //Todo update name pssd
