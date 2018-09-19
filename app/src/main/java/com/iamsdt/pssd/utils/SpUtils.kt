@@ -18,30 +18,23 @@ import java.util.*
 
 class SpUtils(val context: Context) {
 
-    val isAppRunFirstTime get() = appSp.getBoolean(FIRST_TIME, true)
-
-    val isDatabaseInserted get() = appSp.getBoolean(DATA_INSERT, false)
-
-    fun setDataInserted(){
-        appSp.edit {
-            putBoolean(DATA_INSERT,true)
+    var isAppRunFirstTime: Boolean
+        get() = appSp.getBoolean(FIRST_TIME, true)
+        set(v) = appSp.edit {
+            putBoolean(FIRST_TIME, v)
         }
-    }
 
-    fun setAppRunFirstTime() {
-        appSp.edit {
-            putBoolean(FIRST_TIME, false)
+    var isDatabaseInserted: Boolean
+        get() = appSp.getBoolean(DATA_INSERT, false)
+        set(value) = appSp.edit {
+            putBoolean(DATA_INSERT, value)
         }
-    }
 
-
-    val getVolume get() = appSp.getInt(DATA_VOLUME, 1)
-
-    fun setDataVolume(int: Int) {
-        appSp.edit {
-            putInt(DATA_VOLUME, int)
+    var dataVolume: Int
+        get() = appSp.getInt(DATA_VOLUME, 1)
+        set(value) = appSp.edit {
+            putInt(DATA_VOLUME, value)
         }
-    }
 
     //app sp
     private val appSp
@@ -50,24 +43,19 @@ class SpUtils(val context: Context) {
                     Context.MODE_PRIVATE)
 
 
-
     //get date
-    val dateUpload = remoteSp.getLong(DATE_UPLOAD,0)
-    val dateDownload = remoteSp.getLong(DATE_DOWNLOAD,0)
-
-    //save date
-    fun saveUploadDate(date:Long = Date().time){
-        remoteSp.edit {
-            putLong(DATE_UPLOAD,date)
+    var uploadDate: Long
+        get() = remoteSp.getLong(DATE_UPLOAD, 0)
+        set(value) = remoteSp.edit {
+            putLong(DATE_UPLOAD, value)
         }
-    }
-
-    fun saveDownloadDate(date:Long = Date().time){
-        remoteSp.edit {
-            putLong(DATE_DOWNLOAD,date)
+    var downloadDate: Long
+        get() = remoteSp.getLong(DATE_DOWNLOAD, 0)
+        set(value) = remoteSp.edit {
+            putLong(DATE_DOWNLOAD, value)
         }
-    }
 
+    //remote sp
     private val remoteSp
         get():SharedPreferences =
             context.getSharedPreferences(Constants.REMOTE.SP,
