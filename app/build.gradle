@@ -99,7 +99,7 @@ dependencies {
     androidTestImplementation "android.arch.work:work-testing:$work_version"
 
     //ktx
-    def ktx_version = "1.0.0-rc01"
+    def ktx_version = "1.0.0-rc02"
     implementation "androidx.core:core-ktx:$ktx_version"
 
     //custom tab
