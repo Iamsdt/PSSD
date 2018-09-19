@@ -1,7 +1,6 @@
 package com.iamsdt.pssd.utils.sync.worker
 
 import android.net.Uri
-import android.os.AsyncTask
 import androidx.work.Worker
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
@@ -9,6 +8,7 @@ import com.google.gson.Gson
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.SpUtils
+import com.iamsdt.pssd.utils.ioThread
 import com.iamsdt.pssd.utils.model.Model
 import com.iamsdt.pssd.utils.model.RemoteModel
 import org.joda.time.DateTime
@@ -21,19 +21,19 @@ import kotlin.collections.ArrayList
 
 class UploadWorker : Worker(), KoinComponent {
 
-    val gson: Gson by inject()
+    private val gson: Gson by inject()
 
-    val wordTableDao: WordTableDao by inject()
+    private val wordTableDao: WordTableDao by inject()
 
-    val spUtils: SpUtils by inject()
+    private val spUtils: SpUtils by inject()
 
     override fun doWork(): Result {
 
         val data = wordTableDao.upload()
 
-        val list:ArrayList<Model> = ArrayList()
+        val list: ArrayList<Model> = ArrayList()
         data.map {
-            list.add(Model(it.word,it.des))
+            list.add(Model(it.word, it.des))
         }
 
         val outputData = RemoteModel(
@@ -49,19 +49,19 @@ class UploadWorker : Worker(), KoinComponent {
         var result = Result.SUCCESS
 
         val auth = FirebaseAuth.getInstance()
-        auth.signInAnonymously().addOnCompleteListener {
-            if (it.isSuccessful) {
+        auth.signInAnonymously().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
                 //write in  the database
 
                 //file name
-                val fileName = it.result.user.uid + "-${DateTime().dayOfMonth}"
+                val fileName = task.result.user.uid + "-${DateTime().dayOfMonth}"
                 val db = FirebaseStorage.getInstance()
                 val ref = db.reference.child(Constants.REMOTE.USER)
                         .child(fileName)
 
-                ref.putFile(Uri.fromFile(file)).addOnCompleteListener {
+                ref.putFile(Uri.fromFile(file)).addOnCompleteListener { it ->
                     if (it.isSuccessful) {
-                        AsyncTask.execute {
+                        ioThread {
                             var up = 0
                             data.forEach {
                                 val word = it
@@ -71,11 +71,11 @@ class UploadWorker : Worker(), KoinComponent {
 
                             if (up <= 0) {
                                 spUtils.saveUploadDate()
-                            } else{
+                            } else {
                                 result = Result.RETRY
                             }
                         }
-                    } else{
+                    } else {
                         result = Result.RETRY
                     }
                 }

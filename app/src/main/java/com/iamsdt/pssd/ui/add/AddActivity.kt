@@ -46,8 +46,6 @@ class AddActivity : AppCompatActivity() {
 
     private lateinit var dialog: AlertDialog
 
-    private lateinit var dialogView: View
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ThemeUtils.initialize(this)
@@ -69,8 +67,8 @@ class AddActivity : AppCompatActivity() {
         deco.setDrawable(getDrawable(R.drawable.dercoration))
         addRcv.addItemDecoration(deco)
 
-        model.getWord().observe(this, Observer {
-            it?.let {
+        model.getWord().observe(this, Observer { list ->
+            list?.let {
                 if (it.isNotEmpty()) {
                     regularView()
                     adapter.submitList(it)
@@ -80,8 +78,8 @@ class AddActivity : AppCompatActivity() {
             }
         })
 
-        model.dialogStatus.observe(this, Observer {
-            it?.let {
+        model.dialogStatus.observe(this, Observer { model ->
+            model?.let {
                 if (it.status && it.title == DIALOG) {
                     if (::dialog.isInitialized && dialog.isShowing) {
                         dialog.dismiss()
@@ -161,8 +159,8 @@ class AddActivity : AppCompatActivity() {
             model.addData(word.toString(), des.toString())
         }
 
-        model.dialogStatus.observe(this, Observer {
-            it?.let {
+        model.dialogStatus.observe(this, Observer { model ->
+            model?.let {
                 if (!it.status && it.title == WORD) {
                     wordTV.error = it.message
                 } else if (!it.status && it.title == DES) {

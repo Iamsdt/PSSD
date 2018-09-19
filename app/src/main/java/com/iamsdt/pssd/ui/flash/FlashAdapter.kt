@@ -20,15 +20,15 @@ import com.iamsdt.pssd.ui.main.MainAdapter.Companion.DIFF_CALLBACK
 import kotlinx.android.synthetic.main.flash_item.view.*
 import timber.log.Timber
 
-class FlashAdapter(val click:ClickListener) :
+class FlashAdapter(private val click: ClickListener) :
         RecyclerView.Adapter<FlashAdapter.MyVH>() {
 
-    private var dataList:PagedList<WordTable> ?= null
+    private var dataList: PagedList<WordTable>? = null
 
     override fun getItemCount(): Int = dataList?.size ?: 0
 
-    interface ClickListener{
-        fun click(id:Int)
+    interface ClickListener {
+        fun click(id: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyVH {
@@ -38,7 +38,7 @@ class FlashAdapter(val click:ClickListener) :
         return MyVH(view)
     }
 
-    fun submitList(list: PagedList<WordTable>){
+    fun submitList(list: PagedList<WordTable>) {
         dataList = list
         AsyncListDiffer<WordTable>(this, DIFF_CALLBACK).submitList(list)
     }
@@ -47,8 +47,8 @@ class FlashAdapter(val click:ClickListener) :
 
         val model: WordTable? = dataList?.get(position)
 
-        model?.let {
-            holder.bind(it)
+        model?.let { table ->
+            holder.bind(table)
 
             holder.itemView.setOnClickListener {
                 click.click(model.id)
@@ -57,11 +57,11 @@ class FlashAdapter(val click:ClickListener) :
         }
     }
 
-    inner class MyVH(view:View):RecyclerView.ViewHolder(view){
+    inner class MyVH(view: View) : RecyclerView.ViewHolder(view) {
 
-        val word:TextView = view.word
+        val word: TextView = view.word
 
-        fun bind(wordTable: WordTable){
+        fun bind(wordTable: WordTable) {
             word.addStr(wordTable.word)
         }
     }

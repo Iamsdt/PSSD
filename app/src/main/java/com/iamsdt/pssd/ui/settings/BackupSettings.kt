@@ -28,8 +28,8 @@ class BackupSettings : AppCompatActivity() {
 
 
         //boiler plate code
-        FileImportExportUtils.ioStatus.observe(this, Observer {
-            it?.let {
+        FileImportExportUtils.ioStatus.observe(this, Observer { model ->
+            model?.let {
                 if (!isShown) {
                     isShown = if (it.status) {
                         showToast(ToastType.SUCCESSFUL, it.message)

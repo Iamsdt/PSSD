@@ -19,11 +19,11 @@ import java.io.InputStreamReader
 
 class DataInsertWorker : Worker(), KoinComponent {
 
-    val gson: Gson by inject()
+    private val gson: Gson by inject()
 
-    val wordTableDao: WordTableDao by inject()
+    private val wordTableDao: WordTableDao by inject()
 
-    val spUtils: SpUtils by inject()
+    private val spUtils: SpUtils by inject()
 
     override fun doWork(): Result {
 
@@ -33,15 +33,15 @@ class DataInsertWorker : Worker(), KoinComponent {
 
         val reader = InputStreamReader(stream)
 
-        val data = Gson().fromJson(
+        val data = gson.fromJson(
                 reader.buffered(4096),
                 JsonModel::class.java)
 
         var count = 0L
 
-        data?.let {
-            spUtils.setDataVolume(it.volume)
-            it.collection.forEach {
+        data?.let { model ->
+            spUtils.setDataVolume(model.volume)
+            model.collection.forEach {
                 val wordTable = WordTable(word = it.word, des = it.des)
                 count = wordTableDao.add(wordTable)
             }

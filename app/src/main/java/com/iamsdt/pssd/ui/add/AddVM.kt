@@ -17,6 +17,7 @@ import com.iamsdt.pssd.ext.SingleLiveEvent
 import com.iamsdt.pssd.utils.Constants.ADD.DES
 import com.iamsdt.pssd.utils.Constants.ADD.DIALOG
 import com.iamsdt.pssd.utils.Constants.ADD.WORD
+import com.iamsdt.pssd.utils.PAGE_CONFIG
 import com.iamsdt.pssd.utils.model.StatusModel
 
 class AddVM(private val wordTableDao: WordTableDao) : ViewModel() {
@@ -59,16 +60,10 @@ class AddVM(private val wordTableDao: WordTableDao) : ViewModel() {
     }
 
     fun getWord(): LiveData<PagedList<WordTable>> {
-        val config = PagedList.Config.Builder()
-                .setPageSize(10)
-                .setInitialLoadSizeHint(20)//by default page size * 3
-                .setPrefetchDistance(10) // default page size
-                .setEnablePlaceholders(false) //default true
-                .build()
 
         val source = wordTableDao.getAddedWordByUser()
 
-        return LivePagedListBuilder(source, config)
+        return LivePagedListBuilder(source, PAGE_CONFIG)
                 .build()
     }
 

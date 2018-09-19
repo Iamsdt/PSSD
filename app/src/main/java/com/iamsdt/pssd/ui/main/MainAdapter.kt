@@ -16,7 +16,7 @@ import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.ui.details.DetailsActivity
 
-class MainAdapter(val context:Context) :PagedListAdapter<WordTable, MyViewHolder>(DIFF_CALLBACK) {
+class MainAdapter(val context: Context) : PagedListAdapter<WordTable, MyViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -27,14 +27,14 @@ class MainAdapter(val context:Context) :PagedListAdapter<WordTable, MyViewHolder
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        val model:WordTable ?= getItem(position)
+        val model: WordTable? = getItem(position)
 
-        model?.let {
-            holder.bind(it)
+        model?.let { table ->
+            holder.bind(table)
 
             holder.itemView.setOnClickListener {
-                val intent = Intent(context,DetailsActivity::class.java)
-                intent.putExtra(Intent.EXTRA_TEXT,model.id)
+                val intent = Intent(context, DetailsActivity::class.java)
+                intent.putExtra(Intent.EXTRA_TEXT, model.id)
                 context.startActivity(intent)
             }
         }

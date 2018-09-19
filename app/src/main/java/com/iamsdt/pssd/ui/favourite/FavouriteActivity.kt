@@ -39,9 +39,6 @@ class FavouriteActivity : AppCompatActivity() {
         setContentView(R.layout.activity_favourite)
         setSupportActionBar(toolbar)
 
-        //change the context
-        adapter.changeContext(this)
-
         fav_rcv.layoutManager = LinearLayoutManager(this)
 
         fav_rcv.adapter = adapter

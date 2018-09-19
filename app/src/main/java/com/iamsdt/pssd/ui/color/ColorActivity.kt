@@ -12,13 +12,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.edit
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.utils.Constants
 import kotlinx.android.synthetic.main.activity_color.*
 import kotlinx.android.synthetic.main.content_color.*
 
-class ColorActivity : AppCompatActivity(),ClickListener {
+class ColorActivity : AppCompatActivity(), ClickListener {
 
     private val themes = ArrayList<MyTheme>()
 
@@ -33,7 +34,7 @@ class ColorActivity : AppCompatActivity(),ClickListener {
         fillThemeIds()
 
         colorRcv.layoutManager = LinearLayoutManager(this)
-        colorRcv.adapter = ColorAdapter(themes,this,this)
+        colorRcv.adapter = ColorAdapter(themes, this, this)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
@@ -43,23 +44,30 @@ class ColorActivity : AppCompatActivity(),ClickListener {
      * array list contain theme name and it's id
      */
     private fun fillThemeIds() {
-            //fill array with styles ids
-            themes.add(MyTheme("Default", R.style.AppTheme_NoActionBar))
-            themes.add(MyTheme("Amber", R.style.amber_dark))
-            themes.add(MyTheme("Purple", R.style.purple_dark))
-            themes.add(MyTheme("Orange", R.style.orange))
-            themes.add(MyTheme("Cyan", R.style.cyan))
-            themes.add(MyTheme("Deep Orange", R.style.deeporange))
-            themes.add(MyTheme("Green", R.style.green))
+        //fill array with styles ids
+        val map = mapOf(
+                Pair("Default", R.style.AppTheme_NoActionBar),
+                Pair("Amber", R.style.amber_dark),
+                Pair("Purple", R.style.purple_dark),
+                Pair("Orange", R.style.orange),
+                Pair("Cyan", R.style.cyan),
+                Pair("Deep Orange", R.style.deeporange),
+                Pair("Green", R.style.green)
+        )
+
+        for ((n, id) in map) {
+            themes.add(MyTheme(n, id))
+        }
     }
 
     override fun onItemClick(themeID: Int) {
         val themeCont = themes[themeID]
 
         val sp = getSharedPreferences(Constants.COLOR.colorSp, Context.MODE_PRIVATE)
-        val editor = sp.edit()
-        editor.putInt(Constants.COLOR.themeKey, themeCont.id)
-        editor.apply()
+
+        sp.edit {
+            putInt(Constants.COLOR.themeKey, themeCont.id)
+        }
 
         restartActivity()
     }

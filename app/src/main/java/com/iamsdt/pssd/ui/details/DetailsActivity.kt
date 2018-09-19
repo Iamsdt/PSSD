@@ -35,10 +35,13 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private val viewModel: DetailsVM by viewModel()
 
+    //id word
     var id = 0
 
+    //share
     private lateinit var shareActionProvider: ShareActionProvider
 
+    //menu
     private lateinit var menuItem: MenuItem
 
     private var isBookmarked = false
@@ -48,8 +51,8 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private lateinit var textToSpeech: TextToSpeech
 
+    //text size
     var size = 18F
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,8 +64,8 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         textToSpeech = TextToSpeech(this, this)
 
-        viewModel.getWord(id).observe(this, Observer {
-            it?.let {
+        viewModel.getWord(id).observe(this, Observer { table ->
+            table?.let {
                 details_word.addStr(it.word)
                 details_des.addStr(it.des)
 
@@ -81,9 +84,9 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             }
         })
 
-        viewModel.singleLiveEvent.observe(this, Observer {
+        viewModel.singleLiveEvent.observe(this, Observer { bookmark ->
             if (::menuItem.isInitialized) {
-                it?.let {
+                bookmark?.let {
                     isBookmarked = when (it) {
                         Bookmark.SET -> {
                             showToast(ToastType.SUCCESSFUL, "Bookmarked")
@@ -120,6 +123,7 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             textToSpeech.speak(word, TextToSpeech.QUEUE_FLUSH, null, null)
 
         } else {
+            @Suppress("DEPRECATION")
             textToSpeech.speak(word, TextToSpeech.QUEUE_FLUSH, null)
         }
     }
@@ -175,6 +179,7 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         if (::shareActionProvider.isInitialized) {
             val shareIntent = Intent(Intent.ACTION_SEND)
             shareIntent.type = "text/plain"
+            //todo 9/18/2018 add google play link
             val link = ""
             val share = "$word:$des -> ${getString(R.string.app_name)}" +
                     "Gplay-$link"
@@ -186,7 +191,7 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
-        //back to home
+            //back to home
             android.R.id.home -> onBackPressed()
 
             R.id.action_favourite ->

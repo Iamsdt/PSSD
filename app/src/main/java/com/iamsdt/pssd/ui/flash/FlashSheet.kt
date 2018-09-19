@@ -55,8 +55,8 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
         Timber.i("Tag: $id")
 
         //draw ui
-        wordTableDao.getSingleWord(id).observe(this, Observer {
-            it?.let {
+        wordTableDao.getSingleWord(id).observe(this, Observer { table ->
+            table?.let {
                 wordTv.addStr(it.word)
                 desTV.addStr(it.des)
 
@@ -87,6 +87,7 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
             textToSpeech.speak(wordTxt, TextToSpeech.QUEUE_FLUSH, null, null)
 
         } else {
+            @Suppress("DEPRECATION")
             textToSpeech.speak(wordTxt, TextToSpeech.QUEUE_FLUSH, null)
         }
     }

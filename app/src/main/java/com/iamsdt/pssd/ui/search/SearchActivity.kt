@@ -32,7 +32,6 @@ import timber.log.Timber
 
 class SearchActivity : AppCompatActivity() {
 
-
     private val viewModel: SearchVM by viewModel()
 
     private var suggestions: SearchRecentSuggestions? = null

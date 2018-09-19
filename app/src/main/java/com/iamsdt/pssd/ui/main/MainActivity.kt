@@ -16,6 +16,7 @@ import android.os.Bundle
 import android.provider.SearchRecentSuggestions
 import android.view.Menu
 import android.view.MenuItem
+import android.view.WindowManager
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -92,8 +93,8 @@ class MainActivity : AppCompatActivity(),
             adapter.submitList(it)
         })
 
-        viewModel.event.observe(this, Observer {
-            it?.let {
+        viewModel.event.observe(this, Observer { model ->
+            model?.let {
                 if (it.title == Constants.SEARCH) {
                     if (it.status) {
                         Timber.i("Status is true")
@@ -139,12 +140,15 @@ class MainActivity : AppCompatActivity(),
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
+        toggle.setToolbarNavigationClickListener {
+            window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
+        }
+
         nav_view.setNavigationItemSelectedListener(this)
     }
 
     private fun setRecentQuery(query: String) {
         suggestions?.saveRecentQuery(query, null)
-
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -310,8 +314,8 @@ class MainActivity : AppCompatActivity(),
 
     private fun getRemoteDataStatus() {
         WorkManager.getInstance().getStatusesForUniqueWork("Download")
-                .observe(this, Observer {
-                    it?.let {
+                .observe(this, Observer { list ->
+                    list?.let {
 
                         if (it.isNotEmpty() && it[0].state.isFinished && !isShown) {
 

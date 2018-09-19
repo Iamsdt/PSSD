@@ -12,6 +12,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.gone
@@ -27,7 +28,6 @@ class FlashCardActivity : AppCompatActivity(), FlashAdapter.ClickListener {
 
     private val viewModel: FavouriteVM by viewModel()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ThemeUtils.initialize(this)
@@ -35,7 +35,7 @@ class FlashCardActivity : AppCompatActivity(), FlashAdapter.ClickListener {
         setSupportActionBar(toolbar)
 
         val manager = GridLayoutManager(this, 2,
-                GridLayoutManager.VERTICAL, false)
+                RecyclerView.VERTICAL, false)
 
         if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             manager.spanCount = 3
@@ -47,8 +47,8 @@ class FlashCardActivity : AppCompatActivity(), FlashAdapter.ClickListener {
 
         flash_rcv.adapter = adapter
 
-        viewModel.getData().observe(this, Observer {
-            it?.let {
+        viewModel.getData().observe(this, Observer { list ->
+            list?.let {
                 if (it.isNotEmpty()) {
                     regularView()
                     adapter.submitList(it)

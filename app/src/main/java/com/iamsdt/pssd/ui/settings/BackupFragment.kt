@@ -34,11 +34,11 @@ class BackupFragment : PreferenceFragmentCompat(),
     private val PERMISSIONS_REQUEST_WRITE_STORAGE_FAVOURITE = 23
     private val PERMISSIONS_REQUEST_WRITE_STORAGE_ADDED = 36
 
-    val utils: FileImportExportUtils by inject()
+    private val utils: FileImportExportUtils by inject()
 
-    val settingUtils: SettingsUtils by inject()
+    private val settingUtils: SettingsUtils by inject()
 
-    var path = ""
+    private var path = ""
 
     override fun onSharedPreferenceChanged(sp: SharedPreferences?, key: String?) {
         findPreference(key)?.let {

@@ -23,15 +23,14 @@ import com.iamsdt.pssd.ext.show
 import com.iamsdt.pssd.ui.details.DetailsActivity
 import com.iamsdt.pssd.ui.main.MainAdapter.Companion.DIFF_CALLBACK
 import es.dmoral.toasty.Toasty
-import timber.log.Timber
 
 class FavouriteAdapter(var context: Context,
                        val wordTableDao: WordTableDao) :
         PagedListAdapter<WordTable,FavouriteVH>(DIFF_CALLBACK) {
 
     private val pendingItemRemoval = 3000 // 3sec
-    private val handler = Handler() // hanlder for running delayed runnables
-    private val pendingRunables: MutableMap<WordTable?, Runnable> = HashMap() // map of items to pending runnables, so we can cancel a removal if need be
+    private val handler = Handler() // handler for running delayed runnable
+    private val pendingRunnable: MutableMap<WordTable?, Runnable> = HashMap() // map of items to pending runnables, so we can cancel a removal if need be
 
     private var itemsPendingRemoval: ArrayList<WordTable?> = ArrayList()
 
@@ -43,8 +42,8 @@ class FavouriteAdapter(var context: Context,
     }
 
     private fun undoOpt(postTable: WordTable?) {
-        val pendingRemovalRunnable = pendingRunables[postTable]
-        pendingRunables.remove(postTable)
+        val pendingRemovalRunnable = pendingRunnable[postTable]
+        pendingRunnable.remove(postTable)
         if (pendingRemovalRunnable != null)
             handler.removeCallbacks(pendingRemovalRunnable)
         itemsPendingRemoval.remove(postTable)
@@ -90,7 +89,7 @@ class FavouriteAdapter(var context: Context,
                 remove(currentList?.indexOf(data) ?: 0)
             }
             handler.postDelayed(pendingRemovalRunnable, pendingItemRemoval.toLong())
-            pendingRunables[data] = pendingRemovalRunnable
+            pendingRunnable[data] = pendingRemovalRunnable
         }
     }
 
@@ -111,17 +110,11 @@ class FavouriteAdapter(var context: Context,
         return itemsPendingRemoval.contains(data)
     }
 
-    //must change context to avoid crash
-    fun changeContext(context: Context) {
-        this.context = context
-        Timber.i("Change context to activity context")
-    }
-
     override fun onBindViewHolder(holder: FavouriteVH, position: Int) {
 
         val model: WordTable?= getItem(position)
 
-        model?.let {
+        model?.let {_->
             if (itemsPendingRemoval.contains(model)) {
                 holder.regular.gone()
                 holder.swipe.show()
@@ -140,6 +133,7 @@ class FavouriteAdapter(var context: Context,
             holder.itemView.setOnClickListener {
                 val intent = Intent(context, DetailsActivity::class.java)
                 intent.putExtra(Intent.EXTRA_TEXT, model.id)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 context.startActivity(intent)
             }
 

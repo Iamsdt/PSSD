@@ -6,21 +6,22 @@
 
 package com.iamsdt.pssd.ui.details
 
-import android.os.AsyncTask
 import androidx.lifecycle.ViewModel
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.SingleLiveEvent
 import com.iamsdt.pssd.utils.Bookmark
+import com.iamsdt.pssd.utils.ioThread
 
-class DetailsVM (val wordTableDao: WordTableDao):
-        ViewModel(){
+class DetailsVM(val wordTableDao: WordTableDao) : ViewModel() {
 
+    //track bookmark
     val singleLiveEvent = SingleLiveEvent<Bookmark>()
 
-    fun getWord(id:Int) = wordTableDao.getSingleWord(id)
+    //get single word
+    fun getWord(id: Int) = wordTableDao.getSingleWord(id)
 
     private fun setBookmark(id: Int) {
-        AsyncTask.execute {
+        ioThread {
             val update = wordTableDao.setBookmark(id)
             if (update != -1)
                 singleLiveEvent.postValue(Bookmark.SET)
@@ -28,7 +29,7 @@ class DetailsVM (val wordTableDao: WordTableDao):
     }
 
     private fun deleteBookmark(id: Int) {
-        AsyncTask.execute {
+        ioThread {
             val delete = wordTableDao.deleteBookmark(id)
             if (delete != -1)
                 singleLiveEvent.postValue(Bookmark.DELETE)

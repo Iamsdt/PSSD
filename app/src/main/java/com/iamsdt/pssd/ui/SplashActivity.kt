@@ -27,7 +27,7 @@ import java.util.*
 
 class SplashActivity : AppCompatActivity() {
 
-    val spUtils: SpUtils by inject()
+    private val spUtils: SpUtils by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

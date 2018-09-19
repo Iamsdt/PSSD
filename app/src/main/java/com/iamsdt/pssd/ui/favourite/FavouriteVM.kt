@@ -12,6 +12,7 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
+import com.iamsdt.pssd.utils.PAGE_CONFIG
 
 class FavouriteVM(
         val wordTableDao: WordTableDao) : ViewModel() {
@@ -20,18 +21,7 @@ class FavouriteVM(
 
         val source = wordTableDao.getBookmarkData()
 
-        val config = PagedList.Config.Builder()
-                .setPageSize(10)
-                .setInitialLoadSizeHint(20)//by default page size * 3
-                .setPrefetchDistance(10) // default page size
-                .setEnablePlaceholders(true) //default true
-                // that's means scroll bar is not jump and all data set show on the
-                //recycler view first after 30 it will show empty view
-                // when load it will update with animation
-                .build()
-
-
-        return LivePagedListBuilder(source, config).build()
+        return LivePagedListBuilder(source, PAGE_CONFIG).build()
     }
 
 

@@ -17,6 +17,7 @@ import com.iamsdt.pssd.utils.Constants.REMOTE.FB_REMOTE_CONFIG_STORAGE_KEY
 import com.iamsdt.pssd.utils.DateUtils
 import com.iamsdt.pssd.utils.SettingsUtils
 import com.iamsdt.pssd.utils.SpUtils
+import com.iamsdt.pssd.utils.ioThread
 import com.iamsdt.pssd.utils.sync.worker.DownloadWorker
 import com.iamsdt.pssd.utils.sync.worker.UploadWorker
 import java.util.*
@@ -37,7 +38,7 @@ class SyncTask(private val wordTableDao: WordTableDao,
 
         //do this task once in a week
         if (isRunUpload()) {
-            AsyncTask.execute {
+            ioThread {
                 val data = wordTableDao.upload()
                 if (data.isNotEmpty()) {
                     //start worker
@@ -79,7 +80,7 @@ class SyncTask(private val wordTableDao: WordTableDao,
 
         //if greater than 7 days
         // complete: 8/24/18 make a settings
-        return interval >= settingsSpUtils.interval()
+        return interval >= settingsSpUtils.interval() && settingsSpUtils.shareStatus
     }
 
     private fun isNetworkAvailable(context: Activity): Boolean {

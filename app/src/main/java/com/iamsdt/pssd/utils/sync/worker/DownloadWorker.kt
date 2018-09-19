@@ -25,11 +25,11 @@ import java.io.File
 
 class DownloadWorker : Worker(), KoinComponent {
 
-    val gson: Gson by inject()
+    private val gson: Gson by inject()
 
-    val wordTableDao: WordTableDao by inject()
+    private val wordTableDao: WordTableDao by inject()
 
-    val spUtils: SpUtils by inject()
+    private val spUtils: SpUtils by inject()
 
     override fun doWork(): Result {
 
