@@ -66,7 +66,7 @@ class SyncTask(private val wordTableDao: WordTableDao,
 
 
     private fun isRunUpload(): Boolean {
-        val date = spUtils.dateUpload
+        val date = spUtils.downloadDate
         val interval = DateUtils.getDayInterval(date)
 
         //if greater than 7 days
@@ -75,7 +75,7 @@ class SyncTask(private val wordTableDao: WordTableDao,
     }
 
     private fun isRunDownload(): Boolean {
-        val date = spUtils.dateDownload
+        val date = spUtils.uploadDate
         val interval = DateUtils.getDayInterval(date)
 
         //if greater than 7 days

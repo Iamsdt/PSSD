@@ -68,8 +68,8 @@ class SplashActivity : AppCompatActivity() {
     //send current date
     private fun saveAppStartDate() {
         val date = Date()
-        spUtils.saveDownloadDate(date.time)
-        spUtils.saveUploadDate(date.time)
+        spUtils.downloadDate = date.time
+        spUtils.uploadDate = date.time
     }
 
     private fun fakeUpload() {

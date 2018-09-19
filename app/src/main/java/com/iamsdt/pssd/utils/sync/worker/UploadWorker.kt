@@ -70,7 +70,7 @@ class UploadWorker : Worker(), KoinComponent {
                             }
 
                             if (up <= 0) {
-                                spUtils.saveUploadDate()
+                                spUtils.uploadDate = Date().time
                             } else {
                                 result = Result.RETRY
                             }

@@ -22,6 +22,7 @@ import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 import timber.log.Timber
 import java.io.File
+import java.util.*
 
 class DownloadWorker : Worker(), KoinComponent {
 
@@ -38,8 +39,8 @@ class DownloadWorker : Worker(), KoinComponent {
         var result = Result.FAILURE
 
         val auth = FirebaseAuth.getInstance()
-        auth.signInAnonymously().addOnCompleteListener {
-            if (it.isSuccessful) {
+        auth.signInAnonymously().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
                 //write in  the database
 
                 Timber.i("Logged in")
@@ -51,14 +52,14 @@ class DownloadWorker : Worker(), KoinComponent {
 
                 val file = File.createTempFile("download", ".json")
 
-                ref.getFile(file).addOnSuccessListener {
+                ref.getFile(file).addOnSuccessListener { _ ->
 
                     Timber.i("Data found")
 
                     val data = gson.fromJson(file.bufferedReader(bufferSize = 4096),
                             RemoteModel::class.java)
 
-                    data?.let {
+                    data?.let { it ->
                         AsyncTask.execute {
                             var insert = 0L
                             it.list.map {
@@ -77,7 +78,7 @@ class DownloadWorker : Worker(), KoinComponent {
                             result = if (insert > 0) {
                                 MainActivity.isShown = false
                                 Timber.i("Inserted: $insert")
-                                spUtils.saveDownloadDate()
+                                spUtils.downloadDate = Date().time
                                 Result.SUCCESS
                             } else {
                                 Result.RETRY

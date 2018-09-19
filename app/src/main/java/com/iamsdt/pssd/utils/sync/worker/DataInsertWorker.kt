@@ -40,7 +40,7 @@ class DataInsertWorker : Worker(), KoinComponent {
         var count = 0L
 
         data?.let { model ->
-            spUtils.setDataVolume(model.volume)
+            spUtils.dataVolume = model.volume
             model.collection.forEach {
                 val wordTable = WordTable(word = it.word, des = it.des)
                 count = wordTableDao.add(wordTable)
@@ -48,7 +48,7 @@ class DataInsertWorker : Worker(), KoinComponent {
         }
 
         if (count > 0) {
-            spUtils.setDataInserted()
+            spUtils.isDatabaseInserted = true
         } else {
             result = Result.FAILURE
         }
