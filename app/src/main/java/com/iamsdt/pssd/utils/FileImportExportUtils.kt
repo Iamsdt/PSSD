@@ -6,7 +6,6 @@
 
 package com.iamsdt.pssd.utils
 
-import android.os.AsyncTask
 import com.google.gson.Gson
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
@@ -21,21 +20,23 @@ import com.iamsdt.pssd.utils.model.OutputModel
 import com.iamsdt.pssd.utils.model.StatusModel
 import timber.log.Timber
 import java.io.File
-import java.io.FileFilter
 import java.io.FileWriter
 import java.io.IOException
+import java.lang.Thread.sleep
 import java.util.*
+import kotlin.concurrent.thread
 
-class FileImportExportUtils(private val wordTableDao: WordTableDao,
-                            private val settingsUtils: SettingsUtils,
-                            private val gson: Gson) {
+class FileImportExportUtils(
+        private val wordTableDao: WordTableDao,
+        private val settingsUtils: SettingsUtils,
+        private val gson: Gson) {
 
     /**
      * Export user favourite data
      * export in a text file just favourite word only
      */
     fun exportFileFavourite() {
-        AsyncTask.execute {
+        ioThread {
             val list = wordTableDao.getBookmarkList()
             if (list.isNotEmpty()) {
                 generateFile(list, "favourite")
@@ -61,7 +62,7 @@ class FileImportExportUtils(private val wordTableDao: WordTableDao,
         val string = gson.toJson(outputData)
 
         //now file
-        val dir = File(settingsUtils.getPath)
+        val dir = File(settingsUtils.filePath)
         if (!dir.exists()) {
             dir.mkdirs()
         }
@@ -102,9 +103,9 @@ class FileImportExportUtils(private val wordTableDao: WordTableDao,
             writer.write(string)
             writer.close()
 
-            Thread {
+            thread {
                 try {
-                    Thread.sleep(1000)
+                    sleep(1000)
                 } catch (e: Exception) {
                     e.printStackTrace()
                 } finally {
@@ -116,8 +117,7 @@ class FileImportExportUtils(private val wordTableDao: WordTableDao,
 
                     ioStatus.postValue(model)
                 }
-            }.start()
-
+            }
         }
     }
 
@@ -126,7 +126,7 @@ class FileImportExportUtils(private val wordTableDao: WordTableDao,
      * export in a text file just favourite word only
      */
     fun exportFileUser() {
-        AsyncTask.execute {
+        ioThread {
             val list = wordTableDao.getAddedWordList()
             if (list.isNotEmpty()) {
                 generateFile(list, "Added")
@@ -155,8 +155,8 @@ class FileImportExportUtils(private val wordTableDao: WordTableDao,
         val data = gson.fromJson(file.bufferedReader(bufferSize = 4096),
                 OutputModel::class.java)
 
-        data?.let {
-            AsyncTask.execute {
+        data?.let { it ->
+            ioThread {
                 var insert = 0L
                 it.list.map { insert = wordTableDao.add(it) }
 
@@ -173,33 +173,6 @@ class FileImportExportUtils(private val wordTableDao: WordTableDao,
                     else StatusModel(true, title, "")
                     //post value
                     ioStatus.postValue(model)
-                }
-            }
-        }
-    }
-
-    /**
-     * Checking any file is available or not
-     * if available then import it
-     * if for first time app open
-     * if user uninstall the app and reinstall again the it will work  */
-
-    fun checkFileAvailable() {
-        val dir = File(settingsUtils.getPath)
-
-        if (!dir.exists()) return
-
-        //get list of file
-        //only .ss file will read
-        AsyncTask.execute {
-            dir.listFiles(FileFilter {
-                it?.name?.contains(EXT) == true
-            }).map {
-                val data = gson.fromJson(it.bufferedReader(bufferSize = 4096),
-                        OutputModel::class.java)
-
-                data?.let { word ->
-                    word.list.map { table -> wordTableDao.add(table) }
                 }
             }
         }

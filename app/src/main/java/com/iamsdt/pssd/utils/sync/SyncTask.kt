@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
-import android.os.AsyncTask
 import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
@@ -14,9 +13,9 @@ import com.iamsdt.pssd.BuildConfig
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.utils.Constants.REMOTE.DOWNLOAD_TAG
 import com.iamsdt.pssd.utils.Constants.REMOTE.FB_REMOTE_CONFIG_STORAGE_KEY
-import com.iamsdt.pssd.utils.DateUtils
 import com.iamsdt.pssd.utils.SettingsUtils
 import com.iamsdt.pssd.utils.SpUtils
+import com.iamsdt.pssd.utils.getDayInterval
 import com.iamsdt.pssd.utils.ioThread
 import com.iamsdt.pssd.utils.sync.worker.DownloadWorker
 import com.iamsdt.pssd.utils.sync.worker.UploadWorker
@@ -67,20 +66,20 @@ class SyncTask(private val wordTableDao: WordTableDao,
 
     private fun isRunUpload(): Boolean {
         val date = spUtils.downloadDate
-        val interval = DateUtils.getDayInterval(date)
+        val interval = getDayInterval(date)
 
         //if greater than 7 days
         // complete: 8/24/18 make a settings
-        return interval >= settingsSpUtils.interval()
+        return interval >= settingsSpUtils.interval
     }
 
     private fun isRunDownload(): Boolean {
         val date = spUtils.uploadDate
-        val interval = DateUtils.getDayInterval(date)
+        val interval = getDayInterval(date)
 
         //if greater than 7 days
         // complete: 8/24/18 make a settings
-        return interval >= settingsSpUtils.interval() && settingsSpUtils.shareStatus
+        return interval >= settingsSpUtils.interval && settingsSpUtils.shareStatus
     }
 
     private fun isNetworkAvailable(context: Activity): Boolean {

@@ -38,6 +38,8 @@ class SplashActivity : AppCompatActivity() {
 
         // TODO: 8/31/18 add animation
 
+        //todo 9/19/2018 add backup data
+
         if (!spUtils.isDatabaseInserted) {
             //save database
             val request = OneTimeWorkRequest.Builder(

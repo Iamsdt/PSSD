@@ -12,6 +12,7 @@ import androidx.core.content.edit
 import com.iamsdt.pssd.utils.Constants.REMOTE.DATE_DOWNLOAD
 import com.iamsdt.pssd.utils.Constants.REMOTE.DATE_UPLOAD
 import com.iamsdt.pssd.utils.Constants.SP.DATA_INSERT
+import com.iamsdt.pssd.utils.Constants.SP.DATA_RESTORE
 import com.iamsdt.pssd.utils.Constants.SP.DATA_VOLUME
 import com.iamsdt.pssd.utils.Constants.SP.FIRST_TIME
 import java.util.*
@@ -22,6 +23,12 @@ class SpUtils(val context: Context) {
         get() = appSp.getBoolean(FIRST_TIME, true)
         set(v) = appSp.edit {
             putBoolean(FIRST_TIME, v)
+        }
+
+    var restore: Boolean
+        get() = appSp.getBoolean(DATA_RESTORE, false)
+        set(value) = appSp.edit {
+            putBoolean(DATA_RESTORE, value)
         }
 
     var isDatabaseInserted: Boolean

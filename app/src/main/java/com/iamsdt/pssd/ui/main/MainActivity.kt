@@ -7,6 +7,7 @@
 package com.iamsdt.pssd.ui.main
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.app.PendingIntent
 import android.app.SearchManager
 import android.content.Context
@@ -35,7 +36,6 @@ import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.gone
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ext.toNextActivity
-import com.iamsdt.pssd.ui.AppAboutActivity
 import com.iamsdt.pssd.ui.DeveloperActivity
 import com.iamsdt.pssd.ui.add.AddActivity
 import com.iamsdt.pssd.ui.color.ColorActivity
@@ -44,9 +44,9 @@ import com.iamsdt.pssd.ui.details.DetailsActivity
 import com.iamsdt.pssd.ui.favourite.FavouriteActivity
 import com.iamsdt.pssd.ui.flash.FlashCardActivity
 import com.iamsdt.pssd.ui.search.MySuggestionProvider
-import com.iamsdt.pssd.ui.search.SearchActivity
 import com.iamsdt.pssd.ui.settings.SettingsActivity
 import com.iamsdt.pssd.utils.Constants
+import com.iamsdt.pssd.utils.RestoreData
 import com.iamsdt.pssd.utils.SettingsUtils
 import com.iamsdt.pssd.utils.sync.SyncTask
 import kotlinx.android.synthetic.main.activity_main.*
@@ -64,6 +64,8 @@ class MainActivity : AppCompatActivity(),
     private val settingsUtils: SettingsUtils by inject()
 
     private val viewModel: MainVM by viewModel()
+
+    private val restoreData: RestoreData by inject()
 
     private var suggestions: SearchRecentSuggestions? = null
 
@@ -135,6 +137,9 @@ class MainActivity : AppCompatActivity(),
         //show notification
         getRemoteDataStatus()
 
+        //restore data
+        restoreData()
+
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
@@ -145,6 +150,35 @@ class MainActivity : AppCompatActivity(),
         }
 
         nav_view.setNavigationItemSelectedListener(this)
+    }
+
+    private fun restoreData() {
+
+        RestoreData.ioStatus.observe(this, Observer {
+            it?.let { model ->
+                //only one type provide
+                showToast(ToastType.SUCCESSFUL, model.message)
+            }
+        })
+
+        if (restoreData.isFound()) {
+
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Restore")
+            builder.setMessage("you have some backup data." +
+                    "\nDo you want to restore it?")
+
+            builder.setPositiveButton("Yes") { _, _ ->
+                restoreData.restoreFile()
+            }
+
+            builder.setNegativeButton("No") { _, _ ->
+                //nothing to do
+            }
+
+            val dialog = builder.create()
+            dialog.show()
+        }
     }
 
     private fun setRecentQuery(query: String) {

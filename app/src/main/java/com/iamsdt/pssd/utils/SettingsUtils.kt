@@ -16,47 +16,45 @@ class SettingsUtils(val context: Context) {
 
     //general
 
-    fun getTextSize(): Pair<Float, Float> {
-        val txt = settingsSp.getString(
-                context.getString(R.string.textSizeKey),
-                context.getString(R.string.sTextModerateValue)) ?: "20"
+    val textSize
+        get(): Pair<Float, Float> {
+            val txt = settingsSp.getString(
+                    context.getString(R.string.textSizeKey),
+                    context.getString(R.string.sTextModerateValue)) ?: "20"
 
-        val size = txt.toFloat()
+            val size = txt.toFloat()
 
-        return Pair(size, size - 2)
-    }
+            return Pair(size, size - 2)
+        }
 
-    fun interval(): Int {
-        val days:String = settingsSp.getString(
-                context.getString(R.string.syncKey),
-                context.getString(R.string.syncWeekValue)
-        )?: "7" //default 7
+    val interval
+        get(): Int {
+            val days: String = settingsSp.getString(
+                    context.getString(R.string.syncKey),
+                    context.getString(R.string.syncWeekValue)
+            ) ?: "7" //default 7
 
-        return days.toInt()
-    }
+            return days.toInt()
+        }
 
     val shareStatus
         get():Boolean = settingsSp.getBoolean(
                 context.getString(R.string.switchShare), true)
 
-    val searchIcon get():Boolean =
-        settingsSp.getBoolean(context.getString(R.string.switchSearch),
-                false)
+    val searchIcon
+        get():Boolean =
+            settingsSp.getBoolean(context.getString(R.string.switchSearch),
+                    false)
 
 
     //advance
 
-    val getPath
-        get():String =
-            settingsSp.getString(context.getString(R.string.advance_dir_add_key),
-                    Constants.Settings.DEFAULT_PATH_STORAGE) ?: ""
-
-    fun savePath(string: String) {
-        settingsSp.edit {
-            putString(context.getString(R.string.advance_dir_add_key), string)
+    var filePath: String
+        get() = settingsSp.getString(context.getString(R.string.advance_dir_add_key), Constants.Settings.DEFAULT_PATH_STORAGE)
+                ?: ""
+        set(value) = settingsSp.edit {
+            putString(context.getString(R.string.advance_dir_add_key), value)
         }
-    }
-
 
     private val settingsSp
         get():SharedPreferences =

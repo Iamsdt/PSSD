@@ -20,13 +20,13 @@ class Constants {
 
     }
 
-    object ADD{
+    object ADD {
         const val WORD = "word"
         const val DES = "des"
         const val DIALOG = "Dialog"
     }
 
-    object COLOR{
+    object COLOR {
         const val colorSp = "colorSp"
         const val themeKey = "themeKey"
         const val NIGHT_MODE_SP_KEY: String = "NightModeSp"
@@ -50,6 +50,7 @@ class Constants {
         const val appSp = "App"
         const val FIRST_TIME = "first"
         const val DATA_INSERT = "data"
+        const val DATA_RESTORE = "restore"
 
         const val DATA_VOLUME = "volume"
     }

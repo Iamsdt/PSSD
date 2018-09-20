@@ -79,7 +79,7 @@ class AdvanceFragment : PreferenceFragmentCompat(),
         changeDirPref = findPreference(getString(R.string.advance_dir_add_key))
 
         //load from sp
-        changeDirPref?.summary = "path: ${settingUtils.getPath}"
+        changeDirPref?.summary = "path: ${settingUtils.filePath}"
 
         changeDirPref?.setOnPreferenceClickListener {
 
@@ -130,7 +130,7 @@ class AdvanceFragment : PreferenceFragmentCompat(),
         if (changeDirPref != null) {
             changeDirPref?.summary = "path: $s"
             //save on sp
-            settingUtils.savePath(s)
+            settingUtils.filePath = s
         }
     }
 

@@ -11,7 +11,7 @@ import android.widget.TextView
 class TxtHelper(private val settingsUtils: SettingsUtils) {
 
     fun setSize(wordTV: TextView, desTV: TextView) {
-        val (w, d) = settingsUtils.getTextSize()
+        val (w, d) = settingsUtils.textSize
         wordTV.textSize = w
         desTV.textSize = d
     }

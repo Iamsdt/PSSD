@@ -10,6 +10,10 @@ import android.os.AsyncTask
 import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import org.joda.time.DateTime
+import org.joda.time.Days
+import timber.log.Timber
+import java.util.*
 
 val PAGE_CONFIG: PagedList.Config = PagedList.Config.Builder()
         .setPageSize(10)
@@ -20,4 +24,17 @@ val PAGE_CONFIG: PagedList.Config = PagedList.Config.Builder()
 
 fun ioThread(f: () -> Unit) {
     AsyncTask.execute(f)
+}
+
+//return interval date
+fun getDayInterval(oldDate: Long): Int {
+
+    val today = DateTime(Date())
+    val preDate = DateTime(oldDate)
+
+    val day = Days.daysBetween(preDate, today).days
+
+    Timber.i(day.toString())
+
+    return day
 }
