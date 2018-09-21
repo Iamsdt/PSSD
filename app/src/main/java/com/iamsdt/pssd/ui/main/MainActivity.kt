@@ -17,7 +17,8 @@ import android.os.Bundle
 import android.provider.SearchRecentSuggestions
 import android.view.Menu
 import android.view.MenuItem
-import android.view.WindowManager
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
@@ -140,15 +141,21 @@ class MainActivity : AppCompatActivity(),
         //restore data
         restoreData()
 
-        val toggle = ActionBarDrawerToggle(
+        val toggle = object : ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close)
+                R.string.navigation_drawer_close) {
+
+            override fun onDrawerOpened(drawerView: View) {
+                super.onDrawerOpened(drawerView)
+                val manager = getSystemService(Context.INPUT_METHOD_SERVICE)
+                        as InputMethodManager
+
+                manager.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+            }
+        }
+
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
-
-        toggle.setToolbarNavigationClickListener {
-            window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
-        }
 
         nav_view.setNavigationItemSelectedListener(this)
     }
