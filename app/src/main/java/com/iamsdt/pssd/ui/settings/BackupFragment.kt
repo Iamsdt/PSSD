@@ -70,7 +70,7 @@ class BackupFragment : PreferenceFragmentCompat(),
         val exportAddWord = findPreference(getString(R.string.bps_ex_add_key))
         val importAddWord = findPreference(getString(R.string.bps_im_add_key))
 
-        path = settingUtils.getPath
+        path = settingUtils.filePath
 
         exportFavourite.summary = "File saved on $path directory"
         exportAddWord.summary = "File saved on $path directory"

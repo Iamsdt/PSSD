@@ -38,6 +38,10 @@ val dbModule = module {
 val appModule = module {
 
     single {
+        RestoreData(get(),get(),get(),get())
+    }
+
+    single {
         TxtHelper(get() as SettingsUtils)
     }
 

@@ -28,7 +28,7 @@ class DeveloperActivity : AppCompatActivity() {
 
 
         //scroll
-        dev_scroll.background.alpha = 30
+        //dev_scroll.background.alpha = 30
 
         // complete: 8/30/18 update link
 

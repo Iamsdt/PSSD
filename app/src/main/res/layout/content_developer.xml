@@ -12,8 +12,7 @@
     android:id="@+id/dev_scroll"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.DeveloperActivity"
-    tools:showIn="@layout/activity_developer"
-    android:background="@drawable/office_581131_640">
+    tools:showIn="@layout/activity_developer">
 
 
     <LinearLayout
