@@ -21,6 +21,7 @@ import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
 import androidx.recyclerview.widget.RecyclerView
 import com.iamsdt.pssd.R
+import com.iamsdt.pssd.ui.callback.ClickListener
 import kotlinx.android.synthetic.main.color_item.view.*
 
 internal data class ColorAdapter(private val myTheme: ArrayList<MyTheme>,

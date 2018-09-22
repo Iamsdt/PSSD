@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.ext.addStr
+import com.iamsdt.pssd.ui.callback.ClickListener
 import com.iamsdt.pssd.ui.main.MainAdapter.Companion.DIFF_CALLBACK
 import kotlinx.android.synthetic.main.flash_item.view.*
 import timber.log.Timber
@@ -26,10 +27,6 @@ class FlashAdapter(private val click: ClickListener) :
     private var dataList: PagedList<WordTable>? = null
 
     override fun getItemCount(): Int = dataList?.size ?: 0
-
-    interface ClickListener {
-        fun click(id: Int)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyVH {
         val view = LayoutInflater.from(parent.context)
@@ -51,7 +48,7 @@ class FlashAdapter(private val click: ClickListener) :
             holder.bind(table)
 
             holder.itemView.setOnClickListener {
-                click.click(model.id)
+                click.onItemClick(model.id)
                 Timber.i("Tag set:${model.id}")
             }
         }

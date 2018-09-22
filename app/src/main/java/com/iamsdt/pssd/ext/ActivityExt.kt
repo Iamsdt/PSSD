@@ -10,6 +10,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabsIntent
+import androidx.fragment.app.Fragment
 import com.iamsdt.pssd.R
 import kotlin.reflect.KClass
 
@@ -42,6 +43,20 @@ fun AppCompatActivity.toNextActivity(
     if (finish) {
         finish()
     }
+}
+
+fun Fragment.toNextActivity(
+        clazz: KClass<out AppCompatActivity>,
+        extraKey: String = "",
+        extra: String = "") {
+
+    val intent = Intent(context, clazz.java)
+
+    if (extraKey.isNotEmpty()) {
+        intent.putExtra(extraKey, extra)
+    }
+
+    startActivity(intent)
 }
 
 

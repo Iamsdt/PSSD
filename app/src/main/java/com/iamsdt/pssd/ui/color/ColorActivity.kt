@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.iamsdt.pssd.R
+import com.iamsdt.pssd.ui.callback.ClickListener
 import com.iamsdt.pssd.utils.Constants
 import kotlinx.android.synthetic.main.activity_color.*
 import kotlinx.android.synthetic.main.content_color.*
@@ -60,8 +61,8 @@ class ColorActivity : AppCompatActivity(), ClickListener {
         }
     }
 
-    override fun onItemClick(themeID: Int) {
-        val themeCont = themes[themeID]
+    override fun onItemClick(id: Int) {
+        val themeCont = themes[id]
 
         val sp = getSharedPreferences(Constants.COLOR.colorSp, Context.MODE_PRIVATE)
 

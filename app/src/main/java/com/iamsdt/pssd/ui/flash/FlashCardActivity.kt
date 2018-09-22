@@ -17,6 +17,7 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.gone
 import com.iamsdt.pssd.ext.show
+import com.iamsdt.pssd.ui.callback.ClickListener
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.favourite.FavouriteVM
 import kotlinx.android.synthetic.main.activity_flash_card.*
@@ -24,7 +25,7 @@ import kotlinx.android.synthetic.main.content_flash_card.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
-class FlashCardActivity : AppCompatActivity(), FlashAdapter.ClickListener {
+class FlashCardActivity : AppCompatActivity(), ClickListener {
 
     private val viewModel: FavouriteVM by viewModel()
 
@@ -71,7 +72,7 @@ class FlashCardActivity : AppCompatActivity(), FlashAdapter.ClickListener {
         empty_view.show()
     }
 
-    override fun click(id: Int) {
+    override fun onItemClick(id: Int) {
         Timber.i("Tag rec: $id")
         val dialog = FlashSheet()
         dialog.show(supportFragmentManager, id.toString())
