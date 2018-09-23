@@ -57,7 +57,6 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
 
     fun requestSearch(query: String) {
 
-
         val source = wordTableDao.getSearchData(query)
 
         val data = LivePagedListBuilder(source, PAGE_CONFIG).build()

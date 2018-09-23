@@ -23,7 +23,7 @@ class DetailsVM(val wordTableDao: WordTableDao) : ViewModel() {
     private fun setBookmark(id: Int) {
         ioThread {
             val update = wordTableDao.setBookmark(id)
-            if (update != -1)
+            if (update > 0)
                 singleLiveEvent.postValue(Bookmark.SET)
         }
     }
@@ -31,7 +31,7 @@ class DetailsVM(val wordTableDao: WordTableDao) : ViewModel() {
     private fun deleteBookmark(id: Int) {
         ioThread {
             val delete = wordTableDao.deleteBookmark(id)
-            if (delete != -1)
+            if (delete > 0)
                 singleLiveEvent.postValue(Bookmark.DELETE)
         }
     }

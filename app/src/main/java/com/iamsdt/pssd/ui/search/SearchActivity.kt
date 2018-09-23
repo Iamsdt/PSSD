@@ -46,15 +46,15 @@ class SearchActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         searchRcv.layoutManager = LinearLayoutManager(this)
-        val adapter = MainAdapter(this)
-        searchRcv.adapter = adapter
+        //val adapter = MainAdapter(this)
+        //searchRcv.adapter = adapter
 
         // performance issue
         // complete: 8/22/18 fix latter make single live data
 
         viewModel.liveData.observe(this, Observer {
             Timber.i("size: ${it.size}")
-            adapter.submitList(it)
+            //adapter.submitList(it)
         })
 
         //complete: I am not happy with this solution
