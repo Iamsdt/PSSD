@@ -55,7 +55,7 @@ interface WordTableDao {
     fun getSearchData(query: String): DataSource.Factory<Int, WordTable>
 
     @Query("Select * From WordTable where word = :word")
-    fun getSearchResult(word: String): WordTable
+    fun getSearchResult(word: String): LiveData<WordTable>
 
     @Query("Select * From WordTable order by Random() limit 1")
     fun getRandomData(): LiveData<WordTable>

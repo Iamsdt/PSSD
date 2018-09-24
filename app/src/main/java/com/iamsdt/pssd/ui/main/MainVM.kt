@@ -21,7 +21,8 @@ import timber.log.Timber
 
 class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
 
-    val event = SingleLiveEvent<StatusModel>()
+    val searchEvent = MediatorLiveData<WordTable>()
+    val singleWord = MediatorLiveData<WordTable>()
 
     lateinit var liveData: MediatorLiveData<PagedList<WordTable>>
 
@@ -55,6 +56,13 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
 //        return liveData
 //    }
 
+    internal fun singleWord(id: Int) {
+        val word = wordTableDao.getSingleWord(id)
+        singleWord.addSource(word) {
+            singleWord.value = it
+        }
+    }
+
     fun requestSearch(query: String) {
 
         val source = wordTableDao.getSearchData(query)
@@ -71,16 +79,12 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
 
 
     fun submit(query: String?) {
-        query?.let {
+        query?.let { it ->
             ioThread {
-                val word: WordTable? = wordTableDao.getSearchResult(it)
+                val word = wordTableDao.getSearchResult(it)
                 Timber.i("Word:$word")
-                if (word != null) {
-                    event.postValue(StatusModel(true, Constants.SEARCH,
-                            "${word.id}", extra = query))
-                } else {
-                    event.postValue(StatusModel(false, Constants.SEARCH,
-                            "Word not found", extra = query))
+                searchEvent.addSource(word) {
+                    searchEvent.value = it
                 }
             }
         }

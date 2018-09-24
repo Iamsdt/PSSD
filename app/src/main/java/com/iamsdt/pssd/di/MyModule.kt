@@ -18,7 +18,6 @@ import com.iamsdt.pssd.ui.favourite.FavouriteAdapter
 import com.iamsdt.pssd.ui.favourite.FavouriteVM
 import com.iamsdt.pssd.ui.flash.FlashVM
 import com.iamsdt.pssd.ui.main.MainVM
-import com.iamsdt.pssd.ui.search.SearchVM
 import com.iamsdt.pssd.utils.*
 import com.iamsdt.pssd.utils.sync.SyncTask
 import org.koin.android.ext.koin.androidContext
@@ -86,6 +85,5 @@ val vmModule = module {
     viewModel { DetailsVM(get()) }
     viewModel { FavouriteVM(get()) }
     viewModel { FlashVM(get()) }
-    viewModel { SearchVM(get()) }
     viewModel { AddVM(get()) }
 }

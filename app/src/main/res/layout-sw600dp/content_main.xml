@@ -23,7 +23,8 @@
         android:layout_weight="2"
         tools:listitem="@layout/main_item" />
 
-    <FrameLayout
+    <include
+        layout="@layout/content_details"
         android:id="@+id/details_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

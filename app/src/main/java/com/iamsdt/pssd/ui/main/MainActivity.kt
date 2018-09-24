@@ -25,6 +25,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -34,17 +35,14 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.R.drawable.dercoration
-import com.iamsdt.pssd.ext.ToastType
-import com.iamsdt.pssd.ext.gone
-import com.iamsdt.pssd.ext.showToast
-import com.iamsdt.pssd.ext.toNextActivity
+import com.iamsdt.pssd.database.WordTable
+import com.iamsdt.pssd.ext.*
 import com.iamsdt.pssd.ui.DeveloperActivity
 import com.iamsdt.pssd.ui.add.AddActivity
 import com.iamsdt.pssd.ui.callback.ClickListener
 import com.iamsdt.pssd.ui.color.ColorActivity
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.details.DetailsActivity
-import com.iamsdt.pssd.ui.details.DetailsFragment
 import com.iamsdt.pssd.ui.favourite.FavouriteActivity
 import com.iamsdt.pssd.ui.flash.FlashCardActivity
 import com.iamsdt.pssd.ui.search.MySuggestionProvider
@@ -55,6 +53,7 @@ import com.iamsdt.pssd.utils.SettingsUtils
 import com.iamsdt.pssd.utils.sync.SyncTask
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.content_details.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -80,12 +79,13 @@ class MainActivity : AppCompatActivity(),
 
     private var twoPenUI: Boolean = false
 
+    private var query: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ThemeUtils.initialize(this)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-
 
         mainRcv.layoutManager = LinearLayoutManager(this)
         val adapter = MainAdapter(this)
@@ -105,32 +105,31 @@ class MainActivity : AppCompatActivity(),
         //for two pen ui
         if (findViewById<FrameLayout>(R.id.details_container) != null) {
             twoPenUI = true
-
-            supportFragmentManager.beginTransaction()
-                    .replace(R.id.details_container,
-                            DetailsFragment(), "1")
-                    .commit()
+            viewModel.singleWord(1)
         }
 
-        viewModel.event.observe(this, Observer { model ->
-            model?.let {
-                if (it.title == Constants.SEARCH) {
-                    if (it.status) {
-                        Timber.i("Status is true")
-                        val intent = Intent(this, DetailsActivity::class.java)
-                        intent.putExtra(Intent.EXTRA_TEXT, it.message.toInt())
+        viewModel.singleWord.observe(this, Observer {
+            it?.let(::detailsUI)
+        })
 
-                        //save recent query
-                        setRecentQuery(it.extra)
+        viewModel.searchEvent.observe(this, Observer {
+            if (it != null) {
+                if (twoPenUI) {
+                    detailsUI(it)
+                } else {
+                    Timber.i("Status is true")
+                    val intent = Intent(this, DetailsActivity::class.java)
+                    intent.putExtra(Intent.EXTRA_TEXT, it.id)
 
-                        startActivity(intent)
-                    } else {
-                        Timber.i(it.message)
-                        showToast(ToastType.WARNING, it.message)
-                        if (::searchView.isInitialized) {
-                            searchView.setQuery(it.extra, false)
-                        }
-                    }
+                    //save recent query
+                    setRecentQuery(it.word)
+
+                    startActivity(intent)
+                }
+            } else {
+                showToast(ToastType.WARNING, "Word not found")
+                if (::searchView.isInitialized) {
+                    searchView.setQuery(query, false)
                 }
             }
         })
@@ -178,15 +177,18 @@ class MainActivity : AppCompatActivity(),
 
     override fun onItemClick(id: Int) {
         if (twoPenUI) {
-            supportFragmentManager.beginTransaction()
-                    .replace(R.id.details_container,
-                            DetailsFragment(), "$id")
-                    .commit()
+            viewModel.singleWord(id)
+
         } else {
             val intent = Intent(this, DetailsActivity::class.java)
             intent.putExtra(Intent.EXTRA_TEXT, id)
             startActivity(intent)
         }
+    }
+
+    private fun detailsUI(wordTable: WordTable) {
+        details_word?.addStr(wordTable.word)
+        details_des?.addStr(wordTable.des)
     }
 
     private fun restoreData() {
