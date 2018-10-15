@@ -7,8 +7,6 @@
 package com.iamsdt.pssd.utils
 
 import android.os.AsyncTask
-import androidx.paging.DataSource
-import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import org.joda.time.DateTime
 import org.joda.time.Days
@@ -22,6 +20,8 @@ val PAGE_CONFIG: PagedList.Config = PagedList.Config.Builder()
         .setEnablePlaceholders(false) //default true
         .build()
 
+
+//background thread
 fun ioThread(f: () -> Unit) {
     AsyncTask.execute(f)
 }

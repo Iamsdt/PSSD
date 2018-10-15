@@ -6,8 +6,10 @@
 
 package com.iamsdt.pssd.utils.sync.worker
 
+import android.content.Context
 import android.os.AsyncTask
 import androidx.work.Worker
+import androidx.work.WorkerParameters
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.Gson
@@ -24,7 +26,8 @@ import timber.log.Timber
 import java.io.File
 import java.util.*
 
-class DownloadWorker : Worker(), KoinComponent {
+class DownloadWorker (context: Context, workerParameters: WorkerParameters) :
+        Worker(context, workerParameters), KoinComponent {
 
     private val gson: Gson by inject()
 

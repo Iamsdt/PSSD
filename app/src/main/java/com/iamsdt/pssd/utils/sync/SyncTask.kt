@@ -44,6 +44,7 @@ class SyncTask(private val wordTableDao: WordTableDao,
                     // complete: 8/24/18 worker
                     val request = OneTimeWorkRequest
                             .Builder(UploadWorker::class.java).build()
+
                     WorkManager.getInstance().beginUniqueWork("Upload",
                             ExistingWorkPolicy.REPLACE, request).enqueue()
                 }
@@ -58,6 +59,7 @@ class SyncTask(private val wordTableDao: WordTableDao,
                     .Builder(DownloadWorker::class.java)
                     .addTag(DOWNLOAD_TAG)
                     .build()
+
             WorkManager.getInstance().beginUniqueWork("Download",
                     ExistingWorkPolicy.REPLACE, request).enqueue()
         }

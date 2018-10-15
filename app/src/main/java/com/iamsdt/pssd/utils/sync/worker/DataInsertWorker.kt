@@ -6,7 +6,9 @@
 
 package com.iamsdt.pssd.utils.sync.worker
 
+import android.content.Context
 import androidx.work.Worker
+import androidx.work.WorkerParameters
 import com.google.gson.Gson
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
@@ -17,7 +19,8 @@ import org.koin.standalone.inject
 import timber.log.Timber
 import java.io.InputStreamReader
 
-class DataInsertWorker : Worker(), KoinComponent {
+class DataInsertWorker(context: Context, workerParameters: WorkerParameters) :
+        Worker(context, workerParameters), KoinComponent {
 
     private val gson: Gson by inject()
 

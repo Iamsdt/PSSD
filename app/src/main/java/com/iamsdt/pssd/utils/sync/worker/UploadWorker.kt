@@ -1,7 +1,9 @@
 package com.iamsdt.pssd.utils.sync.worker
 
+import android.content.Context
 import android.net.Uri
 import androidx.work.Worker
+import androidx.work.WorkerParameters
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.Gson
@@ -19,7 +21,8 @@ import java.io.FileWriter
 import java.util.*
 import kotlin.collections.ArrayList
 
-class UploadWorker : Worker(), KoinComponent {
+class UploadWorker (context: Context, workerParameters: WorkerParameters) :
+        Worker(context, workerParameters), KoinComponent {
 
     private val gson: Gson by inject()
 
@@ -54,7 +57,7 @@ class UploadWorker : Worker(), KoinComponent {
                 //write in  the database
 
                 //file name
-                val fileName = task.result.user.uid + "-${DateTime().dayOfMonth}"
+                val fileName = task.result?.user?.uid + "-${DateTime().dayOfMonth}"
                 val db = FirebaseStorage.getInstance()
                 val ref = db.reference.child(Constants.REMOTE.USER)
                         .child(fileName)
