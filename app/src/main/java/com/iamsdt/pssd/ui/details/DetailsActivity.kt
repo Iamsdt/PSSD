@@ -23,6 +23,7 @@ import com.iamsdt.pssd.ext.addStr
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ext.toNextActivity
 import com.iamsdt.pssd.ui.color.ThemeUtils
+import com.iamsdt.pssd.ui.main.MainVM
 import com.iamsdt.pssd.ui.settings.SettingsActivity
 import com.iamsdt.pssd.utils.Bookmark
 import kotlinx.android.synthetic.main.activity_details.*
@@ -33,7 +34,7 @@ import java.util.*
 class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
 
-    private val viewModel: DetailsVM by viewModel()
+    private val viewModel: MainVM by viewModel()
 
     //id word
     var id = 0

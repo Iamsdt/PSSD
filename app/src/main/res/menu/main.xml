@@ -13,4 +13,25 @@
         android:icon="@drawable/ic_search"
         app:showAsAction="always"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
+    <item
+        android:id="@+id/action_txt"
+        android:orderInCategory="40"
+        android:title="@string/increase_textsize"
+        android:icon="@drawable/text_increase"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_favourite"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_like_blank"
+        android:title="@string/action_settings"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/share"
+        android:icon="@drawable/ic_menu_share"
+        android:title="@string/details_share"
+        app:showAsAction="ifRoom"
+        app:actionProviderClass="androidx.appcompat.widget.ShareActionProvider"/>
 </menu>

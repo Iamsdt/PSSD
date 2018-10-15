@@ -23,10 +23,11 @@ import android.widget.FrameLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.appcompat.widget.ShareActionProvider
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.GravityCompat
+import androidx.core.view.MenuItemCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,7 +48,7 @@ import com.iamsdt.pssd.ui.favourite.FavouriteActivity
 import com.iamsdt.pssd.ui.flash.FlashCardActivity
 import com.iamsdt.pssd.ui.search.MySuggestionProvider
 import com.iamsdt.pssd.ui.settings.SettingsActivity
-import com.iamsdt.pssd.utils.Constants
+import com.iamsdt.pssd.utils.Bookmark
 import com.iamsdt.pssd.utils.RestoreData
 import com.iamsdt.pssd.utils.SettingsUtils
 import com.iamsdt.pssd.utils.sync.SyncTask
@@ -81,6 +82,22 @@ class MainActivity : AppCompatActivity(),
 
     private var query: String = ""
 
+    //share
+    private lateinit var shareActionProvider: ShareActionProvider
+
+    //menu
+    private lateinit var menuItem: MenuItem
+
+    private var isBookmarked = false
+
+    var word = "Word"
+    var des = "des"
+
+    //text size
+    var size = 18F
+
+    var id = 1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ThemeUtils.initialize(this)
@@ -105,11 +122,31 @@ class MainActivity : AppCompatActivity(),
         //for two pen ui
         if (findViewById<FrameLayout>(R.id.details_container) != null) {
             twoPenUI = true
-            viewModel.singleWord(1)
+            viewModel.singleWord(id)
         }
 
         viewModel.singleWord.observe(this, Observer {
             it?.let(::detailsUI)
+        })
+
+        viewModel.singleLiveEvent.observe(this, Observer { bookmark ->
+            if (::menuItem.isInitialized) {
+                bookmark?.let {
+                    isBookmarked = when (it) {
+                        Bookmark.SET -> {
+                            showToast(ToastType.SUCCESSFUL, "Bookmarked")
+                            menuItem.setIcon(R.drawable.ic_like_fill)
+                            true
+                        }
+
+                        Bookmark.DELETE -> {
+                            showToast(ToastType.INFO, "Bookmark removed")
+                            menuItem.setIcon(R.drawable.ic_like_blank)
+                            false
+                        }
+                    }
+                }
+            }
         })
 
         viewModel.searchEvent.observe(this, Observer {
@@ -186,11 +223,33 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
+    /*
+    Details data
+     */
     private fun detailsUI(wordTable: WordTable) {
         details_word?.addStr(wordTable.word)
         details_des?.addStr(wordTable.des)
+
+        id = wordTable.id
+        isBookmarked = wordTable.bookmark
+        word = wordTable.word
+        des = wordTable.des
+
+        resetSap()
+
+        //update icon
+        if (::menuItem.isInitialized) {
+            if (isBookmarked) {
+                menuItem.setIcon(R.drawable.ic_like_fill)
+            } else {
+                menuItem.setIcon(R.drawable.ic_like_blank)
+            }
+        }
     }
 
+    /*
+    Restore data
+     */
     private fun restoreData() {
 
         RestoreData.ioStatus.observe(this, Observer {
@@ -266,6 +325,7 @@ class MainActivity : AppCompatActivity(),
         menuInflater.inflate(R.menu.main, menu)
 
         searchView = menu.findItem(R.id.search)?.actionView as SearchView
+
         //search
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
         searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
@@ -328,7 +388,65 @@ class MainActivity : AppCompatActivity(),
 
         }
 
+
+        val actiontext = menu.findItem(R.id.action_txt)
+        val shareMenu = menu.findItem(R.id.share)
+        menuItem = menu.findItem(R.id.action_favourite)
+
+        if (!twoPenUI) {
+            actiontext.isVisible = false
+            menuItem.isVisible = false
+            shareMenu.isVisible = false
+        } else {
+            if (isBookmarked)
+                menuItem.setIcon(R.drawable.ic_like_fill)
+
+            shareActionProvider = MenuItemCompat.getActionProvider(shareMenu) as ShareActionProvider
+            shareActionProvider.setShareIntent(createShareIntent())
+        }
+
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+
+            R.id.action_favourite ->
+                viewModel.requestBookmark(id, isBookmarked)
+
+            R.id.action_txt -> {
+                textIncrease()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun textIncrease() {
+        size++
+        details_des.textSize = size
+    }
+
+    private fun createShareIntent(): Intent? {
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.type = "text/plain"
+        val share = "$word:$des"
+        shareIntent.putExtra(Intent.EXTRA_TEXT, share)
+        return shareIntent
+    }
+
+    private fun resetSap() {
+        if (::shareActionProvider.isInitialized) {
+            val shareIntent = Intent(Intent.ACTION_SEND)
+            shareIntent.type = "text/plain"
+            //todo 9/18/2018 add google play link
+            val link = ""
+            val share = "$word:$des -> ${getString(R.string.app_name)}" +
+                    "Gplay-$link"
+            shareIntent.putExtra(Intent.EXTRA_TEXT, share)
+            shareActionProvider.setShareIntent(shareIntent)
+        }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -387,38 +505,37 @@ class MainActivity : AppCompatActivity(),
     private fun isIconifiedDefault() = !settingsUtils.searchIcon
 
     private fun getRemoteDataStatus() {
-        WorkManager.getInstance().getStatusesForUniqueWork("Download")
-                .observe(this, Observer { list ->
-                    list?.let {
+        WorkManager.getInstance()
+                .getStatusesForUniqueWork("Download")
+                .get()?.let {
+                    if (it.isNotEmpty() && it[0].state.isFinished && !isShown) {
 
-                        if (it.isNotEmpty() && it[0].state.isFinished && !isShown) {
+                        val builder = NotificationCompat
+                                .Builder(this, packageName)
+                        builder.setContentTitle("New Data")
+                        builder.setContentText("Data added remotely")
+                        builder.priority = NotificationCompat.PRIORITY_DEFAULT
+                        builder.setSmallIcon(R.drawable.ic_019_information_button,
+                                NotificationCompat.PRIORITY_DEFAULT)
 
-                            val builder = NotificationCompat
-                                    .Builder(this, packageName)
-                            builder.setContentTitle("New Data")
-                            builder.setContentText("Data added remotely")
-                            builder.priority = NotificationCompat.PRIORITY_DEFAULT
-                            builder.setSmallIcon(R.drawable.ic_019_information_button,
-                                    NotificationCompat.PRIORITY_DEFAULT)
+                        val intent = Intent(this, MainActivity::class.java)
+                        intent.putExtra(Intent.EXTRA_TEXT, true)
 
-                            val intent = Intent(this, MainActivity::class.java)
-                            intent.putExtra(Intent.EXTRA_TEXT, true)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        val pendingIntent = PendingIntent.getActivity(this,
+                                0, intent, 0)
 
-                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                            val pendingIntent = PendingIntent.getActivity(this,
-                                    0, intent, 0)
+                        builder.setContentIntent(pendingIntent)
+                        builder.setAutoCancel(true)
 
-                            builder.setContentIntent(pendingIntent)
-                            builder.setAutoCancel(true)
+                        val manager = NotificationManagerCompat.from(this)
+                        manager.notify(121, builder.build())
 
-                            val manager = NotificationManagerCompat.from(this)
-                            manager.notify(121, builder.build())
-
-                            //shown
-                            isShown = true
-                        }
+                        //shown
+                        isShown = true
                     }
-                })
+
+                }
     }
 
     companion object {

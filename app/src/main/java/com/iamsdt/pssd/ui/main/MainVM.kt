@@ -13,6 +13,7 @@ import androidx.paging.PagedList
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.SingleLiveEvent
+import com.iamsdt.pssd.utils.Bookmark
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.PAGE_CONFIG
 import com.iamsdt.pssd.utils.ioThread
@@ -88,6 +89,35 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
                 }
             }
         }
+    }
+
+    //track bookmark
+    val singleLiveEvent = SingleLiveEvent<Bookmark>()
+
+    //get single word
+    fun getWord(id: Int) = wordTableDao.getSingleWord(id)
+
+    private fun setBookmark(id: Int) {
+        ioThread {
+            val update = wordTableDao.setBookmark(id)
+            if (update > 0)
+                singleLiveEvent.postValue(Bookmark.SET)
+        }
+    }
+
+    private fun deleteBookmark(id: Int) {
+        ioThread {
+            val delete = wordTableDao.deleteBookmark(id)
+            if (delete > 0)
+                singleLiveEvent.postValue(Bookmark.DELETE)
+        }
+    }
+
+    fun requestBookmark(id: Int, bookmarked: Boolean) {
+        if (bookmarked)
+            deleteBookmark(id)
+        else
+            setBookmark(id)
     }
 
 }
