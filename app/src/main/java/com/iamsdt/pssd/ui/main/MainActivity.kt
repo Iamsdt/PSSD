@@ -108,12 +108,12 @@ class MainActivity : AppCompatActivity(),
         val adapter = MainAdapter(this)
         mainRcv.adapter = adapter
 
-        val deco = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-        @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-        deco.setDrawable(getDrawable(dercoration))
-
-        // Complete: 8/22/18 add item decoration
-        mainRcv.addItemDecoration(deco)
+//        val deco = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+//        @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+//        deco.setDrawable(getDrawable(dercoration))
+//
+//        // Complete: 8/22/18 add item decoration
+//        mainRcv.addItemDecoration(deco)
 
         viewModel.liveData.observe(this, Observer {
             adapter.submitList(it)

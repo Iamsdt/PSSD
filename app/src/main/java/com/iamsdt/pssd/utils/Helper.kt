@@ -15,9 +15,9 @@ import java.util.*
 
 val PAGE_CONFIG: PagedList.Config = PagedList.Config.Builder()
         .setPageSize(10)
-        .setInitialLoadSizeHint(20)//by default page size * 3
+        .setInitialLoadSizeHint(30)//by default page size * 3
         .setPrefetchDistance(10) // default page size
-        .setEnablePlaceholders(false) //default true
+        .setEnablePlaceholders(true) //default true
         .build()
 
 
