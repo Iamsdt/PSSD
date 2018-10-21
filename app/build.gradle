@@ -48,7 +48,7 @@ android {
         androidTest.java.srcDirs += "src/test-common/java"
         test.java.srcDirs += "src/test-common/java"
     }
-    buildToolsVersion '28.0.2'
+    buildToolsVersion '28.0.3'
 }
 
 dependencies {
@@ -65,8 +65,8 @@ dependencies {
 
     //test
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+    androidTestImplementation 'androidx.test:runner:1.1.0-beta02'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-beta02'
 
     //lifecycle
     def lifecycle_version = "2.0.0"
@@ -95,7 +95,7 @@ dependencies {
     //implementation 'android.arch.work:work-runtime-ktx:1.0.0-alpha02'
 
     //paging
-    implementation 'androidx.paging:paging-runtime:2.0.0-rc01'
+    implementation 'androidx.paging:paging-runtime:2.1.0-alpha01'
 
     // optional - Test helpers
     androidTestImplementation "android.arch.work:work-testing:$work_version"
@@ -147,11 +147,11 @@ dependencies {
     implementation "com.google.firebase:firebase-crash:16.2.1"
     //implementation "com.crashlytics.sdk.android:crashlytics:2.9.3"
     //auth
-    implementation "com.google.firebase:firebase-auth:16.0.4"
+    implementation "com.google.firebase:firebase-auth:16.0.5"
     //messaging
-    implementation "com.google.firebase:firebase-messaging:17.3.3"
+    implementation "com.google.firebase:firebase-messaging:17.3.4"
     //remote config
-    implementation "com.google.firebase:firebase-config:16.0.1"
+    implementation "com.google.firebase:firebase-config:16.1.0"
 
     implementation "com.google.firebase:firebase-perf:16.1.2"
 }
