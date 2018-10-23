@@ -27,7 +27,6 @@ import com.iamsdt.pssd.ui.main.MainVM
 import com.iamsdt.pssd.ui.settings.SettingsActivity
 import com.iamsdt.pssd.utils.Bookmark
 import kotlinx.android.synthetic.main.activity_details.*
-import kotlinx.android.synthetic.main.content_details.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
