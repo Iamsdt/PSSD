@@ -116,9 +116,9 @@
     <string name="switchShareOFF">Data keep private</string>
 
     <string name="switchSearch">Search</string>
-    <string name="switchSearchLabel">Search bar always expanded</string>
-    <string name="switchSearchON">Search bar will expanded on app start</string>
-    <string name="switchSearchOFF">Search bar will iconified on app start</string>
+    <string name="switchSearchLabel">Search Keyboard</string>
+    <string name="switchSearchON">Search keyboard will be shown on app start</string>
+    <string name="switchSearchOFF">Search keyboard will be hidden on app start</string>
     <!-- ***************FINISH************* -->
 
     <!-- ***************Backup Preference Screen************* -->

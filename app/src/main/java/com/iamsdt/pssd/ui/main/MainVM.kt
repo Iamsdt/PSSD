@@ -14,15 +14,13 @@ import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.SingleLiveEvent
 import com.iamsdt.pssd.utils.Bookmark
-import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.PAGE_CONFIG
 import com.iamsdt.pssd.utils.ioThread
-import com.iamsdt.pssd.utils.model.StatusModel
 import timber.log.Timber
 
 class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
 
-    val searchEvent = MediatorLiveData<WordTable>()
+    val searchEvent = SingleLiveEvent<WordTable>()
     val singleWord = MediatorLiveData<WordTable>()
 
     lateinit var liveData: MediatorLiveData<PagedList<WordTable>>
@@ -81,12 +79,13 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
 
     fun submit(query: String?) {
         query?.let { it ->
+            //make first latter capital
+            val w = it.replaceFirst(it[0], it[0].toUpperCase(), false)
             ioThread {
-                val word = wordTableDao.getSearchResult(it)
+                val word: WordTable? = wordTableDao.getSearchResult(w)
                 Timber.i("Word:$word")
-                searchEvent.addSource(word) {
-                    searchEvent.value = it
-                }
+                //fixme 10/23/2018 fix latter
+                searchEvent.postValue(word)
             }
         }
     }

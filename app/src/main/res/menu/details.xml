@@ -34,7 +34,8 @@
         android:id="@+id/share"
         android:icon="@drawable/ic_menu_share"
         android:title="@string/details_share"
-        app:showAsAction="ifRoom"
+        app:showAsAction="always"
+        android:orderInCategory="100"
         app:actionProviderClass="androidx.appcompat.widget.ShareActionProvider"/>
 
 </menu>

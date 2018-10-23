@@ -147,11 +147,11 @@ dependencies {
     implementation "com.google.firebase:firebase-crash:16.2.1"
     //implementation "com.crashlytics.sdk.android:crashlytics:2.9.3"
     //auth
-    implementation "com.google.firebase:firebase-auth:16.0.5"
+    implementation "com.google.firebase:firebase-auth:16.0.4"
     //messaging
-    implementation "com.google.firebase:firebase-messaging:17.3.4"
+    implementation "com.google.firebase:firebase-messaging:17.3.3"
     //remote config
-    implementation "com.google.firebase:firebase-config:16.1.0"
+    implementation "com.google.firebase:firebase-config:16.0.1"
 
     implementation "com.google.firebase:firebase-perf:16.1.2"
 }

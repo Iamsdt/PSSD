@@ -13,12 +13,14 @@ import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.database.Cursor
+import android.graphics.Color
 import android.os.Bundle
 import android.provider.SearchRecentSuggestions
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.FrameLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -29,13 +31,11 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.MenuItemCompat
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.work.WorkManager
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.R.drawable.dercoration
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.ext.*
 import com.iamsdt.pssd.ui.DeveloperActivity
@@ -49,6 +49,7 @@ import com.iamsdt.pssd.ui.flash.FlashCardActivity
 import com.iamsdt.pssd.ui.search.MySuggestionProvider
 import com.iamsdt.pssd.ui.settings.SettingsActivity
 import com.iamsdt.pssd.utils.Bookmark
+import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.RestoreData
 import com.iamsdt.pssd.utils.SettingsUtils
 import com.iamsdt.pssd.utils.sync.SyncTask
@@ -76,11 +77,11 @@ class MainActivity : AppCompatActivity(),
 
     private val themeRequestCode = 121
 
-    private lateinit var searchView: androidx.appcompat.widget.SearchView
+    private lateinit var mSearchView: SearchView
 
     private var twoPenUI: Boolean = false
 
-    private var query: String = ""
+    private var mQuery: String = ""
 
     //share
     private lateinit var shareActionProvider: ShareActionProvider
@@ -165,8 +166,8 @@ class MainActivity : AppCompatActivity(),
                 }
             } else {
                 showToast(ToastType.WARNING, "Word not found")
-                if (::searchView.isInitialized) {
-                    searchView.setQuery(query, false)
+                if (::mSearchView.isInitialized) {
+                    searchView.setQuery(mQuery, false)
                 }
             }
         })
@@ -187,6 +188,8 @@ class MainActivity : AppCompatActivity(),
                 MySuggestionProvider.AUTHORITY, MySuggestionProvider.MODE)
         handleSearch(intent)
 
+        setupSearchView()
+
         //show notification
         getRemoteDataStatus()
 
@@ -206,10 +209,72 @@ class MainActivity : AppCompatActivity(),
             }
         }
 
+        if (!isShowKeyboard()) {
+
+        }
+
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+    }
+
+    private fun setupSearchView() {
+        mSearchView = searchView
+
+        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        mSearchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
+
+        mSearchView.isQueryRefinementEnabled = true
+
+        mSearchView.setOnSuggestionListener(object : SearchView.OnSuggestionListener {
+            override fun onSuggestionSelect(position: Int): Boolean {
+                Timber.i("call")
+                return true
+            }
+
+            override fun onSuggestionClick(position: Int): Boolean {
+                Timber.i("call")
+                val selectedView = searchView.suggestionsAdapter
+                val cursor = selectedView.getItem(position) as Cursor
+                val index = cursor.getColumnIndexOrThrow(SearchManager.SUGGEST_COLUMN_TEXT_1)
+                searchView.setQuery(cursor.getString(index), true)
+                return true
+            }
+
+        })
+
+        mSearchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                Timber.i("call")
+                viewModel.submit(query)
+                //search data
+                mQuery = query ?: ""
+                val ana = FirebaseAnalytics.getInstance(this@MainActivity)
+                val bundle = Bundle()
+                bundle.putString("search", query)
+                ana.logEvent(FirebaseAnalytics.Event.SEARCH, bundle)
+
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                Timber.i("call")
+                newText?.let {
+                    Timber.i("new text is $newText")
+                    viewModel.requestSearch(it)
+                    mQuery = it
+                }
+
+                fab.gone()
+                return true
+            }
+
+        })
+
+        mSearchView.setOnClickListener {
+
+        }
     }
 
     override fun onItemClick(id: Int) {
@@ -281,6 +346,7 @@ class MainActivity : AppCompatActivity(),
 
     private fun setRecentQuery(query: String) {
         suggestions?.saveRecentQuery(query, null)
+        mQuery = query
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -293,6 +359,8 @@ class MainActivity : AppCompatActivity(),
             val query = intent.getStringExtra(SearchManager.QUERY)
             // complete: 6/14/2018 search
             viewModel.submit(query)
+
+            mQuery = query
 
             //Search
             val bundle = Bundle()
@@ -307,8 +375,7 @@ class MainActivity : AppCompatActivity(),
     override fun onBackPressed() {
         when {
             drawer_layout.isDrawerOpen(GravityCompat.START) -> drawer_layout.closeDrawer(GravityCompat.START)
-            !(searchView.isIconified) -> {
-                searchView.onActionViewCollapsed()
+            !(mSearchView.isHovered) -> {
                 fab.show()
             }
             else -> super.onBackPressed()
@@ -323,71 +390,6 @@ class MainActivity : AppCompatActivity(),
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
-
-        searchView = menu.findItem(R.id.search)?.actionView as SearchView
-
-        //search
-        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
-
-        //complete  make settings
-        if (isIconifiedDefault()) {
-            searchView.setIconifiedByDefault(true)
-        } else {
-            searchView.setIconifiedByDefault(false)
-        }
-
-        searchView.isQueryRefinementEnabled = true
-
-        searchView.setOnSuggestionListener(object : SearchView.OnSuggestionListener {
-            override fun onSuggestionSelect(position: Int): Boolean {
-                Timber.i("call")
-                return true
-            }
-
-            override fun onSuggestionClick(position: Int): Boolean {
-                Timber.i("call")
-                val selectedView = searchView.suggestionsAdapter
-                val cursor = selectedView.getItem(position) as Cursor
-                val index = cursor.getColumnIndexOrThrow(SearchManager.SUGGEST_COLUMN_TEXT_1)
-                searchView.setQuery(cursor.getString(index), true)
-                return true
-            }
-
-        })
-
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                Timber.i("call")
-                viewModel.submit(query)
-                //search data
-
-                val ana = FirebaseAnalytics.getInstance(this@MainActivity)
-                val bundle = Bundle()
-                bundle.putString("search", query)
-                ana.logEvent(FirebaseAnalytics.Event.SEARCH, bundle)
-
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                Timber.i("call")
-                newText?.let {
-                    Timber.i("new text is $newText")
-                    viewModel.requestSearch(it)
-                }
-
-                fab.gone()
-                return true
-            }
-
-        })
-
-        searchView.setOnClickListener {
-
-
-        }
-
 
         val actiontext = menu.findItem(R.id.action_txt)
         val shareMenu = menu.findItem(R.id.share)
@@ -502,7 +504,7 @@ class MainActivity : AppCompatActivity(),
         showToast(ToastType.SUCCESSFUL, "Not available yet")
     }
 
-    private fun isIconifiedDefault() = !settingsUtils.searchIcon
+    private fun isShowKeyboard() = settingsUtils.searchIcon
 
     private fun getRemoteDataStatus() {
         WorkManager.getInstance()
