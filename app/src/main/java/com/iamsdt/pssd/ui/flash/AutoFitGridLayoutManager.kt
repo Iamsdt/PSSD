@@ -31,10 +31,10 @@ class AutoFitGridLayoutManager(context: Context, columnWidth: Int) : GridLayoutM
     override fun onLayoutChildren(recycler: RecyclerView.Recycler?, state: RecyclerView.State) {
         if (columnWidthChanged && columnWidth > 0) {
             val totalSpace: Int
-            if (orientation == LinearLayoutManager.VERTICAL) {
-                totalSpace = width - paddingRight - paddingLeft
+            totalSpace = if (orientation == LinearLayoutManager.VERTICAL) {
+                width - paddingRight - paddingLeft
             } else {
-                totalSpace = height - paddingTop - paddingBottom
+                height - paddingTop - paddingBottom
             }
             val spanCount = Math.max(1, totalSpace / columnWidth)
             setSpanCount(spanCount)

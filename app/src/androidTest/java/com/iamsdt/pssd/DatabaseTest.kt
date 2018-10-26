@@ -20,7 +20,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class DatabaseTest {
 
-    lateinit var wordTableDao: WordTableDao
+    private lateinit var wordTableDao: WordTableDao
     lateinit var appContext: Context
 
     @Before

@@ -19,7 +19,7 @@
 
     <!-- used by Recycle View -->
     <string name="rec_userName">User Name</string>
-    <string name="title_activity_details">Details</string>
+    <string name="title_activity_details"> </string>
     <string name="title_activity_settings">Settings</string>
     <string name="title_activity_developer">Developer</string>
     <string name="title_activity_favourite">Favourite</string>
@@ -249,6 +249,7 @@
     <!--app about -->
     <string name="app_about1">Soil science dictionary is a completely open source app which is developed for the educational and informational purpose only. </string>
     <string name="app_about2">Our main goal is to make a collection of the soil terminologies so that the user can easily find it. Those terminologies are collected from some books that are mentioned in the acknowledgment section.</string>
+    <string name="action_clear">Clear recent search</string>
 
 
 </resources>
