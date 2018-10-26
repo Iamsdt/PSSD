@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PSSD</string>
+    <string name="app_name">Soil Science Dictionary</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -223,7 +223,7 @@
     <string name="nav_about_app">About App</string>
     <string name="nav_developers">Developers</string>
     <string name="nav_polices">Polices</string>
-    <string name="nav_legal_notice">Legal Notice</string>
+    <string name="nav_legal_notice">Acknowledgement</string>
     <string name="nav_privacy_polices">Privacy Polices</string>
     <string name="nav_terms_of_uses">Terms of Uses</string>
     <string name="nav_settings">Settings</string>
@@ -245,5 +245,10 @@
     <string name="dev_find_me">Find me:</string>
     <string name="empty_fav_txt">You don\'t added \nany favourite word yet</string>
     <string name="add_word">Add Word</string>
+    
+    <!--app about -->
+    <string name="app_about1">Soil science dictionary is a completely open source app which is developed for the educational and informational purpose only. </string>
+    <string name="app_about2">Our main goal is to make a collection of the soil terminologies so that the user can easily find it. Those terminologies are collected from some books that are mentioned in the acknowledgment section.</string>
+
 
 </resources>

@@ -37,6 +37,7 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.ext.*
+import com.iamsdt.pssd.ui.AppAboutActivity
 import com.iamsdt.pssd.ui.DeveloperActivity
 import com.iamsdt.pssd.ui.add.AddActivity
 import com.iamsdt.pssd.ui.callback.ClickListener
@@ -48,6 +49,7 @@ import com.iamsdt.pssd.ui.flash.FlashCardActivity
 import com.iamsdt.pssd.ui.search.MySuggestionProvider
 import com.iamsdt.pssd.ui.settings.SettingsActivity
 import com.iamsdt.pssd.utils.Bookmark
+import com.iamsdt.pssd.utils.Constants.Companion.PrivacyPolices
 import com.iamsdt.pssd.utils.RestoreData
 import com.iamsdt.pssd.utils.SettingsUtils
 import com.iamsdt.pssd.utils.sync.SyncTask
@@ -476,13 +478,13 @@ class MainActivity : AppCompatActivity(),
                 showDummyMessage()
             }
             R.id.nav_police -> {
-                showDummyMessage()
+                customTab(PrivacyPolices)
             }
             R.id.nav_use -> {
                 showDummyMessage()
             }
             R.id.nav_about -> {
-                showDummyMessage()
+                toNextActivity(AppAboutActivity::class)
             }
             R.id.nav_developer -> {
                 toNextActivity(DeveloperActivity::class)

@@ -18,6 +18,8 @@ class Constants {
 
         const val WORD_ID = "ID"
 
+        const val PrivacyPolices = "https://docs.google.com/document/d/1dJOwpVjSbxbhe2KwY1TcYlt-fm882vjybjw1tYLUIuk/edit?usp=sharing"
+
     }
 
     object ADD {

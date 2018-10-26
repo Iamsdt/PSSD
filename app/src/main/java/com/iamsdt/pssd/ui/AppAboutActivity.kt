@@ -10,8 +10,10 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.iamsdt.pssd.R
+import com.iamsdt.pssd.ext.customTab
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import kotlinx.android.synthetic.main.activity_app_about.*
+import kotlinx.android.synthetic.main.content_app_about.*
 
 class AppAboutActivity : AppCompatActivity() {
 
@@ -23,6 +25,9 @@ class AppAboutActivity : AppCompatActivity() {
 
 
         //complete about
+        about_git.setOnClickListener {
+            customTab("https://github.com/Iamsdt/SoilScienceDictionary")
+        }
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
