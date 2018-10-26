@@ -421,6 +421,10 @@ class MainActivity : AppCompatActivity(),
             R.id.action_favourite ->
                 viewModel.requestBookmark(id, isBookmarked)
 
+            R.id.action_clear ->{
+                suggestions?.clearHistory()
+            }
+
             R.id.action_txt -> {
                 textIncrease()
             }
