@@ -38,7 +38,7 @@ class SplashActivity : AppCompatActivity() {
 
         // TODO: 8/31/18 add animation
 
-        //todo 9/19/2018 add backup data
+        //complete 9/19/2018 add backup data
 
         if (!spUtils.isDatabaseInserted) {
             //save database
@@ -66,7 +66,7 @@ class SplashActivity : AppCompatActivity() {
 
     }
 
-    //complete:8/24/18 Debug only remove latter
+    //complete:8/24/18 only remove latter
     //send current date
     private fun saveAppStartDate() {
         val date = Date()

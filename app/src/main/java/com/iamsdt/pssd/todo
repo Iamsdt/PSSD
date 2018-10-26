@@ -1,4 +1,4 @@
-todo: 1
+complete: 1
 show random word dialog in a dialog
 and show sheet reveal animation
 
@@ -12,20 +12,20 @@ fix backup toast multiple time
 complete 4:
 test download and upload
 
-todo 5:
+complete 5:
 app about and developer activity
 
 todo 6:
 app intro
 
-todo 7:
+complete 7:
 splash activity
 
 complete 8:
 add text size to text view
 
-todo 9:
+complete 9:
 add abcd option on side bar
 
-todo 10:
+Complete 10:
 fix details text size

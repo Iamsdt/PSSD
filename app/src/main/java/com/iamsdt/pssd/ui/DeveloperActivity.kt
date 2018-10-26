@@ -45,7 +45,7 @@ class DeveloperActivity : AppCompatActivity() {
                     subject)
         }
 
-        // TODO: 8/31/18 add dev 2
+        // complete: 8/31/18 add dev 2
 
         //dev 2
         dev2_fb.click("https://www.facebook.com/md.rimon.395017")

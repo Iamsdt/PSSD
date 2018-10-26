@@ -84,7 +84,7 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
             ioThread {
                 val word: WordTable? = wordTableDao.getSearchResult(w)
                 Timber.i("Word:$word")
-                //fixme 10/23/2018 fix latter
+                //complete 10/23/2018 fix latter
                 searchEvent.postValue(word)
             }
         }
