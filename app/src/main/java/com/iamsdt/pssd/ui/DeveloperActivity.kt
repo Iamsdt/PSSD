@@ -32,9 +32,9 @@ class DeveloperActivity : AppCompatActivity() {
 
         // complete: 8/30/18 update link
 
-        //Todo update name pssd
+        //complete update name pssd
 
-        val subject = "Contact from pssd"
+        val subject = "Contact from Soil Science Dictionary"
 
         //dev 1
         dev_fb.click("https://www.facebook.com/iamsdt/")
@@ -48,11 +48,10 @@ class DeveloperActivity : AppCompatActivity() {
         // TODO: 8/31/18 add dev 2
 
         //dev 2
-        dev2_fb.click("https://www.facebook.com/")
-        dev2_ln.click("https://www.linkedin.com/")
-        dev2_git.click("https://github.com/")
+        dev2_fb.click("https://www.facebook.com/md.rimon.395017")
+        dev2_ln.click("https://www.linkedin.com/md-mahabubur-rahaman-rimon-2a3708142")
         dev2_em.setOnClickListener {
-            sendEmail("Shudiptotrafder@gmail.com", subject)
+            sendEmail("mdrimon.kuss@gmail.com", subject)
         }
 
 

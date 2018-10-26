@@ -3,7 +3,7 @@
     "collection": [
         {
             "word": "Ablation till",
-            "des": "A surface deposit of loose, permeable, somewhat stratified, sandy, and stony till overlying denser till"
+            "des": "Asurface deposit of loose, permeable, somewhat stratified, sandy, and stony till overlying denser till"
         },
         {
             "word": "Absorbed water",
@@ -42,7 +42,7 @@
             "des": "To impregnate with a gas, usually air"
         },
         {
-            "word": "Aeration-soil",
+            "word": "Aeration",
             "des": "The process by which air in the soil is replaced by air from the atmosphere. In a well-aerated soil, the soil air is similar in composition to the atmosphere above the soil. Poorly aerated soils usually contain a much higher percentage of carbon dioxide and a correspondingly lower percentage of oxygen than the atmosphere. The rate of aeration depends largely on the volume and continuity of pores in the soi"
         },
         {
@@ -62,7 +62,7 @@
             "des": "The branch of agriculture that deals with the theory and practice of field-crop production and the scientific management of soil"
         },
         {
-            "word": "Air-dry",
+            "word": "Air dry",
             "des": "(i) The state of dryness of a soil at equilibrium with the moisture content of the surrounding atmosphere. The moisture content depends on the relative humidity and the temperature of the surrounding atmosphere. (ii) To allow to reach equilibrium in moisture content with the surrounding atmosphere"
         },
         {
@@ -70,7 +70,7 @@
             "des": "The portion of the bulk volume of soil that is filled with air at any given time or under a given condition such as a specified soil water potential. Usually, this portion is made up of large pores, that is those drained by a tension of less than about 100 em (39.4 inches) of water"
         },
         {
-            "word": "Air-soil",
+            "word": "Air",
             "des": "The soil atmosphere, the gaseous phase of the soil, is the volume not occupied by solid or liquid"
         },
         {
@@ -82,7 +82,7 @@
             "des": "Any soil that has a pH greater than 7.0"
         },
         {
-            "word": "Alkalinity-soil",
+            "word": "Alkalinity",
             "des": "The degree or intensity of alkalinity of a soil expressed by a value greater than 7.0 on the pH scale"
         },
         {
@@ -106,7 +106,7 @@
             "des": "Mountain soil occurring above the timberline"
         },
         {
-            "word": "Amendment-soil",
+            "word": "Amendment",
             "des": "(i) An alteration of the properties of a soil, and thereby of the soil, by the addition of substances such as lime, gypsum, and sawdust to make the soil more suitable for the growth of plants. (ii) Any substance used for this purpose. Fertilizers constitute a special group of soil amendments"
         },
         {
@@ -154,15 +154,15 @@
             "des": "See compost. In European usage artificial manure may denote commercial fertilizers"
         },
         {
-            "word": "Associate-soil",
+            "word": "Associate",
             "des": "A non taxonomic but cartographic grouping of soils or land segments, which combines related soils into units having similarity in geomorphic position, landform, edaphic and mechanical properties of soils (climate, drainage, particle size, etc.), and to some degree similarity in the geological nature of the soil materials and taxonomic classes"
         },
         {
-            "word": "Association-soil",
+            "word": "Association",
             "des": "A natural grouping of soil associates based on similarities in climatic or physiographic factors and soil parent materials. It may include a number of soil associates provided that they are all present in significant proportions."
         },
         {
-            "word": "Auger-soil",
+            "word": "Auger",
             "des": "A tool for boring into the soil and withdrawing a small sample for observation in the field or laboratory. The different kinds of augers include those having worm-type bits, unenclosed; those having worm-type bits enclosed in a hollow cylinder; and those having a hollow half-cylinder with cutting edge on the side that rotates around a stabilizing vane"
         },
         {
@@ -270,12 +270,12 @@
             "des": "An order of soils whose horizons are developed sufficiently to exclude the soils from the Regosolic order, but that lack the degrees or kinds of horizon development specified for soils of the other orders. These soils, which occur under a wide variety of climatic and vegetative conditions, all have Bm or Btj horizons. The great groups Melanic Brunisol, Eutric Brunisol, Sombric Brunisol, and Dystric Brunisol belong to this order"
         },
         {
-            "word": "Buffer compounds-soil",
+            "word": "Buffer compounds",
             "des": "The clay, organic matter, and materials such as carbonates and phosphates that enable the soil to resist appreciable change in pH"
         },
         {
-            "word": "Bulk density-soil",
-            "des": "The mass of dry soil per unit bulk volume. The bulk volume is determined before the soil is dried to constant weight at 105C. It has been called apparent density"
+            "word": "Bulk density",
+            "des": "The mass of dry soil per unit bulk volume. The bulk volume is determined before the soil is dried to constant weight at 105'C.It has been called apparent density"
         },
         {
             "word": "Bulk specific gravity",
@@ -1222,6 +1222,170 @@
             "des": "The application rate of material, usuallyfertilizer, that gives the highest economic returns for the crop produced."
         },
         {
+            "word": "Ectomycorrhiza(e)",
+            "des": "A mycorrhizal association in which the fungal mycelia extend inward, between root cortical cells, to form a network (“Hartig net”) and outward into the surrounding soil. Usually the fungal hyphae also form a mantle on the surface of the roots."
+        },
+        {
+            "word": "Edaphic",
+            "des": "(i) Of or pertaining to the soil. (ii) Resulting from or influenced by factors inherent in the soil or other substrate, rather than by climatic factors."
+        },
+        {
+            "word": "Edaphology",
+            "des": "The science that deals with the influence of soils on living things; particularly plants, including humankind’s use of land for plant growth."
+        },
+        {
+            "word": "Edge site",
+            "des": "The edge location on a layer silicate particle that is a source of pH dependent charge."
+        },
+        {
+            "word": "Effective porosity",
+            "des": "That portion of the total porosity available for fluid flow."
+        },
+        {
+            "word": "Effective precipitation",
+            "des": "That portion of the total rainfall precipitation which becomes available for plant growth."
+        },
+        {
+            "word": "Effective stress",
+            "des": "The stress transmitted through a soil by intergranular pressures."
+        },
+        {
+            "word": "Elastic",
+            "des": "Capable of rebounding to an original shape when deformed under moderate pressure."
+        },
+        {
+            "word": "Electrical conductivity (EC)",
+            "des": "(i) Conductivity of electricity through water or an extract of soil. Commonly used to estimate the soluble salt content in solution. (ii) The ability of the soil to conduct electricity."
+        },
+        {
+            "word": "Electrical potential",
+            "des": "Work required to move a unit positive charge from the bulk solution to a point at a known distance from clay platelet."
+        },
+        {
+            "word": "Electrical resistivity",
+            "des": "A measure of the resistance of soil to conduct electricity used to infer the soil water matric potential from predetermined calibrations."
+        },
+        {
+            "word": "Electrokinetic (zeta) potential",
+            "des": "The electrical potential at the surface of the shear plane between immobile liquid attached to a charged particle and mobile liquid further from the particle surface."
+        },
+        {
+            "word": "Electron acceptor",
+            "des": "A compound that accepts electrons during biotic or abiotic chemical reactions and is thereby reduced."
+        },
+        {
+            "word": "Electron donor",
+            "des": "A compound that donates or supplies electrons during metabolism and is thereby oxidized."
+        },
+        {
+            "word": "Electronegativity",
+            "des": "A measure of the ability of an atom to attract an electron in competition with other atoms."
+        },
+        {
+            "word": "Electrostatic valency",
+            "des": "The ratio of cation valence to coordination number (z/n)."
+        },
+        {
+            "word": "Eluvial horizon",
+            "des": "A soil horizon that has been formed by the process of eluviation. See also illuvial horizon."
+        },
+        {
+            "word": "Eluviation",
+            "des": "The removal of soil material in suspension (or in solution) from a layer or layers of a soil. Usually, the loss of material in solution is described by the term “leaching.” See also illuviation and leaching."
+        },
+        {
+            "word": "End moraine",
+            "des": "A ridge-like accumulation that is being or was produced at the outer margin of an actively flowing glacier at any given time; a moraine that has been deposited at the outer or lower end of a valley glacier."
+        },
+        {
+            "word": "Endomycorrhiza(e)",
+            "des": "A mycorrhizal association with intracellular penetration of the host root cortical cells by the fungus as well as outward extension into the surrounding soil."
+        },
+        {
+            "word": "Endophyte",
+            "des": "An organism (e.g., fungus, bacteria) growing within a plant. The association may be symbiotic or parasitic."
+        },
+        {
+            "word": "Endosaturation",
+            "des": "The soil is saturated with water in all layers from the upper boundary of saturation to a depth of 200 cm or more from the mineral soil surface."
+        },
+        {
+            "word": "Energy",
+            "des": "The property of a system that allows it to do work."
+        },
+        {
+            "word": "Enrichment culture",
+            "des": "A technique in which environmental (including nutritional) conditions are controlled to favor the development of a specific organism or group of organisms through prolonged or repeated culture."
+        },
+        {
+            "word": "Entisols",
+            "des": "Mineral soils that have no distinct subsurface diagnostic horizons within 1 m of the soil surface."
+        },
+        {
+            "word": "Entropy",
+            "des": "A measure of the unavailable energy in a system."
+        },
+        {
+            "word": "Enzyme",
+            "des": "Any of numerous proteins that are produced in the cells of living organisms and function as catalysts in the chemical processes of those organisms."
+        },
+        {
+            "word": "Eolian",
+            "des": "Pertaining to earth material transported and deposited by the wind, including dune sands, sand sheets, loess, and parna."
+        },
+        {
+            "word": "Ephemeral stream",
+            "des": "A stream, or reach of a stream, that flows only in direct response to precipitation. It receives no protracted supply from melting snow or other source, and its channel is, at all times, above the water table."
+        },
+        {
+            "word": "Episaturation",
+            "des": "The soil is saturated with water in one or more layers within 200 cm of the mineral soil surface and also has one or more unsaturated layers with an upper boundary above 200 cm depth, below the saturated layer(s) (a perched water table)."
+        },
+        {
+            "word": "Equation of continuity",
+            "des": "An equation expressing the conservation of mass or energy as it applies to soil water, heat, air, etc., moving through soil."
+        },
+        {
+            "word": "Equilibrium",
+            "des": "The state of being physically or chemically balanced, when forces (energy, concentration etc.) equalize such that mass or energy transfer ceases."
+        },
+        {
+            "word": "Equipotential",
+            "des": "Line in soil where hydraulic potential is constant."
+        },
+        {
+            "word": "Equipotential line",
+            "des": "A line in a two-dimensional flow field of equal hydraulic head."
+        },
+        {
+            "word": "Equivalent diameter",
+            "des": "In sedimentation analysis of particle size, the diameter assigned to a nonspherical particle; that is, the diameter of a spherical particle of the same density and velocity of fall. Sometimes referred to as the equivalent spherical diameter."
+        },
+        {
+            "word": "Erosion",
+            "des": "(i) The wearing away of the land surface by rain or irrigation water, wind, ice, or other natural or anthropogenic agents that abrade, detach, and remove geologic parent material or soil from one point on the earth’s surface and deposit it elsewhere, including such processes as gravitational creep and so-called tillage erosion. (ii) The detachment and movement of soil or rock by water, wind, ice, or gravity."
+        },
+        {
+            "word": "Erosion surface",
+            "des": "A land surface shaped by the action of erosion, especially by running water."
+        },
+        {
+            "word": "Escarpment",
+            "des": "A relatively continuous cliff or relatively steep slope, produced by erosion or faulting, breaking the general continuity of more gently sloping land surfaces. The term is most commonly applied to cliffs produced by differential erosion, and it is commonly used synonymously with “scarp.”"
+        },
+        {
+            "word": "Esker",
+            "des": "A long, narrow, sinuous, steep-sided ridge composed of irregularly stratified sand and gravel that was deposited by a subglacial or supraglacial stream flowing between ice walls, or in an ice tunnel of a retreating glacier, and was left behind when the ice melted. Eskers range in length from less than a kilometer to more than 160 km, and in height from 3 to 30 m."
+        },
+        {
+            "word": "Essential elements",
+            "des": "Elements required by plants to complete their normal life cycles, which include C, H, O, P, K, N, S, Ca, Fe, Mg, Mn, Cu, B, Zn, Co, Mo, Cl, and Na."
+        },
+        {
+            "word": "Estuary",
+            "des": "A seaward end or the widened funnel-shaped tidal mouth of a river valley where fresh water comes into contact with seawater and where tidal effects are evident; e.g., a tidal river, or a partially enclosed coastal body of water where the tide meets the current of a stream."
+        },
+        {
             "word": "Eubacteria",
             "des": "Prokaryotes other than archaebacteria."
         },
@@ -1306,7 +1470,7 @@
             "des": "(i) A taxonomic class at the subgroup level of soil taxonomy having properties that are not characteristic of any class in a higher category (any order, suborder or great group) and that do not indicate transition to any other known kind of soil. (ii) A soil that is a member of one such subgroup."
         },
         {
-            "word": "Exudate-root",
+            "word": "Exudate",
             "des": "Low molecular weight metabolites that enter the soil from plant roots."
         },
         {
@@ -1334,7 +1498,7 @@
             "des": "In soil classification one of the categories intermediate between the subgroup and the soil series. Families provide groupings of soils with ranges in texture, mineralogy, temperature, and thickness. See also classification, soil."
         },
         {
-            "word": "Fan-alluvial",
+            "word": "Fan",
             "des": "A generic term for constructional landforms that are built of stratified alluvium with or without debris-flow deposits and that occur on the pediment slope, downslope from their source of alluvium."
         },
         {
@@ -2951,11 +3115,2723 @@
         },
         {
             "word": "Mycorrhiza",
-            "des": "Literally “fungus root.” The association, usually symbiotic, of specific fungi with the roots of higher plants. See also endomycorrhiza and ectomycorrhiza."
+            "des": ") Literally “fungus root.” The association, usually symbiotic, of specific fungi with the roots of higher plants. See also endomycorrhiza and ectomycorrhiza."
         },
         {
             "word": "N-value",
             "des": "The relationship between the percentage of water under field conditions and the percentages of inorganic clay and of humus. "
+        },
+        {
+            "word": "Natric horizon",
+            "des": "A mineral soil horizon that satisfied the requirements of an argillic horizon but that also has prismatic, columnar, or blocky structure and a subhorizon having >15% saturation with exchangeable Na+. "
+        },
+        {
+            "word": "Natural levee",
+            "des": " A long, broad low ridge or embankment of sand and coarse silt, built up by a stream on its flood plain and along both sides of its channel. They are wedge-shaped deposits, of the coarsest suspended-load material, that slope gently away from the stream. "
+        },
+        {
+            "word": "Neocutan",
+            "des": " A cutan with a consistent relationship with natural surfaces of soil material. It does not occur immediately at the surfaces. Similar to hypo-coating. "
+        },
+        {
+            "word": "Net primary productivity",
+            "des": "(NPP). Net carbon assimilation by plants. NPP = GPP – respiration losses. NPP can be estimated for a given time period as ΔB + L + H, where ΔB = biomass accumulation for the period, L = biomass of material produced in the period and shed (i.e., foliage, flowers, branches), and H = biomass produced in the period and consumed by animals and insects."
+        },
+        {
+            "word": "Neutral soil",
+            "des": "A soil in which the surface layer, at least in the tillage zone, is in the pH 6.6 to 7.3 range."
+        },
+        {
+            "word": "Neutralism",
+            "des": " A lack of interaction between two organisms in the same ecosystem. "
+        },
+        {
+            "word": "Neutron probe",
+            "des": "Probe, with radioactive source, that measures soil water content through reflection of scattered neutrons by hydrogen atoms in soil water. "
+        },
+        {
+            "word": "Niche",
+            "des": "(i) The particular role that a given species plays in the ecosystem. (ii) The physical space occupied by an organism."
+        },
+        {
+            "word": "Nitrate reduction",
+            "des": "The process whereby nitrate is reduced by plants and microorganisms to ammonium for cell synthesis (nitrate assimilation, assimilatory nitrate reduction) or to nitrite by bacteria using nitrate as the terminal electron acceptor in anaerobic respiration (respiratory nitrate reduction, dissimilatory nitrate reduction). Sometimes used synonymously with “denitrication.” "
+        },
+        {
+            "word": "Nitric phosphates",
+            "des": " Fertilizers made by processes involving treatment of phosphate rock with nitric acid or a mixture of nitric, sulfuric, or phosphoric acids, usually followed by ammoniation. Water solubility of the phosphorus content may vary over a wide range. "
+        },
+        {
+            "word": "Nitrification",
+            "des": "Biological oxidation of ammonium to nitrite and nitrate, or a biologically induced increase in the oxidation state of nitrogen."
+        },
+        {
+            "word": "Nitrogen cycle",
+            "des": "The sequence of biochemical changes undergone by nitrogen wherein it is used by a living organism, transformed upon the death and decomposition of the organism, and converted ultimately to its original oxidation state. "
+        },
+        {
+            "word": "Nitrogenase",
+            "des": "The specific enzyme system required for biological dinitrogen fixation. "
+        },
+        {
+            "word": "Nod factors",
+            "des": " Lipo-oligosaccharides produced by rhizobia that induce root hair deformation and curling, and division of cortical cells of roots of the host legume plant. "
+        },
+        {
+            "word": "Nodule",
+            "des": " (i) A cemented concentration of a chemical compound, such as calcium carbonate or iron oxide, that can be removed from the soil intact and that has no orderly internal organization. (ii) (micromorphological) A glaebule with undifferentiated fabric. (iii) Specialized tissue enlargements, or swellings, on the roots, stems, or leaves of plants, such as are caused by nitrogen-fixing microorganisms. "
+        },
+        {
+            "word": "Nodule bacteria",
+            "des": "The bacteria that fix dinitrogen (N2) within organized structures (nodules) on the roots, stems, or leaves of plants. Sometimes used as a synonym for “rhizobia.” "
+        },
+        {
+            "word": "Nodulins",
+            "des": " Unusual protein produced by legume root hairs or nodules in response to interaction with rhizobia and bradyrhizobia. "
+        },
+        {
+            "word": "Non-expanding",
+            "des": " Layer silicate type that has no intracrystalline swelling capacity in the presence of water. "
+        },
+        {
+            "word": "Nonlimiting water range",
+            "des": " The region bounded by the upper and lower soil water content over which water, oxygen, and mechanical resistance are not limiting to plant growth. Compare with available water. "
+        },
+        {
+            "word": "Nonpressure solution",
+            "des": "Usually nitrogen fertilizer solutions of such low free NH3 content that no vapor pressure develops and application can be made without need for controlling vapor pressure. "
+        },
+        {
+            "word": "Nonreactive tracer",
+            "des": "A solute that exhibits no adsorption capacity but could exhibit physical or biological transformations that result in loss from solution."
+        },
+        {
+            "word": "Nontronite ",
+            "des": "A dioctahedral smectite containing ferric iron with the majority of the charge originating in the tetrahedral layers. "
+        },
+        {
+            "word": "Nose slope",
+            "des": "The projecting end of an interfluve, where contour lines connecting the opposing side slopes form convex curves around the projecting end and lines perpendicular to the contours diverge downward. Overland flow of water is divergent. "
+        },
+        {
+            "word": "Nutrient",
+            "des": "Elements or compounds essential as raw materials for organism growth and development. "
+        },
+        {
+            "word": "Nutrient antagonism ",
+            "des": "The depressing effect caused by one or more plant nutrients on the uptake and availability of another nutrient in the plant."
+        },
+        {
+            "word": "Nutrient balance",
+            "des": "An undefined theoretical ratio of two or more plant nutrient concentrations for an optimum growth rate and yield. Nitrogen and sulfur is an classic example that can be defined because both nutrients are metabolically related in the protein fraction. "
+        },
+        {
+            "word": "Nutrient concentration vs. content",
+            "des": "Concentration is usually expressed in grams per kilogram (g kg-1) or milligrams per kilogram (mg kg-1) of dry or fresh weight; content is usually expressed as weight per unit area (e.g., kg ha-1). These terms should not be used interchangeably with regard to nutrients in plants."
+        },
+        {
+            "word": "Nutrient deficiency",
+            "des": " A low concentration of an essential element that reduces plant growth and prevents completion of the normal plant life cycle. "
+        },
+        {
+            "word": "Nutrient efficient plant",
+            "des": "A plant that absorbs, translocates, or utilizes more of a specific nutrient than another plant under conditions of relatively low nutrient availability in the soil or growing media. "
+        },
+        {
+            "word": "Nutrient interaction",
+            "des": "A term usually used to describe the response from two or more nutrients applied together that deviates from additive individual responses when applied separately. This term may also be used to describe metabolic or ion-uptake phenomenon. "
+        },
+        {
+            "word": "Nutrient stress",
+            "des": "A condition occurring when the quantity of nutrient available reduces growth. It can be from either a deficient or toxic concentration. "
+        },
+        {
+            "word": "Nutrient toxicity",
+            "des": "Quality, state, or degree of harmful effect from an essential nutrient in sufficient concentrations in the plant. "
+        },
+        {
+            "word": "Nutrient-supplying power of soils",
+            "des": "The capacity of the soil to supply nutrients to growing plants from the labile, exchangeable, and the moderately available forms. See also fertility, soil."
+        },
+        {
+            "word": "Oa horizon (H layer)",
+            "des": "A layer occurring in mor humus consisting of well-decomposed organic matter of unrecognizable origin (sapric material)."
+        },
+        {
+            "word": "Ochrepts",
+            "des": " Inceptisols formed in cold or temperate climates and that commonly have an ochric epipedon and a cambic horizon. They may have an umbric or mollic epipedon <25 cm thick or a fragipan or duripan under certain conditions. These soils are not dominated by amorphous materials and are not saturated with water for periods long enough to limit their use for most crops. (A suborder in the U.S. system of soil taxonomy.)"
+        },
+        {
+            "word": "Ochric epipedon",
+            "des": "A surface horizon of mineral soil that is too light in color, too high in chroma, too low in organic carbon, or too thin to be a plaggen, mollic, umbric, anthropic, or histic epipedon, or that is both hard and massive when dry."
+        },
+        {
+            "word": "Octahedral coordination",
+            "des": " Term describing a cation surrounded by six equidistant anions. "
+        },
+        {
+            "word": "Oe horizon (F layer) ",
+            "des": " A layer of partially decomposed litter with portions of plant structures still recognizable (hemic material). Occurs below the L layer on the forest floor in forest soils. It is the fermentation layer."
+        },
+        {
+            "word": "Ohm’s law",
+            "des": "The law describing the movement of electricity as caused by a gradient in electrical potential. "
+        },
+        {
+            "word": "Oi horizon (L layer [litter])",
+            "des": "A layer of organic material having undergone little or no decomposition (fibric material). On the forest floor, this layer consists of freshly fallen leaves, needles, twigs, stems, bark, and fruits. This layer may be very thin or absent during the growing season. "
+        },
+        {
+            "word": "Oil wasteland",
+            "des": " Areas on which liquid oily wastes, principally saltwater and oil, have accumulated. Includes slush pits and adjacent areas affected by oil waste. A miscellaneous area. "
+        },
+        {
+            "word": "Oligotrophic",
+            "des": "Environments in which the concentration of nutrients available for growth is limited. Nutrient poor habitats. "
+        },
+        {
+            "word": "Oligotrophs",
+            "des": " Organisms able to grow in environments with low nutrient concentrations. "
+        },
+        {
+            "word": "Olivine",
+            "des": " A ferromagnesian silicate mineral with independent tetrahedral structure; (Mg, Fe)2SiO4. "
+        },
+        {
+            "word": "One-third-atmosphere percentage",
+            "des": " The percentage of water contained in a soil that has been saturated, subjected to, and is in equilibrium with an applied pressure of one-third atmosphere. Approximately the same as one-third-bar percentage. "
+        },
+        {
+            "word": "One-third-bar percentage ",
+            "des": "The percentage of water contained in a soil that has been saturated, subjected to, and is in equilibrium with, an applied pressure of one-third bar. Approximately the same as one-thirdatmosphere percentage."
+        },
+        {
+            "word": "Organan",
+            "des": "A cutan composed of a concentration of organic matter."
+        },
+        {
+            "word": "Organic farming",
+            "des": "Crop production system that reduces, avoids, or largely excludes the use of synthetically compound fertilizers, pesticides, growth regulators, and livestock feed additives."
+        },
+        {
+            "word": "Organic fertilizer",
+            "des": "Byproduct from the processing of animals or vegetable substances that contain sufficient plant nutrients to be of value as fertilizers. "
+        },
+        {
+            "word": "Organic soil",
+            "des": "A soil in which the sum of the thicknesses of layers containing organic soil materials is generally greater than the sum of the thicknesses of mineral layers."
+        },
+        {
+            "word": "Organic soil materials",
+            "des": "Soil materials that are saturated with water and have 174 g kg-1 or more organic carbon if the mineral fraction has 500 g kg-1 or more clay, or 116 g kg-1 organic carbon if the mineral fraction has no clay, or has proportional intermediate contents, or if never saturated with water, have 203 g kg-1 or more organic carbon. "
+        },
+        {
+            "word": "Orthents",
+            "des": " Entisols that have either textures of very fine sand or finer in the fine earth fraction, or textures of loamy fine sand or coarser and a coarse fragment content of 35% or more and that have an organic carbon content that decreases regularly with depth. Orthents are not saturated with water for periods long enough to limit their use for most crops. "
+        },
+        {
+            "word": "Orthids",
+            "des": "Previous to 1994, this term was used to indicate Aridisols that have a cambic, calcic, petrocalcic, gypsic, or salic horizon or a duripan but that lack an argillic or natric horizon. The term was dropped as a suborder in the 1994 revision of the USDA, Soil taxonomy. "
+        },
+        {
+            "word": "Orthoclase feldspar",
+            "des": "A potassium anhydrous alumnosilicate with a framework silicate structure; KAlSi3O8. "
+        },
+        {
+            "word": "Orthods",
+            "des": "Spodosols that have less than six time as much free iron (elemental) than organic carbon in the spodic horizon but the ratio of iron to carbon is 0.2 or more. Orthods are not saturated with water for periods long enough to limit their use for most crops. "
+        },
+        {
+            "word": "Orthophosphate",
+            "des": "A salt of orthophosphoric acid such as (NH4)2HPO4, CaHPO4, or K2HPO4. "
+        },
+        {
+            "word": "Orthox",
+            "des": "Oxisols that are moist all or most of the time, and that have a low to moderate content of organic carbon within the upper 1 m or a mean annual soil temperature of 22°C or more."
+        },
+        {
+            "word": "Ortstein",
+            "des": "A cemented spodic horizon."
+        },
+        {
+            "word": "Osmotic potential",
+            "des": "The potential energy acting upon soil water due to the effect of solutes. Solution in contact with pure water will draw water from the reservoir of pure water due to the decrease in potential energy, that is, osmotic poential, of the solution relative to the pure water. Osmotic potential equals the product of the universal gas constant, R, the temperature, T, and the total molar concentration of solutes, C(=RTC). "
+        },
+        {
+            "word": "Outer sphere adsorption",
+            "des": "Adsorption of ions that occurs with the retention of waters of hydration between the surface and the adsorbed ion where the force that retains the ion is only electrostatic attraction. Ions that are retained by outer sphere adsorption are readily exchangeable. "
+        },
+        {
+            "word": "Outlet",
+            "des": "A location that maintains a hydraulic head lower than that of the drainage devices in a soil."
+        },
+        {
+            "word": "Outwash",
+            "des": "Stratified detritus (chiefly sand and gravel) removed or “washed out” from a glacier by melt-water streams and deposited in front of or beyond the end moraine or the margin of an active glacier. The coarser material is deposited nearer to the ice. "
+        },
+        {
+            "word": "Oven-dry soil",
+            "des": "Soil that has been dried at 105°C until it reaches constant mass. "
+        },
+        {
+            "word": "Overburden",
+            "des": " (i) Recently transported and deposited material that occurs immediately superjacent to the surface horizon of a contemporaneous soil. (ii) A term used to designate disturbed or undisturbed material of any nature, consolidated or unconsolidated, that overlies a deposit of useful materials, ores, lignites, or coals, especially those deposits mined from the surface by open cuts. "
+        },
+        {
+            "word": "Overconsolidated soil deposit",
+            "des": "A soil deposit that has been subjected to an effective pressure greater than the present overburden pressure. "
+        },
+        {
+            "word": "Overlay ",
+            "des": " (i) A transparent sheet giving information to supplement that shown on maps. When the overlay is laid over the map on which it is based, its details will supplement the map. (ii) A tracing of selected details on a photograph, mosaic, or map to present the interpreted features and the pertinent detail, or to facilitate plotting."
+        },
+        {
+            "word": "Oxbow lake ",
+            "des": "The crescent-shaped, often ephemeral body of standing water situated by the side of a stream in the abandoned channel (oxbow) of a meander after the stream formed a neck cutoff and the ends of the original bend were silted up. "
+        },
+        {
+            "word": "Oxic horizon",
+            "des": "A mineral soil horizon that is at least 30 cm thick and characterized by the virtual absence of weatherable primary minerals or 2:1 layer silicate clays, the presence of 1:1 layer silicate clays and highly insoluble minerals such as quartz sand, the presence of hydrated oxides of iron and aluminum, the absence of water-dispersible clay, and the presence of low cation exchange capacity and small amounts of exchangeable bases. "
+        },
+        {
+            "word": "Oxidation",
+            "des": "The loss of one or more electrons by an ion or molecule."
+        },
+        {
+            "word": "Oxidation ditch",
+            "des": " An artificial open channel for partial digestion of liquid organic wastes in which the wastes are circulated and aerated by a mechanical device. "
+        },
+        {
+            "word": "Oxidation state",
+            "des": " The number of electrons to be added (or subtracted) from an atom in a combined state to convert it to the elemental form. "
+        },
+        {
+            "word": "Oxidative phosphorylation",
+            "des": "Conversion of inorganic phosphate into the energy-rich phosphate of adenosine 5’-triphosphate."
+        },
+        {
+            "word": "Oxisols",
+            "des": " Mineral soils that have an oxic horizon within 2 m of the surface or plinthite as a continuous phase within 30 cm of the surface and that do not have a spodic or argillic horizon above the oxic horizon."
+        },
+        {
+            "word": "Oxyaquic conditions",
+            "des": "Pertaining to soils that are saturated but are not reduced and do not contain redoximorphic features. "
+        },
+        {
+            "word": "Oxytropic",
+            "des": "The response of a biological organism to the presence of oxygen."
+        },
+        {
+            "word": "Packing voids-compound",
+            "des": "Voids formed by the random packing of peds that do not accommodate each other. "
+        },
+        {
+            "word": "Packing voids (simple) ",
+            "des": "Voids formed by the random packing of single skeletal grains. "
+        },
+        {
+            "word": "Paleosol ",
+            "des": "A soil that formed on a landscape in the past with distinctive morphological features resulting from a soil-forming environment that no longer exists at the site. The former pedogenic process was either altered because of external environmental change or interrupted by burial. A paleosol (or component horizon) may be classed as relict if it has persisted in a land-surface position without major alteration of morphology by processes of the prevailing pedogenic environment. An exhumed paleosol is one that formerly was buried and has been re-exposed by erosion of the covering mantle."
+        },
+        {
+            "word": "Palygorskite",
+            "des": "Si8Mg2Al2O20(OH)2(OH2) ▪ 4H2O (i) A fibrous clay mineral composed of two silica tetrahedral sheets and one aluminum and magnesium octahedral sheet that make up the 2:1 layer that occurs in strips. The strips that have an average width of two linked tetrahedral chains are linked at the edges forming tunnels where water molecules are held. Palygorskite is most common in soils of arid regions. Also referred to as attapulgite. (ii) A magnesium aluminum silicate clay used in fertilizer production, including conditioning of fertilizer products, and as a suspending agent in suspension fertilizers."
+        },
+        {
+            "word": "Pan",
+            "des": "(i) (genetic) A natural subsurface soil layer with low or very low hydraulic conductivity and differing in certain physical and chemical properties from the soil immediately above or below the pan. See caliche, claypan, fragipan, and hardpan, all of which are genetic pans. (ii) (pressure or induced) A subsurface horizon or soil layer having a higher bulk density and a lower total porosity than the soil directly above or below it, as a result of pressure that has been applied by normal tillage operations or by other artificial means. Frequently referred to as plowpan, plowsole, or traffic pan."
+        },
+        {
+            "word": "Papule",
+            "des": "Glaebule composed dominantly of clay minerals with continuous and/or lameliar fabric, and sharp external boundaries."
+        },
+        {
+            "word": "Paralithic contact",
+            "des": " Similar to a lithic contact except that it is softer, can be dug with difficulty with a spade, if a single mineral has a hardness <3 (Mohs scale), and gravel-size chunks will partially disperse within 15 hours shaking in water or sodium hexametaphosphate solution. "
+        },
+        {
+            "word": "Parasitism",
+            "des": "(i) Feeding by one organism on the cells of a second organism, which is usually larger than the first. The parasite is, to some extent, dependent on the host at whose expense it is maintained. (ii) An association whereby one organism (parasite) lives in or on another organism (host) and benefits at the expense of the host. "
+        },
+        {
+            "word": "Parent material",
+            "des": "The unconsolidated and more or less chemically weathered mineral or organic matter from which the solum of soils is developed by pedogenic processes."
+        },
+        {
+            "word": "Parna",
+            "des": " A term used, especially in southeast Australia, for silt and sand-size aggregates of eolian clay occurring in sheets."
+        },
+        {
+            "word": "Particle density",
+            "des": "The density of the soil particles, the dry mass of the particles being divided by the solid (not bulk) volume of the particles, in contrast with bulk density. Units are Mg m-3."
+        },
+        {
+            "word": "Particle size ",
+            "des": "The effective diameter of a particle measured by sedimentation, sieving, or micrometric methods. "
+        },
+        {
+            "word": "Particle-size analysis",
+            "des": "Determination of the various amounts of the different soil separates in a soil sample, usually by sedimentation, sieving, micrometry, or combinations of these methods."
+        },
+        {
+            "word": "Particle-size distribution",
+            "des": "The fractions of the various soil separates in a soil sample, often expressed as mass percentages. "
+        },
+        {
+            "word": "Particulate organic matter (POM) ",
+            "des": "The microbially active fraction of soil organic mattter consisting of fine particles of partially decomposed plant tissues. "
+        },
+        {
+            "word": "Parts per million (ppm)",
+            "des": " (i) The concentration of solutions expressed in weight or mass units of solute (dissolved substance) per million weight or mass units of solution. (ii) A concentration in solids expressed in weight or mass units of a substance contained per million weight or mass units of solid, such as soil. "
+        },
+        {
+            "word": "Pasteurization",
+            "des": "Partial sterilization of soil, liquid, or other natural substances by temporary heat treatment. "
+        },
+        {
+            "word": "Patterned ground",
+            "des": " A general term for any ground surface exhibiting a discernibly ordered, more-or-less symmetrical, morphological pattern of ground and, where present, vegetation. Patterned ground is characteristic of, but not confined to, permafrost regions or areas subjected to intense frost action; it also occurs in tropical, subtropical, and temperate areas. Patterned ground is classified by type of pattern and presence or absence of sorting and includes nonsorted and sorted circles, net, polygons, steps and stripes, garlands, and solifluction features. In permafrost regions, the most common macroform is the ice-wedge polygon and a common microform is the nonsorted circle. "
+        },
+        {
+            "word": "PCR (polymerase chain reaction)",
+            "des": " An in vitro method for amplifying defined segments of DNA. PCR involves a repeated cycle of oligonucleotide hybridization and extension on single-stranded DNA templates. "
+        },
+        {
+            "word": "Pe",
+            "des": "The negative logarithm of the apparent electron activity, which can be calculated by including the apparent activity of electrons in equilibrium calculations of redox half-cell reactions. In practice it is used as an alternative to EH and at 25°C can be calculated from EH values expressed in volts by dividing by 0.059."
+        },
+        {
+            "word": "Peat",
+            "des": "Organic soil material that is the least decomposed."
+        },
+        {
+            "word": "Peat soil",
+            "des": "An organic soil in which the plant residues are recognizable. The sum of the thicknesses of the organic layers is usually greater than the sum of the thicknesses of the mineral layers."
+        },
+        {
+            "word": "Peatland",
+            "des": "A generic term for any wetland that accumulates partially decayed plant matter. Mire, moor, and muskeg are terms for European and Canadian peatlands."
+        },
+        {
+            "word": "Pebbles",
+            "des": "Rounded or partially rounded rock or mineral fragments between 2 and 75 mm in diameter. Size may be further refined as fine pebbles (2- to 5-mm diameter), medium pebbles (5- to 20-mm diameter), and coarse pebbles (20- to 75-mm diameter). "
+        },
+        {
+            "word": "Peclet number",
+            "des": "A dimensionless parameter, calculated from the product of the pore water velocity and the linear distance traveled divided by the dispersion coefficient, used to describe the shape of a solute breakthrough curve."
+        },
+        {
+            "word": "Ped",
+            "des": " A unit of soil structure such as a block, column, granule, plate, or prism, formed by natural processes (in contrast with a clod, which is formed artificially)."
+        },
+        {
+            "word": "Pedal",
+            "des": "Applied to soil materials, most of which consists of peds. "
+        },
+        {
+            "word": "Pedalfer",
+            "des": " A subdivision of a soil order comprising a large group of soils in which sesquioxides increased relative to silica during soil formation. "
+        },
+        {
+            "word": "Pediment",
+            "des": "A gently sloping, erosional surface developed at the foot of a receding hill or mountain slope. The surface can be bare or it may be thinly mantled with alluvium and colluvium in transport to the adjacent valley. "
+        },
+        {
+            "word": "Pediplain",
+            "des": "A geomorphic term for an outwash plain landform."
+        },
+        {
+            "word": "Pedisediment ",
+            "des": "A layer of sediment, eroded from the shoulder and back slope of an erosional slope, that lies on and is, or was, being transported across a pediment. "
+        },
+        {
+            "word": "Pedocal",
+            "des": " A subdivision of a soil order comprising a large group of soils in which calcium accumulated during soil formation. "
+        },
+        {
+            "word": "Pedological features",
+            "des": " Recognizable units within a soil material that are distinguishable from the enclosing material for any reason such as origin (deposition as an entity), differences in concentration of some fraction of the plasma, or differences in arrangement of the constituents (fabric). "
+        },
+        {
+            "word": "Pedology",
+            "des": " The scientific study of soils and their weathering profiles. "
+        },
+        {
+            "word": "Pedon",
+            "des": " A three-dimensional body of soil with lateral dimensions large enough to permit the study of horizon shapes and relations. Its area ranges from 1 to 10 m2. Where horizons are intermittent or cyclic, and recur at linear intervals of 2 to 7 m, the pedon includes one-half of the cycle. Where the cycle is <2 m, or all horizons are continuous and of uniform thickness, the pedon has an area of approximately 1 m2. If the horizons are cyclic, but recur at intervals >7 m, the pedon reverts to the l m2 size, and more than one soil will usually be represented in each cycle. "
+        },
+        {
+            "word": "Pedoturbation",
+            "des": "Mixing within a soil or sediment profile by various processes, such as animal burrowing, tree throw, freeze-thaw cycles, etc. It usually involves disturbance of the skeletal fabric as opposed to redistribution of only the fine particles."
+        },
+        {
+            "word": "Peneplain",
+            "des": "An area which has been reduced by erosion to a low, gently rolling surface resembling a plain. "
+        },
+        {
+            "word": "Penetrability",
+            "des": "The ease with which a probe can be pushed into the soil. (May be expressed in units of distance, speed, force, or work depending on the type of penetrometer used.) "
+        },
+        {
+            "word": "Penetration resistance",
+            "des": "The force per unit area on a standard ASAE cone necessary for penetration by the cone. See also cone index."
+        },
+        {
+            "word": "Percolation",
+            "des": "The downward movement of water through soil. Especially, the downward flow of water in saturated or nearly saturated soil at hydraulic gradients of the order of 1.0 or less. "
+        },
+        {
+            "word": "Percolation test",
+            "des": "A procedure used to determine the rate at which water moves out of an auger hole. "
+        },
+        {
+            "word": "Pergelic",
+            "des": "A soil temperature regime that has mean annual soil temperatures of <0°C. Permafrost is present. "
+        },
+        {
+            "word": "Periglacial",
+            "des": "Pertaining to processes, conditions, areas, climates, and topographic features occurring at the immediate margins of glaciers and ice sheets, and influenced by cold temperature of the ice. "
+        },
+        {
+            "word": "Permafrost",
+            "des": " (i) Permanently frozen material underlying the solum. (ii) A perennially frozen soil horizon."
+        },
+        {
+            "word": "Permafrost table",
+            "des": "The upper boundary of the permafrost coincident with the lower limit of seasonal thaw."
+        },
+        {
+            "word": "Permanent charge",
+            "des": " The net negative (or positive) charge of clay particles inherent in the crystal structure of the particle; not affected by changes in pH or by ion-exchange reactions."
+        },
+        {
+            "word": "Permanent wilting point",
+            "des": " The largest water content of a soil at which indicator plants, growing in that soil, wilt and fail to recover when placed in a humid chamber. Often estimated by the water content at –1.5 MPa soil matric potential. "
+        },
+        {
+            "word": "Permeability",
+            "des": " (i) The ease with which gases, liquids, or plant roots penetrate or pass through a bulk mass of soil or a layer of soil. Since different soil horizons vary in permeability, the particular horizon under question should be designated. (ii) The property of a porous medium itself that expresses the ease with which gases, liquids, or other substances can flow through it, and is the same as intrinsic permeability k. "
+        },
+        {
+            "word": "Permeameter",
+            "des": " A device for confining a sample of soil or porous medium and subjecting it to fluid flow, in order to measure the hydraulic conductivity or intrinsic permeability of the soil or porous medium for the fluid. "
+        },
+        {
+            "word": "Perox",
+            "des": " Oxisols that have a perudic soil moisture regime."
+        },
+        {
+            "word": "Perudic",
+            "des": "A udic soil moisture regime in which water moves through the soil in all months when it is not frozen. "
+        },
+        {
+            "word": "Petrocalcic horizon",
+            "des": "A continuous, indurated calcic horizon that is cemented by calcium carbonate and, in some places, with magnesium carbonate. It cannot be penetrated with a spade or auger when dry, dry fragments do not slake in water, and it is impenetrable to roots. "
+        },
+        {
+            "word": "Petroferric contact",
+            "des": "A boundary between soil and a continuous layer of indurated soil in which iron is an important cement. Contains little or no organic matter. "
+        },
+        {
+            "word": "Petrogypsic horizon",
+            "des": "A continuous, strongly cemented, massive, gypsic horizon that is cemented by calcium sulfate. It can be chipped with a spade when dry. Dry fragments do not slake in water, and it is impenetrable to roots."
+        },
+        {
+            "word": "PH",
+            "des": "The pH of a solution in equilibrium with soil. It is determined by means of a glass, quinhydrone, or other suitable electrode or indicator at a specified soil–solution ratio in a specified solution, usually distilled water, 0.01 M CaCl2, or 1 M KCl. "
+        },
+        {
+            "word": "PH-dependent charge",
+            "des": "The portion of the cation or anion exchange capacity that varies with pH. "
+        },
+        {
+            "word": "PHc",
+            "des": " The calculated pH that a solution would have if it were in equilibrium with calcium carbonate. Numerically, pHc* is equal to (pK2 – pKc) + p(Ca) + pAlk, where p(Ca) and pAlk are the negative logarithms of the molar concentrations of Ca and of the equivalent concentration of (CO3 + HCO3), respectively, and pK2 and pKc are the negative logarithms of the second dissociation constant of H2CO3 and the solubility constant of CaCO3, respectively, both corrected for ionic strength. It is used in conjunction with the measured pH of a water to determine if CaCO3 will precipitate from the water, or if the water will dissolve CaCO3 as it passes through a calcareous soil. "
+        },
+        {
+            "word": "Phagotophic",
+            "des": "Form of feeding where micro-and mesofauna (i.e., protozoa) engulf particulate nutrients, such as bacteria or organic fragments."
+        },
+        {
+            "word": "Phase",
+            "des": " A utilitarian grouping of soils defined by soil or environmental features that are not class differentia used in U.S. system of soil taxonomy, e.g., surface texture, surficial rock fragments, rock outcrops, substratum, special soil water conditions, salinity, physiographic position, erosion, thickness, etc. Phase identifications are introduced into soil names by adding them to a taxon name as modifiers."
+        },
+        {
+            "word": "Phase lag",
+            "des": "The time difference between the maximum temperature at one depth and the maximum temperature at a second depth. "
+        },
+        {
+            "word": "Phosphate",
+            "des": " In fertilizer trade terminology, phosphate is used to express the sum of the water-soluble and the citrate-soluble phosphoric acid (P2O5); also referred to as the available phosphoric acid (P2O5). "
+        },
+        {
+            "word": "Phosphate rock",
+            "des": "A microcrystalline, calcium fluorophosphate of sedimentary or igneous origin of varying P content. It is usually concentrated and solubilized to be used directly or concentrated in manufacture of commercial phosphate fertilizers. "
+        },
+        {
+            "word": "Phosphobacteria",
+            "des": "Bacteria able to convert organic phosphorus into orthophosphate. "
+        },
+        {
+            "word": "Phosphoric acid ",
+            "des": " In commercial fertilizer manufacturing, it is used to designate orthophosphoric acid, H3PO4. In fertilizer labeling, it is the common term used to represent the phosphate concentration in terms of available P, expressed as percent P2O5. "
+        },
+        {
+            "word": "Phosphorus fixation",
+            "des": "The immobilization of phosphorus by strong adsorption or precipitation."
+        },
+        {
+            "word": "Photolithotroph",
+            "des": "An organism that uses light as a source of energy and CO2 or carbonates as the source of carbon for cell biosynthesis. "
+        },
+        {
+            "word": "Photomap",
+            "des": " A mosaic map made from aerial photographs with physical and cultural features, marginal data, and other map information as shown on a planimetric map."
+        },
+        {
+            "word": "Phototropic",
+            "des": "The response of a biological organism to the presence of light."
+        },
+        {
+            "word": "Phreatic level ",
+            "des": "Free water surface where soil water is at atmospheric pressure. "
+        },
+        {
+            "word": "Phyllosphere",
+            "des": "The surface of aboveground living plant parts. "
+        },
+        {
+            "word": "Physical nonequilibrium",
+            "des": "Soil condition in which movement of solute occurs between flow regions, e.g., macropore – micorpore, by diffusion as a result of a gradient in solute concentration between the regions. "
+        },
+        {
+            "word": "Physical properties",
+            "des": " Those characteristics, processes, or reactions of a soil that are caused by physical forces and that can be described by, or expressed in, physical terms or equations. Examples of physical properties are bulk density, hydraulic conductivity, porosity, pore-size distribution, etc. "
+        },
+        {
+            "word": "Physical weathering",
+            "des": "The breakdown of rock and mineral particles into smaller particles by physical forces such as frost action"
+        },
+        {
+            "word": "Physiosorption",
+            "des": "The process of attachment of non-ionic substances such as polar water molecules, acetic acid molecules, or nucleic acids to clays or to other solid-phase surfaces. The attachment of large molecules to clay particles by ionic processes is not physiosorption. "
+        },
+        {
+            "word": "Phytoliths",
+            "des": "Inorganic bodies derived from replacement of plant cells; they are usually opaline. "
+        },
+        {
+            "word": "Phytometer",
+            "des": "A plant or plants used to measure the physical factors of the habitat in terms of physiological activities. "
+        },
+        {
+            "word": "Phytomorphic soils",
+            "des": " Well-drained soils of an association which that developed under the dominant influence of the natural vegetation characteristic of a region. The zonal soils of an area. "
+        },
+        {
+            "word": "Phytotoxic",
+            "des": "The property of a substance at a specified concentration that restricts or constrains plant growth. "
+        },
+        {
+            "word": "Piezometer",
+            "des": "An open-ended tube that measures the pressure head at the point of opening. "
+        },
+        {
+            "word": "Piezometer head",
+            "des": "The elevation at which water stands in a piezometer with respect to a point in question in the soil. "
+        },
+        {
+            "word": "Pipe flow",
+            "des": " A preferential flow process in which water flows rapidly through a large discrete pore causing tunnel erosion."
+        },
+        {
+            "word": "Pipette analysis",
+            "des": "A sedimentation procedure that utilizes pipette sampling at controlled depths and times. "
+        },
+        {
+            "word": "Piston flow",
+            "des": " A jump in effluent from background concentration to the input concentration at 1 pore volume of flow. "
+        },
+        {
+            "word": "Pit and mound topography",
+            "des": "Complex microrelief created by numerous cradle knolls and their attendant pits. Usually associated with forested sites or cleared sites that have not been plowed."
+        },
+        {
+            "word": "Pits",
+            "des": "Open excavations from which soil and commonly, underlying material have been removed exposing either rock or other material that supports few or no plants. Includes mine pits, gravel pits, and quarry pits. A miscellaneous area. "
+        },
+        {
+            "word": "Placic horizon",
+            "des": "A black to dark reddish mineral soil horizon that is usually thin but that may range from 1 to 25 mm in thickness. The placic horizon is commonly cemented with iron and is slowly permeable or impenetrable to water and roots."
+        },
+        {
+            "word": "Plaggen epipedon",
+            "des": "A man-made surface horizon more than 50 cm thick that is formed by long-continued manuring and mixing."
+        },
+        {
+            "word": "Plaggepts",
+            "des": "Inceptisols that have a plaggen epipedon."
+        },
+        {
+            "word": "Plagioclase feldspar",
+            "des": "Framework silicates with Al substituting for Si with accompanying Na and/or Ca. "
+        },
+        {
+            "word": "Plain",
+            "des": "A flat, undulating, or even rolling area, larger or smaller, that includes few prominent hills or valleys, that usually is at low elevation in reference to surrounding areas, and that may have considerable overall slope and local relief. "
+        },
+        {
+            "word": "Planosol",
+            "des": "A great soil group of the intrazonal order and hydromorphic suborder consisting of soils with eluviated surface horizons underlain by B horizons more strongly eluviated, cemented, or compacted than associated normal soil. "
+        },
+        {
+            "word": "Plant analysis",
+            "des": "The determination of the nutrient concentration in plants or plant parts with analytical procedures. "
+        },
+        {
+            "word": "Plant food",
+            "des": " The inorganic compounds elaborated within a plant to nourish its cells; a frequent synonym for plant nutrients, particularly in the fertilizer trade. "
+        },
+        {
+            "word": "Plant growth-promoting rhizobacteria",
+            "des": "Diverse group of rhizosphere bacteria that impart beneficial effects on plant growth as root colonizers. "
+        },
+        {
+            "word": "Plant nutrient",
+            "des": "An element that is absorbed by plants and is necessary for completion of the normal life cycle. These include C, H, O, N, P, K, Ca, Mg, S, Cu, Fe, Zn, Mn, B, Cl, Ni, and Mo. "
+        },
+        {
+            "word": "Plasma",
+            "des": "That part of the soil material that is capable of being or has been moved, reorganized, and/or concentrated by the processes of soil formation. It includes all the material, mineral or organic, of colloidal size and relatively soluble material that is not contained in the skeleton grains. "
+        },
+        {
+            "word": "Plasmic fabric",
+            "des": " The arrangement of plasma, skeleton grains, and associated simple packing voids. "
+        },
+        {
+            "word": "Plasmids",
+            "des": "Extrachromosomal DNA. "
+        },
+        {
+            "word": "Plastic limit",
+            "des": " The minimum water mass content at which a small sample of soil material can be deformed without rupture. Synonymous with “lower plastic limit.” "
+        },
+        {
+            "word": "Plastic soil ",
+            "des": "A soil capable of being molded or deformed continuously and permanently, by relatively moderate pressure, into various shapes. "
+        },
+        {
+            "word": "Plasticity number",
+            "des": "The numerical difference between the liquid and the plastic limit or, synonymously, between the lower plastic limit and the upper plastic limit. Sometimes called “plasticity index.” "
+        },
+        {
+            "word": "Plasticity range ",
+            "des": "The range of water mass content within which a small sample of soil exhibits plastic properties. "
+        },
+        {
+            "word": "Plate count",
+            "des": "A count of the number of colonies formed on a solid culture medium when inoculated with a small amount of soil. The technique has been used to estimate the number of certain organisms present in the soil sample."
+        },
+        {
+            "word": "Platy",
+            "des": " Consisting of soil aggregates that are developed predominantly along the horizontal axes; laminated; flaky."
+        },
+        {
+            "word": "Platy soil structure",
+            "des": "A shape of soil structure."
+        },
+        {
+            "word": "Playa",
+            "des": "An ephemerally flooded, vegetatively barren area on a basin floor that is veneered with fine-textured sediment and acts as a temporary or as the final sink for drainage water."
+        },
+        {
+            "word": "Plinthite",
+            "des": "A weakly cemented iron-rich, humus-poor mixture of clay with other diluents that commonly occurs as dark red redox concentrations that form platy, polygonal, or reticulate patterns. Plinthite changes irreversibly to ironstone hardpans or irregular aggregates on exposure to repeated wetting and drying. "
+        },
+        {
+            "word": "Pneumatic pressure",
+            "des": " Air pressure above atmospheric applied to soil to impart an equivalent soil water matric potential. "
+        },
+        {
+            "word": "Pocosin",
+            "des": "A swamp, usually containing organic soil, and partly or completely enclosed by a sandy rim."
+        },
+        {
+            "word": "Podzol",
+            "des": "A great soil group of the zonal order consisting of soils formed in cool-temperate to temperate, humid climates, under coniferous or mixed coniferous and deciduous forest, and characterized particularly by a highly leached, whitish-gray (Podzol) A2 (E) horizon."
+        },
+        {
+            "word": "Podzolization",
+            "des": "A process of soil formation resulting in the genesis of Podzols and Podzolic soils. "
+        },
+        {
+            "word": "Point bar",
+            "des": "One of a series of low, arcuate ridges of sand and gravel developed on the inside of a growing meander by the slow addition of individual accretions accompanying migration of the channel toward the outer bank."
+        },
+        {
+            "word": "Point of zero net charge",
+            "des": "The pH value of a solution in equilibrium with a variable charge material or mixture of materials whose net charge from all sources is zero (i.e., anion exchange capacity = effective cation exchange capacity). It is often determined for soils that are low in permanent charge minerals and high in oxides and hydrous oxides of Fe and Al. "
+        },
+        {
+            "word": "Poiseuille’s law",
+            "des": "The law governing flow in an individual tube or pipe in which the flow rate is proportional to the product of the pressure drop per unit distance and the tube radius to the fourth power. "
+        },
+        {
+            "word": "Pollution",
+            "des": "The presence or introduction of a pollutant into the environment."
+        },
+        {
+            "word": "Polymerize",
+            "des": "To combine two or more molecules of a compound to form a more complex compound with a higher molecular weight. "
+        },
+        {
+            "word": "Polymorphism",
+            "des": "Crystallization into two or more chemically identical but crystallographically distinct forms. "
+        },
+        {
+            "word": "Polypedon ",
+            "des": "A group of contiguous similar pedons. The limits of a polypedon are reached at a place where there is no soil or where the pedons have characteristics that differ significantly. "
+        },
+        {
+            "word": "Ponding",
+            "des": "Process through which water stands on the soil surface."
+        },
+        {
+            "word": "Poorly drained",
+            "des": "A drainage class referring to soils that have evidence (e.g., mottles) of seasonal water tables at depths between 0 and 20 cm (0 and 8 in)."
+        },
+        {
+            "word": "Poorly graded",
+            "des": "Soil material, usually sand or gravel, with a narrow range of particle sizes. "
+        },
+        {
+            "word": "Pore ice",
+            "des": "Frozen water in the interstitial pores of a porous medium. "
+        },
+        {
+            "word": "Pore space",
+            "des": "The portion of soil bulk volume occupied by soil pores. "
+        },
+        {
+            "word": "Pore water velocity ",
+            "des": "The velocity at which water travels in pores relative to a given axis. It is equal to the flux density divided by the soil water content."
+        },
+        {
+            "word": "Pore-size distribution",
+            "des": "The volume fractions of the various size ranges of pores in a soil, expressed as percentages of the soil bulk volume (soil particles plus pores). "
+        },
+        {
+            "word": "Porosity",
+            "des": " The volume of pores in a soil sample (nonsolid volume) divided by the bulk volume of the sample."
+        },
+        {
+            "word": "Potash",
+            "des": "Term used to refer to potassium or potassium fertilizers and usually designated as K2O. "
+        },
+        {
+            "word": "Potassium fixation",
+            "des": "The process of converting exchangeable or water-soluble potassium to that occupying the position of K+ in the micas. They are counter-ions entrapped in the ditrigonal voids in the plane of basal oxygen atoms of some phyllosilicates as a result of contraction of the interlayer space. The fixation may occur spontaneously with some minerals in aqueous suspensions or as a result of heating to remove interlayer water in others. Fixed K+ ions are exchangeable only after expansion of the interlayer space."
+        },
+        {
+            "word": "Potential energy",
+            "des": " Energy due to position in space."
+        },
+        {
+            "word": "Pothole",
+            "des": " Shallow marshlike ponds, particularly as found in the Dakotas. "
+        },
+        {
+            "word": "Prairie soils",
+            "des": "A zonal great soil group consisting of soils formed under temperate to cool-temperate, humid regions under tall grass vegetation."
+        },
+        {
+            "word": "Precipitation interception",
+            "des": "The stopping, interrupting, or temporary holding of descending precipitation in any form by mulch, a vegetative canopy, vegetation residue or any other physical barrier. "
+        },
+        {
+            "word": "Predation",
+            "des": "A relationship between two organisms whereby one organism (predator) engulfs and digests the second organism (prey). "
+        },
+        {
+            "word": "Preferential flow",
+            "des": "The process whereby free water and its constituents move by preferred pathways through a porous medium. Also called bypass flow. "
+        },
+        {
+            "word": "Pressure membrane ",
+            "des": "A membrane, permeable to water and only very slightly permeable to gas when wet, through which water can escape from a soil sample in response to a pressure gradient. "
+        },
+        {
+            "word": "Pressure potential ",
+            "des": " Potential energy of soil water due to the weight of water (hydrostatic pressure) on the point of interest. Pressure head is expressed as energy per weight and is equal to the height of water between the point of interest and the free water surface (water table), hp, also termed the piezometric head. Pressure potential is expressed as energy per unit volume and equals the piezometric head, hp, the water density, r, and the gravitation constant, g (rghp). "
+        },
+        {
+            "word": "Primary mineral ",
+            "des": " A mineral that has not been altered chemically since deposition and crystallization from molten lava. "
+        },
+        {
+            "word": "Primary nutrients",
+            "des": "Refers to N, P, and K in fertilizers."
+        },
+        {
+            "word": "Priming effect",
+            "des": " Stimulation of microbial activity in soil, usually organic matter decomposition, by the addition of labile organic matter. "
+        },
+        {
+            "word": "Prismatic soil structure",
+            "des": "A shape of soil structure. "
+        },
+        {
+            "word": "Productivity",
+            "des": "The output of a specified plant or group of plants under a defined set of management practices. "
+        },
+        {
+            "word": "Profile",
+            "des": "A vertical section of the soil through all its horizons and extending into the C horizon."
+        },
+        {
+            "word": "Prokaryotes",
+            "des": "A cell or organism lacking a true nucleus. "
+        },
+        {
+            "word": "Propagule",
+            "des": "Any cell unit capable of developing into a complete organism. For fungi, the unit may be a single spore, a cluster of spores, hyphae, or a hyphal fragment. "
+        },
+        {
+            "word": "Protocooperation",
+            "des": "An association of mutual benefit to two or more species but without the cooperation being obligatory for their existence or the performance of some function. "
+        },
+        {
+            "word": "Proximal",
+            "des": "Said of a sedimentary deposit consisting of coarse clastics and deposited nearest the source area."
+        },
+        {
+            "word": "Psamments",
+            "des": "Entisols that have textures of loamy fine sand or coarser in all parts, have <35% coarse fragments, and that are not saturated with water for periods long enough to limit their use for most crops. "
+        },
+        {
+            "word": "Pseudomonads",
+            "des": "Members of the genus Pseudomonas, a large group of gram-negative, obligately respiratory (never fermentative) bacteria. "
+        },
+        {
+            "word": "Psychrophilic organism",
+            "des": "An organism whose optimum temperature for growth falls in the approximate range of 5 to 15°C. Synonymous with cryophile. "
+        },
+        {
+            "word": "Puddling",
+            "des": " Any process involving both shearing and compactive forces that destroys natural structure and results in a condition of greatly reduced pore space. "
+        },
+        {
+            "word": "Pump testing ",
+            "des": "A test made on a well by pumping it down for a period of time and observing the change in hydraulic head to determine the hydraulic properties of the surrounding media. Also called a draw down test or aquifer test. "
+        },
+        {
+            "word": "Pure culture",
+            "des": "A population of microorganisms composed of a single strain. Such cultures are obtained through selective laboratory procedures and are rarely found in a natural environment. "
+        },
+        {
+            "word": "Pyroclastics",
+            "des": "A general term applied to detrital volcanic materials that have been explosively or aerially ejected from a volcanic vent. "
+        },
+        {
+            "word": "Pyrophosphate",
+            "des": "A class of phosphorus compounds produced by the reaction of either anhydrous ammonia or potassium hydroxide with pyrophosphoric acid (H4P2O7). Pyrophosphoric acid is a condensation product of two molecules of orthophosphoric acid (H3PO4). The main polyphosphate species in polyphosphate fertilizers. "
+        },
+        {
+            "word": "Pyrophyllite",
+            "des": "Si4Al2O10 (OH)2. An aluminosilicate mineral with a 2:1 layer structure but without isomorphous substitution. It is dioctahedral."
+        },
+        {
+            "word": "Pyroxene",
+            "des": "A single chain ferromagnesian silicate."
+        },
+        {
+            "word": "Quantity intensity ratio",
+            "des": " The change in quantity sorbed with change in quantity in solution. It is determined from the slope of the plot of concentration in solution vs. the quantity sorbed."
+        },
+        {
+            "word": "Quartz",
+            "des": "A framework silicate composed exclusively of silica tetrahedra."
+        },
+        {
+            "word": "Quorum sensing ",
+            "des": "Bacterial gene expression regulated by small molecular weight compounds (i.e., N-acy-homoserine lactones) that are synthesized only when the appropriate density (quorum) of bacterial producers is present."
+        },
+        {
+            "word": "R-selected ",
+            "des": "In ecological theory, that group of organisms in soil that rapidly proliferate in response to an abundance of resources. Analogous to zymogenous microorganisms. "
+        },
+        {
+            "word": "Radius ratio ",
+            "des": "A ratio between the radii of a cation and a coordinating anion."
+        },
+        {
+            "word": "Rating curve ",
+            "des": " A graph of the flow rate of an open channel at a discharge point as a function of the water level or stage."
+        },
+        {
+            "word": "Reaction",
+            "des": "The degree of acidity or alkalinity of a soil, usually expressed as a pH value. Descriptive terms commonly associated with certain ranges in pH are: extremely acid, <4.5; very strongly acid, 4.5–5.0; strongly acid, 5.1–5.5; moderately acid, 5.6–6.0; slightly acid, 6.1–6.5; neutral, 6.6–7.3; slightly alkaline, 7.4– 7.8; moderately alkaline, 7.9–8.4; strongly alkaline, 8.5–9.0; and very strongly alkaline, >9.1. "
+        },
+        {
+            "word": "Recessional moraine ",
+            "des": " An end or lateral moraine, built during a temporary but significant halt in the retreat of a glacier. Also, a moraine built during a minor readvance of the ice front during a period of recession."
+        },
+        {
+            "word": "Recharge",
+            "des": "Movement of water into the aquifer or a recharge area. "
+        },
+        {
+            "word": "Red Desert soil",
+            "des": " A zonal great soil group consisting of soils formed under warm-temperate to hot, dry regions under desert-type vegetation, mostly shrubs."
+        },
+        {
+            "word": "Red earth",
+            "des": "Highly leached, red clayey soils of the humid tropics, usually with very deep profiles that are low in silica and high in sesquioxides."
+        },
+        {
+            "word": "Red-Yellow Podzolic soils ",
+            "des": " A combination of the zonal great soil groups, Red Podzolic and Yellow Podzolic, consisting of soils formed under warm-temperate to tropical, humid climates, under deciduous or coniferous forest vegetation and usually, except for a few members of the Yellow Podzolic Group, under conditions of good drainage. "
+        },
+        {
+            "word": "Redistribution",
+            "des": "The process of soil-water movement to achieve an equilibrium energy state of water throughout the soil. "
+        },
+        {
+            "word": "Redox",
+            "des": "Reduction-oxidation."
+        },
+        {
+            "word": "Redox concentrations",
+            "des": "Zones of apparent accumulation of Fe-Mn oxides in soils. "
+        },
+        {
+            "word": "Redox depletions",
+            "des": "Zones of low chroma (two or less) where Fe-Mn oxides alone or both Fe-Mn oxides and clay have been stripped out of the soil. "
+        },
+        {
+            "word": "Redoximorphic features",
+            "des": "Redoximorphic concentrations, redoximorphic depletions, reduced matrices, and other features indicating the chemical reduction and oxidation of iron and manganese compounds resulting from saturation. "
+        },
+        {
+            "word": "Reduced matrix ",
+            "des": "A soil matrix which has a low chroma in situ, but undergoes a change in hue or chroma within 30 minutes after the soil material is exposed to air. The color change is due to the oxidation of iron. "
+        },
+        {
+            "word": "Reduction",
+            "des": "The gain of one or more electrons by an ion or molecule. "
+        },
+        {
+            "word": "Reference electrode ",
+            "des": "An electrode that maintains an invariant potential under the conditions prevailing in an electrochemical measurement and thereby permits measurement of the potential of an ion-selective or a platinum (redox) electrode. "
+        },
+        {
+            "word": "Reflectance ",
+            "des": "The ratio of the radiant energy reflected by a body to that incident upon it. The suffix (-ance) implies a property of that particular specimen surface."
+        },
+        {
+            "word": "Regolith",
+            "des": "The unconsolidated mantle of weathered rock and soil material on the earth’s surface; loose earth materials above solid rock."
+        },
+        {
+            "word": "Regosol",
+            "des": " Any soil of the azonal order without definite genetic horizons and developing from or on deep, unconsolidated, soft mineral deposits such as sands, 1oess, or glacial drift."
+        },
+        {
+            "word": "Regur",
+            "des": "An intrazonal group of dark calcareous soils high in clay, which is mainly montmorillonitic, and formed mainly from rocks low in quartz; occurring extensively on the Deccan Plateau of India."
+        },
+        {
+            "word": "Relative humidity",
+            "des": " The ratio, at a given temperature, of the water vapor pressure to the saturated water vapor pressure; used as a measure of water potential by meteorologists. "
+        },
+        {
+            "word": "Relative yield ",
+            "des": "The harvestable or biomass yield with or without supplementation of the nutrient in question expressed as a percentage of the yield with the nutrient in adequate amounts. "
+        },
+        {
+            "word": "Relief",
+            "des": "The relative difference in elevation between the upland summits and the lowlands or valleys of a given region."
+        },
+        {
+            "word": "Remote sensing ",
+            "des": "Refers to the full range of activities that collects information from a distance, e.g., the utilization at a distance (as from aircraft, spacecraft, or ship) of any device for measuring electromagnetic radiation, force fields, or acoustic energy. The technique employs such devices as the camera, lasers, and radio frequency receivers, radar systems, sonar, seismographs, gravimeters, magnetometers, and scintillation counters. "
+        },
+        {
+            "word": "Rendolls",
+            "des": "rial with CaCO3 equivalent >400 g kg-1 within or immediately below the mollic epipedon. Rendolls are not saturated with water for periods long enough to limit their use for most crops."
+        },
+        {
+            "word": "Rendzina",
+            "des": "A great soil group of the intrazonal order and calcimorphic suborder consisting of soils with brown or black friable surface horizons underlain by light gray to pale yellow calcareous material developed from soft, highly calcareous parent material under grass vegetation or mixed grasses and forest in humid and semiarid climates."
+        },
+        {
+            "word": "Residence time ",
+            "des": "The time required for an individual solute ion or molecule to travel through the soil. "
+        },
+        {
+            "word": "Resident concentration ",
+            "des": "The solution concentration, mass of solute per volume of soil, at a point in the soil. "
+        },
+        {
+            "word": "Residual fertility ",
+            "des": "The available nutrient content of a soil carried over to subsequent crops. "
+        },
+        {
+            "word": "Residual material ",
+            "des": "Unconsolidated and partly weathered mineral materials accumulated by disintegration of consolidated rock in place. "
+        },
+        {
+            "word": "Residual soil ",
+            "des": "A soil formed from, or resting on, consolidated rock of the same kind as that from which it was formed, and in the same location. "
+        },
+        {
+            "word": "Residuum",
+            "des": "Unconsolidated, weathered, or partly weathered mineral material that accumulates by disintegration of bedrock in place."
+        },
+        {
+            "word": "Resolution",
+            "des": "The ability of an entire remote sensor system, including lens, antennae, display, exposure, processing, and other factors, to render a sharply defined image. "
+        },
+        {
+            "word": "Respiratory quotient",
+            "des": "(RQ) The number of molecules of CO2 liberated for each molecule of O2 consumed. "
+        },
+        {
+            "word": "Restriction enzyme ",
+            "des": "A class of highly specific enzymes that make double stranded breaks in DNA at specific sites near where they combine. "
+        },
+        {
+            "word": "Retardation factor ",
+            "des": " The capability of a soil for slowing or retarding the movement of a solute, and is defined for solutes subject to equilibrium reactions with the soil matrix. "
+        },
+        {
+            "word": "Retentivity profile",
+            "des": "A graph showing the retaining capacity of a soil as a function of depth. The retaining capacity may be for water, for water at any given tension, for cations, or for any other substances held by soils."
+        },
+        {
+            "word": "Reticulate mottling ",
+            "des": "A network of mottles with no dominant color, most commonly found in deeper horizons of soils containing plinthite. "
+        },
+        {
+            "word": "Reynolds number ",
+            "des": "(Re) A dimensionless parameter calculated from the pore water velocity (v), pore diameter (d), fluid density (ρ) and the fluid viscosity (µ): Re = ρvd/µ. Values below 2000 indicate laminar flow and values above 2000 indicate turbulent flow. "
+        },
+        {
+            "word": "Rhizobacteria",
+            "des": " Bacteria that aggressively colonize plant roots."
+        },
+        {
+            "word": "Rhizobia",
+            "des": " Bacteria able to live symbiotically in roots of leguminous plants, from which they receive energy and often utilize molecular nitrogen. Collective common name for the genus Rhizobium. "
+        },
+        {
+            "word": "Rhizobia free ",
+            "des": "Any material that does not contain rhizobia able to nodulate leguminous plants of interest. The material need not be void of all rhizobia."
+        },
+        {
+            "word": "Rhizobia populated ",
+            "des": "Any material that contains rhizobia able to nodulate leguminous plants of interest. Contrast with rhizobia free. "
+        },
+        {
+            "word": "Rhizocylinder",
+            "des": "The plant root plus the adjacent soil that is influenced by the root. "
+        },
+        {
+            "word": "Rhizoplane",
+            "des": " Plant root surfaces usually including the adhering soil particles. "
+        },
+        {
+            "word": "Rhizosphere ",
+            "des": "The zone of soil immediately adjacent to plant roots in which the kinds, numbers, or activities of microorganisms differ from that of the bulk soil. "
+        },
+        {
+            "word": "Richards’ equation ",
+            "des": " The partial differential equation used to represent transient flow through unsaturated porous media. "
+        },
+        {
+            "word": "Richards’ law ",
+            "des": "A positive water pressure is required for water to freely move out of soil and into an open channel. "
+        },
+        {
+            "word": "Ring silicate ",
+            "des": "A mineral containing a circular arrangement of silica tetrahedra that share two oxygens per tetrahedra; siliconoxygen ratio is SiO32-; example: beryl, Be3Al2(SiO3)6; cyclosilicate. "
+        },
+        {
+            "word": "Riparian",
+            "des": "Land adjacent to a body of water that is at least periodically influenced by flooding."
+        },
+        {
+            "word": "River wash ",
+            "des": "In soil surveys a map unit that is a miscellaneous area, which is barren alluvial areas of unstablilized sand silt, clays or gravel reworked by frequently by stream activity. "
+        },
+        {
+            "word": "Rock fragments ",
+            "des": "Unattached pieces of rock 2 mm in diameter or larger that are strongly cemented or more resistant to rupture."
+        },
+        {
+            "word": "Rock land ",
+            "des": "Areas containing frequent rock outcrops and shallow soils. Rock outcrops usually occupy from 25 to 90% of the area."
+        },
+        {
+            "word": "Rock outcrop ",
+            "des": " In soil survey a map unit that is a miscellaneous area, which consists of exposures of bedrock other than lava flows and rock-lined pits. "
+        },
+        {
+            "word": "Root penetration ",
+            "des": "The process by which plant roots elongate through soil. "
+        },
+        {
+            "word": "Root zone ",
+            "des": "The portion of the soil profile from which plants absorb water and nutrients. "
+        },
+        {
+            "word": "Rough broken land ",
+            "des": "Areas with very steep topography and numerous intermittent drainage channels but usually covered with vegetation."
+        },
+        {
+            "word": "Rubble land ",
+            "des": "Areas with 90% or more of the surface covered with cobbles, stones, and boulders. Commonly occurs as colluvium at the base of mountains, but some areas may be left on mountainsides by glaciation or periglacial processes. A miscellaneous area."
+        },
+        {
+            "word": "Runoff",
+            "des": "That portion of precipitation or irrigation on an area that does not infiltrate, but instead is discharged from the area. That which is lost without entering the soil is called surface runoff. That which enters the soil before reaching a stream channel is called groundwater runoff or seepage flow from ground water."
+        },
+        {
+            "word": "S-matrix ",
+            "des": "The material within the simplest peds, or composing apedal soil materials, in which the pedological features occur; it consists of the plasma, skeleton grains, and voids that do not occur as pedological features other than those expressed by specific extinction (orientation) patterns. Pedological features also have an internal s-matrix."
+        },
+        {
+            "word": "Salic horizon ",
+            "des": "A mineral soil horizon of enrichment with secondary salts more soluble in cold water than gypsum. A salic horizon is 15 cm or more in thickness, contains at least 20 g kg-1 salt, and the product of the thickness in centimeters and amount of salt by weight is >600 g kg-1."
+        },
+        {
+            "word": "Salids",
+            "des": "Aridisols that have a salic horizon that has its upper boundary within 100 cm of the soil surface. "
+        },
+        {
+            "word": "Saline seep ",
+            "des": "Intermittent or continuous saline water discharge at or near the soil surface under dryland conditions that reduces or eliminates crop growth. It is differentiated from other saline soil conditions by recent and local origin, shallow water table, saturated root zone, and sensitivity to cropping systems and precipitation. "
+        },
+        {
+            "word": "Saline soil ",
+            "des": "A nonsodic soil containing sufficient soluble salt to adversely affect the growth of most crop plants. The lower limit of saturation extract electrical conductivity of such soils is conventionally set at 4 dS m-1 (at 25 °C). Actually, sensitive plants are affected at half this salinity and highly tolerant ones at about twice this salinity."
+        },
+        {
+            "word": "Saline-alkali soil ",
+            "des": " (i) A soil containing sufficient exchangeable sodium to interfere with the growth of most crop plants and containing appreciable quantities of soluble salts. The exchangeable-sodium percentage is >15, the conductivity of the saturation extract >4 dS m-1 (at 25 °C), and the pH is usually 8.5 or less in the saturated soil. (ii) A saline-alkali soil has a combination of harmful qualities of salts and either a high alkalinity or high content of exchangeable sodium, or both, so distributed in the profile that the growth of most crop plants is reduced. "
+        },
+        {
+            "word": "Saline-sodic soil",
+            "des": " A soil containing sufficient exchangeable sodium to interfere with the growth of most crop plants and containing appreciable quantities of soluble salts. The exchangeable sodium ratio is greater than 0.15, conductivity of the soil solution, at saturated water content, of >4 dS m-1 (at 25 °C), and the pH is usually 8.5 or less in the saturated soil. "
+        },
+        {
+            "word": "Salinity",
+            "des": "The amount of soluble salts in a soil. The conventional measure of soil salinity is the electrical conductivity of a saturation extract. "
+        },
+        {
+            "word": "Salinization",
+            "des": " The process whereby soluble salts accumulate in the soil. "
+        },
+        {
+            "word": "Salt balance ",
+            "des": "The quantity of soluble salt removed from an irrigated area in the drainage water minus that delivered in the irrigation water. "
+        },
+        {
+            "word": "Salt flats ",
+            "des": "In soil survey, a map unit that is a miscellaneous area, composed of undrained flats in arid regions that have surface deposits of secondary salt overlying stratified and strongly saline sediment."
+        },
+        {
+            "word": "Salt tolerance ",
+            "des": "The ability of plants to resist the adverse, nonspecific effects of excessive soluble salts in the rooting medium."
+        },
+        {
+            "word": "Salt-affected soil ",
+            "des": "Soil that has been adversely modified for the growth of most crop plants by the presence of soluble salts, with or without high amounts of exchangeable sodium."
+        },
+        {
+            "word": "Sample",
+            "des": " A part of a population taken to estimate a parameter of the whole population. "
+        },
+        {
+            "word": "Sample plot ",
+            "des": "An area of land, usually small, used for measuring or observing performance under existing or applied treatments. "
+        },
+        {
+            "word": "Sand",
+            "des": "(i) A soil separate. See also soil separates. (ii) A soil textural class."
+        },
+        {
+            "word": "Sand sheet ",
+            "des": "A large, irregularly shaped, commonly thin, surficial mantle of eolian sand, lacking the discernible slip faces that are common on dunes. "
+        },
+        {
+            "word": "Sandy",
+            "des": "(i) Texture group consisting of sand and loamy sand textures. See also soil texture. (ii) Family particle-size class for soils with sand or loamy sand textures and <35% rock fragments in upper subsoil horizons. "
+        },
+        {
+            "word": "Saponite",
+            "des": " A trioctahedral smectite containing magnesium with the majority of the charge originating in the tetrahedral layers."
+        },
+        {
+            "word": "Sapric material ",
+            "des": "Organic soil material that contains less than 1/6 recognizable fibers (after rubbing) of undecomposed plant remains. Bulk density is usually very low, and water holding capacity very high. "
+        },
+        {
+            "word": "Saprists",
+            "des": "Histosols that have a high content of plant materials so decomposed that original plant structures cannot be determined and a bulk density of about 0.2 Mg m-3 or more. Saprists are saturated with water for periods long enough to limit their use for most crops unless they are artificially drained."
+        },
+        {
+            "word": "Saprolite",
+            "des": "Soft, friable, isovolumetrically weathered bedrock that retains the fabric and structure of the parent rock exhibiting extensive intercrystal and intracrystal weathering. In pedology, saprolite was formerly applied to any unconsolidated residual material underlying the soil and grading to hard bedrock below. "
+        },
+        {
+            "word": "Saprophyte",
+            "des": "An organism that lives on dead organic material. "
+        },
+        {
+            "word": "Saprophytic competence ",
+            "des": "The ability of a nodule symbiont or pathogenic microorganism to establish itself and live in soil as a saprophyte. "
+        },
+        {
+            "word": "Sate",
+            "des": " To fill most of the pores between soil particles with liquid, the lack of complete filling being caused by the entrapment of air as water enters the soil. "
+        },
+        {
+            "word": "Satiate",
+            "des": "The state in which soil is under positive soil water pressure but is not fully saturated due to entrapped air."
+        },
+        {
+            "word": "Saturate",
+            "des": "(i) To fill all the voids between soil particles with a liquid. (ii) To form the most concentrated solution possible under a given set of physical conditions in the presence of an excess of the solute. (iii) To fill to capacity, as the adsorption complex with a cation species; e.g., H+-saturated, etc."
+        },
+        {
+            "word": "Saturated soil paste ",
+            "des": "A particular mixture of soil and water. At saturation, the soil paste glistens as it reflects light, flows slightly when the container is tipped, and the paste slides freely and cleanly from a spatula. "
+        },
+        {
+            "word": "Saturation content ",
+            "des": " The mass water content of a saturated soil paste. "
+        },
+        {
+            "word": "Saturation extract ",
+            "des": "The solution extracted from a soil at its saturation water content. "
+        },
+        {
+            "word": "Scalping",
+            "des": "A method of preparing forest soils for planting or seeding that consists of removing the ground vegetation and root mat to expose mineral soil. "
+        },
+        {
+            "word": "Scarp",
+            "des": "An escarpment, cliff, or steep slope of some extent along the margin of a plateau, mesa, terrace, or structural bench. A scarp may be of any height."
+        },
+        {
+            "word": "Scoria land ",
+            "des": " In soil survey, a map unit that is a miscellaneous area, which consists of clinkers, burned shale or fine-grained sandstone remaining after coal beds burn out. "
+        },
+        {
+            "word": "Screefing",
+            "des": "A method of preparing forest soils for planting or seeding that consists of mechanically pushing aside the humus layer to expose mineral soil. "
+        },
+        {
+            "word": "Screen",
+            "des": "(i) (wells) A manufactured well casing with precisely dimensioned and shaped openings. (Compare with perforated casing.) (ii) (canals) A device used to clean surface water of debris, such as revolving screens or turbulent fountain screens. "
+        },
+        {
+            "word": "Second bottom ",
+            "des": "The first terrace above the normal flood plain of a stream. "
+        },
+        {
+            "word": "Secondary metabolite",
+            "des": " A product of intermediary metabolism released from a cell. "
+        },
+        {
+            "word": "Secondary mineral ",
+            "des": "A mineral resulting from the decomposition of a primary mineral or from the reprecipitation of the products of decomposition of a primary mineral. "
+        },
+        {
+            "word": "Secondary nutrients ",
+            "des": " Refers to Ca, Mg, and S in fertilizers. "
+        },
+        {
+            "word": "Sediment ",
+            "des": "Transported and deposited particles  or aggregates derived from rocks, soil, or biological material."
+        },
+        {
+            "word": "Sediment yield ",
+            "des": "The amount of eroded soil that is delivered to a point in a watershed or transported out of a stream section over a period of time. It includes the contributions of erosion from slopes, channels, and a mass wasting of streambanks minus the sediment deposited before the point of interest. "
+        },
+        {
+            "word": "Sedimentary rock ",
+            "des": "A rock formed from materials deposited from suspension or precipitated from solution and usually being more or less consolidated. The principal sedimentary rocks are sandstones, shales, limestones, and conglomerates. "
+        },
+        {
+            "word": "Sedimentation",
+            "des": "The process of sediment deposition."
+        },
+        {
+            "word": "Sedimentology ",
+            "des": "The science dealing with the study of processes of sedimentation and sediment properties. "
+        },
+        {
+            "word": "Seedling emergence ",
+            "des": "That point in time when a young plant grown from seed first breaks through the soil surface."
+        },
+        {
+            "word": "Seepage erosion",
+            "des": "Erosion process typically involved in gully formation and bank failure in which subsurface flow exiting the soil transports soil particles entrained in the seepage water. "
+        },
+        {
+            "word": "Segregated ice ",
+            "des": "Massive ice in a soil pedon, which is relatively free of soil particles. "
+        },
+        {
+            "word": "Selective cutting ",
+            "des": "A system of cutting in which trees, usually the largest, or small groups of such trees are removed for commercial production or to encourage reproduction under the remaining stand in the openings. "
+        },
+        {
+            "word": "Selective enrichment ",
+            "des": "A technique for specifically encouraging the growth of a particular organism or group of organisms. "
+        },
+        {
+            "word": "Selectivity coefficient ",
+            "des": " A conditional equilibrium coefficient for an ion exchange reaction that is expressed in terms of concentration variables for the exchangeable ions and either concentration variables or activities of the ions in solution. "
+        },
+        {
+            "word": "Self-mulching soil ",
+            "des": " A soil in which the surface layer becomes so well aggregated that it does not crust and seal under the impact of rain but instead serves as a surface mulch upon drying. "
+        },
+        {
+            "word": "Semipermeable",
+            "des": "A thin layer of animal or plant tissue which allows some substances to move through them more than others. "
+        },
+        {
+            "word": "Sensor",
+            "des": "Any device that gathers electromagnetic radiation (EMR) or other energy and presents it in a form suitable for obtaining information about the environment. Passive sensors, such as thermal infrared and microwave, utilize EMR produced by the surface or object being sensed. Active sensors, such as radar, supply their own energy source. Aerial cameras use natural or artificially produced EMR external to the object or surface being sensed. "
+        },
+        {
+            "word": "Sepiolite",
+            "des": " Si12Mg8O30(OH)4(OH2)•8H2 A fibrous clay mineral composed of two silica tetrahedral sheets and one magnesium octahedral sheet that make up the 2:1 layer. The 2:1 layers occur in strips with an average width of three linked tetrahedral chains joined at the edges to form tunnels where water molecules are held."
+        },
+        {
+            "word": "Sequum",
+            "des": "A B horizon together with any overlying eluvial horizons. "
+        },
+        {
+            "word": "Serpentine",
+            "des": "Trioctahedral 1:1 type layer silicate: (Mg, Fe) Si2O5(OH)4. "
+        },
+        {
+            "word": "Sesquan",
+            "des": "A cutan composed of a concentration of sesquioxides. "
+        },
+        {
+            "word": "Sesquioxides",
+            "des": "A general term for oxides and hydroxides of iron and aluminum."
+        },
+        {
+            "word": "Shear",
+            "des": "Force, as with a tillage tool, acting at a right angle to the direction of movement of the tillage implement. "
+        },
+        {
+            "word": "Shear strength ",
+            "des": "The maximum resistance of a soil to shearing stresses. "
+        },
+        {
+            "word": "Shoulder",
+            "des": "The hillslope position that forms the uppermost inclined surface near the top of a slope. If present, it comprises the transition zone from backslope to summit. This position is dominantly convex in profile and erosional in origin."
+        },
+        {
+            "word": "Shrinkage",
+            "des": " The process of soil material contracting to a lesser volume when subject to loss of water."
+        },
+        {
+            "word": "Shrub-coppice dune ",
+            "des": "A small, streamlined dune that forms around desert, brush-and-clump vegetation."
+        },
+        {
+            "word": "Side slope ",
+            "des": "The slope bounding a drainageway and lying between the drainageway and the adjacent interfluve. It is generally linear along the slope width and overland flow is parallel down the slope. "
+        },
+        {
+            "word": "Siderophore",
+            "des": "A nonporphyrin metabolite secreted by certain microorganisms that forms a highly stable coordination compound with iron. There are two major types: catecholate and hydroxamate. "
+        },
+        {
+            "word": "Sierozem",
+            "des": "A zonal great soil group consisting of soils with pale grayish A horizons grading into calcareous material at a depth of 30 cm (12 in) or less, and formed in temperate to cool, arid climates under a vegetation of desert plants, short grass, and scattered brush"
+        },
+        {
+            "word": "Significant",
+            "des": "A term applied to differences, correlation, etc., to indicate that they are probably not due to chance alone; usually indicates a probability of not less than 95%."
+        },
+        {
+            "word": "Silica–alumina ratio ",
+            "des": "The molecules of silicon dioxide (SiO2) per molecule of aluminum oxide (Al2O3) in clay minerals or in soils."
+        },
+        {
+            "word": "Silica–sesquioxide ratio ",
+            "des": "The molecules of silicon dioxide (SiO2) per molecule of aluminum oxide (Al2O3) plus ferric oxide (Fe2O3) in clay minerals or in soils. "
+        },
+        {
+            "word": "Silt",
+            "des": " (i) A soil separate. See also soil separates. (ii) A soil textural class."
+        },
+        {
+            "word": "Silt loam ",
+            "des": " A soil textural class."
+        },
+        {
+            "word": "Silting",
+            "des": "The deposition of silt from a body of standing water; choking, filling, or covering by stream-deposited silt that occurs in a place of retarded flow or behind a dam or reservoir. The term often includes particles from clay to sand-size. "
+        },
+        {
+            "word": "Silty clay ",
+            "des": "A soil textural class."
+        },
+        {
+            "word": "Silty clay loam ",
+            "des": "A soil textural class."
+        },
+        {
+            "word": "Single chain ",
+            "des": "Arrangement resulting from silica tetrahedra sharing two oxygen per tetrahedron and linked linearly: silicon-oxygen ratio is SiO32-."
+        },
+        {
+            "word": "Sinkhole ",
+            "des": "A closed depression formed either by solution of the surficial bedrock (e.g., limestone, gypsum, or salt) or by collapse of underlying caves. Complexes of sinkholes in carbonate-rock terrain are the main components of karst topography. "
+        },
+        {
+            "word": "Site",
+            "des": "A volume defined by the abiotic factors (i.e., climate, soil, physiography) that influence vegetation growth and development. "
+        },
+        {
+            "word": "Site index ",
+            "des": "The height of the dominant and codominant trees (not suppressed during development) at an index age, commonly 25, 50, or 100 years. Used in conjunction with volume tables, site index provides an indication of relative site production. "
+        },
+        {
+            "word": "Site productivity ",
+            "des": "The capacity of a site to produce specific products (i.e., biomass or lumber volume) for a given vegetative configuration over time as influenced by abiotic factors (i.e. soil, climate, physiography). Net primary productivity (NPP) provides the fundamental measure of site productivity. When measured at the point of leaf carrying capacity for all potential flora, NPP is a measure of potential site productivity. Rate of product growth, an economic component, is occasionally used as a partial measure of site productivity. "
+        },
+        {
+            "word": "Site quality ",
+            "des": "A relative measure of the vegetative production capacity of a site for a given purpose. "
+        },
+        {
+            "word": "Skeletan",
+            "des": "A cutan composed of skeleton grains. "
+        },
+        {
+            "word": "Skeleton grains ",
+            "des": "Individual grains that are relatively stable and not readily translocated, concentrated, or reorganized by soil-forming processes; they include mineral grains and resistant siliceous and organic bodies larger than colloidal size. "
+        },
+        {
+            "word": "Skew planes ",
+            "des": "Planar voids that traverse the soil material in an irregular manner, having no specific distribution or orientation pattern between individuals."
+        },
+        {
+            "word": "Slick spots ",
+            "des": " Areas having a puddled or crusted, very smooth, nearly impervious surface. The underlying material is dense and massive."
+        },
+        {
+            "word": "Slickens",
+            "des": "Accumulations of fine-textured material, such as separated in placer mining and in ore mill operations; may be detrimental to plant growth and are usually confined in specially constructed basins."
+        },
+        {
+            "word": "Slickensides",
+            "des": "Stress surfaces that are polished and striated produced by one mass sliding past another. Slickensides are common below 50 cm in swelling clays subject to large changes in water content. "
+        },
+        {
+            "word": "Slipping plane",
+            "des": "Boundary of the volume of ions around a clay platelet that migrate with the platelet in an applied electrical field. "
+        },
+        {
+            "word": "Slope",
+            "des": "Degree of deviation of a surface from the horizontal, usually expressed in percent or degrees. "
+        },
+        {
+            "word": "Slough",
+            "des": "(i) A swamp or shallow lake system in northern and midwestern United States. (ii) A slowly flowly shallow swamp or marsh in southeastern United States. "
+        },
+        {
+            "word": "Slow release",
+            "des": "A fertilizer term used interchangeably with delayed release, controlled release, controlled availability, slow acting, and metered release to designate a rate of dissolution (usually in water) much less than is obtained for completely water-soluble compounds. Slow release may involve either compounds that dissolve slowly or soluble compounds coated with substances relatively impermeable to water. "
+        },
+        {
+            "word": "Slump",
+            "des": "(i) A mass movement process characterized by a landslide involving a shearing and rotary movement of a generally independent mass of rock or earth along a curved slip surface (concave upward) and about an axis parallel to the slope from which it descends, and by backward tilting of the mass with respect to that slope so that the slump surface often exhibits a reversed slope facing uphill. (ii) The landform or mass of material slipped down during, or produced by, a slump. "
+        },
+        {
+            "word": "Slump block",
+            "des": "The mass of material torn away as a coherent unit during slumping. "
+        },
+        {
+            "word": "Smectite",
+            "des": "A group of 2:1 layer silicates with a high cation exchange capacity, about 110 cmolc kg-1 for soil smectites, and variable interlayer spacing. Formerly called the montmorillonite group. The group includes dioctahedral members montmorillonite, beidellite, and nontronite, and trioctahedral members saponite, hectorite, and sauconite. "
+        },
+        {
+            "word": "Sodic soil",
+            "des": "A nonsaline soil containing sufficient exchangeable sodium to adversely affect crop production and soil structure under most conditions of soil and plant type. The sodium adsorption ratio of the saturation extract is at least 13. "
+        },
+        {
+            "word": "Sodication",
+            "des": "The process whereby the exchangeable sodium content of a soil is increased. "
+        },
+        {
+            "word": "Sodium adsorption ratio",
+            "des": "A relation between soluble sodium and soluble divalent cations that can be used to predict the exchangeable sodium fraction of soil equilibrated with a given solution. It is defined as follows, where concentrations, denoted by brackets, are expressed in mmoles per liter: SAR = [sodium]/[calcium + magnesium]1/2 "
+        },
+        {
+            "word": "Sodium adsorption ratio",
+            "des": "The sodium adsorption ratio of a water adjusted for the precipitation or dissolution of Ca2+ that is expected to occur where a water reacts with alkaline earth carbonates within a soil."
+        },
+        {
+            "word": "Soil",
+            "des": "(i) The unconsolidated mineral or organic material on the immediate surface of the earth that serves as a natural medium for the growth of land plants. (ii) The unconsolidated mineral or organic matter on the surface of the earth that has been subjected to and shows effects of genetic and environmental factors of: climate (including water and temperature effects), and macro- and microorganisms, conditioned by relief, acting on parent material over a period of time. A product-soil differs from the material from which it is derived in many physical, chemical, biological, and morphological properties and characteristics. "
+        },
+        {
+            "word": "Soil aeration",
+            "des": "The condition, and sum of all processes affecting, soil pore-space gaseous composition, particularly with respect to the amount and availability of oxygen for use by soil biota and/or soil chemical oxidation reactions."
+        },
+        {
+            "word": "Soil air",
+            "des": "The soil atmosphere; the gaseous phase of the soil, being that volume not occupied by solid or liquid. "
+        },
+        {
+            "word": "Soil amendment",
+            "des": "Any material such as lime, gypsum, sawdust, compost, animal manures, crop residue or synthetic soil conditioners that is worked into the soil or applied on the surface to enhance plant growth. Amendments may contain important fertilizer elements, but the term commonly refers to added materials other than those used primarily as fertilizers."
+        },
+        {
+            "word": "Soil association",
+            "des": "A kind of map unit used in soil surveys comprised of delineations, each of which shows the size, shape, and location of a landscape unit composed of two or more kinds of component soils or component soils and miscellaneous areas, plus allowable inclusions in either case. The individual bodies of component soils and miscellaneous areas are large enough to be delineated at the scale of 1:24,000. Several to numerous bodies of each kind of component soil or miscellaneous area are apt to occur in each delineation and they occur in a fairly repetitive and describable pattern."
+        },
+        {
+            "word": "Soil auger",
+            "des": "A tool for boring into the soil and withdrawing a small sample for field or laboratory observation. Soil augers may be classified into several types as follows: (i) those with worm-type bits, uninclosed; (ii) those with worm-type bits inclosed in a hollow cylinder; and (iii) those with a hollow cylinder with a cutting edge at the lower end. "
+        },
+        {
+            "word": "Soil biochemistry",
+            "des": "The branch of soil science concerned with enzymes and the reactions, activities, and products of soil microorganisms. "
+        },
+        {
+            "word": "Soil block",
+            "des": "An isolation volume of soil used to conduct threedimentional flow and transport studies. "
+        },
+        {
+            "word": "Soil characteristics",
+            "des": "Soil properties that can be described or measured by field or laboratory observations, e.g., color, temperature, water content, structure, pH, and exchangeable cations. "
+        },
+        {
+            "word": "Soil chemistry",
+            "des": " The branch of soil science that deals with the chemical constitution, chemical properties, and chemical reactions of soils."
+        },
+        {
+            "word": "Soil column",
+            "des": "An isolation volume of soil used to conduct one-dimentional flow and transport studies. "
+        },
+        {
+            "word": "Soil compaction",
+            "des": " Increasing the soil bulk density, and concomitantly decreasing the soil porosity, by the application of mechanical forces to the soil."
+        },
+        {
+            "word": "Soil complex",
+            "des": "A kind of map unit used in soil surveys comprised of delineations, each of which shows the size, shape, and location of a landscape unit composed of two or more kinds of component soils, or component soils and a miscellaneous area, plus allowable inclusions in either case. The individual bodies of component soils and miscellaneous areas are too small to be delineated at the scale of 1:24 000. Several to numerous bodies of each kind of component soil or the miscellaneous area are apt to occur in each delineation. See also component soil, soil consociation, soil association, undifferentiated group, miscellaneous areas. "
+        },
+        {
+            "word": "Soil conditioner",
+            "des": "A material which measurably improves specific soil physical characteristics or physical processes for a given use or as a plant growth medium. Examples include sawdust, peat, compost, synthetic polymers, and various inert materials."
+        },
+        {
+            "word": "Soil conservation",
+            "des": "(i) Protection of the soil against physical loss by erosion or against chemical deterioration; that is, excessive loss of fertility by either natural or artificial means. (ii) A combination of all management and land use methods that safeguard the soil against depletion or deterioration by natural or by human-induced factors. (iii) The branch of soil science that deals with soil conservation (i) and (ii). "
+        },
+        {
+            "word": "Soil consociation",
+            "des": "A kind of map unit comprised of delineations, each of which shows the size, shape, and location of a landscape unit composed of one kind of component soil, or one kind of miscellaneous area, plus allowable inclusions in either case. See also component soil, soil complex, soil association, undifferentiated group, miscellaneous areas. "
+        },
+        {
+            "word": "Soil drainage class",
+            "des": "The group in which a soil series is placed on the basis of the depth of the profile which is free from saturation. "
+        },
+        {
+            "word": "Soil extract ",
+            "des": "The solution separated from a soil suspension or from a soil by filtration, centrifugation, suction, or pressure."
+        },
+        {
+            "word": "Soil fabric ",
+            "des": "The combined influence of the shape, size, and spatial arrangement of soil solids and soil pores."
+        },
+        {
+            "word": "Soil fertility",
+            "des": "The quality of a soil that enables it to provide nutrients in adequate amounts and in proper balance for the growth of specified plants or crops. "
+        },
+        {
+            "word": "Soil formation factors",
+            "des": "The variables, usually interrelated natural agencies, that are active in and responsible for the formation of soil. The factors are usually grouped into five major categories as follows: parent material, climate, organisms, topography, and time. "
+        },
+        {
+            "word": "Soil fragmentation",
+            "des": "Antonym of soil aggregation, referring to the act of breaking soil apart into fragments. Occurs mainly in response to drop shatter experiments, sieving, or tillage operations such as chisel plowing and disking. "
+        },
+        {
+            "word": "Soil genesis",
+            "des": "(i) The mode of origin of the soil with special reference to the processes or soil-forming factors responsible for development of the solum, or true soil, from unconsolidated parent material. (ii) The branch of soil science that deals with soil genesis. "
+        },
+        {
+            "word": "Soil geography",
+            "des": "The branch of physical geography that deals with the areal distributions of soils. "
+        },
+        {
+            "word": "Soil heat-flux density",
+            "des": "The amount of heat entering a specified cross-sectional area of soil per unit time."
+        },
+        {
+            "word": "Soil horizon",
+            "des": "A layer of soil or soil material approximately parallel to the land surface and differing from adjacent genetically related layers in physical, chemical, and biological properties or characteristics such as color, structure, texture, consistency, kinds and number of organisms present, degree of acidity or alkalinity, etc. "
+        },
+        {
+            "word": "Soil hydrology",
+            "des": "The science dealing with the fundamental properties and processes of water in the vadose zone. "
+        },
+        {
+            "word": "Soil hydrophobicity",
+            "des": "The tendency for a soil particle or soil mass to resist hydration, usually quantified using the water drop penetration time test."
+        },
+        {
+            "word": "Soil interpretations",
+            "des": "Predictions of soil behavior in response to specific uses or management based on inferences from soil characteristics and qualities (e.g., trafficability, erodibility, productivity, etc.). They are either qualitative or quantitative estimates or ratings of soil productivities, potentials, or limitations. "
+        },
+        {
+            "word": "Soil management",
+            "des": " The combination of all tillage operations, cropping practices, fertilizer, lime, and other treatments conducted on or applied to the soil for the production of plants. "
+        },
+        {
+            "word": "Soil management groups",
+            "des": " Groups of taxonomic soil units with similar adaptations or management requirements for one or more specific purposes, such as: adapted crops or crop rotations, drainage practices, fertilization, forestry, highway engineering, etc. "
+        },
+        {
+            "word": "Soil map",
+            "des": "A map showing the distribution of soils or other soil map units in relation to the prominent physical and cultural features of the earth’s surface."
+        },
+        {
+            "word": "Soil matrix",
+            "des": "The solid phase constituents of the soil. Often used to refer to the soil pore system within aggregates. "
+        },
+        {
+            "word": "Soil mechanics and engineering",
+            "des": "The branches of engineering and soil science that deal with the effect of forces on the soil and the application of engineering principles to problems involving the soil. "
+        },
+        {
+            "word": "Soil microbial diversity",
+            "des": "Expression of the variety of soil microorganisms and activities at the genetic, species, and soil ecosystem levels; measurements based on communities rather than species. "
+        },
+        {
+            "word": "Soil microbiology",
+            "des": "The branch of soil science concerned with soil-inhabiting microorganisms, their functions, and activities. "
+        },
+        {
+            "word": "Soil micromorphology",
+            "des": "The study of soil morphology by microscopic (light optical and less frequently by submicroscopic) methods, often using thin-section techniques. "
+        },
+        {
+            "word": "Soil mineral",
+            "des": " (i) Any mineral that occurs as a part of or in the soil. (ii) A natural inorganic compound with definite physical, chemical, and crystalline properties (within the limits of isomorphism) that occurs in the soil."
+        },
+        {
+            "word": "Soil mineralogy",
+            "des": "The branch of soil science that deals with the homogeneous inorganic materials found in the earth’s crust to the depth of weathering or of sedimentation. "
+        },
+        {
+            "word": "Soil monolith",
+            "des": "A vertical section of a soil profile removed from the soil and mounted for display or study. "
+        },
+        {
+            "word": "Soil morphology",
+            "des": "(i) The physical constitution of a soil profile as exhibited by the kinds, thickness, and arrangement of the horizons in the profile, and by the texture, structure, consistence, and porosity of each horizon. (ii) The visible characteristics of the soil or any of its parts. "
+        },
+        {
+            "word": "Soil order",
+            "des": "A group of soils in the broadest category. For example, in the 1938 classification system, the three soil orders were zonal soil, intrazonal soil, and azonal soil. In the 1975, there were 10 orders, whereas in the current USDA classification scheme (Soil Survey Staff, 1994, Soil taxonomy: A basic system of soil classification for making and interpreting soil surveys, SCS-USDA. U.S. Gov. Print. Office, Washington, DC), there are 11 orders, differentiated by the presence or absence of diagnostic horizons: Alfisols, Andisols, Aridisols, Entisols, Histosols, Inceptisols, Mollisols, Oxisols, Spodosols, Ultisols, Vertisols. Orders are divided into suborders and the Suborders are farther divided into great groups. "
+        },
+        {
+            "word": "Soil organic matter",
+            "des": "The organic fraction of the soil exclusive of undecayed plant and animal residues."
+        },
+        {
+            "word": "Soil organic residue",
+            "des": "Animal and vegetative materials added to the soil of recognizable origin. "
+        },
+        {
+            "word": "Soil oxygen diffusion rate",
+            "des": "(i) The rate of diffusion of oxygen through soil as defined by Fick’s law. (ii) A measurement of diffusion governed oxygen reduction rate at the surface of platinum microelectrodes used to assess the oxygen supplying ability of the soil relative to the needs of plant roots, usually referred to as soil ODR. "
+        },
+        {
+            "word": "Soil physics",
+            "des": "The branch of soil science that deals with the physical properties of the soil, with emphasis on the state and transport of matter (especially water) and energy in the soil. "
+        },
+        {
+            "word": "Soil piping or tunneling",
+            "des": " Accelerated erosion that results in subterranean voids and tunnels. "
+        },
+        {
+            "word": "Soil population",
+            "des": "(i) All the organisms living in the soil, including plants and animals. (ii) Members of the same taxa. (iii) Delineations of the same map unit—a grouping of like things in a statistical sense."
+        },
+        {
+            "word": "Soil pores",
+            "des": "That part of the bulk volume of soil not occupied by soil particles. Soil pores have also been referred to as interstices or voids. "
+        },
+        {
+            "word": "Soil productivity",
+            "des": "The capacity of a soil to produce a certain yield of crops or other plants with a specified system of management. "
+        },
+        {
+            "word": "Soil qualities",
+            "des": "Inherent attributes of soils that are inferred from soil characteristics or indirect observations (e.g., compactibility, erodibility, and fertility). "
+        },
+        {
+            "word": "Soil quality",
+            "des": "The capacity of a soil to function within ecosystem boundaries to sustain biological productivity, maintain environmental quality, and promote plant and animal health. "
+        },
+        {
+            "word": "Soil sample",
+            "des": "A representative sample taken from an area, a field, or portion of a field from which the physical, biological, and chemical properties can be determined. "
+        },
+        {
+            "word": "Soil science",
+            "des": "That science dealing with soils as a natural resource on the surface of the earth including soil formation, classification, and mapping; physical, chemical, biological, and fertility properties of soils per se; and these properties in relation to the use and management of soils. "
+        },
+        {
+            "word": "Soil separates",
+            "des": "Mineral particles, <2.0 mm in equivalent diameter, ranging between specified size limits. The names and size limits of separates recognized in the United States are: very coarse sand (prior to 1947 this separate was called “fine gravel;” now fine gravel includes particles between 2.0 mm and about 12.5 mm in diameter), 2.0 to 1.0 mm; coarse sand, 1.0 to 0.5 mm; medium sand, 0.5 to 0.25 mm; fine sand, 0.25 to 0.10 mm; very fine sand, 0.10 to 0.05 mm; silt, 0.05 to 0.002 mm; and clay (prior to 1937, “clay” included particles <0.005 mm in diameter, and “silt,” those particles from 0.05 to 0.005 mm) <0.002 mm. The separates recognized by the International Society of Soil Science are: (i) coarse sand, 2.0 to 0.2 mm; (ii) fine sand, 0.2 to 0.02 mm; (iii) silt, 0.02 to 0.002 mm; and (iv) clay, <0.002 mm. "
+        },
+        {
+            "word": "Soil series",
+            "des": "The lowest category of U.S. system of soil taxonomy; a conceptualized class of soil bodies (polypedons) that have limits and ranges more restrictive than all higher taxa. Soil series are commonly used to name dominant or codominant polypedons represented on detailed soil maps. The soil series serve as a major vehicle to transfer soil information and research knowledge from one soil area to another. "
+        },
+        {
+            "word": "Soil solution",
+            "des": "The aqueous liquid phase of the soil and its solutes."
+        },
+        {
+            "word": "Soil strength",
+            "des": "A transient localized soil property that is a combined measure of a given pedon’s, horizon’s, or other soil subunit’s solid phase adhesive and cohesive status. This property is most easily affected by changes in soil water content and bulk density, although other factors including texture, mineralogy, cementation, cation composition, and organic matter content also affect it. In situ characterization with soil penetrometer is the most common agricultural measure of soil strength, although measurements of other engineering components of strength on disturbed samples are also regarded as valid characterizations."
+        },
+        {
+            "word": "Soil structure",
+            "des": "The combination or arrangement of primary soil particles into secondary units or peds. The secondary units are characterized on the basis of size, shape, and grade (degree of distinctness)."
+        },
+        {
+            "word": "Soil structure grades",
+            "des": "A grouping or classification of soil structure on the basis of inter- and intra-aggregate adhesion, cohesion, or stability"
+        },
+        {
+            "word": "Soil structure shapes",
+            "des": "A classification of soil structure based on the shape of the aggregates or peds in the profile."
+        },
+        {
+            "word": "Soil survey",
+            "des": "(i) The systematic examination, description, classification, and mapping of soils in an area. Soil surveys are classified according to the kind and intensity of field examination. (ii) The program of the National Cooperative Soil Survey that includes developing and implementing standards for describing, classifying, mapping, writing, and publishing information about soils of a specific area. "
+        },
+        {
+            "word": "Soil taxonomy",
+            "des": "U.S. Department of Agriculture soil classification system."
+        },
+        {
+            "word": "Soil test",
+            "des": "A chemical, physical, or biological procedure that estimates the suitability of the soil to support plant growth. "
+        },
+        {
+            "word": "Soil test calibration",
+            "des": "The process of determining the crop nutrient requirement at different soil test values. "
+        },
+        {
+            "word": "Soil test correlation",
+            "des": "The process of determining the relationship between plant nutrient uptake or yield and the amount of nutrient extracted by a particular soil test method. "
+        },
+        {
+            "word": "Soil test critical concentration",
+            "des": "The concentration of an extractable nutrient above which a crop response to added nutrient would not be expected. "
+        },
+        {
+            "word": "Soil test interpretation",
+            "des": "The process of developing nutrient application recommendations from soil test concentration, and other soil, crop, economic, environmental, and climatic information."
+        },
+        {
+            "word": "Soil texture",
+            "des": "The relative proportions of the various soil separates in a soil as described by the classes of soil texture ."
+        },
+        {
+            "word": "Soil type",
+            "des": "Formerly in the U.S. soil classification systems prior to publication of USDA Soil Taxonomy (1975). (i) The lowest unit in the natural system of soil classification; a subdivision of a soil series and consisting of or describing soils that are alike in all characteristics including the texture of the A horizon or plow layer; (ii) In Europe, roughly equivalent to a great soil group. "
+        },
+        {
+            "word": "Soil variant",
+            "des": "A soil whose properties are believed to be sufficiently different from other known soils to justify a new series name but comprising such a limited geographic area that creation of a new series is not justified. Use of this term was discontinued in 1988."
+        },
+        {
+            "word": "Soil water characteristic",
+            "des": "The relationship between the soil-water content (by mass or volume) and the soil-water matric potential. Also called the water retention curve or isotherm, and the water release curve. "
+        },
+        {
+            "word": "Soil water diffusivity",
+            "des": "The hydraulic conductivity divided by the differential water capacity (care being taken to be consistent with units), or the flux of water per unit gradient of water content in the absence of other force fields. "
+        },
+        {
+            "word": "Soil welding",
+            "des": "A process in which pedogenesis in a surface layer of parent rock or sediment feeds physicochemical and other imprints downward into a subjacent buried soil formed in a separate parent rock or sediment, leading to pedogenic “fusion” of the two soils. Also referred to as pedogenic overprinting or pedogenic imprinting. "
+        },
+        {
+            "word": "Solifluction",
+            "des": "Slow, viscous downslope flow of water-saturated regolith. Rates of flow vary widely. The presence of frozen substrate or even freezing and thawing is not implied in the original definition. However, one component of solifluction can be creep of frozen ground. The term is commonly applied to processes operating in both seasonal frost and permafrost areas."
+        },
+        {
+            "word": "Solonchak",
+            "des": "A great soil group of the intrazonal order and halomorphic suborder, consisting of soils with gray, thin, salty crust on the surface, and with fine granular mulch immediately below being underlain with grayish, friable, salty soil; formed under subhumid to arid, hot or cool climate, under conditions of poor drainage, and under a sparse growth of halophytic grasses, shrubs, and some trees."
+        },
+        {
+            "word": "Solonetz",
+            "des": "A great soil group of the intrazonal order and halomorphic suborder, consisting of soils with a very thin, friable, surface soil underlain by a dark, hard columnar layer usually highly alkaline; formed under subhumid to arid, hot to cool climates, under better drainage than Solonchaks, and under a native vegetation of halophytic plants."
+        },
+        {
+            "word": "Solum",
+            "des": "(plural: sola) A set of horizons that are related through the same cycle of pedogenic processes; the A, E, and B horizons. "
+        },
+        {
+            "word": "Sombric horizon",
+            "des": "A subsurface mineral horizon that is darker in color than the overlying horizon but that lacks the properties of a spodic horizon. Common in cool, moist soils of high altitude in tropical regions."
+        },
+        {
+            "word": "Somewhat poorly drained",
+            "des": " A soil drainage class referring to soils which have evidence of seasonal water tables at depths between 20 and 46 cm (8 and 18 in). "
+        },
+        {
+            "word": "Sorption",
+            "des": "The removal of an ion or molecule from solution by adsorption and absorption . It is often used when the exact nature of the mechanism of removal is not known. "
+        },
+        {
+            "word": "Sorptivity",
+            "des": "S = It-1/2 for horizontal infiltration of water, where I is cumulative infiltration and t is time. Sorptivity is dependent on initial and boundary conditions of soil water content among other factors. "
+        },
+        {
+            "word": "Spatial variability",
+            "des": "The variation in soil properties (i) laterally across the landscape, or (ii) vertically downward through the soil. "
+        },
+        {
+            "word": "Specific activity",
+            "des": "Number of enzyme activity units per mass of protein. Often expressed as micromoles of product formed per unit time per milligram of protein. Also used in radiochemistry to express the radioactivity per mass of material (radioactive + nonradioactive)."
+        },
+        {
+            "word": "Specific adsorption",
+            "des": " The strong adsorption of ions or molecules on a surface. Specifically adsorbed materials are not readily removed by ion exchange. "
+        },
+        {
+            "word": "Specific surface",
+            "des": "The solid-particle surface area (of a soil or porous medium) divided by the solid-particle mass or volume, expressed in m2 kg-1or m2 m-3 = m-1, respectively. "
+        },
+        {
+            "word": "Specific water capacity",
+            "des": "The change of soil-water mass content with change in soil-water matric potential. "
+        },
+        {
+            "word": "Specific yield",
+            "des": "The water storage term for an unconfined aquifer. Defined as the volume of water released from an unconfined aquifer per unit surface area of the aquifer surface area per unit drop in the water table depth. "
+        },
+        {
+            "word": "Spodic horizon",
+            "des": "A mineral soil horizon that is characterized by the illuvial accumulation of amorphous materials composed of aluminum and organic carbon with or without iron. The spodic horizon has a certain minimum thickness, and a minimum quantity of extractable carbon plus iron plus aluminum in relation to its content of clay."
+        },
+        {
+            "word": "Spodosols",
+            "des": "Mineral soils that have a spodic horizon or a placic horizon that overlies a fragipan."
+        },
+        {
+            "word": "Spoil bank",
+            "des": "Rock waste, banks, and dump depositions resulting from the excavation of ditches and strip mines. "
+        },
+        {
+            "word": "Spores",
+            "des": "Specialized reproductive cell. Asexual spores germinate without uniting with other cells, whereas sexual spores of opposite mating types unite to form a zygote before germination occurs. "
+        },
+        {
+            "word": "Standard cone",
+            "des": "The cone-shaped tip used at the insertion end of soil penetrometer probes, following design criteria prescribed by the ASAE standard. Briefly, a 30 degree stainless steel cone having a basal diameter of either 20.27 or 12.83 mm. "
+        },
+        {
+            "word": "Static penetrometer",
+            "des": "A penetrometer that is pushed into the soil at a constant and slow rate of penetration."
+        },
+        {
+            "word": "Stem flow",
+            "des": "The movement of water (precipitation ro irrigation) down stems and branches of plants. "
+        },
+        {
+            "word": "Sterilization",
+            "des": "Rendering an object or substance free of viable microbes. "
+        },
+        {
+            "word": "Stern layer",
+            "des": "A layer of positive ions held so tightly to the clay surface that they migrate with the clay in an electrical field."
+        },
+        {
+            "word": "Sticky point",
+            "des": " (i) A condition of consistency at which the soil barely fails to stick to a foreign object. (ii) Specifically and numerically, the water mass content of a well-mixed kneaded soil that barely fails to adhere to a polished nickel or stainless steel surface when the shearing speed is 50 mm s-1. "
+        },
+        {
+            "word": "Stokes’ law",
+            "des": "The equation expressing the force of viscous resistance on a smooth, rigid sphere moving in a viscous fluid under standard temperature and pressure, namely F=3πηDV where F is the force of viscous resistance, π = 3.1416, η is the fluid viscosity, D is the diameter of the sphere, and V is the velocity of fall (or movement). Applying Stokes’ law to gravity sedimentation as used in particle-size analysis of soil by pipette or hydrometer methods, the resulting sedimentation equation is V=2gr2(d1– d2)/9η where g is the acceleration of gravity, r is the “equivalent” radius of a particle, d1 is the soil-particle density, and d2 is the fluid density. Stokes’ law applied to centrifugation yields still another equation for V. "
+        },
+        {
+            "word": "Stone line",
+            "des": "A sheet-like lag concentration of coarse fragments in surficial sediments. In cross section, the line may be marked only by scattered fragments or it may be a discrete layer of fragments. The fragments are more often pebbles or cobbles than stones. A stone line generally overlies material that was subject to weathering, soil formation, and erosion before deposition of the overlying material. Many stone lines seem to represent buried erosion pavements, originally formed by running water on the land surface and concurrently covered by surficial sediment. "
+        },
+        {
+            "word": "Stones",
+            "des": "Rock or mineral fragments between 250 and 600 mm in diameter if rounded, and 380 to 600 mm if flat."
+        },
+        {
+            "word": "Stoniness",
+            "des": "Classes based on the relative proportion of stones at or near the soil surface. Used as a phase distinction in mapping soils."
+        },
+        {
+            "word": "Stony",
+            "des": "(i) A stoniness class in which there are enough stones at or near the soil surface to be a continuing nuisance during operations that mix the surface layer, but they do not make most such operations impractical. (ii) Containing appreciable quantities of stones."
+        },
+        {
+            "word": "Storativity",
+            "des": "The storage term for a confined aquifer. Defined as the volume of water released from a confined aquifer per unit surface area of the aquifer and per unit drop in the hydraulic head. "
+        },
+        {
+            "word": "Stormflow",
+            "des": "The hydrologic response of a watershed to storm events. Often used to refer strictly to subsurface flow through the shallow zone of hillslopes during storm events. "
+        },
+        {
+            "word": "Strath terrace",
+            "des": "A type of stream terrace, formed as an erosional surface cut on bedrock and thinly mantled with stream deposits (alluvium). "
+        },
+        {
+            "word": "Stratified",
+            "des": "Arranged in or composed of strata or layers."
+        },
+        {
+            "word": "Straw mulching",
+            "des": "The use of straw to create a surface mulch on all or part of the soil surface for soil or water conservation, for soil temperature management or for weed suppression. "
+        },
+        {
+            "word": "Stream order",
+            "des": "An integer system applied to tributaries (stream segments) that documents their relative position within a drainage basin network as determined by the pattern of its confluences. The order of the drainage basin is determined by the highest integer. Several systems exist. In the Strahler system, the smallest unbranched tributaries are designated order 1; the confluence of two first-order streams produces a stream segment of order 2; the junction of two second-order streams produces a stream segment of order 3, etc."
+        },
+        {
+            "word": "Stream terrace",
+            "des": " One of a series of platforms in a stream valley, flanking and more or less parallel to the stream channel, originally formed near the level of the stream, and representing the dissected remnants of an abandoned flood plain, stream bed, or valley floor produced during a former state of erosion or deposition. Erosional surfaces cut into bedrock and thinly mantled with stream deposits (alluvium) are designated “strath terraces.” Remnants of constructional valley floors thickly mantled with alluvium are termed alluvial terraces. "
+        },
+        {
+            "word": "Streamflow",
+            "des": "The net flow of water through a stream channel that integrates all contributing components, e.g., overland flow, interflow, and groundwater discharge."
+        },
+        {
+            "word": "Streamline",
+            "des": "The flow path of a water molecule in the soil. "
+        },
+        {
+            "word": "Structural charge",
+            "des": "The charge (usually negative) on a mineral resulting from isomorphous substitution within the mineral layer. (Expressed as moles [mol] or centimoles [cmol] of charge per kilogram of clay.)"
+        },
+        {
+            "word": "Structural diversity",
+            "des": "Microbial community description based on composition of different taxa and DNA/RNA sequence types. "
+        },
+        {
+            "word": "Subarctic Brown Forest soils",
+            "des": " Soils similar to Brown Forest soils except having more shallow sola and average temperatures of <5 °C at 46 m (18 in) or more below the surface. "
+        },
+        {
+            "word": "Substrate",
+            "des": "(i) That which is laid or spread under an underlying layer, such as the subsoil. (ii) The substance, base, or nutrient on which an organism grows. (iii) Compounds or substances that are acted upon by enzymes or catalysts and changed to other compounds in the chemical reaction. "
+        },
+        {
+            "word": "Substrate utilization patterns",
+            "des": "(phenotyping) The metabolic potential of soil microbial communities based on the number of substrates used that differentiate the microbial community. "
+        },
+        {
+            "word": "Substratum",
+            "des": "Any layer lying beneath the soil solum, either conforming or unconforming. "
+        },
+        {
+            "word": "Sulfidic material",
+            "des": "Waterlogged material or organic material that contains 7.5 g kg-1 or more of sulfide-sulfur. "
+        },
+        {
+            "word": "Sulfur cycle",
+            "des": "The sequence of transformations undergone by sulfur wherein it is used by living organisms, transformed upon death and decomposition of the organism, and ultimately converted to its original oxidation state."
+        },
+        {
+            "word": "Sulfuric horizon",
+            "des": "A horizon composed either of mineral or organic soil material that has both pH <3.5 and jarosite mottles. "
+        },
+        {
+            "word": "Summation curve",
+            "des": " A curve showing the accumulative percentage by mass of particles within increasing (or decreasing) size limits as a function of diameter; the percent by mass of each size fraction is plotted accumulatively on the ordinate as a function of the total range of diameters represented in the sample plotted on the abscissa. "
+        },
+        {
+            "word": "Summit",
+            "des": "The highest point of any landform remanant, hill, or mountain. "
+        },
+        {
+            "word": "Superphosphate",
+            "des": "A product obtained when phosphate rock is treated with H2SO4, H3PO4, or a mixture of those acids. "
+        },
+        {
+            "word": "Superphosphoric acid",
+            "des": "The acid form of polyphosphates, consisting of a mixture of orthophosphoric and polyphosphoric acids. Species distribution varies with concentration, which is typically 30 to 36% P (68 to 83% P2O5). "
+        },
+        {
+            "word": "Supraglacial",
+            "des": "Carried upon, deposited from, or pertaining to the top surface of a glacier or ice sheet; said of meltwater streams, till, drift, etc. "
+        },
+        {
+            "word": "Surface area",
+            "des": "The area of the solid particles in a given quantity of soil or porous medium. (i) BET surface area is that area on which gas molecules, such as N2 or O2, can adsorb, which normally does not include the planar surface of expanding clays such as smectites. (ii) EGME surface area is that area on which ethylene glycol monoethyl ether can adsorb, which normally includes the planar surface of expanding clays such as smectites."
+        },
+        {
+            "word": "Surface sealing",
+            "des": "The deposition by water, orientation, and/or packing of a thin layer of fine soil particles on the immediate surface of the soil, greatly reducing its water permeability."
+        },
+        {
+            "word": "Surface soil",
+            "des": "The uppermost part of the soil, ordinarily moved in tillage, or its equivalent in uncultivated soils and ranging in depth from 7 to 25 cm. Frequently designated as the plow layer, the surface layer, the Ap layer, or the Ap horizon."
+        },
+        {
+            "word": "Surface tension",
+            "des": "The amount of energy required to create a new water surface."
+        },
+        {
+            "word": "Surface-charge density",
+            "des": "The excess of negative or positive charge per unit of surface area of soil or soil mineral. "
+        },
+        {
+            "word": "Surfactant",
+            "des": "A substance that lowers the surface tension of a liquid."
+        },
+        {
+            "word": "Suspension",
+            "des": "The state in which particles of a solid are mixed with a fluid but are not dissolved. "
+        },
+        {
+            "word": "Sustainability",
+            "des": "Managing soil and crop cultural practices so as not to degrade or impair environmental quality on or off site, and without eventually reducing yield potential as a result of the chosen practice through exhaustion of either onsite resources or nonrenewable inputs. "
+        },
+        {
+            "word": "Swamp",
+            "des": "An area saturated with water throughout much of the year but with the surface of the soil usually not deeply submerged. Usually characterized by tree or shrub vegetation."
+        },
+        {
+            "word": "Swelling",
+            "des": "The process that occurs when interacting clay platelets move apart. "
+        },
+        {
+            "word": "Symbiosis ",
+            "des": "The obligatory cohabitation of two dissimilar organisms in intimate association. Often, but not always, mutually beneficial."
+        },
+        {
+            "word": "Symmetry concentration",
+            "des": "That quantity of cations (or anions) equivalent to the exchange capacity of a soil. For example, if the cation exchange capacity of a soil is 10 cmolc kg-1 of soil, then 1 symmetry concentration is 10 cmol of any monovalent cation or 5 cmol of any divalent cation. "
+        },
+        {
+            "word": "Symmetry value",
+            "des": "The quantity of adsorbed ion released when one symmetry concentration of another ion is added. "
+        },
+        {
+            "word": "Synergism",
+            "des": " (i) The nonobligatory association between organisms that is mutually beneficial. Both populations can survive in their natural environment on their own although, when formed, the association offers mutual advantages. (ii) The simultaneous actions of two or more factors that have a greater total effect together than the sum of their individual effects."
+        },
+        {
+            "word": "Tactoid",
+            "des": "The colloidal-sized aggregates of phyllosilicate clay particles that can form under certain conditions of exchangeable cations and ionic strength. "
+        },
+        {
+            "word": "Talc",
+            "des": "Si4Mg3O10(OH)2 A trioctahedral magnesium silicate mineral with a 2:1 type layer structure but without isomorphous substitution. May occur in soils as an inherited mineral."
+        },
+        {
+            "word": "Talud",
+            "des": "A short, steep slope formed gradually at the downslope margin of a field by deposition against a hedge, a stone wail, or other similar barrier. "
+        },
+        {
+            "word": "Talus",
+            "des": "Rock fragments of any size or shape (usually coarse and angular) derived from and lying at the base of a cliff or very steep rock slope. The accumulated mass of such loose, broken rock formed chiefly by falling, rolling, or sliding. "
+        },
+        {
+            "word": "Taxadjunct",
+            "des": "A soil that is correlated as a recognized, existing soil series for the purpose of expediency. They are so like the soils of the defined series in morphology, composition, and behavior that little or nothing is gained by adding a new series. "
+        },
+        {
+            "word": "Taxon",
+            "des": "In the context of soil survey, a class at any categorical level in the U.S. system of soil taxonomy. "
+        },
+        {
+            "word": "Temperature",
+            "des": "A potential term that describes the warmth or coldness of an object. "
+        },
+        {
+            "word": "Tensile strength",
+            "des": "The load per unit area at which an unconfined cylindrical specimen will fail in a simple tension test. "
+        },
+        {
+            "word": "Tensiometer",
+            "des": "A device for measuring the soil-water matric potential in situ; a porous, permeable ceramic cup connected through a water-filled tube to a manometer, vacuum gauge, pressure transducer, or other pressure measuring device. "
+        },
+        {
+            "word": "Tephra",
+            "des": "A collective term for all clastic volcanic materials that are ejected from a vent during an eruption and transported through the air, including ash (volcanic), blocks (volcanic), cinders, lapilli, scoria, and pumice. Tephra is a general term that, unlike many volcaniclastic terms, does not denote properties of composition, visicularity, or grain size. "
+        },
+        {
+            "word": "Terminal moraine",
+            "des": "An end moraine that marks the farthest advance of a glacier and usually has the form of a massive arcuate or concentric ridge, or complex of ridges, underlain by till and other drift types."
+        },
+        {
+            "word": "Terminal velocity",
+            "des": "The equilibrium rate at which a particle falls in water or air. "
+        },
+        {
+            "word": "Terrace",
+            "des": "(i) A step-like surface, bordering a stream or shoreline, that represents the former position of a flood plain, lake, or sea shore. (ii) A raised, generally horizontal strip of earth and/or rock constructed along a hill on or nearly on a contour to make land suitable for tillage and to prevent accelerated erosion. (iii) An earth embankment constructed across a slope for conducting water from above at a regulated flow to prevent accelerated erosion and to conserve water."
+        },
+        {
+            "word": "Tetrahedral coordination",
+            "des": "Term describing a cation surrounded by four anions. "
+        },
+        {
+            "word": "Textural triangle",
+            "des": "A classification of earth materials with equivalent particle diameters less than 2.0 mm based solely on particle-size distribution. "
+        },
+        {
+            "word": "Thermal analysis",
+            "des": "Measurement of changes in physical or chemical properties of materials as a function of temperature, usually heating or cooling at a uniform rate. (i) Differential thermal analysis (DTA) measures temperature difference (ΔT) between a sample and reference material. (ii) Differential scanning calorimetry (DSC) measures the differential heat flow between a sample and reference material. (iii) Thermogravimetric analysis (TGA) measures weight loss or gain. "
+        },
+        {
+            "word": "Thermal band",
+            "des": "A general term for middle-infrared wavelengths that are transmitted through the atmosphere window at 8 to 13 µm. Occasionally also used for the windows around 3 to 6 µm. "
+        },
+        {
+            "word": "Thermal conductivity",
+            "des": "The proportionality factor in Fourier’s law that represents the ability of soil to conduct heat and is equivalent to the thermal flux per unit temperature gradient. "
+        },
+        {
+            "word": "Thermal diffusivity",
+            "des": "The ratio of the thermal conductivity to the volumetric heat capacity. "
+        },
+        {
+            "word": "Thermal gravimetric analysis",
+            "des": "(TGA) Method used in the analysis of minerals to detect weight (mass) loss on heating."
+        },
+        {
+            "word": "Thermal properties",
+            "des": " Properties of a medium (soil) relative to heat content and heat transfer, such as thermal conductivity, specific heat capacity, and thermal diffusivity."
+        },
+        {
+            "word": "Thermic",
+            "des": "A soil temperature regime that has mean annual soil temperatures of 15°C or more but <22°C, and >5°C difference between mean summer and mean winter soil temperatures at 50 cm below the surface. Isothermic is the same except the summer and winter temperatures differ by <5°C. "
+        },
+        {
+            "word": "Thermocouple",
+            "des": "A device consisting of two junctions of dissimilar metals that responds to temperature differences between the two junctions."
+        },
+        {
+            "word": "Thermogenic soils",
+            "des": "Soils with properties that have been influenced primarily by high temperature as the dominant soil-formation factor; developed in subtropical and equatorial regions. "
+        },
+        {
+            "word": "Thermophilic organism",
+            "des": "An organism whose optimum temperature for growth is above 45°C."
+        },
+        {
+            "word": "Thermosequence",
+            "des": "A group of related soils that differ, one from the other, primarily as a result of differences in temperature as a soil-formation factor. "
+        },
+        {
+            "word": "Threshold moisture content",
+            "des": "The minimum moisture condition, measured either in terms of moisture content or moisture stress, at which biological activity just becomes measurable. "
+        },
+        {
+            "word": "Throughfall",
+            "des": "That portion of precipitation that falls through or drips off of a plant canopy. "
+        },
+        {
+            "word": "Throughflow",
+            "des": "Water that infiltrates and moves laterally through the upper soil horizons and emerges downslope as seepage before entering a stream. "
+        },
+        {
+            "word": "Tidal flats",
+            "des": "Areas of nearly flat, barren mud periodically covered by tidal waters. Normally these materials have an excess of soluble salt. A miscellaneous area. "
+        },
+        {
+            "word": "Tile drain",
+            "des": "Concrete, ceramic, plastic etc. pipe, or related structure, placed at suitable depths and spacings in the soil or subsoil to enhance and/or accelerate drainage of water from the soil profile."
+        },
+        {
+            "word": "Till",
+            "des": "(i) Unsorted and unstratified earth material, deposited by glacial ice, which consists of a mixture of clay, silt, sand, gravel, stones, and boulders in any proportion. (ii) To prepare the soil for seeding; to seed or cultivate the soil. "
+        },
+        {
+            "word": "Till plain",
+            "des": "An extensive flat to undulating surface underlain by till."
+        },
+        {
+            "word": "Tillage",
+            "des": "The mechanical manipulation of the soil profile for any purpose; but in agriculture it is usually restricted to modifying soil conditions and/or managing crop residues and/or weeds and/or incorporating chemicals for crop production. "
+        },
+        {
+            "word": "Time-domain reflectometry",
+            "des": "A method that uses the timing of wave reflections to determine the properties of various materials, such as the dielectric constant of soil as an indication of water content. "
+        },
+        {
+            "word": "Todorokite",
+            "des": "(Na, Ca, K, Ba, Mn2+)2 Mn4O12▪3H2) A black manganese oxide that occurs in soils and in the weathered regolith of sediments. It has a tunnel structure."
+        },
+        {
+            "word": "Toeslope",
+            "des": "The hillslope position that forms a gently inclined surface at the base of a slope. Toeslopes in profile are commonly gentle and linear, and are constructional surfaces forming the lower part of a slope continuum that grades to a valley or closed depression."
+        },
+        {
+            "word": "Top dressing",
+            "des": "An application of fertilizer to a soil surface, without incorporation, after the crop is established."
+        },
+        {
+            "word": "Toposequence",
+            "des": "A sequence of related soils that differ, one from the other, primarily because of topography as a soilformation factor. "
+        },
+        {
+            "word": "Topsoil",
+            "des": "(i) The layer of soil moved in cultivation. Frequently designated as the Ap layer or Ap horizon. See also surface soil. (ii) Presumably fertile soil material used to topdress roadbanks, gardens, and lawns. "
+        },
+        {
+            "word": "Torrands",
+            "des": "Andisols that have an aridic soil moisture regime. "
+        },
+        {
+            "word": "Torrerts",
+            "des": "Vertisols of arid regions that if not irrigated during the year have cracks in 6 or more out of 10 years that remain closed for less than 60 consecutive days during a period when the soil temperature at a depth of 50 cm from the surface is higher than 8°C."
+        },
+        {
+            "word": "Torric",
+            "des": " A soil moisture regime defined like aridic moisture regime but used in a different category of the U.S. soil taxonomy."
+        },
+        {
+            "word": "Torrox",
+            "des": "Oxisols that have a torric soil moisture regime."
+        },
+        {
+            "word": "Tortuosity",
+            "des": "The nonstraight nature of soil pores. "
+        },
+        {
+            "word": "Tortuosity factor",
+            "des": " Reciprocal of the tortuaosity or the ratio of the straight path length to the actual flow-path length. "
+        },
+        {
+            "word": "Total head",
+            "des": "The sum of the separate energy components acting upon soil water expressed as energy per weight (head) or energy per volume (potential). "
+        },
+        {
+            "word": "Tourmaline",
+            "des": "A ring or cyclo-silicate mineral that contains boron. "
+        },
+        {
+            "word": "Toxicity",
+            "des": " Quality, state, or degree of the harmful effect from alteration of an environmental factor. "
+        },
+        {
+            "word": "Trace elements",
+            "des": "(i) No longer used in SSSA publications in reference to plant nutrition. See also micronutrient. (ii) In environmental applications it is those elements exclusive of the eight abundant rock-forming elements: oxygen, aluminum, silicon, iron, calcium, sodium, potassium, and magnesium."
+        },
+        {
+            "word": "Transfer",
+            "des": "The movement of mass at a point in the soil from one region to another region, e.g., solute movement from adsorbed to solution phases or solute movement from a macropore flow region to a micropore flow region."
+        },
+        {
+            "word": "Transitional soil",
+            "des": "A soil that possesses properties and distinguishing characteristics of two or more separate soils. "
+        },
+        {
+            "word": "Transmission zone",
+            "des": " That part of a soil profile that is behind the wetting front during infiltration and does not increase in water content during further infiltration."
+        },
+        {
+            "word": "Transmissivity",
+            "des": "The rate at which water moves through a unit cross-sectional area of an aquifer of specified thickness under a unit hydraulic gradient. It is equal to the hydraulic conductivity times the thickness of the aquifer. "
+        },
+        {
+            "word": "Transport",
+            "des": "The movement of mass from one point in the soil to another point in the soil."
+        },
+        {
+            "word": "Tree-tip mound",
+            "des": "The small mound of debris sloughed from the root plate (ball) of a tipped-over tree. Local soil horizons are commonly obliterated, which results in a heterogeneous mass of soil material. "
+        },
+        {
+            "word": "Tree-tip pit",
+            "des": "The small pit or depression resulting from the area vacated by the root plate(ball) from tree-tip. Such pits are commonly adjacent to small mounds composed of the displaced material. Subsequent infilling usually produces a heterogeneous soil matrix."
+        },
+        {
+            "word": "Triaxial shear test",
+            "des": "A test in which a cylindrical specimen of soil umbric epipedon encased in an impervious membrane is subjected to a confining pressure and then loaded. "
+        },
+        {
+            "word": "Trioctahedral",
+            "des": "An octahedral sheet or a mineral containing such a sheet that has all of the sites filled, usually by divalent ions such as magnesium or ferrous iron."
+        },
+        {
+            "word": "Tripartite symbiosis",
+            "des": "An association involving three different organisms; e.g., soybean-Bradyrhizobium-arbuscular mycorrhizae. "
+        },
+        {
+            "word": "Tropepts",
+            "des": "Inceptisols that have a mean annual soil temperature of 8°C or more, and <5°C difference between mean summer and mean winter temperatures at a depth of 50 cm below the surface. Tropepts may have an ochric epipedon and a cambic horizon, or an umbric epipedon, or a mollic epipedon under certain conditions but no plaggen epipedon, and are not saturated with water for periods long enough to limit their use for most crops."
+        },
+        {
+            "word": "Trophic level",
+            "des": "The presence of nutrients and energy within a stage, represented by a group of organisms, of the food chain, ranging from primary nutrient assimilating autotrophs to the predatory organotrophs. "
+        },
+        {
+            "word": "Truncated",
+            "des": "Having lost all or part of the upper soil horizon or horizons by soil removal (erosion, excavation, etc.)."
+        },
+        {
+            "word": "Tuff",
+            "des": "A compacted deposit that is 50% or more volcanic ash and dust."
+        },
+        {
+            "word": "Tundra soils",
+            "des": "(i) Soils characteristic of tundra regions. (ii) A zonal great soil group consisting of soils with dark-brown peaty layers over grayish horizons mottled with rust and having continually frozen substrata; formed under frigid, humid climates, with poor drainage, and native vegetation of lichens, moss, flowering plants, and shrubs."
+        },
+        {
+            "word": "Turbulent flow",
+            "des": "Movement of water molecules at sufficiently high energy levels that they do not slide over one another in parallel paths but cause eddie currents such that the mean velocity is not proportional to the pressure drop. "
+        },
+        {
+            "word": "Udalfs",
+            "des": "Alfisols that have a udic soil moisture regime and mesic or warmer soil temperature regimes. Udalfs generally have brownish colors throughout, and are not saturated with water for periods long enough to limit their use for most crops."
+        },
+        {
+            "word": "Udands",
+            "des": "Andisols that have a udic soil moisture regime."
+        },
+        {
+            "word": "Uderts",
+            "des": "Vertisols of relatively humid regions that have wide, deep cracks that usually remain open continuously for <60 days or intermittently for periods that total <90 days. "
+        },
+        {
+            "word": "Udic",
+            "des": "A soil moisture regime that is neither dry for as long as 90 cumulative days nor for as long as 60 consecutive days in the 90 days following the summer solstice at periods when the soil temperature at 50 cm below the surface is above 5°C. "
+        },
+        {
+            "word": "Udolls",
+            "des": "Mollisols that have a udic soil moisture regime with mean annual soil temperatures of 8°C or more. Udolls have no calcic or gypsic horizon and are not saturated with water for periods long enough to limit their use for most crops. "
+        },
+        {
+            "word": "Udox",
+            "des": "Oxisols that have a udic soil moisture regime."
+        },
+        {
+            "word": "Udults",
+            "des": "Ultisols that have low or moderate amounts of organic carbon, reddish or yellowish argillic horizons, and a udic soil moisture regime. Udults are not saturated with water for periods long enough to limit their use for most crops. "
+        },
+        {
+            "word": "Ultisols",
+            "des": "Mineral soils that have an argillic horizon with a base saturation of <35% when measured at pH 8.2. Ultisols have a mean annual soil temperature of 8°C or higher."
+        },
+        {
+            "word": "Umbrepts",
+            "des": "Inceptisols formed in cold or temperate climates that commonly have an umbric epipedon, but they may have a mollic or an anthropic epipedon 25 cm or more thick under certain conditions. These soils are not dominated by amorphous materials and are not saturated with water for periods long enough to limit their use for most crops. "
+        },
+        {
+            "word": "Umbric epipedon",
+            "des": "A surface layer of mineral soil that has the same requirements as the mollic epipedon with respect to color, thickness, organic carbon content, consistence, structure, and phosphorus content but that has a base saturation <50% when measured at pH 7. "
+        },
+        {
+            "word": "Unaccommodated",
+            "des": "Applied to peds. Virtually none of the faces of adjoining peds are molds of each other. "
+        },
+        {
+            "word": "Unconformity",
+            "des": "A substantial break or gap in the geologic record where a unit is overlain by another that is not in stratigraphic succession. "
+        },
+        {
+            "word": "Underfit stream",
+            "des": "A stream that appears to be too small to have eroded the valley in which it flows; a stream whose volume is greatly reduced or whose meanders show a pronounced shrinkage in radius. It is a common result of drainage changes effected by capture, glaciers, or climatic variations."
+        },
+        {
+            "word": "Underground runoff",
+            "des": "Water that seeps toward stream channels after infiltration into the ground."
+        },
+        {
+            "word": "Undifferentiated group",
+            "des": "A kind of map unit used in soil surveys comprised of two or more taxa components that are not consistently associated geographically. Delineations show the size, shape, and location of a landscape unit composed of one or the others, or all of two or more component soils that have the same or very similar use and management for specified common uses. Inclusions may occur up to some allowable limit."
+        },
+        {
+            "word": "Unsaturated flow",
+            "des": "The movement of water in soil in which the pores are not filled to capacity with water. "
+        },
+        {
+            "word": "Urban land",
+            "des": "Areas so altered or obstructed by urban works or structures that identification of soils is not feasible."
+        },
+        {
+            "word": "Ustalfs",
+            "des": "Alfisols that have an ustic soil moisture regime and mesic or warmer soil temperature regimes. Ustalfs are brownish or reddish throughout and are not saturated with water for periods long enough to limit their use for most crops."
+        },
+        {
+            "word": "Ustands",
+            "des": "Andisols that have an ustic soil moisture regime."
+        },
+        {
+            "word": "Usterts",
+            "des": "Vertisols of temperate or tropical regions that have wide, deep cracks that usually remain open for periods that total >90 days but do not remain open continuously throughout the year, and have either a mean annual soil temperature of 22°C or more or a mean summer and mean winter soil temperature at 50 cm below the surface that differ by <5°C or have cracks that open and close more than once during the year."
+        },
+        {
+            "word": "Ustic",
+            "des": "A soil moisture regime that is intermediate between the aridic and udic regimes and common in temperate subhumid or semiarid regions, or in tropical and subtropical regions with a monsoon climate. A limited amount of water is available for plants but occurs at times when the soil temperature is optimum for plant growth. "
+        },
+        {
+            "word": "Ustolls",
+            "des": "Mollisols that have an ustic soil moisture regime and mesic or warmer soil temperature regimes. Ustolls may have a calcic, petrocalcic, or gypsic horizon and are not saturated with water for periods long enough to limit their use for most crops."
+        },
+        {
+            "word": "Ustox",
+            "des": "Oxisols that have an ustic moisture regime and either hyperthermic or isohyperthermic soil temperature regimes or have <20 kg organic carbon in the surface cubic meter."
+        },
+        {
+            "word": "Ustults",
+            "des": "Ultisols that have low or moderate amounts of organic carbon, are brownish or reddish throughout and have an ustic soil moisture regime."
+        },
+        {
+            "word": "Vadose water",
+            "des": "Water in the vadose zone."
+        },
+        {
+            "word": "Vadose zone",
+            "des": "The aerated region of soil above the permanent water table. "
+        },
+        {
+            "word": "Valence state",
+            "des": "The number of electrons required to fill the outermost shell of an atom or alternatively the number of electrons which can be lost or shared in the outermost shell."
+        },
+        {
+            "word": "Value",
+            "des": "The degree of lightness or darkness of a color in relation to a neutral gray scale. On a neutral gray scale, value extends from pure black to pure white; one of the three variables of color. See also Munsell color system, hue, and chroma. "
+        },
+        {
+            "word": "Van der Waals forces",
+            "des": "Binding force which arises from an induced dipole in a normal molecule which induces a dipole in another molecule thus causing an attraction between them."
+        },
+        {
+            "word": "Vapor flow",
+            "des": " The gaseous flow of water vapor in soils from a moist or warm zone of higher potential to a drier or colder zone of lower potential."
+        },
+        {
+            "word": "Variable charge",
+            "des": "A solid surface carrying a net electrical charge which may be positive, negative, or zero, depending on the activity of one or more species of a potential-determining ions in the solution phase contacting the surface. For minerals and other materials common in soils(e.g. soil organic matter, and oxides), the potential-determining ion usually is H+ or OH-, but any ion that forms a complex with the surface may be potential-determining."
+        },
+        {
+            "word": "Varve",
+            "des": "A sedimentary layer, lamina, or sequence of laminae, deposited in a body of still water within 1 year; specifically, a thin pair of graded glaciolacustrine layers seasonally deposited, usually by meltwater streams, in a glacial lake or other body of still water in front of a glacier. "
+        },
+        {
+            "word": "Vegetative cell",
+            "des": "The growing or feeding form of a microbial cell, as opposed to a resistant resting form. "
+        },
+        {
+            "word": "Ventifact",
+            "des": " A stone or pebble that has been shaped, worn, faceted, or polished by the abrasive action of windblown sand, usually under arid conditions. When the pebble is at the ground surface, as in a desert pavement, the upper part is polished while the lower or below ground part is angular or subangular."
+        },
+        {
+            "word": "Vermiculite",
+            "des": "A highly charged particle, averages about 159 cmolc kg-1 for soil vermiculites but has a very wide range, layer silicate of the 2:1 type that is formed from mica. It is characterized by adsorption preference for potassium, ammonium, and cesium over smaller exchange cations. It may be di- or trioctahedral."
+        },
+        {
+            "word": "Vertisols",
+            "des": "Mineral soils that have 30% or more clay, deep wide cracks when dry, and either gilgai microrelief, intersecting slickensides, or wedge-shaped structural aggregates tilted at an angle from the horizon."
+        },
+        {
+            "word": "Vesicles",
+            "des": "(i) Unconnected voids with smooth walls. (ii) Spherical structures, formed intracellularly, by vesicular arbuscular endomycorrhizal fungi."
+        },
+        {
+            "word": "Viable but not culturable microorganisms",
+            "des": "Soil microorganisms that cannot be cultured on common laboratory media but can be detected based on sequences of DNA extracted directly from soil."
+        },
+        {
+            "word": "Viscosity",
+            "des": "Property of a fluid indicating its resistance to movement due to the internal friction in the fluid, as measured by the force per unit area resisting flow. "
+        },
+        {
+            "word": "Vitrands",
+            "des": "Andisols that have 1500-kPa water retention of <15% on air dry <30% on undried samples throughout 60% of the thickness either; (i) within 60 cm of the soil surface or top of an organic layer with andic properties, whichever is shallower if there is no lithic, paralithic contact, duripan, or petrocalcic horizon within that depth, or (ii) between the mineral soil surface or top of an organic layer with andic properties, whichever is shallower and a lithic, paralithic contact, duripan, or petrocalcic horizon."
+        },
+        {
+            "word": "Void ratio",
+            "des": "The ratio of the volume of soil pore (or void) space to the solid-particle volume. "
+        },
+        {
+            "word": "Volcaniclastic",
+            "des": "Pertaining to the entire spectrum of fragmental materials with a preponderance of clasts of volcanic origin. The term includes not only pyroclastic materials but also epiclastic deposits derived from volcanic source areas by normal processes of mass movement and stream erosion. Examples: welded tuff, volcanic breccia. "
+        },
+        {
+            "word": "Volumetric heat capacity",
+            "des": "The heat required to raise the temperature of 1 cm3 of soil by 1°C. The change in heat content of unit volume of soil per unit change in soil temperature."
+        },
+        {
+            "word": "Volumetric water content",
+            "des": "The soil-water content expressed as the volume of water per unit bulk volume of soil. "
+        },
+        {
+            "word": "Vughs",
+            "des": " Relatively large voids, usually irregular and not normally interconnected with other voids of comparable size; at the magnifications at which they are recognized they appear as discrete entities."
+        },
+        {
+            "word": "Wasteland",
+            "des": "Land not suitable for, or capable of, producing materials or services of value."
+        },
+        {
+            "word": "Water balance",
+            "des": "A procedure whereby water inputs and outputs are accounted for in a given soil leaving a balance called the storage. "
+        },
+        {
+            "word": "Water drop penetration time",
+            "des": "A measure of soil water repellency which uses the imbibition time of drops of prescribed aqueous solutions as a discriminator. "
+        },
+        {
+            "word": "Water retention",
+            "des": "A property of soil that results from the attraction of the soil matrix for water. "
+        },
+        {
+            "word": "Water table",
+            "des": "The upper surface of ground water or that level in the ground where the water is at atmospheric pressure. "
+        },
+        {
+            "word": "Water use efficiency",
+            "des": "Dry matter or harvested portion of crop produced per unit of water consumed. "
+        },
+        {
+            "word": "Waterlogged",
+            "des": "Saturated or nearly saturated with water. "
+        },
+        {
+            "word": "Water-soluble phosphate",
+            "des": "That part of the phosphorus in a fertilizer that is soluble in water as determined by prescribed chemical tests. "
+        },
+        {
+            "word": "Water-stable aggregate",
+            "des": "A soil aggregate that is stable to the action of water such as falling drops, or agitation as in wetsieving analysis. "
+        },
+        {
+            "word": "Wavelength",
+            "des": "Distance between two repetitive points on a sine wave. "
+        },
+        {
+            "word": "Weathering",
+            "des": "The breakdown and changes in rocks and sediments at or near the earth’s surface produced by biological, chemical, and physical agents or combinations of them. See also chemical weathering and physical weathering. "
+        },
+        {
+            "word": "Weight",
+            "des": "The force which an object exerts in a gravitational field because of its mass; weight = mg."
+        },
+        {
+            "word": "Weir",
+            "des": "A low dam or overflow structure specified geometry placed across an open channel to measure the discharge from a unique water level-discharge relationship called the rating curve. "
+        },
+        {
+            "word": "Well",
+            "des": "A pipe perforated for a prescribed interval (depth increment) in order to equilibrate with the adjoining aquifer for measurement of the depth to the free-water surface, i.e., water table. "
+        },
+        {
+            "word": "Well drained",
+            "des": "A soil drainage class characterized by the lack of any evidence of seasonal high water tables in the top 91 cm (36 in) of the soil profile."
+        },
+        {
+            "word": "Wet density",
+            "des": "Ratio of the wet mass of soil to the bulk volume of soil. "
+        },
+        {
+            "word": "Wetland",
+            "des": "Land that has (i) a predominance of hydric soils; and (ii) is inundated or sturated by surface or groundwater at a frequency and duration sufficient to support, and under normal circumstances does support, a prevalence of hydrophytic vegetation typically adapted for life in saturated soil conditions. "
+        },
+        {
+            "word": "Wetting front",
+            "des": "The boundary between the wetted region and the dry region of soil during infiltration. "
+        },
+        {
+            "word": "White rot fungus",
+            "des": "Fungus that attacks lignin, along with cellulose and hemicellulose, leading to complete decomposition of wood; some members are important in bioremedtiation of xenobiotics that resemble lignin, i.e., polycyclic aromatic hydrocarbons. "
+        },
+        {
+            "word": "Wilting coefficient",
+            "des": "A calculated value of the approximate wilting point or permanent wilting percentage. Calculated as follows: Wilting coefficient = Hygroscopic coefficient/0.68 or Wilting coefficient = Moisture equivalent/1.84 "
+        },
+        {
+            "word": "Wilting point",
+            "des": "Water content of a soil when indicator plants growing in that soil wilt and fail to recover when placed in a humid chamber. "
+        },
+        {
+            "word": "Work",
+            "des": "A term used to inidcate the energy required to move an object a certain distance."
+        },
+        {
+            "word": "X-ray diffraction",
+            "des": "A technique used to determine crystal planar spacing in minerals. "
+        },
+        {
+            "word": "Xenobiotic",
+            "des": "A compound foreign to biological systems. Often refers to human-made compounds that are resistant or recalcitrant to biodegradation and/or decomposition. "
+        },
+        {
+            "word": "Xeralfs",
+            "des": "Alfisols that have a xeric soil moisture regime. Xeralfs are brownish or reddish throughout."
+        },
+        {
+            "word": "Xerands",
+            "des": "Andisols that have a xeric soil moisture regime."
+        },
+        {
+            "word": "Xererts",
+            "des": "Vertisols that have a thermic, mesic, or frigid soil temperature regime and if not irrigated, cracks that remain both 5 cm or more wide through a thickness of 25 cm or more within 50 cm of the mineral soil surface for 60 or more consecutive days during 90 days following the summer solstice and closed 60 or more consecutive days during the 90 days following the winter solstice."
+        },
+        {
+            "word": "Xeric",
+            "des": "A soil moisture regime common to mediterranean climates that have moist cool winters and warm dry summers. A limited amount of water is present but does not occur at optimum periods for plant growth. Irrigation or summerfallow is commonly necessary for crop production."
+        },
+        {
+            "word": "Xerolls",
+            "des": "Mollisols that have a xeric soil moisture regime. Xerolls may have a calcic, petrocalcic, or gypsic horizon, or a duripan."
+        },
+        {
+            "word": "Xerults",
+            "des": "Ultisols that have low or moderate amounts of organic carbon, are brownish or reddish throughout, and have a xeric soil moisture regime."
+        },
+        {
+            "word": "Yield",
+            "des": "The amount of a specified substance produced (e.g., grain, straw, total dry matter) per unit area. "
+        },
+        {
+            "word": "Yield curve",
+            "des": "A graphical representation of nutrient application rate or availability versus crop yield or nutrient uptake. "
+        },
+        {
+            "word": "Yield goal",
+            "des": "The yield that a producer expects to achieve, based on overall management imposed and past production records."
+        },
+        {
+            "word": "Yield-sustained",
+            "des": "A continual, annual, or periodic yield of plants or plant material from an area; implies management practices that will maintain the productive capacity of the land, be economically feasible, and maintain environmental integrity of the ecosystem."
+        },
+        {
+            "word": "Zonal soil",
+            "des": "(i) A soil characteristic of a large area or zone. (ii) One of the three primary subdivisions (orders) in soil classification as used in the United States."
+        },
+        {
+            "word": "Zymogenous flora",
+            "des": "So-called opportunistic organisms found in soils in large numbers immediately following addition of a readily decomposable organic substrate. Synonymous with copiotrophs."
         }
     ]
 }

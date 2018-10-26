@@ -33,7 +33,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:contentDescription="Developer Shudipto Trafder"
                     android:id="@+id/imageView2"
                     android:layout_width="78dp"
                     android:layout_height="78dp"
@@ -42,7 +43,8 @@
                     app:layout_constraintBottom_toBottomOf="@+id/textView5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textView4"
-                    tools:srcCompat="@tools:sample/avatars[9]" />
+                    android:src="@drawable/sdt"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -180,10 +182,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imageView12"
                     android:layout_width="78dp"
                     android:layout_height="78dp"
+                    android:src="@drawable/ri"
                     android:layout_gravity="center"
                     android:layout_marginStart="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView15"
@@ -265,6 +268,7 @@
                         android:background="@android:color/transparent"
                         app:srcCompat="@drawable/ic_009_linkedin_1" />
 
+                    <!--
                     <androidx.appcompat.widget.AppCompatImageButton
                         android:id="@+id/dev2_git"
                         android:layout_width="48dp"
@@ -275,6 +279,7 @@
                         android:background="@android:color/transparent"
                         app:srcCompat="@drawable/ic_010_github" />
 
+-->
                     <androidx.appcompat.widget.AppCompatImageButton
                         android:id="@+id/dev2_em"
                         android:layout_width="48dp"
