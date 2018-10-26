@@ -13,14 +13,13 @@ import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.database.Cursor
-import android.graphics.Color
 import android.os.Bundle
 import android.provider.SearchRecentSuggestions
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
 import android.widget.FrameLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -30,6 +29,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.MenuItemCompat
+import androidx.core.view.isGone
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.work.WorkManager
@@ -49,7 +49,6 @@ import com.iamsdt.pssd.ui.flash.FlashCardActivity
 import com.iamsdt.pssd.ui.search.MySuggestionProvider
 import com.iamsdt.pssd.ui.settings.SettingsActivity
 import com.iamsdt.pssd.utils.Bookmark
-import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.RestoreData
 import com.iamsdt.pssd.utils.SettingsUtils
 import com.iamsdt.pssd.utils.sync.SyncTask
@@ -209,15 +208,12 @@ class MainActivity : AppCompatActivity(),
             }
         }
 
-        if (!isShowKeyboard()) {
-
-        }
-
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
     }
+
 
     private fun setupSearchView() {
         mSearchView = searchView
@@ -274,6 +270,10 @@ class MainActivity : AppCompatActivity(),
 
         mSearchView.setOnClickListener {
 
+        }
+
+        if (!isShowKeyboard() && ::mSearchView.isInitialized) {
+            mSearchView.onActionViewCollapsed()
         }
     }
 
@@ -375,7 +375,7 @@ class MainActivity : AppCompatActivity(),
     override fun onBackPressed() {
         when {
             drawer_layout.isDrawerOpen(GravityCompat.START) -> drawer_layout.closeDrawer(GravityCompat.START)
-            !(mSearchView.isHovered) -> {
+            fab.isGone -> {
                 fab.show()
             }
             else -> super.onBackPressed()
