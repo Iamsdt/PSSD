@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Developed By Shudipto Trafder
+  ~  on 10/26/18 4:58 PM
+  ~  Copyright (c)2018  Shudipto Trafder.
+  -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="@android:color/darker_gray" />
+
+    <padding
+        android:top="10dp"
+        android:left="10dp"
+        android:right="10dp"
+        android:bottom="10dp"/>
+</shape>

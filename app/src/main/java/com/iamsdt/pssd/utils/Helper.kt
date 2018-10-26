@@ -14,9 +14,9 @@ import timber.log.Timber
 import java.util.*
 
 val PAGE_CONFIG: PagedList.Config = PagedList.Config.Builder()
-        .setPageSize(10)
-        .setInitialLoadSizeHint(30)//by default page size * 3
-        .setPrefetchDistance(10) // default page size
+        .setPageSize(30)
+        .setInitialLoadSizeHint(50)//by default page size * 3
+        .setPrefetchDistance(20) // default page size
         .setEnablePlaceholders(true) //default true
         .build()
 
