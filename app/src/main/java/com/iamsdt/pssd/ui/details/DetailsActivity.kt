@@ -105,7 +105,7 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         })
 
 
-        fab.setOnClickListener {
+        details_speak.setOnClickListener {
             speakOut()
         }
 
