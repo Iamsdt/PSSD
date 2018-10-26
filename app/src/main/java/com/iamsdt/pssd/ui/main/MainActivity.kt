@@ -18,7 +18,6 @@ import android.provider.SearchRecentSuggestions
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -273,7 +272,10 @@ class MainActivity : AppCompatActivity(),
         }
 
         if (!isShowKeyboard() && ::mSearchView.isInitialized) {
-            mSearchView.onActionViewCollapsed()
+            mSearchView.clearFocus()
+        } else{
+            mSearchView.findFocus()
+            mSearchView.onActionViewExpanded()
         }
     }
 

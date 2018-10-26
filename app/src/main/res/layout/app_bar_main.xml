@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Developed By Shudipto Trafder
   ~ on 8/17/18 12:49 PM
   ~ Copyright (c) 2018 Shudipto Trafder.
@@ -28,19 +27,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@color/white"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/white">
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:voiceIcon="@android:drawable/ic_btn_speak_now"
-                app:queryHint="Search..."
+                android:focusable="false"
                 android:focusableInTouchMode="true"
-                app:iconifiedByDefault="false"/>
+                app:iconifiedByDefault="false"
+                app:queryHint="Search..."
+                app:voiceIcon="@android:drawable/ic_btn_speak_now" />
 
         </LinearLayout>
 
