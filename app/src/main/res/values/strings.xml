@@ -248,8 +248,15 @@
     
     <!--app about -->
     <string name="app_about1">Soil science dictionary is a completely open source app which is developed for the educational and informational purpose only. </string>
-    <string name="app_about2">Our main goal is to make a collection of the soil terminologies so that the user can easily find it. Those terminologies are collected from some books that are mentioned in the acknowledgment section.</string>
+    <string name="app_about2">Our main goal is to make a collection of the soil terminologies so that the user can easily find it.</string>
     <string name="action_clear">Clear recent search</string>
+
+    <!--terms of conditions -->
+    <string name="tms_label">Terms of Uses</string>
+    <string name="tms_txt">Soil science dictionary is a completely open source app. This app developed for educational purpose only. No commercial intention involved with this app. Commercial use is strictly prohibited. Rebuilding and redistribution of this app without developer permission is offensive.</string>
+    
+    <string name="ack">Acknowledgment</string>
+    <string name="ack_txt">The developer greatly acknowledges the authors Soil Science Glossary of (books name).</string>
 
 
 </resources>

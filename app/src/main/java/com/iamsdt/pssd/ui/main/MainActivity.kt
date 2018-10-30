@@ -275,7 +275,7 @@ class MainActivity : AppCompatActivity(),
 
         if (!isShowKeyboard() && ::mSearchView.isInitialized) {
             mSearchView.clearFocus()
-        } else{
+        } else {
             mSearchView.findFocus()
             mSearchView.onActionViewExpanded()
         }
@@ -421,7 +421,7 @@ class MainActivity : AppCompatActivity(),
             R.id.action_favourite ->
                 viewModel.requestBookmark(id, isBookmarked)
 
-            R.id.action_clear ->{
+            R.id.action_clear -> {
                 suggestions?.clearHistory()
             }
 
@@ -479,13 +479,15 @@ class MainActivity : AppCompatActivity(),
                         themeRequestCode)
             }
             R.id.nav_notice -> {
-                showDummyMessage()
+                val dialog = AcknowledgeSheet()
+                dialog.show(supportFragmentManager, "acknowledge")
             }
             R.id.nav_police -> {
                 customTab(PrivacyPolices)
             }
             R.id.nav_use -> {
-                showDummyMessage()
+                val dialog = TmsSheet()
+                dialog.show(supportFragmentManager, "tms")
             }
             R.id.nav_about -> {
                 toNextActivity(AppAboutActivity::class)
@@ -508,9 +510,9 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-    private fun showDummyMessage() {
-        showToast(ToastType.SUCCESSFUL, "Not available yet")
-    }
+//    private fun showDummyMessage() {
+//        showToast(ToastType.SUCCESSFUL, "Not available yet")
+//    }
 
     private fun isShowKeyboard() = settingsUtils.searchIcon
 

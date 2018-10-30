@@ -24,6 +24,9 @@ import com.iamsdt.pssd.utils.sync.worker.DownloadWorker
 import com.iamsdt.pssd.utils.sync.worker.UploadWorker
 import org.koin.android.ext.android.inject
 import java.util.*
+import android.view.animation.AnimationUtils
+import kotlinx.android.synthetic.main.activity_splash.*
+
 
 class SplashActivity : AppCompatActivity() {
 
@@ -36,7 +39,11 @@ class SplashActivity : AppCompatActivity() {
 
         //save data
 
-        // TODO: 8/31/18 add animation
+        // complete: 8/31/18 add animation
+        val set = AnimationUtils.loadAnimation(this,
+                R.anim.splash_screen_animation)
+
+        app_icon.animation = set
 
         //complete 9/19/2018 add backup data
 

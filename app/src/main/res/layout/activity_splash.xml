@@ -10,7 +10,7 @@
     <!-- //complete change icon -->
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/app_icon"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="App Icon"

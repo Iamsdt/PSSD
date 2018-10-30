@@ -63,7 +63,7 @@
 -keep class * implements androidx.work.** {*;}
 
 #Share action provider
--keep androidx.appcompat.widget.ShareActionProvider {*;}
+-keep class androidx.appcompat.widget.ShareActionProvider {*;}
 
 ##---------------Begin: proguard configuration for Gson  ----------
 # Gson uses generic type information stored in a class file when working with fields. Proguard
