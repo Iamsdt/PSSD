@@ -16,8 +16,8 @@ android {
         applicationId "com.iamsdt.pssd"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -112,11 +112,10 @@ dependencies {
 
     //implementation "androidx.collection:collection-ktx:$ktx_version"
 
-    // Koin for Android
-    implementation('org.koin:koin-android:0.9.3')
-    // or Koin for Android Architecture
-    //implementation 'org.koin:koin-android-architecture:0.9.3'
-    implementation "org.koin:koin-androidx-viewmodel:1.0.0-beta-3"
+    def koin_version = '1.0.1'
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+
 
     //error handler
     implementation 'com.github.RohitSurwase.UCE-Handler:uce_handler:1.3'
