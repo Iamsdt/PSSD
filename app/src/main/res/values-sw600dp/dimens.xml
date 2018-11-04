@@ -7,4 +7,7 @@
 
 <resources>
     <dimen name="about_app_txt">38sp</dimen>
+
+    <dimen name="empty__fav_img">300dp</dimen>
+    <dimen name="empty_fav_txt">45sp</dimen>
 </resources>
