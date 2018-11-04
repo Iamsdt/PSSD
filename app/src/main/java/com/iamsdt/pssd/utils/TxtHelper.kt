@@ -12,7 +12,7 @@ class TxtHelper(private val settingsUtils: SettingsUtils) {
 
     fun setSize(wordTV: TextView, desTV: TextView) {
         val (w, d) = settingsUtils.textSize
-        wordTV.textSize = w
+        wordTV.textSize = w + 4
         desTV.textSize = d
     }
 }

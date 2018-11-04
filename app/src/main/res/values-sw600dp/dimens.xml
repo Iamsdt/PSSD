@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Developed By Shudipto Trafder
+  ~  on 11/4/18 10:58 PM
+  ~  Copyright (c)2018  Shudipto Trafder.
+  -->
+
+<resources>
+    <dimen name="about_app_txt">38sp</dimen>
+</resources>

@@ -6,19 +6,29 @@
 
 package com.iamsdt.pssd.ui.main
 
-import android.os.Bundle
-import android.view.LayoutInflater
+import android.annotation.SuppressLint
+import android.app.Dialog
 import android.view.View
-import android.view.ViewGroup
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.iamsdt.pssd.R
+import kotlinx.android.synthetic.main.app_bar_main.*
+
 
 /**
  * Created by Shudipto Trafder on 10/30/2018.
  * at 7:59 PM
  */
 class AcknowledgeSheet : BottomSheetDialogFragment() {
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.acknowledgment, container, false)
+
+    @SuppressLint("RestrictedApi")
+    override fun setupDialog(dialog: Dialog, style: Int) {
+        super.setupDialog(dialog, style)
+        val view = View.inflate(context, R.layout.acknowledgment, mainLay)
+        dialog.setContentView(view)
+
+        val b = BottomSheetBehavior.from(view.parent as View)
+
+        b?.state = BottomSheetBehavior.STATE_EXPANDED
     }
 }

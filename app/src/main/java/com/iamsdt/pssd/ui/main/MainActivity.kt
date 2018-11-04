@@ -123,6 +123,7 @@ class MainActivity : AppCompatActivity(),
         //for two pen ui
         if (findViewById<FrameLayout>(R.id.details_container) != null) {
             twoPenUI = true
+            Timber.i("ID:$id")
             viewModel.singleWord(id)
         }
 

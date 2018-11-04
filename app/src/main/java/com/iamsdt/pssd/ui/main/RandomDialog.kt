@@ -1,5 +1,7 @@
 package com.iamsdt.pssd.ui.main
 
+import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Intent
 import android.os.*
 import android.speech.tts.TextToSpeech
@@ -9,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.lifecycle.Observer
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTableDao
@@ -16,6 +19,7 @@ import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.addStr
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.utils.TxtHelper
+import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.random_sheet.view.*
 import org.koin.android.ext.android.inject
 import timber.log.Timber
@@ -42,9 +46,15 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    @SuppressLint("RestrictedApi")
+    override fun setupDialog(dialog: Dialog, style: Int) {
+        super.setupDialog(dialog, style)
+        val view = View.inflate(context, R.layout.random_sheet, mainLay)
+        dialog.setContentView(view)
 
-        val view = inflater.inflate(R.layout.random_sheet, container, false)
+        val b = BottomSheetBehavior.from(view.parent as View)
+
+        b?.state = BottomSheetBehavior.STATE_EXPANDED
 
         textToSpeech = TextToSpeech(context, this)
 
@@ -103,8 +113,6 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
         speak.setOnClickListener {
             speakOut()
         }
-
-        return view
     }
 
     private fun getRandomID(): Int {

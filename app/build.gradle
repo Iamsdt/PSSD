@@ -66,8 +66,8 @@ dependencies {
 
     //test
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-beta02'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-beta02'
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
 
     //lifecycle
     def lifecycle_version = "2.0.0"
@@ -92,7 +92,6 @@ dependencies {
     implementation "android.arch.work:work-runtime:$work_version"
 
     //ktx
-
     //implementation 'android.arch.work:work-runtime-ktx:1.0.0-alpha02'
 
     //paging
@@ -108,13 +107,12 @@ dependencies {
     //custom tab
     implementation 'androidx.browser:browser:1.0.0'
 
-    //implementation "androidx.fragment:fragment-ktx:$ktx_version"
-
-    //implementation "androidx.collection:collection-ktx:$ktx_version"
 
     def koin_version = '1.0.1'
     implementation "org.koin:koin-core:$koin_version"
-    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    implementation ("org.koin:koin-androidx-viewmodel:$koin_version") {
+        exclude module: 'android.FragmentExt'
+    }
 
 
     //error handler
