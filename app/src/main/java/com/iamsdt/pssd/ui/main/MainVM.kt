@@ -7,6 +7,7 @@
 package com.iamsdt.pssd.ui.main
 
 import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
@@ -21,7 +22,8 @@ import timber.log.Timber
 class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
 
     val searchEvent = SingleLiveEvent<WordTable>()
-    val singleWord = MediatorLiveData<WordTable>()
+
+    lateinit var singleWord: MediatorLiveData<WordTable>
 
     lateinit var liveData: MediatorLiveData<PagedList<WordTable>>
 
@@ -29,6 +31,25 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
         if (!::liveData.isInitialized) {
             liveData = MediatorLiveData()
             getData()
+        }
+
+        if (!::singleWord.isInitialized) {
+            singleWord = MediatorLiveData()
+            val word = wordTableDao.getSingleWord(1)
+            singleWord.addSource(word) {
+                if (singleWord.value != it) {
+                    singleWord.value = it
+                }
+            }
+        }
+    }
+
+    fun getSingleWord(id: Int) {
+        val word = wordTableDao.getSingleWord(id)
+        singleWord.addSource(word) {
+            if (singleWord.value != it) {
+                singleWord.value = it
+            }
         }
     }
 
@@ -41,24 +62,6 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
 
         liveData.addSource(date) {
             liveData.value = it
-        }
-    }
-
-//    fun getRandomWord(): LiveData<WordTable>? {
-//        var liveData: LiveData<WordTable>? = null
-//        AsyncTask.execute {
-//            val size = wordTableDao.getAllList().size
-//            val random = Random()
-//            val id = random.nextInt(size)
-//            liveData = wordTableDao.getSingleWord(id)
-//        }
-//        return liveData
-//    }
-
-    internal fun singleWord(id: Int) {
-        val word = wordTableDao.getSingleWord(id)
-        singleWord.addSource(word) {
-            singleWord.value = it
         }
     }
 

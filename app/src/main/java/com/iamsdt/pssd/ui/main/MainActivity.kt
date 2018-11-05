@@ -124,12 +124,10 @@ class MainActivity : AppCompatActivity(),
         if (findViewById<FrameLayout>(R.id.details_container) != null) {
             twoPenUI = true
             Timber.i("ID:$id")
-            viewModel.singleWord(id)
+            viewModel.singleWord.observe(this, Observer {
+                it?.let(::detailsUI)
+            })
         }
-
-        viewModel.singleWord.observe(this, Observer {
-            it?.let(::detailsUI)
-        })
 
         viewModel.singleLiveEvent.observe(this, Observer { bookmark ->
             if (::menuItem.isInitialized) {
@@ -173,7 +171,7 @@ class MainActivity : AppCompatActivity(),
             }
         })
 
-        fab.setOnClickListener { _ ->
+        fab.setOnClickListener {
             // complete: 8/22/18 add random layout
             val dialog = RandomDialog()
             dialog.show(supportFragmentManager, "Random")
@@ -284,8 +282,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun onItemClick(id: Int) {
         if (twoPenUI) {
-            viewModel.singleWord(id)
-
+            viewModel.getSingleWord(id)
         } else {
             val intent = Intent(this, DetailsActivity::class.java)
             intent.putExtra(Intent.EXTRA_TEXT, id)

@@ -41,7 +41,7 @@
             android:padding="10dp"
             android:text="@string/tms_txt"
             android:textColor="@color/txtColor"
-            android:textSize="@dimen/empty_fav_txt"
+            android:textSize="@dimen/dev_sub_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView19" />

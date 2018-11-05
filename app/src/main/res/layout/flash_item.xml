@@ -26,6 +26,7 @@
         android:layout_gravity="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         tools:text="TextView"
+        android:textSize="@dimen/dev_sub_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </com.google.android.material.card.MaterialCardView>

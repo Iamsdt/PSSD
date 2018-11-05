@@ -6,15 +6,12 @@
 
 package com.iamsdt.pssd.ui.flash
 
-import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.lifecycle.Observer
@@ -25,9 +22,9 @@ import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.addStr
 import com.iamsdt.pssd.ext.showToast
+import com.iamsdt.pssd.ui.main.MyBottomSheetDialog
 import com.iamsdt.pssd.utils.TxtHelper
 import kotlinx.android.synthetic.main.activity_flash_card.*
-import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.flash_sheet.view.*
 import org.koin.android.ext.android.inject
 import timber.log.Timber
@@ -44,9 +41,10 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
     private var wordTxt = ""
 
-    @SuppressLint("RestrictedApi")
-    override fun setupDialog(dialog: Dialog, style: Int) {
-        super.setupDialog(dialog, style)
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+
+        val dialog = MyBottomSheetDialog(context!!, theme)
+
         val view = View.inflate(context, R.layout.flash_sheet, flashLay)
         dialog.setContentView(view)
 
@@ -82,6 +80,8 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
         speakBtn.setOnClickListener {
             speakOut()
         }
+
+        return dialog
     }
 
     private fun speakOut() {

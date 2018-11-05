@@ -1,13 +1,10 @@
 package com.iamsdt.pssd.ui.main
 
-import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.os.*
 import android.speech.tts.TextToSpeech
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.lifecycle.Observer
@@ -46,9 +43,10 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
         }
     }
 
-    @SuppressLint("RestrictedApi")
-    override fun setupDialog(dialog: Dialog, style: Int) {
-        super.setupDialog(dialog, style)
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+
+        val dialog = MyBottomSheetDialog(context!!, theme)
+
         val view = View.inflate(context, R.layout.random_sheet, mainLay)
         dialog.setContentView(view)
 
@@ -113,6 +111,8 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
         speak.setOnClickListener {
             speakOut()
         }
+
+        return dialog
     }
 
     private fun getRandomID(): Int {
