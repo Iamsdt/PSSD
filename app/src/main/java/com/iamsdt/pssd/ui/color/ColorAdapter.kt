@@ -19,6 +19,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ui.callback.ClickListener
@@ -103,7 +104,7 @@ internal data class ColorAdapter(private val myTheme: ArrayList<MyTheme>,
         private val primaryColorDarkTxt: TextView = viewItem.color_list_primaryDark
         private val accentColorTxt: TextView = viewItem.color_list_accent
         //layout
-        private val linearLayout: LinearLayout = viewItem.color_list_linearLayout
+        private val linearLayout: ConstraintLayout = viewItem.color_list_linearLayout
 
         /*
          * set click listener
