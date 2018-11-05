@@ -149,19 +149,26 @@ class MainActivity : AppCompatActivity(),
             }
         })
 
+
         viewModel.searchEvent.observe(this, Observer {
             if (it != null) {
                 if (twoPenUI) {
                     detailsUI(it)
                 } else {
                     Timber.i("Status is true")
-                    val intent = Intent(this, DetailsActivity::class.java)
-                    intent.putExtra(Intent.EXTRA_TEXT, it.id)
 
-                    //save recent query
-                    setRecentQuery(it.word)
+                    //this method is called two times
+                    // don't know why?
+                    if (detailsActivity) {
+                        val intent = Intent(this, DetailsActivity::class.java)
+                        intent.putExtra(Intent.EXTRA_TEXT, it.id)
+                        detailsActivity = false
 
-                    startActivity(intent)
+                        //save recent query
+                        setRecentQuery(it.word)
+
+                        startActivity(intent)
+                    }
                 }
             } else {
                 showToast(ToastType.WARNING, "Word not found")
@@ -214,6 +221,10 @@ class MainActivity : AppCompatActivity(),
         nav_view.setNavigationItemSelectedListener(this)
     }
 
+    override fun onResume() {
+        super.onResume()
+        detailsActivity = true
+    }
 
     private fun setupSearchView() {
         mSearchView = searchView
@@ -279,6 +290,7 @@ class MainActivity : AppCompatActivity(),
             mSearchView.onActionViewExpanded()
         }
     }
+
 
     override fun onItemClick(id: Int) {
         if (twoPenUI) {
@@ -361,6 +373,8 @@ class MainActivity : AppCompatActivity(),
             val query = intent.getStringExtra(SearchManager.QUERY)
             // complete: 6/14/2018 search
             viewModel.submit(query)
+
+            Timber.i("Search Called")
 
             mQuery = query
 
@@ -550,5 +564,7 @@ class MainActivity : AppCompatActivity(),
 
     companion object {
         var isShown = true
+
+        var detailsActivity = true
     }
 }

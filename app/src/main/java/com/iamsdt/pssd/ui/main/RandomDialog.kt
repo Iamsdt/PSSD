@@ -117,7 +117,14 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
     private fun getRandomID(): Int {
         val random = Random()
-        return random.nextInt(size)
+        var int = random.nextInt(size)
+
+        //rare in case, i found during testing
+        if (int == 0) {
+            int = 1
+        }
+
+        return int
     }
 
     private fun speakOut() {

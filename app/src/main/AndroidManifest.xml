@@ -45,7 +45,7 @@
             android:name=".ui.details.DetailsActivity"
             android:label="@string/title_activity_details"
             android:theme="@style/AppTheme.NoActionBar"
-            android:launchMode="singleInstance"/>
+            android:launchMode="singleTop"/>
         <activity
             android:name=".ui.settings.BackupSettings"
             android:label="@string/sbackup"
