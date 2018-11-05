@@ -236,12 +236,12 @@
 
     <!-- dev -->
     <string name="dev1">Shudipto Trafder</string>
-    <string name="dev1_bio">Learner, Programmer, Dreamer.</string>
-    <string name="dev1_work">Work as Android App Developer.</string>
+    <string name="dev1_bio">Learner, Programmer, Dreamer</string>
+    <string name="dev1_work">Work as Android App Developer</string>
 
-    <string name="dev2">Md Mahabubur Rahaman</string>
-    <string name="dev2_bio">Thinker, Learner, Dreamer.</string>
-    <string name="dev2_work">Work as Database Expert.</string>
+    <string name="dev2">Mahabubur Rahaman</string>
+    <string name="dev2_bio">Thinker, Learner, Dreamer</string>
+    <string name="dev2_work">Work as Database Expert</string>
     <string name="dev_find_me">Find me:</string>
     <string name="empty_fav_txt">You don\'t added \nany favourite word yet</string>
     <string name="add_word">Add Word</string>

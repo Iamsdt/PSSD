@@ -23,6 +23,13 @@
         app:showAsAction="always" />
 
     <item
+        android:id="@+id/action_clear"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="@string/action_clear"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/share"
         android:icon="@drawable/ic_menu_share"
         android:title="@string/details_share"

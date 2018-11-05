@@ -11,4 +11,10 @@
     <dimen name="tms_txt_size">45sp</dimen>
 
     <dimen name="about_app_txt">38sp</dimen>
+
+    <!--dev -->
+    <dimen name="dev_name">30sp</dimen>
+    <dimen name="dev_name2">28sp</dimen>
+    <dimen name="dev_sub_name">23sp</dimen>
+    <dimen name="dev_pic">96dp</dimen>
 </resources>

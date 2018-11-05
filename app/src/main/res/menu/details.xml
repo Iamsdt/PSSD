@@ -16,13 +16,6 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_clear"
-        android:orderInCategory="100"
-        android:icon="@drawable/ic_menu_manage"
-        android:title="@string/action_clear"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/action_txt"
         android:orderInCategory="40"
         android:title="@string/increase_textsize"
