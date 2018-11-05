@@ -16,5 +16,5 @@
     <dimen name="dev_sub_name">30sp</dimen>
     <dimen name="dev_pic">150dp</dimen>
 
-    <dimen name="about_img">300</dimen>
+    <dimen name="about_img">300dp</dimen>
 </resources>

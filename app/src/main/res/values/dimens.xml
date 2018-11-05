@@ -27,5 +27,5 @@
     <dimen name="dev_pic">78dp</dimen>
 
     <dimen name="app_about_m">8dp</dimen>
-    <dimen name="about_img">200</dimen>
+    <dimen name="about_img">200dp</dimen>
 </resources>
