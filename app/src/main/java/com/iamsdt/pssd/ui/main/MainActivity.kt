@@ -432,7 +432,6 @@ class MainActivity : AppCompatActivity(),
         details_des.textSize = size
     }
 
-
     private fun resetSap() {
         if (::shareActionProvider.isInitialized) {
             val shareIntent = Intent(Intent.ACTION_SEND)
