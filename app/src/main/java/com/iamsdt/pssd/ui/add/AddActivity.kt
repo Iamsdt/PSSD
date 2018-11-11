@@ -22,10 +22,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.ext.ToastType
-import com.iamsdt.pssd.ext.gone
-import com.iamsdt.pssd.ext.show
-import com.iamsdt.pssd.ext.showToast
+import com.iamsdt.pssd.ext.*
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.utils.Constants.ADD.DES
 import com.iamsdt.pssd.utils.Constants.ADD.DIALOG
@@ -53,9 +50,6 @@ class AddActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         // complete: 8/24/18 add empty view
-
-        //change context
-        adapter.changeContext(this)
 
         addRcv.layoutManager = LinearLayoutManager(this)
         addRcv.adapter = adapter
@@ -134,7 +128,7 @@ class AddActivity : AppCompatActivity() {
         mItemTouchHelper.attachToRecyclerView(recyclerView)
 
         //set swipe label
-        swipeHelper.leftSwipeLabel = "Bookmark removed"
+        //swipeHelper.leftSwipeLabel = "Bookmark removed"
         //set swipe background-Color
         swipeHelper.leftColorCode = ContextCompat.getColor(this, R.color.red_300)
 
@@ -156,7 +150,7 @@ class AddActivity : AppCompatActivity() {
             val word = wordTV.text ?: ""
             val des = desTV.text ?: ""
 
-            model.addData(word.toString(), des.toString())
+            model.addData(word.toCapFirst(), des.toCapFirst())
         }
 
         model.dialogStatus.observe(this, Observer { model ->

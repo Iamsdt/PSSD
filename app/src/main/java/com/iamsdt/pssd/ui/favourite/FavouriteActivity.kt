@@ -11,6 +11,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -45,12 +46,12 @@ class FavouriteActivity : AppCompatActivity() {
         // complete: 8/21/18 add empty view
         emptyView()
 
-//        val deco = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-//        @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-//        deco.setDrawable(getDrawable(R.drawable.dercoration))
-//
-//        // Complete: 8/22/18 add item decoration
-//        fav_rcv.addItemDecoration(deco)
+        val deco = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+        deco.setDrawable(getDrawable(R.drawable.dercoration))
+
+        // Complete: 8/22/18 add item decoration
+        fav_rcv.addItemDecoration(deco)
         setSwipeForRecyclerView(fav_rcv)
 
         viewModel.getData().observe(this, Observer {
@@ -98,7 +99,7 @@ class FavouriteActivity : AppCompatActivity() {
         mItemTouchHelper.attachToRecyclerView(recyclerView)
 
         //set swipe label
-        swipeHelper.leftSwipeLabel = "Bookmark removed"
+        //swipeHelper.leftSwipeLabel = "Bookmark removed"
         //set swipe background-Color
         swipeHelper.leftColorCode = ContextCompat.getColor(this, R.color.red_300)
 

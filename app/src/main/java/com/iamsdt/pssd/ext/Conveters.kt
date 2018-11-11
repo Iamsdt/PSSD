@@ -6,7 +6,20 @@
 
 package com.iamsdt.pssd.ext
 
+import com.iamsdt.pssd.database.WordTable
+import com.iamsdt.pssd.utils.model.Model
+import timber.log.Timber
+
 fun CharSequence.toDouble(): Double {
     val sequence = this.toString()
     return sequence.toDoubleOrNull() ?: 0.0
+}
+
+//convert model to word table
+fun Model.toWordTable() = WordTable(word = word, des = des)
+
+fun CharSequence.toCapFirst(): String {
+    val c = this[0].toUpperCase()
+    val s = this.toString()
+    return s.replaceFirst(this[0], c)
 }

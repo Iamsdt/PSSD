@@ -6,7 +6,6 @@
 
 package com.iamsdt.pssd.ui.add
 
-import android.os.AsyncTask
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
@@ -18,6 +17,7 @@ import com.iamsdt.pssd.utils.Constants.ADD.DES
 import com.iamsdt.pssd.utils.Constants.ADD.DIALOG
 import com.iamsdt.pssd.utils.Constants.ADD.WORD
 import com.iamsdt.pssd.utils.PAGE_CONFIG
+import com.iamsdt.pssd.utils.ioThread
 import com.iamsdt.pssd.utils.model.StatusModel
 
 class AddVM(private val wordTableDao: WordTableDao) : ViewModel() {
@@ -40,15 +40,12 @@ class AddVM(private val wordTableDao: WordTableDao) : ViewModel() {
             return
         }
 
-        AsyncTask.execute {
+        ioThread {
 
             var data: WordTable? = wordTableDao.getWord(word)
-            if (data == null) {
-                data = WordTable(word = word, des = des, addByUser = true)
-            } else {
-                data.des = des
-                data.addByUser = true
-            }
+
+            data = data?.copy(des = des, addByUser = true) ?:
+                    WordTable(word = word, des = des, addByUser = true)
 
             val status = wordTableDao.add(data)
             if (status >= 0) {

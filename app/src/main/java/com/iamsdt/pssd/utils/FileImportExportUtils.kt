@@ -16,6 +16,7 @@ import com.iamsdt.pssd.utils.Constants.IO.EXPORT_FAV
 import com.iamsdt.pssd.utils.Constants.Settings.EXT
 import com.iamsdt.pssd.utils.Constants.Settings.SETTING_IMOUT_OPTION_FAVOURITE
 import com.iamsdt.pssd.utils.Constants.Settings.SETTING_IMOUT_OPTION_USER
+import com.iamsdt.pssd.utils.RestoreData.Companion.ioStatus
 import com.iamsdt.pssd.utils.model.OutputModel
 import com.iamsdt.pssd.utils.model.StatusModel
 import timber.log.Timber
@@ -53,7 +54,6 @@ class FileImportExportUtils(
      * @param data actual data in list
      * @param type type of data
      */
-
     private fun generateFile(data: List<WordTable>, type: String) {
         val outputData = OutputModel(
                 type, Date().time, data)
@@ -72,8 +72,7 @@ class FileImportExportUtils(
         else File(dir, SETTING_IMOUT_OPTION_USER)
 
         try {
-            if (file.exists())
-                file.setWritable(true)
+            if (file.exists()) file.setWritable(true)
             else {
                 file.createNewFile()
                 file.setWritable(true)
@@ -90,19 +89,19 @@ class FileImportExportUtils(
             file = File(Constants.Settings.DEFAULT_PATH_STORAGE, name)
 
         } finally {
-            if (file.exists()) {
-                file.setWritable(true)
-
-            } else {
+            if (file.exists()) file.setWritable(true)
+            else {
                 file.createNewFile()
                 file.setWritable(true)
 
             }
 
+            //write on file
             val writer = FileWriter(file)
             writer.write(string)
             writer.close()
 
+            //wait 1 sec
             thread {
                 try {
                     sleep(1000)
@@ -113,7 +112,8 @@ class FileImportExportUtils(
                     val model = if (type == "favourite") {
                         StatusModel(true, EXPORT_FAV,
                                 "Favourite words saved on ${file.absolutePath}")
-                    } else StatusModel(true, EXPORT_ADD, "Your Added words saved on ${file.absolutePath}")
+                    } else StatusModel(true, EXPORT_ADD, "Your Added words saved on " +
+                            file.absolutePath)
 
                     ioStatus.postValue(model)
                 }
@@ -155,10 +155,11 @@ class FileImportExportUtils(
         val data = gson.fromJson(file.bufferedReader(bufferSize = 4096),
                 OutputModel::class.java)
 
-        data?.let { it ->
+        data?.let {out->
             ioThread {
                 var insert = 0L
-                it.list.map { insert = wordTableDao.add(it) }
+                out.list.filter { it.word.isNotEmpty() }
+                        .map {insert = wordTableDao.add(it)}
 
                 if (insert > 0) {
                     val model = if (title == EXPORT_FAV)

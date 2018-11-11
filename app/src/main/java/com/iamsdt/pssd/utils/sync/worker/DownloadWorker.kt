@@ -15,10 +15,12 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.Gson
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
+import com.iamsdt.pssd.ext.toWordTable
 import com.iamsdt.pssd.ui.main.MainActivity
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.Constants.REMOTE.DOWNLOAD_FILE_NAME
 import com.iamsdt.pssd.utils.SpUtils
+import com.iamsdt.pssd.utils.ioThread
 import com.iamsdt.pssd.utils.model.RemoteModel
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
@@ -26,7 +28,7 @@ import timber.log.Timber
 import java.io.File
 import java.util.*
 
-class DownloadWorker (context: Context, workerParameters: WorkerParameters) :
+class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
         Worker(context, workerParameters), KoinComponent {
 
     private val gson: Gson by inject()
@@ -55,27 +57,22 @@ class DownloadWorker (context: Context, workerParameters: WorkerParameters) :
 
                 val file = File.createTempFile("download", ".json")
 
-                ref.getFile(file).addOnSuccessListener { _ ->
+                ref.getFile(file).addOnSuccessListener {
 
                     Timber.i("Data found")
 
                     val data = gson.fromJson(file.bufferedReader(bufferSize = 4096),
                             RemoteModel::class.java)
 
-                    data?.let { it ->
-                        AsyncTask.execute {
+                    ioThread {
+                        data?.let { it ->
                             var insert = 0L
-                            it.list.map {
-                                var table: WordTable? = wordTableDao.getWord(it.word)
-                                if (table == null) {
-                                    table = WordTable(word = it.word, des = it.des)
-                                } else {
-                                    table.des = it.des
-                                }
+                            it.list.map { model ->
+                                var table: WordTable? = wordTableDao.getWord(model.word)
 
-                                insert = wordTableDao.add(
-                                        table
-                                )
+                                table = table?.copy(des = model.des) ?: model.toWordTable()
+
+                                insert = wordTableDao.add(table)
                             }
 
                             result = if (insert > 0) {
@@ -87,6 +84,7 @@ class DownloadWorker (context: Context, workerParameters: WorkerParameters) :
                                 Result.RETRY
                             }
                         }
+
                     }
                 }
 

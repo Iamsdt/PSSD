@@ -30,7 +30,8 @@ val dbModule = module {
 
     single {
         Room.databaseBuilder(androidContext(),
-                MyDatabase::class.java, Constants.DB_NAME).build()
+                MyDatabase::class.java, Constants.DB_NAME)
+                .build()
     }
 }
 

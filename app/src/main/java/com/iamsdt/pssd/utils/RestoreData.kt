@@ -24,8 +24,8 @@ class RestoreData(private val settingsUtils: SettingsUtils,
      * Checking any file is available or not
      * if available then import it
      * if for first time app open
-     * if user uninstall the app and reinstall again the it will work  */
-
+     * if user uninstall the app and reinstall again the it will work
+     */
     fun isFound(): Boolean {
 
         if (spUtils.restore) {
@@ -60,15 +60,12 @@ class RestoreData(private val settingsUtils: SettingsUtils,
 
             dir.listFiles(FileFilter {
                 it?.name?.contains(Constants.Settings.EXT) == true
-            }).map { file ->
+            }).forEach { file ->
                 val data = gson.fromJson(file.bufferedReader(bufferSize = 4096),
                         OutputModel::class.java)
 
-                data?.let { word ->
-                    word.list.map {
-                        size = wordTableDao.add(it)
-                    }
-                }
+                //added to the database
+                data?.let { it.list.map { table -> size = wordTableDao.add(table) } }
             }
 
             if (size >= 0L) {

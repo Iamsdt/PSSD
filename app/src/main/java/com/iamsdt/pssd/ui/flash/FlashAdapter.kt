@@ -10,8 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.paging.PagedList
-import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
@@ -22,11 +21,7 @@ import kotlinx.android.synthetic.main.flash_item.view.*
 import timber.log.Timber
 
 class FlashAdapter(private val click: ClickListener) :
-        RecyclerView.Adapter<FlashAdapter.MyVH>() {
-
-    private var dataList: PagedList<WordTable>? = null
-
-    override fun getItemCount(): Int = dataList?.size ?: 0
+        ListAdapter<WordTable, FlashAdapter.MyVH>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyVH {
         val view = LayoutInflater.from(parent.context)
@@ -35,14 +30,9 @@ class FlashAdapter(private val click: ClickListener) :
         return MyVH(view)
     }
 
-    fun submitList(list: PagedList<WordTable>) {
-        dataList = list
-        AsyncListDiffer<WordTable>(this, DIFF_CALLBACK).submitList(list)
-    }
-
     override fun onBindViewHolder(holder: MyVH, position: Int) {
 
-        val model: WordTable? = dataList?.get(position)
+        val model: WordTable? = getItem(position)
 
         model?.let { table ->
             holder.bind(table)

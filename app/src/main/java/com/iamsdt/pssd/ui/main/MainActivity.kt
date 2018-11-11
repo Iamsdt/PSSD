@@ -197,7 +197,7 @@ class MainActivity : AppCompatActivity(),
         setupSearchView()
 
         //show notification
-        getRemoteDataStatus()
+        getRemoteDataStatus(this, packageName)
 
         //restore data
         restoreData()
@@ -226,6 +226,8 @@ class MainActivity : AppCompatActivity(),
         detailsActivity = true
     }
 
+
+    //set search view
     private fun setupSearchView() {
         mSearchView = searchView
 
@@ -291,7 +293,6 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-
     override fun onItemClick(id: Int) {
         if (twoPenUI) {
             viewModel.getSingleWord(id)
@@ -302,9 +303,7 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-    /*
-    Details data
-     */
+    /*Details data*/
     private fun detailsUI(wordTable: WordTable) {
         details_word?.addStr(wordTable.word)
         details_des?.addStr(wordTable.des)
@@ -326,36 +325,15 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-    /*
-    Restore data
-     */
+    /*Restore data*/
     private fun restoreData() {
-
         RestoreData.ioStatus.observe(this, Observer {
             it?.let { model ->
                 //only one type provide
                 showToast(ToastType.SUCCESSFUL, model.message)
             }
         })
-
-        if (restoreData.isFound()) {
-
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Restore")
-            builder.setMessage("you have some backup data." +
-                    "\nDo you want to restore it?")
-
-            builder.setPositiveButton("Yes") { _, _ ->
-                restoreData.restoreFile()
-            }
-
-            builder.setNegativeButton("No") { _, _ ->
-                //nothing to do
-            }
-
-            val dialog = builder.create()
-            dialog.show()
-        }
+        restoreDataHelper(restoreData, this)
     }
 
     private fun setRecentQuery(query: String) {
@@ -378,6 +356,7 @@ class MainActivity : AppCompatActivity(),
 
             mQuery = query
 
+            ////debug only 11/11/2018 remove later
             //Search
             val bundle = Bundle()
             bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "Search Data")
@@ -420,7 +399,7 @@ class MainActivity : AppCompatActivity(),
                 menuItem.setIcon(R.drawable.ic_like_fill)
 
             shareActionProvider = MenuItemCompat.getActionProvider(shareMenu) as ShareActionProvider
-            shareActionProvider.setShareIntent(createShareIntent())
+            shareActionProvider.setShareIntent(createShareIntent(word, des))
         }
 
         return true
@@ -445,18 +424,14 @@ class MainActivity : AppCompatActivity(),
         return super.onOptionsItemSelected(item)
     }
 
+    /*
+     Increase text size on tablet mode
+     */
     private fun textIncrease() {
         size++
         details_des.textSize = size
     }
 
-    private fun createShareIntent(): Intent? {
-        val shareIntent = Intent(Intent.ACTION_SEND)
-        shareIntent.type = "text/plain"
-        val share = "$word:$des"
-        shareIntent.putExtra(Intent.EXTRA_TEXT, share)
-        return shareIntent
-    }
 
     private fun resetSap() {
         if (::shareActionProvider.isInitialized) {
@@ -522,45 +497,8 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-//    private fun showDummyMessage() {
-//        showToast(ToastType.SUCCESSFUL, "Not available yet")
-//    }
 
     private fun isShowKeyboard() = settingsUtils.searchIcon
-
-    private fun getRemoteDataStatus() {
-        WorkManager.getInstance()
-                .getStatusesForUniqueWork("Download")
-                .get()?.let {
-                    if (it.isNotEmpty() && it[0].state.isFinished && !isShown) {
-
-                        val builder = NotificationCompat
-                                .Builder(this, packageName)
-                        builder.setContentTitle("New Data")
-                        builder.setContentText("Data added remotely")
-                        builder.priority = NotificationCompat.PRIORITY_DEFAULT
-                        builder.setSmallIcon(R.drawable.ic_019_information_button,
-                                NotificationCompat.PRIORITY_DEFAULT)
-
-                        val intent = Intent(this, MainActivity::class.java)
-                        intent.putExtra(Intent.EXTRA_TEXT, true)
-
-                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        val pendingIntent = PendingIntent.getActivity(this,
-                                0, intent, 0)
-
-                        builder.setContentIntent(pendingIntent)
-                        builder.setAutoCancel(true)
-
-                        val manager = NotificationManagerCompat.from(this)
-                        manager.notify(121, builder.build())
-
-                        //shown
-                        isShown = true
-                    }
-
-                }
-    }
 
     companion object {
         var isShown = true

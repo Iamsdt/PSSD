@@ -21,7 +21,7 @@ import java.io.FileWriter
 import java.util.*
 import kotlin.collections.ArrayList
 
-class UploadWorker (context: Context, workerParameters: WorkerParameters) :
+class UploadWorker(context: Context, workerParameters: WorkerParameters) :
         Worker(context, workerParameters), KoinComponent {
 
     private val gson: Gson by inject()
@@ -34,6 +34,15 @@ class UploadWorker (context: Context, workerParameters: WorkerParameters) :
 
         val data = wordTableDao.upload()
 
+
+        if (data.isEmpty()) {
+            //user has no data
+            //deon't need to check again
+            spUtils.uploadDate = Date().time
+
+            return Result.FAILURE
+        }
+
         val list: ArrayList<Model> = ArrayList()
         data.map {
             list.add(Model(it.word, it.des))
@@ -42,6 +51,7 @@ class UploadWorker (context: Context, workerParameters: WorkerParameters) :
         val outputData = RemoteModel(
                 "User", Date().time, list)
 
+        //create json
         val string = gson.toJson(outputData)
 
         val file = File.createTempFile("upload", ".json")
@@ -51,6 +61,7 @@ class UploadWorker (context: Context, workerParameters: WorkerParameters) :
 
         var result = Result.SUCCESS
 
+        //login
         val auth = FirebaseAuth.getInstance()
         auth.signInAnonymously().addOnCompleteListener { task ->
             if (task.isSuccessful) {
@@ -67,9 +78,7 @@ class UploadWorker (context: Context, workerParameters: WorkerParameters) :
                         ioThread {
                             var up = 0
                             data.forEach {
-                                val word = it
-                                word.uploaded = true
-                                up = wordTableDao.update((word))
+                                up = wordTableDao.update((it.copy(uploaded = true)))
                             }
 
                             if (up <= 0) {

@@ -24,15 +24,16 @@ import com.iamsdt.pssd.ui.details.DetailsActivity
 import com.iamsdt.pssd.ui.favourite.FavouriteVH
 import com.iamsdt.pssd.ui.main.MainAdapter.Companion.DIFF_CALLBACK
 import es.dmoral.toasty.Toasty
-import timber.log.Timber
 
 class AddAdapter(var context: Context,
                  val wordTableDao: WordTableDao) :
         PagedListAdapter<WordTable, FavouriteVH>(DIFF_CALLBACK) {
 
     private val pendingItemRemoval = 3000 // 3sec
-    private val handler = Handler() // handler for running delayed runnables
-    private val pendingRunnable: MutableMap<WordTable?, Runnable> = HashMap() // map of items to pending runnables, so we can cancel a removal if need be
+    // handler for running delayed runnables
+    private val handler = Handler()
+    // map of items to pending runnables, so we can cancel a removal if need be
+    private val pendingRunnable: MutableMap<WordTable?, Runnable> = HashMap()
 
     private var itemsPendingRemoval: ArrayList<WordTable?> = ArrayList()
 
@@ -48,8 +49,8 @@ class AddAdapter(var context: Context,
         pendingRunnable.remove(postTable)
         if (pendingRemovalRunnable != null)
             handler.removeCallbacks(pendingRemovalRunnable)
+
         itemsPendingRemoval.remove(postTable)
-        // this will rebind the row in "normal" state
 
         val id = currentList?.indexOf(postTable) ?: 0
 
@@ -112,17 +113,11 @@ class AddAdapter(var context: Context,
         return itemsPendingRemoval.contains(data)
     }
 
-    //must change context to avoid crash
-    fun changeContext(context: Context) {
-        this.context = context
-        Timber.i("Change context to activity context")
-    }
-
     override fun onBindViewHolder(holder: FavouriteVH, position: Int) {
 
         val model: WordTable? = getItem(position)
 
-        model?.let { _ ->
+        model?.let {
             //hide fav icon
             holder.favIcon.gone()
 
@@ -143,6 +138,7 @@ class AddAdapter(var context: Context,
 
             holder.itemView.setOnClickListener {
                 val intent = Intent(context, DetailsActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
                 intent.putExtra(Intent.EXTRA_TEXT, model.id)
                 context.startActivity(intent)
             }

@@ -15,7 +15,6 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
@@ -53,7 +52,6 @@ internal data class ColorAdapter(private val myTheme: ArrayList<MyTheme>,
      *
      * @param id color id for selected color
      */
-
     private fun getDrawablesWithColor(@ColorInt id: Int): Drawable {
         val shapeDrawable = ShapeDrawable(OvalShape())
 
@@ -83,7 +81,6 @@ internal data class ColorAdapter(private val myTheme: ArrayList<MyTheme>,
      * @param attrId color type id like color primary, accent color
      * @return given color id from theme in the basis of colorAttr
      */
-
     private fun getThemeColor(stylesID: Int, @AttrRes attrId: Int): Int {
 
         val typedValue = context.obtainStyledAttributes(stylesID, intArrayOf(attrId))
@@ -93,9 +90,7 @@ internal data class ColorAdapter(private val myTheme: ArrayList<MyTheme>,
         return colorFromTheme
     }
 
-    /*
-     * Holder class of recyclerView
-     */
+
     inner class ColorViewHolder(viewItem: View)
         : RecyclerView.ViewHolder(viewItem), View.OnClickListener {
 

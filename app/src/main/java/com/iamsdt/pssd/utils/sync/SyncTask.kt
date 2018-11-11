@@ -46,7 +46,7 @@ class SyncTask(private val wordTableDao: WordTableDao,
                             .Builder(UploadWorker::class.java).build()
 
                     WorkManager.getInstance().beginUniqueWork("Upload",
-                            ExistingWorkPolicy.REPLACE, request).enqueue()
+                            ExistingWorkPolicy.KEEP, request).enqueue()
                 }
             }
         }
@@ -61,7 +61,7 @@ class SyncTask(private val wordTableDao: WordTableDao,
                     .build()
 
             WorkManager.getInstance().beginUniqueWork("Download",
-                    ExistingWorkPolicy.REPLACE, request).enqueue()
+                    ExistingWorkPolicy.KEEP, request).enqueue()
         }
     }
 
@@ -75,6 +75,7 @@ class SyncTask(private val wordTableDao: WordTableDao,
         return interval >= settingsSpUtils.interval
     }
 
+
     private fun isRunDownload(): Boolean {
         val date = spUtils.uploadDate
         val interval = getDayInterval(date)
@@ -84,6 +85,8 @@ class SyncTask(private val wordTableDao: WordTableDao,
         return interval >= settingsSpUtils.interval && settingsSpUtils.shareStatus
     }
 
+
+    //check for network available
     private fun isNetworkAvailable(context: Activity): Boolean {
         val manager = context.getSystemService(
                 Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -93,6 +96,8 @@ class SyncTask(private val wordTableDao: WordTableDao,
         return info != null && info.isConnected
     }
 
+
+    //get remote config is data fetch is enable or not
     private fun getRemoteConfigStatus(context: Activity): Boolean {
 
         val remoteConfig = FirebaseRemoteConfig.getInstance()

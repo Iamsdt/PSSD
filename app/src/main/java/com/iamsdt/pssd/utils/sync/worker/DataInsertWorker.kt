@@ -10,8 +10,8 @@ import android.content.Context
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.google.gson.Gson
-import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
+import com.iamsdt.pssd.ext.toWordTable
 import com.iamsdt.pssd.utils.SpUtils
 import com.iamsdt.pssd.utils.model.JsonModel
 import org.koin.standalone.KoinComponent
@@ -43,18 +43,18 @@ class DataInsertWorker(context: Context, workerParameters: WorkerParameters) :
         var count = 0L
 
         data?.let { model ->
-            spUtils.dataVolume = model.volume
-            model.collection.forEach {
-                val wordTable = WordTable(word = it.word, des = it.des)
-                count = wordTableDao.add(wordTable)
+            model.collection.filter {
+                it.word.isNotEmpty()
+            }.forEach {
+                count = wordTableDao.add(it.toWordTable())
             }
+
+            //save version
+            spUtils.dataVolume = model.volume
         }
 
-        if (count > 0) {
-            spUtils.isDatabaseInserted = true
-        } else {
-            result = Result.FAILURE
-        }
+        if (count > 0) spUtils.isDatabaseInserted = true
+        else result = Result.FAILURE
 
         Timber.i("Total added: $count")
 

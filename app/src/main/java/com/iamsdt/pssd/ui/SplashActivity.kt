@@ -37,22 +37,18 @@ class SplashActivity : AppCompatActivity() {
         ThemeUtils.initialize(this)
         setContentView(R.layout.activity_splash)
 
-        //save data
-
         // complete: 8/31/18 add animation
         val set = AnimationUtils.loadAnimation(this,
                 R.anim.splash_screen_animation)
 
         app_icon.animation = set
 
-        //complete 9/19/2018 add backup data
-
         if (!spUtils.isDatabaseInserted) {
             //save database
             val request = OneTimeWorkRequest.Builder(
                     DataInsertWorker::class.java).build()
             WorkManager.getInstance().beginUniqueWork("DataInsert",
-                    ExistingWorkPolicy.REPLACE, request).enqueue()
+                    ExistingWorkPolicy.KEEP, request).enqueue()
 
             //save app start date
             saveAppStartDate()

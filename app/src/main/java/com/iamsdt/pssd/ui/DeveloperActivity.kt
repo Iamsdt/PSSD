@@ -41,8 +41,7 @@ class DeveloperActivity : AppCompatActivity() {
         dev_ln.click("https://www.linkedin.com/in/iamsdt")
         dev_git.click("https://github.com/Iamsdt")
         dev_em.setOnClickListener {
-            sendEmail("Shudiptotrafder@gmail.com",
-                    subject)
+            sendEmail("Shudiptotrafder@gmail.com", subject)
         }
 
         // complete: 8/31/18 add dev 2
@@ -58,13 +57,6 @@ class DeveloperActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-
-    private fun AppCompatImageButton.click(url: String) {
-        this.setOnClickListener {
-            customTab(url)
-        }
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         if (item.itemId == android.R.id.home) {
@@ -74,5 +66,11 @@ class DeveloperActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    //click method for image button
+    private fun AppCompatImageButton.click(url: String) {
+        this.setOnClickListener {
+            customTab(url)
+        }
+    }
 
 }

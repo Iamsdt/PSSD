@@ -94,8 +94,6 @@ class ColorActivity : AppCompatActivity(), ClickListener {
     }
 
     companion object {
-        fun createIntent(context: Context): Intent {
-            return Intent(context, ColorActivity::class.java)
-        }
+        fun createIntent(context: Context) = Intent(context, ColorActivity::class.java)
     }
 }
