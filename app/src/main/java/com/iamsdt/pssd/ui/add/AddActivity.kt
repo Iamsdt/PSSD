@@ -76,6 +76,7 @@ class AddActivity : AppCompatActivity() {
         model.dialogStatus.observe(this, Observer { model ->
             model?.let {
                 if (it.status && it.title == DIALOG) {
+                    Timber.i("Called")
                     if (::dialog.isInitialized && dialog.isShowing) {
                         dialog.dismiss()
                         showToast(ToastType.SUCCESSFUL, it.message)

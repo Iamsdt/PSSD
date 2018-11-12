@@ -7,8 +7,6 @@
 package com.iamsdt.pssd.ui.main
 
 import android.app.Activity
-import android.app.AlertDialog
-import android.app.PendingIntent
 import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
@@ -24,14 +22,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.ShareActionProvider
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import androidx.core.view.GravityCompat
 import androidx.core.view.MenuItemCompat
 import androidx.core.view.isGone
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.work.WorkManager
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
@@ -157,18 +152,13 @@ class MainActivity : AppCompatActivity(),
                 } else {
                     Timber.i("Status is true")
 
-                    //this method is called two times
-                    // don't know why?
-                    if (detailsActivity) {
-                        val intent = Intent(this, DetailsActivity::class.java)
-                        intent.putExtra(Intent.EXTRA_TEXT, it.id)
-                        detailsActivity = false
+                    val intent = Intent(this, DetailsActivity::class.java)
+                    intent.putExtra(Intent.EXTRA_TEXT, it.id)
 
-                        //save recent query
-                        setRecentQuery(it.word)
+                    //save recent query
+                    setRecentQuery(it.word)
 
-                        startActivity(intent)
-                    }
+                    startActivity(intent)
                 }
             } else {
                 showToast(ToastType.WARNING, "Word not found")
@@ -223,7 +213,6 @@ class MainActivity : AppCompatActivity(),
 
     override fun onResume() {
         super.onResume()
-        detailsActivity = true
     }
 
 
@@ -501,7 +490,5 @@ class MainActivity : AppCompatActivity(),
 
     companion object {
         var isShown = true
-
-        var detailsActivity = true
     }
 }

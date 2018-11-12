@@ -44,8 +44,7 @@ class AddVM(private val wordTableDao: WordTableDao) : ViewModel() {
 
             var data: WordTable? = wordTableDao.getWord(word)
 
-            data = data?.copy(des = des, addByUser = true) ?:
-                    WordTable(word = word, des = des, addByUser = true)
+            data = data?.copy(des = des, addByUser = true) ?: WordTable(word = word, des = des, addByUser = true)
 
             val status = wordTableDao.add(data)
             if (status >= 0) {

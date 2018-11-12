@@ -28,6 +28,7 @@ import com.iamsdt.pssd.ui.settings.SettingsActivity
 import com.iamsdt.pssd.utils.Bookmark
 import kotlinx.android.synthetic.main.activity_details.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 import java.util.*
 
 class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
@@ -87,6 +88,7 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         viewModel.singleLiveEvent.observe(this, Observer { bookmark ->
             if (::menuItem.isInitialized) {
                 bookmark?.let {
+                    Timber.i("Called")
                     isBookmarked = when (it) {
                         Bookmark.SET -> {
                             showToast(ToastType.SUCCESSFUL, "Bookmarked")
