@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Developed By Shudipto Trafder
+  ~  on 11/13/18 4:15 PM
+  ~  Copyright (c)2018  Shudipto Trafder.
+  -->
+
+<resources>
+    <color name="txtColor">#ffffff</color>
+
+    <color name="primary">#3b50ce</color>
+    <color name="primaryDark">#2a36b1</color>
+    <color name="accent">#c2185b</color>
+</resources>
