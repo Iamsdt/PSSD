@@ -55,7 +55,7 @@ class MyBottomSheetDialog(context: Context, style: Int) : BottomSheetDialog(cont
         val width = displayMetrics.widthPixels
 
         when {
-            width >= 1500 -> window?.layout(1500)
+            width >= 1400 -> window?.layout(1400)
             width >= 1200 -> window?.layout(1200)
             width >= 1000 -> window?.layout(1000)
         }
