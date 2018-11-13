@@ -31,6 +31,7 @@ val dbModule = module {
     single {
         Room.databaseBuilder(androidContext(),
                 MyDatabase::class.java, Constants.DB_NAME)
+                .enableMultiInstanceInvalidation()
                 .build()
     }
 }
@@ -81,7 +82,6 @@ val appModule = module {
 }
 
 val vmModule = module {
-
     viewModel { MainVM(get()) }
     viewModel { DetailsVM(get()) }
     viewModel { FavouriteVM(get()) }
