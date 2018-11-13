@@ -23,7 +23,7 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
 
     val searchEvent = SingleLiveEvent<WordTable>()
 
-    lateinit var singleWord: MediatorLiveData<WordTable>
+    var singleWord = MediatorLiveData<WordTable>()
 
     lateinit var liveData: MediatorLiveData<PagedList<WordTable>>
 
@@ -31,16 +31,6 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
         if (!::liveData.isInitialized) {
             liveData = MediatorLiveData()
             getData()
-        }
-
-        if (!::singleWord.isInitialized) {
-            singleWord = MediatorLiveData()
-            val word = wordTableDao.getSingleWord(1)
-            singleWord.addSource(word) {
-                if (singleWord.value != it) {
-                    singleWord.value = it
-                }
-            }
         }
     }
 

@@ -34,7 +34,7 @@ import timber.log.Timber
  */
 fun getRemoteDataStatus(context: Context, packageName: String) {
     WorkManager.getInstance()
-            .getStatusesForUniqueWork("Download")
+            .getWorkInfosByTag("Download")
             .get()?.let {
                 if (it.isNotEmpty() && it[0].state.isFinished && !MainActivity.isShown) {
 

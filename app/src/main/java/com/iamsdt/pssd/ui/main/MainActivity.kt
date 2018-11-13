@@ -118,6 +118,7 @@ class MainActivity : AppCompatActivity(),
         //for two pen ui
         if (findViewById<FrameLayout>(R.id.details_container) != null) {
             twoPenUI = true
+            viewModel.getSingleWord(id)
             Timber.i("ID:$id")
             viewModel.singleWord.observe(this, Observer {
                 it?.let(::detailsUI)
@@ -209,10 +210,6 @@ class MainActivity : AppCompatActivity(),
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
-    }
-
-    override fun onResume() {
-        super.onResume()
     }
 
 
