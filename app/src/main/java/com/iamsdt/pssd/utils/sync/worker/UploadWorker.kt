@@ -34,15 +34,6 @@ class UploadWorker(context: Context, workerParameters: WorkerParameters) :
 
         val data = wordTableDao.upload()
 
-
-        if (data.isEmpty()) {
-            //user has no data
-            //deon't need to check again
-            spUtils.uploadDate = Date().time
-
-            return Result.FAILURE
-        }
-
         val list: ArrayList<Model> = ArrayList()
         data.map {
             list.add(Model(it.word, it.des))

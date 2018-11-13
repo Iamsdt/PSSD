@@ -47,6 +47,10 @@ class SyncTask(private val wordTableDao: WordTableDao,
 
                     WorkManager.getInstance().beginUniqueWork("Upload",
                             ExistingWorkPolicy.KEEP, request).enqueue()
+                } else{
+                    //user has no data
+                    //deon't need to check again
+                    spUtils.uploadDate = Date().time
                 }
             }
         }

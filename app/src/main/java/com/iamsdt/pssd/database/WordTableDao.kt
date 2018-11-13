@@ -60,6 +60,6 @@ interface WordTableDao {
     @Query("Select * From WordTable order by Random() limit 1")
     fun getRandomData(): LiveData<WordTable>
 
-    @Query("Select * From WordTable where uploaded = 0")
+    @Query("Select * From WordTable where uploaded = 0 and addByUser = 1")
     fun upload(): List<WordTable>
 }
