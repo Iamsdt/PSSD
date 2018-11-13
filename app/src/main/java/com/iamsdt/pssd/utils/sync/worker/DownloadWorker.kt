@@ -6,12 +6,17 @@
 
 package com.iamsdt.pssd.utils.sync.worker
 
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.Gson
+import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.toWordTable
@@ -49,11 +54,13 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
         if (user == null) {
             //sign in
             auth.signInAnonymously().addOnCompleteListener { task ->
-                result = if (task.isSuccessful) {
+                if (task.isSuccessful) {
                     //write in  the database
-                    writeDB()
+                    ioThread {
+                        result = writeDB()
+                    }
 
-                } else Result.RETRY
+                } else result = Result.RETRY
             }
         } else {
             result = writeDB()
@@ -83,9 +90,7 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
             ioThread {
                 data?.let { it ->
                     var insert = 0L
-                    it.list.filter { model ->
-                        model.word.isNotEmpty()
-                    }
+                    it.list.filter { model -> model.word.isNotEmpty() }
                             .map { model ->
                                 var table: WordTable? = wordTableDao.getWord(model.word)
 
@@ -95,7 +100,7 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
                             }
 
                     result = if (insert > 0) {
-                        MainActivity.isShown = false
+                        getRemoteDataStatus(applicationContext, applicationContext.packageName)
                         Timber.i("Inserted: $insert")
                         spUtils.downloadDate = Date().time
                         Result.SUCCESS
@@ -109,5 +114,31 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
 
         return result
     }
+
+    private fun getRemoteDataStatus(context: Context, packageName: String) {
+
+        val builder = NotificationCompat
+                .Builder(context, packageName)
+        builder.setContentTitle("New Data")
+        builder.setContentText("New data added to the database")
+        builder.priority = NotificationCompat.PRIORITY_DEFAULT
+        builder.setSmallIcon(R.drawable.ic_019_information_button,
+                NotificationCompat.PRIORITY_DEFAULT)
+
+        val intent = Intent(context, MainActivity::class.java)
+        intent.putExtra(Intent.EXTRA_TEXT, true)
+
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        val pendingIntent = PendingIntent.getActivity(context,
+                0, intent, 0)
+
+        builder.setContentIntent(pendingIntent)
+        builder.setAutoCancel(true)
+
+        val manager =
+                NotificationManagerCompat.from(context)
+        manager.notify(121, builder.build())
+    }
+
 
 }

@@ -43,10 +43,12 @@ class UploadWorker(context: Context, workerParameters: WorkerParameters) :
 
         if (user == null) {
             auth.signInAnonymously().addOnCompleteListener { task ->
-                result = if (task.isSuccessful) {
+                if (task.isSuccessful) {
                     //write in  the database
-                    writeDB(task.result?.user)
-                } else Result.RETRY
+                    ioThread {
+                        result = writeDB(task.result?.user)
+                    }
+                } else result = Result.RETRY
             }
         } else {
             result = writeDB(user)
@@ -62,7 +64,7 @@ class UploadWorker(context: Context, workerParameters: WorkerParameters) :
         var result = Result.SUCCESS
 
         //file name
-        val fileName = user?.uid + "-${DateTime().dayOfMonth}"
+        val fileName = user?.uid + "-${DateTime().toDate().time}"
         val db = FirebaseStorage.getInstance()
         val ref = db.reference.child(Constants.REMOTE.USER)
                 .child(fileName)
@@ -75,7 +77,7 @@ class UploadWorker(context: Context, workerParameters: WorkerParameters) :
                         up = wordTableDao.update((it.copy(uploaded = true)))
                     }
 
-                    if (up <= 0) {
+                    if (up > 0) {
                         spUtils.uploadDate = Date().time
                     } else {
                         result = Result.RETRY
