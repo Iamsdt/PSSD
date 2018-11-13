@@ -9,13 +9,15 @@ package com.iamsdt.pssd.ui.add
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.DisplayMetrics
-import android.view.*
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -34,7 +36,6 @@ import kotlinx.android.synthetic.main.content_add.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
-
 
 class AddActivity : AppCompatActivity() {
 
@@ -57,10 +58,10 @@ class AddActivity : AppCompatActivity() {
 
         setSwipeForRecyclerView(addRcv)
 
-        val deco = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-        @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-        deco.setDrawable(getDrawable(R.drawable.dercoration))
-        addRcv.addItemDecoration(deco)
+//        val deco = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+//        @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+//        deco.setDrawable(getDrawable(R.drawable.dercoration))
+//        addRcv.addItemDecoration(deco)
 
         model.getWord().observe(this, Observer { list ->
             list?.let {
