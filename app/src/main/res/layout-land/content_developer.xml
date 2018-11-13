@@ -34,16 +34,17 @@
                 android:layout_height="match_parent">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:contentDescription="Developer Shudipto Trafder"
                     android:id="@+id/imageView2"
-                    android:layout_width="@dimen/dev_pic"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/dev_pic"
                     android:layout_gravity="center"
                     android:layout_marginStart="8dp"
+                    android:contentDescription="Developer Shudipto Trafder"
+                    android:src="@drawable/sdt"
                     app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                    app:layout_constraintDimensionRatio="w,1:1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/textView4"
-                    android:src="@drawable/sdt"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -52,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:padding="10dp"
+                    android:layout_marginStart="8dp"
                     android:text="@string/dev1"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textSize="@dimen/dev_name"
@@ -65,7 +66,6 @@
                     android:id="@+id/textView5"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
                     android:text="@string/dev1_bio"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:textColor="@color/txtColor"
@@ -79,10 +79,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:padding="10dp"
+                    android:layout_marginBottom="8dp"
                     android:text="@string/dev1_work"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textSize="@dimen/dev_sub_name"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/textView4"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -180,28 +181,31 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imageView12"
-                    android:layout_width="@dimen/dev_pic"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/dev_pic"
-                    android:src="@drawable/ri"
                     android:layout_gravity="center"
                     android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/ri"
                     app:layout_constraintBottom_toBottomOf="@+id/textView15"
+                    app:layout_constraintDimensionRatio="w,1:1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textView14"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@tools:sample/avatars[2]" />
 
                 <TextView
                     android:id="@+id/textView14"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:padding="10dp"
                     android:text="@string/dev2"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textSize="@dimen/dev_name"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/textView9"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/imageView12"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -209,14 +213,15 @@
                     android:id="@+id/textView15"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
+                    android:layout_marginStart="8dp"
                     android:text="@string/dev2_bio"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:textColor="@color/txtColor"
                     android:textSize="@dimen/dev_sub_name"
+                    app:layout_constraintTop_toBottomOf="@id/textView14"
                     app:layout_constraintEnd_toEndOf="@+id/textView14"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/textView14"
+                    app:layout_constraintStart_toEndOf="@+id/imageView12"
                     tools:layout_editor_absoluteY="82dp" />
 
                 <TextView
@@ -225,10 +230,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:padding="10dp"
+                    android:layout_marginBottom="8dp"
                     android:text="@string/dev2_work"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textSize="@dimen/dev_sub_name"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/textView15"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView15" />
