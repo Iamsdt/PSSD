@@ -257,6 +257,7 @@
     
     <string name="ack">Acknowledgment</string>
     <string name="ack_txt">The developer greatly acknowledges the Soil Science Society of America and Canada Department of Agriculture for their books Glossary of Soil Science terms and Glossary of terms in Soil Science.</string>
+    <string name="night_mode_main_menu">Night Mode</string>
 
 
 </resources>

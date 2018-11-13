@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Developed By Shudipto Trafder
+  ~  on 11/13/18 1:11 PM
+  ~  Copyright (c)2018  Shudipto Trafder.
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nightMode"
+        android:icon="@drawable/ic_half_moon"
+        android:orderInCategory="100"
+        android:title="@string/night_mode_main_menu"
+        app:showAsAction="always" />
+</menu>

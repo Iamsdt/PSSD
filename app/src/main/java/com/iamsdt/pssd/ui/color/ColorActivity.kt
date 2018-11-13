@@ -10,12 +10,14 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ui.callback.ClickListener
+import com.iamsdt.pssd.ui.color.ThemeUtils.Companion.turnOnOFNightMode
 import com.iamsdt.pssd.utils.Constants
 import kotlinx.android.synthetic.main.activity_color.*
 import kotlinx.android.synthetic.main.content_color.*
@@ -73,15 +75,6 @@ class ColorActivity : AppCompatActivity(), ClickListener {
         restartActivity()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        if (item.itemId == android.R.id.home) {
-            onBackPressed()
-        }
-
-        return super.onOptionsItemSelected(item)
-    }
-
     private fun restartActivity() {
         val restartIntent = Intent(this@ColorActivity,
                 ColorActivity::class.java)
@@ -95,5 +88,46 @@ class ColorActivity : AppCompatActivity(), ClickListener {
 
     companion object {
         fun createIntent(context: Context) = Intent(context, ColorActivity::class.java)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        val id = item.itemId
+        if (id == android.R.id.home) {
+            onBackPressed()
+            //setResult(Activity.RESULT_OK)
+            finish()
+
+        } else if (id == R.id.nightMode) {
+
+            if (ThemeUtils.getNightMode(this)) {
+                //night mode on
+                //now off night mode
+                turnOnOFNightMode(this, false)
+                setResult(Activity.RESULT_OK)
+                restartActivity()
+            } else {
+                //night mode false
+                //now on night mode
+                turnOnOFNightMode(this, true)
+                restartActivity()
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        menuInflater.inflate(R.menu.color, menu)
+
+        val nightMode = menu?.findItem(R.id.nightMode)
+
+        if (ThemeUtils.getNightMode(this)) {
+            nightMode?.setIcon(R.drawable.ic_wb_sunny_black_24dp)
+        } else {
+            nightMode?.setIcon(R.drawable.ic_half_moon)
+        }
+        return true
     }
 }
