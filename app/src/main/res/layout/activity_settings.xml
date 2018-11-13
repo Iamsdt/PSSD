@@ -28,6 +28,8 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <fragment
+        android:layout_marginStart="@dimen/settings_margin"
+        android:layout_marginEnd="@dimen/settings_margin"
         android:id="@+id/settings_fragment"
         android:name="com.iamsdt.pssd.ui.settings.SettingsFragment"
         android:layout_width="match_parent"

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Developed By Shudipto Trafder
+  ~  on 11/13/18 12:52 PM
+  ~  Copyright (c)2018  Shudipto Trafder.
+  -->
+
+<resources>
+    <dimen name="settings_margin">120dp</dimen>
+</resources>
