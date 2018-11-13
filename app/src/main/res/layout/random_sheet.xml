@@ -36,7 +36,7 @@
         android:layout_marginBottom="30dp"
         android:fontFamily="@font/roboto_r"
         android:paddingBottom="10dp"
-        android:textColor="@color/txtColor"
+        android:textColor="@color/sheetTxt"
         android:textIsSelectable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

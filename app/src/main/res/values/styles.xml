@@ -18,8 +18,10 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="MyDialogStyle" parent="Theme.AppCompat.DayNight.Dialog.Alert"/>
 
-    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert" tools:keep="@style/MyAlertDialogStyle">
+    <style name="MyAlertDialogStyle" parent="Theme.AppCompat.DayNight.Dialog.Alert"
+        tools:keep="@style/MyAlertDialogStyle">
         <item name="colorAccent">?attr/colorAccent</item>
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowBackground">?attr/colorAccent</item>

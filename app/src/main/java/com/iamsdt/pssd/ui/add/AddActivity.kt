@@ -142,7 +142,7 @@ class AddActivity : AppCompatActivity() {
         val dialogView = LayoutInflater.from(this)
                 .inflate(R.layout.add_dialog, null)
 
-        val builder = AlertDialog.Builder(this)
+        val builder = AlertDialog.Builder(this,R.style.MyDialogStyle)
         builder.setView(dialogView)
 
         val wordTV: TextInputEditText = dialogView.add_word
