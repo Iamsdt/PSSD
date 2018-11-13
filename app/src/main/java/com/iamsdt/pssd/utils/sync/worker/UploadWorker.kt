@@ -5,8 +5,10 @@ import android.net.Uri
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.Gson
+import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.SpUtils
@@ -32,7 +34,61 @@ class UploadWorker(context: Context, workerParameters: WorkerParameters) :
 
     override fun doWork(): Result {
 
+        var result = Result.SUCCESS
+
+        //login
+        val auth = FirebaseAuth.getInstance()
+
+        val user = auth?.currentUser
+
+        if (user == null) {
+            auth.signInAnonymously().addOnCompleteListener { task ->
+                result = if (task.isSuccessful) {
+                    //write in  the database
+                    writeDB(task.result?.user)
+                } else Result.RETRY
+            }
+        } else {
+            result = writeDB(user)
+        }
+
+        return result
+    }
+
+    private fun writeDB(user: FirebaseUser?): Result {
+
         val data = wordTableDao.upload()
+
+        var result = Result.SUCCESS
+
+        //file name
+        val fileName = user?.uid + "-${DateTime().dayOfMonth}"
+        val db = FirebaseStorage.getInstance()
+        val ref = db.reference.child(Constants.REMOTE.USER)
+                .child(fileName)
+
+        ref.putFile(Uri.fromFile(getFile(data))).addOnCompleteListener { it ->
+            if (it.isSuccessful) {
+                ioThread {
+                    var up = 0
+                    data.forEach {
+                        up = wordTableDao.update((it.copy(uploaded = true)))
+                    }
+
+                    if (up <= 0) {
+                        spUtils.uploadDate = Date().time
+                    } else {
+                        result = Result.RETRY
+                    }
+                }
+            } else {
+                result = Result.RETRY
+            }
+        }
+        return result
+    }
+
+    private fun getFile(data: List<WordTable>): File {
 
         val list: ArrayList<Model> = ArrayList()
         data.map {
@@ -50,42 +106,7 @@ class UploadWorker(context: Context, workerParameters: WorkerParameters) :
         writer.write(string)
         writer.close()
 
-        var result = Result.SUCCESS
-
-        //login
-        val auth = FirebaseAuth.getInstance()
-        auth.signInAnonymously().addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                //write in  the database
-
-                //file name
-                val fileName = task.result?.user?.uid + "-${DateTime().dayOfMonth}"
-                val db = FirebaseStorage.getInstance()
-                val ref = db.reference.child(Constants.REMOTE.USER)
-                        .child(fileName)
-
-                ref.putFile(Uri.fromFile(file)).addOnCompleteListener { it ->
-                    if (it.isSuccessful) {
-                        ioThread {
-                            var up = 0
-                            data.forEach {
-                                up = wordTableDao.update((it.copy(uploaded = true)))
-                            }
-
-                            if (up <= 0) {
-                                spUtils.uploadDate = Date().time
-                            } else {
-                                result = Result.RETRY
-                            }
-                        }
-                    } else {
-                        result = Result.RETRY
-                    }
-                }
-            } else result = Result.RETRY
-        }
-
-        return result
+        return file
     }
 
 

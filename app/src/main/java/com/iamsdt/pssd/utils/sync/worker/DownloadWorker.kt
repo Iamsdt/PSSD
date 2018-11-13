@@ -7,7 +7,6 @@
 package com.iamsdt.pssd.utils.sync.worker
 
 import android.content.Context
-import android.os.AsyncTask
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.google.firebase.auth.FirebaseAuth
@@ -44,30 +43,50 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
         var result = Result.FAILURE
 
         val auth = FirebaseAuth.getInstance()
-        auth.signInAnonymously().addOnCompleteListener { task ->
-            if (task.isSuccessful) {
-                //write in  the database
 
-                Timber.i("Logged in")
-                //Download
-                val db = FirebaseStorage.getInstance()
-                val ref = db.reference
-                        .child(Constants.REMOTE.ADMIN)
-                        .child(DOWNLOAD_FILE_NAME)
+        val user = auth?.currentUser
 
-                val file = File.createTempFile("download", ".json")
+        if (user == null) {
+            //sign in
+            auth.signInAnonymously().addOnCompleteListener { task ->
+                result = if (task.isSuccessful) {
+                    //write in  the database
+                    writeDB()
 
-                ref.getFile(file).addOnSuccessListener {
+                } else Result.RETRY
+            }
+        } else {
+            result = writeDB()
+        }
 
-                    Timber.i("Data found")
+        return result
+    }
 
-                    val data = gson.fromJson(file.bufferedReader(bufferSize = 4096),
-                            RemoteModel::class.java)
+    private fun writeDB(): Result {
 
-                    ioThread {
-                        data?.let { it ->
-                            var insert = 0L
-                            it.list.map { model ->
+        var result = Result.FAILURE
+
+        val db = FirebaseStorage.getInstance()
+        val ref = db.reference
+                .child(Constants.REMOTE.ADMIN)
+                .child(DOWNLOAD_FILE_NAME)
+
+        val file = File.createTempFile("download", ".json")
+
+        ref.getFile(file).addOnSuccessListener {
+
+            Timber.i("Data found")
+
+            val data = gson.fromJson(file.bufferedReader(bufferSize = 4096),
+                    RemoteModel::class.java)
+
+            ioThread {
+                data?.let { it ->
+                    var insert = 0L
+                    it.list.filter { model ->
+                        model.word.isNotEmpty()
+                    }
+                            .map { model ->
                                 var table: WordTable? = wordTableDao.getWord(model.word)
 
                                 table = table?.copy(des = model.des) ?: model.toWordTable()
@@ -75,20 +94,17 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
                                 insert = wordTableDao.add(table)
                             }
 
-                            result = if (insert > 0) {
-                                MainActivity.isShown = false
-                                Timber.i("Inserted: $insert")
-                                spUtils.downloadDate = Date().time
-                                Result.SUCCESS
-                            } else {
-                                Result.RETRY
-                            }
-                        }
-
+                    result = if (insert > 0) {
+                        MainActivity.isShown = false
+                        Timber.i("Inserted: $insert")
+                        spUtils.downloadDate = Date().time
+                        Result.SUCCESS
+                    } else {
+                        Result.RETRY
                     }
                 }
 
-            } else result = Result.RETRY
+            }
         }
 
         return result
