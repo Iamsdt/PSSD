@@ -53,7 +53,7 @@ class ColorActivity : AppCompatActivity(), ClickListener {
                 Pair("Amber", R.style.amber_dark),
                 Pair("Purple", R.style.purple_dark),
                 Pair("Orange", R.style.orange),
-                Pair("Cyan", R.style.cyan),
+                Pair("Indigo", R.style.indigo),
                 Pair("Deep Orange", R.style.deeporange),
                 Pair("Green", R.style.green)
         )
