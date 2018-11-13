@@ -7,7 +7,6 @@
 package com.iamsdt.pssd.ui.main
 
 import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
@@ -23,7 +22,7 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
 
     val searchEvent = SingleLiveEvent<WordTable>()
 
-    var singleWord = MediatorLiveData<WordTable>()
+    val singleWord = SingleLiveEvent<WordTable>()
 
     lateinit var liveData: MediatorLiveData<PagedList<WordTable>>
 
@@ -35,11 +34,9 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
     }
 
     fun getSingleWord(id: Int) {
-        val word = wordTableDao.getSingleWord(id)
-        singleWord.addSource(word) {
-            if (singleWord.value != it) {
-                singleWord.value = it
-            }
+        ioThread {
+            val word = wordTableDao.getWordByID(id)
+            singleWord.postValue(word)
         }
     }
 

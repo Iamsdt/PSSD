@@ -9,6 +9,7 @@ package com.iamsdt.pssd.ui.main
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.utils.RestoreData
 
 /**
@@ -44,14 +45,13 @@ fun restoreDataHelper(restoreData: RestoreData, context: Context) {
 
 /**
  * Create share intent
- * @param word word for share
- * @param des description of the word
+ * @param word word Table
  * @return new intent
  */
-fun createShareIntent(word: String, des: String): Intent? {
+fun createShareIntent(word: WordTable): Intent? {
     val shareIntent = Intent(Intent.ACTION_SEND)
     shareIntent.type = "text/plain"
-    val share = "$word:$des"
+    val share = "${word.word}:${word.des}"
     shareIntent.putExtra(Intent.EXTRA_TEXT, share)
     return shareIntent
 }

@@ -45,6 +45,9 @@ interface WordTableDao {
     @Query("Select * From WordTable where word =:word")
     fun getWord(word: String): WordTable
 
+    @Query("Select * From WordTable where id =:id")
+    fun getWordByID(id: Int): WordTable
+
     @Query("Select * From WordTable where addByUser = 1")
     fun getAddedWordList(): List<WordTable>
 

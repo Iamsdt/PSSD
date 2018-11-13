@@ -86,13 +86,10 @@ class MainActivity : AppCompatActivity(),
 
     private var isBookmarked = false
 
-    var word = "Word"
-    var des = "des"
+    var word = WordTable()
 
     //text size
     var size = 18F
-
-    var id = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -118,11 +115,15 @@ class MainActivity : AppCompatActivity(),
         //for two pen ui
         if (findViewById<FrameLayout>(R.id.details_container) != null) {
             twoPenUI = true
-            viewModel.getSingleWord(id)
-            Timber.i("ID:$id")
+            viewModel.getSingleWord(1)
+        }
+
+        if (twoPenUI) {
+            Timber.i("Word ID:${word.id}")
             viewModel.singleWord.observe(this, Observer {
                 it?.let(::detailsUI)
             })
+
         }
 
         viewModel.singleLiveEvent.observe(this, Observer { bookmark ->
@@ -291,13 +292,16 @@ class MainActivity : AppCompatActivity(),
 
     /*Details data*/
     private fun detailsUI(wordTable: WordTable) {
-        details_word?.addStr(wordTable.word)
-        details_des?.addStr(wordTable.des)
 
-        id = wordTable.id
+        //update ui
+        if (word.id != wordTable.id) {
+            details_word?.addStr(wordTable.word)
+            details_des?.addStr(wordTable.des)
+        }
+
+        word = wordTable.copy()
+
         isBookmarked = wordTable.bookmark
-        word = wordTable.word
-        des = wordTable.des
 
         resetSap()
 
@@ -385,7 +389,7 @@ class MainActivity : AppCompatActivity(),
                 menuItem.setIcon(R.drawable.ic_like_fill)
 
             shareActionProvider = MenuItemCompat.getActionProvider(shareMenu) as ShareActionProvider
-            shareActionProvider.setShareIntent(createShareIntent(word, des))
+            shareActionProvider.setShareIntent(createShareIntent(word))
         }
 
         return true
@@ -396,7 +400,7 @@ class MainActivity : AppCompatActivity(),
         when (item.itemId) {
 
             R.id.action_favourite ->
-                viewModel.requestBookmark(id, isBookmarked)
+                viewModel.requestBookmark(word.id, isBookmarked)
 
             R.id.action_clear -> {
                 suggestions?.clearHistory()
@@ -424,7 +428,7 @@ class MainActivity : AppCompatActivity(),
             shareIntent.type = "text/plain"
             //todo 9/18/2018 add google play link
             val link = ""
-            val share = "$word:$des -> ${getString(R.string.app_name)}" +
+            val share = "${word.word}:${word.des} -> ${getString(R.string.app_name)}" +
                     "Gplay-$link"
             shareIntent.putExtra(Intent.EXTRA_TEXT, share)
             shareActionProvider.setShareIntent(shareIntent)
@@ -484,8 +488,4 @@ class MainActivity : AppCompatActivity(),
 
 
     private fun isShowKeyboard() = settingsUtils.searchIcon
-
-    companion object {
-        var isShown = true
-    }
 }
