@@ -11,8 +11,7 @@
     <dimen name="empty__fav_img">300dp</dimen>
     <dimen name="empty_fav_txt">45sp</dimen>
 
-    <dimen name="dev_name">45sp</dimen>
-    <dimen name="dev_name2">40sp</dimen>
+    <dimen name="dev_name">40sp</dimen>
     <dimen name="dev_sub_name">30sp</dimen>
     <dimen name="dev_pic">150dp</dimen>
 

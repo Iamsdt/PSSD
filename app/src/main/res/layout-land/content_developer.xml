@@ -51,11 +51,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
                     android:padding="10dp"
                     android:text="@string/dev1"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textSize="@dimen/dev_name"
                     android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/textView8"
                     app:layout_constraintStart_toEndOf="@+id/imageView2"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,10 +66,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:textSize="@dimen/dev_sub_name"
                     android:text="@string/dev1_bio"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:textColor="@color/txtColor"
+                    android:textSize="@dimen/dev_sub_name"
+                    app:layout_constraintEnd_toEndOf="@+id/textView4"
                     app:layout_constraintStart_toStartOf="@+id/textView4"
                     app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -77,9 +80,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:padding="10dp"
-                    android:textSize="@dimen/dev_sub_name"
                     android:text="@string/dev1_work"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                    android:textSize="@dimen/dev_sub_name"
+                    app:layout_constraintEnd_toEndOf="@+id/textView4"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
@@ -191,39 +195,41 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
                     android:padding="10dp"
                     android:text="@string/dev2"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textSize="@dimen/dev_name"
                     android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/textView9"
                     app:layout_constraintStart_toEndOf="@+id/imageView12"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView15"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:textSize="@dimen/dev_sub_name"
                     android:text="@string/dev2_bio"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                     android:textColor="@color/txtColor"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textSize="@dimen/dev_sub_name"
+                    app:layout_constraintEnd_toEndOf="@+id/textView14"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/textView14"
-                    app:layout_constraintTop_toBottomOf="@+id/textView14" />
+                    tools:layout_editor_absoluteY="82dp" />
 
                 <TextView
                     android:id="@+id/textView16"
                     android:layout_width="0dp"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:padding="10dp"
                     android:text="@string/dev2_work"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textSize="@dimen/dev_sub_name"
+                    app:layout_constraintEnd_toEndOf="@+id/textView15"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView15" />
 

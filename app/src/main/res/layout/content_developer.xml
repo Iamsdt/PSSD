@@ -204,7 +204,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:padding="10dp"
-                    android:textSize="@dimen/dev_name2"
+                    android:textSize="@dimen/dev_name"
                     android:textStyle="bold"
                     android:text="@string/dev2"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
