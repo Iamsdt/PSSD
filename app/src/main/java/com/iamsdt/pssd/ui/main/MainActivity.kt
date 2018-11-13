@@ -188,7 +188,7 @@ class MainActivity : AppCompatActivity(),
         setupSearchView()
 
         //show notification
-        getRemoteDataStatus(this, packageName)
+        //getRemoteDataStatus(this, packageName)
 
         //restore data
         restoreData()
