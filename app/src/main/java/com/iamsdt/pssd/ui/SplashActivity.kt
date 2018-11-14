@@ -54,11 +54,9 @@ class SplashActivity : AppCompatActivity() {
             saveAppStartDate()
         }
 
-        val time = if (BuildConfig.DEBUG) 100L
-        else 1000L
         val next = MainActivity::class
 
-        runThread(time, next)
+        runThread(1000L, next)
 
         //put data on analytics
         val ana = FirebaseAnalytics.getInstance(this)

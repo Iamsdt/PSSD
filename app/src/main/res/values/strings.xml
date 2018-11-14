@@ -2,18 +2,18 @@
     <string name="app_name">Soil Science Dictionary</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_title">Soil Science Dictionary </string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
 
     <string name="action_settings">Settings</string>
     <string name="action_favourite">Favourite</string>
-    <string name="title_activity_flash_card">Flash Cards</string>
+    <string name="title_activity_flash_card">Flash Card</string>
 
     <string name="favourite_icon">favourite icon</string>
     <string name="word">Word:</string>
     <string name="description">Description:</string>
-    <string name="details_menu_text">increase text size</string>
+    <string name="details_menu_text">Increase text size</string>
     <string name="details_share">Share</string>
     <string name="title_activity_search">Search</string>
 
@@ -23,7 +23,7 @@
     <string name="title_activity_settings">Settings</string>
     <string name="title_activity_developer">Developer</string>
     <string name="title_activity_favourite">Favourite</string>
-    <string name="title_activity_flash">Flash Cards</string>
+    <string name="title_activity_flash">Flash Card</string>
     <string name="title_activity_user_add">Add Own word</string>
 
     <!-- details fragment -->
@@ -111,9 +111,9 @@
     <string name="switchOFF">Night Mode OFF</string>
 
     <string name="switchShare">ShareData</string>
-    <string name="switchShareLabel">Share you added word</string>
-    <string name="switchShareON">data will share</string>
-    <string name="switchShareOFF">Data keep private</string>
+    <string name="switchShareLabel">Share your added words</string>
+    <string name="switchShareON">Data will be shared</string>
+    <string name="switchShareOFF">Data kept private</string>
 
     <string name="switchSearch">Search</string>
     <string name="switchSearchLabel">Search Keyboard</string>
@@ -124,26 +124,26 @@
     <!-- ***************Backup Preference Screen************* -->
     <string name="bps_title">Backup data</string>
     <string name="bps_summery">Import and export your data.
-        You can backup your data into your SD Card</string>
+        You can backup your data on the storage</string>
     <string name="bps_key">backup</string>
 
     <!-- export -->
     <string name="bps_ex_fav_key">export_favourite</string>
     <string name="bps_ex_fav_title">Export Favourite List</string>
-    <string name="bps_ex_fav_summery">Export your favourite list on your sd card</string>
+    <string name="bps_ex_fav_summery">Export your favourite word list</string>
 
     <string name="bps_ex_add_key">export_add</string>
     <string name="bps_ex_add_title">Export added word List</string>
-    <string name="bps_ex_add_summery">Export your added word list on your sd card</string>
+    <string name="bps_ex_add_summery">Export your added word list</string>
 
     <!-- Import -->
     <string name="bps_im_fav_key">import_favourite</string>
     <string name="bps_im_fav_title">Import Favourite List</string>
-    <string name="bps_im_fav_summery">Click to import your favourite words backup data from storage</string>
+    <string name="bps_im_fav_summery">Click to import your favourite words backup data</string>
 
     <string name="bps_im_add_key">import_add</string>
     <string name="bps_im_add_title">Import added word List</string>
-    <string name="bps_im_add_summery">Click to import your own added words backup data from storage</string>
+    <string name="bps_im_add_summery">Click to import your own added words backup data</string>
     <string name="app_intro">app intro</string>
 
     <string name="advance_summery">Some advance settings for advance user</string>
@@ -191,21 +191,6 @@
                   and for non-commercial use, you can feel free to use.
     </string>
 
-    <string name="license">
-        This app is under Apache License 2.0\n\n
-        Copyright {2017} {Shudipto Trafder}\n
-
-   Licensed under the Apache License, Version 2.0 (the "License");\n
-   you may not use this file except in compliance with the License.\n
-   You may obtain a copy of the License at\n
-   \n
-       http://www.apache.org/licenses/LICENSE-2.0\n
-        \n
-   Unless required by applicable law or agreed to in writing, software\n
-   distributed under the License is distributed on an "AS IS" BASIS,\n
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n
-   See the License for the specific language governing permissions and\n
-   limitations under the License.</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="configure">Configure</string>
     <string name="add_widget">Add widget</string>
@@ -241,7 +226,7 @@
 
     <string name="dev2">Mahabubur Rahaman</string>
     <string name="dev2_bio">Thinker, Learner, Dreamer</string>
-    <string name="dev2_work">Work as Database Expert</string>
+    <string name="dev2_work">Work on Database</string>
     <string name="dev_find_me">Find me:</string>
     <string name="empty_fav_txt">You don\'t added \nany favourite word yet</string>
     <string name="add_word">Add Word</string>
