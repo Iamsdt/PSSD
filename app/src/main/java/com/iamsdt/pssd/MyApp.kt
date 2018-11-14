@@ -15,7 +15,6 @@ import com.iamsdt.pssd.di.appModule
 import com.iamsdt.pssd.di.dbModule
 import com.iamsdt.pssd.di.vmModule
 import com.iamsdt.pssd.ext.DebugLogTree
-import com.iamsdt.pssd.ext.ReleaseLogTree
 import com.rohitss.uceh.UCEHandler
 import io.fabric.sdk.android.Fabric
 import org.koin.android.ext.android.startKoin

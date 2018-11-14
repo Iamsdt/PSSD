@@ -29,7 +29,7 @@ import java.io.File
 class AdvanceFragment : PreferenceFragmentCompat(),
         SharedPreferences.OnSharedPreferenceChangeListener {
 
-    private val PERMISSIONS_REQUEST_READ_STORAGE = 0
+    private val permissionReadStorage = 0
     private var changeDirPref: Preference? = null
 
     private val settingUtils: SettingsUtils by inject()
@@ -85,7 +85,7 @@ class AdvanceFragment : PreferenceFragmentCompat(),
 
             if (Build.VERSION.SDK_INT >= 23) {
                 requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                        PERMISSIONS_REQUEST_READ_STORAGE)
+                        permissionReadStorage)
             } else {
                 selectDir()
             }
@@ -138,7 +138,7 @@ class AdvanceFragment : PreferenceFragmentCompat(),
                                             permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if (requestCode == PERMISSIONS_REQUEST_READ_STORAGE && grantResults.isNotEmpty()) {
+        if (requestCode == permissionReadStorage && grantResults.isNotEmpty()) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 //Permission added
                 selectDir()

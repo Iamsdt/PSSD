@@ -60,7 +60,7 @@ class Constants {
     object Settings {
         const val EXT = ".ss"
 
-        val SETTING_IMOUT_OPTION_FAVOURITE = "favourite$EXT"
+        const val SETTING_IMOUT_OPTION_FAVOURITE = "favourite$EXT"
         val SETTING_IMOUT_OPTION_USER = "user$EXT"
 
 

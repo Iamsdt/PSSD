@@ -22,7 +22,6 @@
 
     <!--dev -->
     <dimen name="dev_name">20sp</dimen>
-    <dimen name="dev_name2">18sp</dimen>
     <dimen name="dev_sub_name">18sp</dimen>
     <dimen name="dev_pic">78dp</dimen>
 

@@ -11,8 +11,6 @@ import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import org.jetbrains.annotations.Nullable
-import timber.log.Timber
 import java.util.concurrent.atomic.AtomicBoolean
 
 
@@ -50,6 +48,6 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
     }
 
     companion object {
-        private val TAG = "SingleLiveEvent"
+        private const val TAG = "SingleLiveEvent"
     }
 }

@@ -114,7 +114,7 @@ class FavouriteAdapter(var context: Context,
 
         val model: WordTable?= getItem(position)
 
-        model?.let {_->
+        model?.let {
             if (itemsPendingRemoval.contains(model)) {
                 holder.regular.gone()
                 holder.swipe.show()

@@ -29,10 +29,10 @@ class BackupFragment : PreferenceFragmentCompat(),
         SharedPreferences.OnSharedPreferenceChangeListener {
 
     //permission code
-    private val PERMISSIONS_REQUEST_READ_STORAGE_FAVOURITE = 12
-    private val PERMISSIONS_REQUEST_READ_STORAGE_ADDED = 14
-    private val PERMISSIONS_REQUEST_WRITE_STORAGE_FAVOURITE = 23
-    private val PERMISSIONS_REQUEST_WRITE_STORAGE_ADDED = 36
+    private val readFavourite = 12
+    private val readAdded = 14
+    private val writeFavourite = 23
+    private val writeAdded = 36
 
     private val utils: FileImportExportUtils by inject()
 
@@ -87,7 +87,7 @@ class BackupFragment : PreferenceFragmentCompat(),
                 if (context?.checkCallingOrSelfPermission(
                                 Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
                     requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                            PERMISSIONS_REQUEST_WRITE_STORAGE_FAVOURITE)
+                            writeFavourite)
                 } else {
                     //permission already granted
                     writeFavouriteData()
@@ -102,7 +102,7 @@ class BackupFragment : PreferenceFragmentCompat(),
         //import favourite
         importFavourite.setOnPreferenceClickListener {
             if (Build.VERSION.SDK_INT >= 23) {
-                requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), PERMISSIONS_REQUEST_READ_STORAGE_FAVOURITE)
+                requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), readFavourite)
             } else {
                 readFavouriteData()
             }
@@ -115,7 +115,7 @@ class BackupFragment : PreferenceFragmentCompat(),
 
             if (Build.VERSION.SDK_INT >= 23) {
                 requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
-                        PERMISSIONS_REQUEST_WRITE_STORAGE_ADDED)
+                        writeAdded)
             } else {
                 writeAddedWord()
             }
@@ -128,7 +128,7 @@ class BackupFragment : PreferenceFragmentCompat(),
 
             if (Build.VERSION.SDK_INT >= 23) {
                 requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                        PERMISSIONS_REQUEST_READ_STORAGE_ADDED)
+                        readAdded)
             } else {
                 readAddedWord()
             }
@@ -239,7 +239,7 @@ class BackupFragment : PreferenceFragmentCompat(),
         val perTxt = "Oh! you did not give the permission to access storage."
 
         when (requestCode) {
-            PERMISSIONS_REQUEST_READ_STORAGE_FAVOURITE ->
+            readFavourite ->
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     //Permission added
                     readFavouriteData()
@@ -248,7 +248,7 @@ class BackupFragment : PreferenceFragmentCompat(),
                     showToast(ToastType.WARNING, txt)
                 }
 
-            PERMISSIONS_REQUEST_READ_STORAGE_ADDED ->
+            readAdded ->
 
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     readAddedWord()
@@ -258,7 +258,7 @@ class BackupFragment : PreferenceFragmentCompat(),
                     showToast(ToastType.WARNING, txt)
                 }
 
-            PERMISSIONS_REQUEST_WRITE_STORAGE_FAVOURITE ->
+            writeFavourite ->
 
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     writeFavouriteData()
@@ -268,7 +268,7 @@ class BackupFragment : PreferenceFragmentCompat(),
                     showToast(ToastType.WARNING, txt)
                 }
 
-            PERMISSIONS_REQUEST_WRITE_STORAGE_ADDED ->
+            writeAdded ->
 
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     writeAddedWord()

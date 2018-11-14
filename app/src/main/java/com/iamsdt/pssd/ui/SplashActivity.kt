@@ -7,13 +7,14 @@
 package com.iamsdt.pssd.ui
 
 import android.os.Bundle
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.google.firebase.analytics.FirebaseAnalytics
-import com.iamsdt.pssd.BuildConfig
 import com.iamsdt.pssd.R
+import com.iamsdt.pssd.R.id.app_icon
 import com.iamsdt.pssd.ext.runThread
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.main.MainActivity
@@ -24,9 +25,7 @@ import com.iamsdt.pssd.utils.sync.worker.DownloadWorker
 import com.iamsdt.pssd.utils.sync.worker.UploadWorker
 import org.koin.android.ext.android.inject
 import java.util.*
-import android.view.animation.AnimationUtils
 import kotlinx.android.synthetic.main.activity_splash.*
-
 
 class SplashActivity : AppCompatActivity() {
 

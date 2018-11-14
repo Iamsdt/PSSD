@@ -16,7 +16,6 @@ import com.iamsdt.pssd.utils.Constants.IO.EXPORT_FAV
 import com.iamsdt.pssd.utils.Constants.Settings.EXT
 import com.iamsdt.pssd.utils.Constants.Settings.SETTING_IMOUT_OPTION_FAVOURITE
 import com.iamsdt.pssd.utils.Constants.Settings.SETTING_IMOUT_OPTION_USER
-import com.iamsdt.pssd.utils.RestoreData.Companion.ioStatus
 import com.iamsdt.pssd.utils.model.OutputModel
 import com.iamsdt.pssd.utils.model.StatusModel
 import timber.log.Timber

@@ -35,12 +35,12 @@ class MainFragment : Fragment() {
         //adapter = MainAdapter(context!!)
         view.mainRcv.adapter = adapter
 
-        val deco = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-        @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-        deco.setDrawable(context!!.getDrawable(R.drawable.dercoration))
-
-        // Complete: 8/22/18 add item decoration
-        view.mainRcv.addItemDecoration(deco)
+//        val deco = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+//        @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+//        deco.setDrawable(context!!.getDrawable(R.drawable.dercoration))
+//
+//        // Complete: 8/22/18 add item decoration
+//        view.mainRcv.addItemDecoration(deco)
 
         viewModel.liveData.observe(activity!!, Observer {
             adapter.submitList(it)
