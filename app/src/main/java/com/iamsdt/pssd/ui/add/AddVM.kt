@@ -13,6 +13,7 @@ import androidx.paging.PagedList
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.SingleLiveEvent
+import com.iamsdt.pssd.ext.toCapFirst
 import com.iamsdt.pssd.utils.Constants.ADD.DES
 import com.iamsdt.pssd.utils.Constants.ADD.DIALOG
 import com.iamsdt.pssd.utils.Constants.ADD.WORD
@@ -24,7 +25,7 @@ class AddVM(private val wordTableDao: WordTableDao) : ViewModel() {
 
     val dialogStatus = SingleLiveEvent<StatusModel>()
 
-    fun addData(word: String, des: String) {
+    fun addData(word: CharSequence, des: CharSequence) {
 
         if (word.isEmpty() || word.length <= 2) {
             dialogStatus.value = StatusModel(false,
@@ -42,9 +43,10 @@ class AddVM(private val wordTableDao: WordTableDao) : ViewModel() {
 
         ioThread {
 
-            var data: WordTable? = wordTableDao.getWord(word)
+            var data: WordTable? = wordTableDao.getWord(word.toCapFirst())
 
-            data = data?.copy(des = des, addByUser = true) ?: WordTable(word = word, des = des, addByUser = true)
+            data = data?.copy(des = des.toCapFirst(), addByUser = true) ?: WordTable(word = word.toCapFirst(), des = des.toCapFirst(),
+                    addByUser = true)
 
             val status = wordTableDao.add(data)
             if (status >= 0) {

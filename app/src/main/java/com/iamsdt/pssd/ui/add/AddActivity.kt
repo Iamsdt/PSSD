@@ -153,7 +153,7 @@ class AddActivity : AppCompatActivity() {
             val word = wordTV.text ?: ""
             val des = desTV.text ?: ""
 
-            model.addData(word.toCapFirst(), des.toCapFirst())
+            model.addData(word, des)
         }
 
         model.dialogStatus.observe(this, Observer { model ->
