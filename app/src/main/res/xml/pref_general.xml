@@ -5,7 +5,8 @@
   -->
 
 <PreferenceScreen xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ListPreference
         android:defaultValue="@string/sTextModerateValue"
@@ -43,12 +44,13 @@
         <Preference
             android:icon="@drawable/ic_databases_symbol"
             android:key="@string/bps_key"
-            android:title="@string/bps_title">
+            android:title="@string/bps_title"
+            app:fragment="com.iamsdt.pssd.ui.settings.BackupFragment">
 
-            <intent
-                android:action="android.intent.action.VIEW"
-                android:targetClass="com.iamsdt.pssd.ui.settings.BackupSettings"
-                android:targetPackage="com.iamsdt.pssd" />
+            <!--<intent-->
+                <!--android:action="android.intent.action.VIEW"-->
+                <!--android:targetClass="com.iamsdt.pssd.ui.settings.BackupSettings"-->
+                <!--android:targetPackage="com.iamsdt.pssd" />-->
 
         </Preference>
 

@@ -31,8 +31,8 @@ class SettingsUtils(val context: Context) {
         get(): Int {
             val days: String = settingsSp.getString(
                     context.getString(R.string.syncKey),
-                    context.getString(R.string.syncWeekValue)
-            ) ?: "7" //default 7
+                    context.getString(R.string.syncWeekTwoValue)
+            ) ?: "15" //default 7
 
             return days.toInt()
         }
