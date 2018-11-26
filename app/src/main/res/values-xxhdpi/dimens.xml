@@ -8,7 +8,7 @@
 <resources>
     <dimen name="empty__fav_img">250dp</dimen>
     <dimen name="empty_fav_txt">35sp</dimen>
-    <dimen name="tms_txt_size">40sp</dimen>
+    <dimen name="tms_txt_size">35sp</dimen>
 
     <dimen name="about_app_txt">35sp</dimen>
 

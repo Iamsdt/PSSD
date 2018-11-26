@@ -9,6 +9,6 @@
     <dimen name="empty__fav_img">200dp</dimen>
     <dimen name="empty_fav_txt">25sp</dimen>
 
-    <dimen name="tms_txt_size">35sp</dimen>
+    <dimen name="tms_txt_size">30sp</dimen>
     <dimen name="about_app_txt">30sp</dimen>
 </resources>

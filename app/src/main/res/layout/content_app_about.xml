@@ -64,13 +64,14 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="@dimen/app_about_m"
             android:padding="10dp"
-            android:textSize="@dimen/empty_fav_txt"
             android:text="@string/app_about1"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textColor="@color/txtColor"
+            android:textSize="@dimen/empty_fav_txt"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <TextView
             android:id="@+id/textView17"
@@ -118,5 +119,20 @@
             app:layout_constraintStart_toStartOf="@+id/textView17"
             app:layout_constraintTop_toBottomOf="@+id/textView17"
             tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/app_about_m"
+            android:layout_marginEnd="@dimen/app_about_m"
+            android:fontFamily="@font/loboster"
+            android:gravity="center"
+            android:text="@string/app_about"
+            android:textColor="@color/txtColor"
+            android:textSize="@dimen/about_app_txt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
