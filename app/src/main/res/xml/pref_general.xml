@@ -16,6 +16,8 @@
         android:key="@string/textSizeKey"
         android:title="@string/textSizeLabel" />
 
+    <!-- app:simplesummeryprovider version 1.2 -->
+
     <ListPreference
         android:defaultValue="@string/syncWeekValue"
         android:entries="@array/syncLabel"

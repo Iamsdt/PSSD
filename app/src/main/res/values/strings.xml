@@ -83,11 +83,11 @@
     <string name="sTextExtraLargeLabel">Extra Large</string>
 
     <!-- text size value-->
-    <string name="sTextSmallValue">15</string>
-    <string name="sTextMediumValue">17</string>
-    <string name="sTextModerateValue">20</string>
-    <string name="sTextLargeValue">23</string>
-    <string name="sTextExtraLargeValue">26</string>
+    <string name="sTextSmallValue">18</string>
+    <string name="sTextMediumValue">20</string>
+    <string name="sTextModerateValue">23</string>
+    <string name="sTextLargeValue">26</string>
+    <string name="sTextExtraLargeValue">28</string>
 
     <string name="textSizeKey" translatable="false">textSize</string>
     <string name="textSizeLabel">Sheet Text Size</string>
