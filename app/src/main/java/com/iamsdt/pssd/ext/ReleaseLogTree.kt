@@ -15,7 +15,7 @@ class ReleaseLogTree : Timber.Tree() {
     private val maxLogLength = 4000
 
     override fun isLoggable(tag: String?, priority: Int): Boolean {
-        // Don't log VERBOSE, DEBUG and INFO
+        // Don't log VERBOSE,
         return !(priority == Log.VERBOSE || priority == Log.DEBUG || priority == Log.INFO)
         // Log only ERROR, WARN and WTF
     }

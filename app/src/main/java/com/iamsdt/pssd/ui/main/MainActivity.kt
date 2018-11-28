@@ -345,15 +345,6 @@ class MainActivity : AppCompatActivity(),
             Timber.i("Search Called")
 
             mQuery = query
-
-            ////debug only 11/11/2018 remove later
-            //Search
-            val bundle = Bundle()
-            bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "Search Data")
-            bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "User search query")
-            bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Search $query")
-            FirebaseAnalytics.getInstance(this)
-                    .logEvent(FirebaseAnalytics.Event.SEARCH, bundle)
         }
     }
 
@@ -426,8 +417,7 @@ class MainActivity : AppCompatActivity(),
         if (::shareActionProvider.isInitialized) {
             val shareIntent = Intent(Intent.ACTION_SEND)
             shareIntent.type = "text/plain"
-            //todo 9/18/2018 add google play link
-            val link = ""
+            val link = "https://play.google.com/store/apps/details?id=com.iamsdt.pssd"
             val share = "${word.word}:${word.des} -> ${getString(R.string.app_name)}" +
                     "Gplay-$link"
             shareIntent.putExtra(Intent.EXTRA_TEXT, share)

@@ -76,13 +76,6 @@ class FlashCardActivity : AppCompatActivity(), ClickListener {
         Timber.i("Tag rec: $id")
         val dialog = FlashSheet()
         dialog.show(supportFragmentManager, id.toString())
-
-
-        //todo off
-        val ana = FirebaseAnalytics.getInstance(this@FlashCardActivity)
-        val bundle = Bundle()
-        bundle.putString("Flash_Card", "Showing flash card")
-        ana.logEvent("flash_card", bundle)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

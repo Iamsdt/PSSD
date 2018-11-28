@@ -181,8 +181,7 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         if (::shareActionProvider.isInitialized) {
             val shareIntent = Intent(Intent.ACTION_SEND)
             shareIntent.type = "text/plain"
-            //todo 9/18/2018 add google play link
-            val link = ""
+            val link = "https://play.google.com/store/apps/details?id=com.iamsdt.pssd"
             val share = "$word:$des -> ${getString(R.string.app_name)}" +
                     "Gplay-$link"
             shareIntent.putExtra(Intent.EXTRA_TEXT, share)
