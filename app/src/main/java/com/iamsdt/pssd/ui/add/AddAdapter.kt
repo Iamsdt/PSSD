@@ -14,6 +14,7 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.paging.PagedListAdapter
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
@@ -30,9 +31,9 @@ class AddAdapter(var context: Context,
         PagedListAdapter<WordTable, FavouriteVH>(DIFF_CALLBACK) {
 
     private val pendingItemRemoval = 3000 // 3sec
-    // handler for running delayed runnables
+    // handler for running delayed runnable
     private val handler = Handler()
-    // map of items to pending runnables, so we can cancel a removal if need be
+    // map of items to pending runnable, so we can cancel a removal if need be
     private val pendingRunnable: MutableMap<WordTable?, Runnable> = HashMap()
 
     private var itemsPendingRemoval: ArrayList<WordTable?> = ArrayList()
@@ -58,25 +59,32 @@ class AddAdapter(var context: Context,
     }
 
     private fun deletePost(model: WordTable?) {
-        val thread = HandlerThread("Bookmark")
-        thread.start()
-        Handler(thread.looper).post {
-            if (model != null) {
-                //book mark
-                val delete = wordTableDao.delete(model)
 
-                Handler(Looper.getMainLooper()).post {
-                    if (delete > 0) {
-                        Toasty.info(context, "Item Removed", Toast.LENGTH_SHORT, true).show()
-                        //holder.bookmarkImg.setImageDrawable(context.getDrawable(R.drawable.ic_bookmark))
-                        if (itemsPendingRemoval.contains(model)) {
-                            itemsPendingRemoval.remove(model)
+        val dialog = AlertDialog.Builder(context)
+        dialog.setTitle("Confirm!")
+        dialog.setMessage("Are you sure to delete permanently?")
+        dialog.setNegativeButton("No") { _, _ -> }
+        dialog.setPositiveButton("Yes") { _, _ ->
+            val thread = HandlerThread("Bookmark")
+            thread.start()
+            Handler(thread.looper).post {
+                if (model != null) {
+                    //book mark
+                    val delete = wordTableDao.delete(model)
+
+                    Handler(Looper.getMainLooper()).post {
+                        if (delete > 0) {
+                            Toasty.info(context, "Item Removed", Toast.LENGTH_SHORT, true).show()
+                            //holder.bookmarkImg.setImageDrawable(context.getDrawable(R.drawable.ic_bookmark))
+                            if (itemsPendingRemoval.contains(model)) {
+                                itemsPendingRemoval.remove(model)
+                            }
                         }
                     }
                 }
-            }
 
-            thread.quitSafely()
+                thread.quitSafely()
+            }
         }
     }
 
