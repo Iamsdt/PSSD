@@ -60,31 +60,25 @@ class AddAdapter(var context: Context,
 
     private fun deletePost(model: WordTable?) {
 
-        val dialog = AlertDialog.Builder(context)
-        dialog.setTitle("Confirm!")
-        dialog.setMessage("Are you sure to delete permanently?")
-        dialog.setNegativeButton("No") { _, _ -> }
-        dialog.setPositiveButton("Yes") { _, _ ->
-            val thread = HandlerThread("Bookmark")
-            thread.start()
-            Handler(thread.looper).post {
-                if (model != null) {
-                    //book mark
-                    val delete = wordTableDao.delete(model)
+        val thread = HandlerThread("Bookmark")
+        thread.start()
+        Handler(thread.looper).post {
+            if (model != null) {
+                //book mark
+                val delete = wordTableDao.delete(model)
 
-                    Handler(Looper.getMainLooper()).post {
-                        if (delete > 0) {
-                            Toasty.info(context, "Item Removed", Toast.LENGTH_SHORT, true).show()
-                            //holder.bookmarkImg.setImageDrawable(context.getDrawable(R.drawable.ic_bookmark))
-                            if (itemsPendingRemoval.contains(model)) {
-                                itemsPendingRemoval.remove(model)
-                            }
+                Handler(Looper.getMainLooper()).post {
+                    if (delete > 0) {
+                        Toasty.info(context, "Item Removed", Toast.LENGTH_SHORT, true).show()
+                        //holder.bookmarkImg.setImageDrawable(context.getDrawable(R.drawable.ic_bookmark))
+                        if (itemsPendingRemoval.contains(model)) {
+                            itemsPendingRemoval.remove(model)
                         }
                     }
                 }
-
-                thread.quitSafely()
             }
+
+            thread.quitSafely()
         }
     }
 
