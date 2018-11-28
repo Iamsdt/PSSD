@@ -46,13 +46,14 @@
         <Preference
             android:icon="@drawable/ic_databases_symbol"
             android:key="@string/bps_key"
-            android:title="@string/bps_title"
-            app:fragment="com.iamsdt.pssd.ui.settings.BackupFragment">
+            android:title="@string/bps_title">
 
-            <!--<intent-->
-                <!--android:action="android.intent.action.VIEW"-->
-                <!--android:targetClass="com.iamsdt.pssd.ui.settings.BackupSettings"-->
-                <!--android:targetPackage="com.iamsdt.pssd" />-->
+            <!-- Make code and xml seperate-->
+
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:targetClass="com.iamsdt.pssd.ui.settings.BackupSettings"
+                android:targetPackage="com.iamsdt.pssd" />
 
         </Preference>
 
