@@ -14,7 +14,6 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.paging.PagedListAdapter
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
