@@ -2,8 +2,7 @@
     <string name="app_name">Soil Science Dictionary</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Soil Science Dictionary </string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">@string/app_name</string>
     <string name="nav_header_desc">Navigation header</string>
 
     <string name="action_settings">Settings</string>
@@ -161,7 +160,7 @@
     <string name="start">GOT IT</string>
 
     <string name="slide_1_title">Soil Science Dictionary</string>
-    <string name="slide_1_desc">A complete dictionary app contains all soil related keyword</string>
+    <string name="slide_1_desc">A complete dictionary app contains all soil science related terminologies</string>
 
     <string name="slide_2_title">Larger database</string>
     <string name="slide_2_desc">Huge database contain 1000+ word</string>
