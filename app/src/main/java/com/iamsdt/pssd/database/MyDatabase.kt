@@ -9,8 +9,8 @@ package com.iamsdt.pssd.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 
-@Database(entities = [WordTable::class], version = 1,
+@Database(entities = [WordTable::class], version = 2,
         exportSchema = false)
-abstract class MyDatabase:RoomDatabase(){
+abstract class MyDatabase : RoomDatabase() {
     abstract val wordTableDao: WordTableDao
 }
