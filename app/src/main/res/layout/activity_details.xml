@@ -53,14 +53,21 @@
                 android:textSize="@dimen/empty_fav_txt"
                 tools:text="Acid Soil  " />
 
-            <ImageView
-                android:id="@+id/details_speak"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:contentDescription="@string/speak_voice"
-                android:src="@drawable/ic_speaker" />
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                app:cardCornerRadius="16dp"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/details_speak"
+                    android:layout_width="32dp"
+                    android:layout_height="42dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/speak_voice"
+                    android:src="@drawable/ic_speaker" />
+
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 
