@@ -37,7 +37,7 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private val viewModel: MainVM by viewModel()
 
     //id word
-    var id = 0
+    var id = 1
 
     //share
     private lateinit var shareActionProvider: ShareActionProvider
@@ -53,15 +53,15 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private lateinit var textToSpeech: TextToSpeech
 
     //text size
-    var size = 18F
+    var size = 20F
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ThemeUtils.initialize(this)
         setContentView(R.layout.activity_details)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(details_toolbar)
 
-        id = intent.getIntExtra(Intent.EXTRA_TEXT, 0)
+        id = intent.getIntExtra(Intent.EXTRA_TEXT, 1)
 
         textToSpeech = TextToSpeech(this, this)
 
@@ -158,7 +158,7 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.details, menu)
 
-        menuItem = menu.findItem(R.id.action_favourite)
+        menuItem = menu.findItem(R.id.action_favourite_d)
 
         if (isBookmarked)
             menuItem.setIcon(R.drawable.ic_like_fill)
@@ -195,14 +195,14 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             //back to home
             android.R.id.home -> onBackPressed()
 
-            R.id.action_favourite ->
+            R.id.action_favourite_d ->
                 viewModel.requestBookmark(id, isBookmarked)
 
             R.id.action_settings -> {
                 toNextActivity(SettingsActivity::class)
             }
 
-            R.id.action_txt -> {
+            R.id.action_txt_d -> {
                 textIncrease()
             }
         }

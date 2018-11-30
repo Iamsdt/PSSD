@@ -51,6 +51,9 @@ class Constants {
     object SP {
         const val appSp = "App"
         const val FIRST_TIME = "first"
+        const val DETAILS_FIRST_TIME = "details"
+        const val COLOR_FIRST_TIME = "color"
+        const val ADD_FIRST_TIME = "add"
         const val DATA_INSERT = "data"
         const val DATA_RESTORE = "restore"
 

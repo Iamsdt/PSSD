@@ -47,6 +47,7 @@ import com.iamsdt.pssd.utils.Bookmark
 import com.iamsdt.pssd.utils.Constants.Companion.PrivacyPolices
 import com.iamsdt.pssd.utils.RestoreData
 import com.iamsdt.pssd.utils.SettingsUtils
+import com.iamsdt.pssd.utils.SpUtils
 import com.iamsdt.pssd.utils.sync.SyncTask
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -55,6 +56,10 @@ import kotlinx.android.synthetic.main.content_main.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetSequence
+import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground
+import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal
 
 class MainActivity : AppCompatActivity(),
         NavigationView.OnNavigationItemSelectedListener,
@@ -63,6 +68,8 @@ class MainActivity : AppCompatActivity(),
     private val syncTask: SyncTask by inject()
 
     private val settingsUtils: SettingsUtils by inject()
+
+    private val spUtils: SpUtils by inject()
 
     private val viewModel: MainVM by viewModel()
 
@@ -95,7 +102,7 @@ class MainActivity : AppCompatActivity(),
         super.onCreate(savedInstanceState)
         ThemeUtils.initialize(this)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
+        setSupportActionBar(main_toolbar)
 
         mainRcv.layoutManager = LinearLayoutManager(this)
         val adapter = MainAdapter(this)
@@ -195,7 +202,7 @@ class MainActivity : AppCompatActivity(),
         restoreData()
 
         val toggle = object : ActionBarDrawerToggle(
-                this, drawer_layout, toolbar, R.string.navigation_drawer_open,
+                this, drawer_layout, main_toolbar, R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close) {
 
             override fun onDrawerOpened(drawerView: View) {
@@ -213,6 +220,40 @@ class MainActivity : AppCompatActivity(),
         nav_view.setNavigationItemSelectedListener(this)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        if (spUtils.isAppRunFirstTime) {
+            tapTarget()
+            spUtils.isAppRunFirstTime = false
+        }
+    }
+
+    private fun tapTarget() {
+        MaterialTapTargetSequence()
+                .addPrompt(
+                        MaterialTapTargetPrompt.Builder(this)
+                                .setTarget(searchView)
+                                .setPrimaryText("Search Option")
+                                .setSecondaryText("Input here for searching")
+                                .setPromptBackground(RectanglePromptBackground())
+                                .setPromptFocal(RectanglePromptFocal())
+                                .setAutoDismiss(true)
+                                .setCaptureTouchEventOutsidePrompt(true)
+                                .setCaptureTouchEventOnFocal(true)
+
+                ).show()
+                .addPrompt(
+                        MaterialTapTargetPrompt.Builder(this)
+                                .setTarget(fab)
+                                .setPrimaryText("Random Word")
+                                .setSecondaryText("When you click this icon it will be shown a " +
+                                        "random word every time")
+                                .setAutoDismiss(true)
+                                .setCaptureTouchEventOutsidePrompt(true)
+                                .setCaptureTouchEventOnFocal(true)
+                ).show()
+    }
 
     //set search view
     private fun setupSearchView() {

@@ -16,14 +16,14 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_txt"
+        android:id="@+id/action_txt_d"
         android:orderInCategory="40"
         android:title="@string/increase_textsize"
         android:icon="@drawable/text_increase"
         app:showAsAction="always"/>
 
     <item
-        android:id="@+id/action_favourite"
+        android:id="@+id/action_favourite_d"
         android:orderInCategory="10"
         android:icon="@drawable/ic_like_blank"
         android:title="@string/action_settings"
