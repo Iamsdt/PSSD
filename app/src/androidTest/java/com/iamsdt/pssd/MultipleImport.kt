@@ -8,8 +8,8 @@ package com.iamsdt.pssd
 
 import android.content.Context
 import androidx.room.Room
-import androidx.test.InstrumentationRegistry
-import androidx.test.runner.AndroidJUnit4
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import com.iamsdt.pssd.database.MyDatabase
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
@@ -25,7 +25,7 @@ class MultipleImport {
 
     @Before
     fun init() {
-        appContext = InstrumentationRegistry.getTargetContext()
+        appContext = InstrumentationRegistry.getInstrumentation().context
         val db = Room.inMemoryDatabaseBuilder(
                 appContext, MyDatabase::class.java)
                 .allowMainThreadQueries()
