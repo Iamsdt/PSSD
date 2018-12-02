@@ -33,7 +33,6 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ThemeUtils.initialize(this)
         setContentView(R.layout.activity_splash)
 
         // complete: 8/31/18 add animation
