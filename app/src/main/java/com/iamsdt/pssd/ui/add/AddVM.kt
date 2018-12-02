@@ -28,8 +28,8 @@ class AddVM(private val wordTableDao: WordTableDao) : ViewModel() {
     fun addData(word: CharSequence, des: CharSequence) {
 
         if (word.isEmpty() || word.length <= 2) {
-            dialogStatus.value = StatusModel(false,
-                    WORD, "Please input correct word")
+            dialogStatus.value = (StatusModel(false,
+                    WORD, "Please input correct word"))
 
             return
         }

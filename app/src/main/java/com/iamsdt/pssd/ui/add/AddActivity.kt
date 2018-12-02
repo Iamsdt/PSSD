@@ -45,6 +45,9 @@ class AddActivity : AppCompatActivity() {
 
     private lateinit var dialog: AlertDialog
 
+    lateinit var wordTV: TextInputEditText
+    lateinit var desTV: TextInputEditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ThemeUtils.initialize(this)
@@ -82,12 +85,16 @@ class AddActivity : AppCompatActivity() {
                         dialog.dismiss()
                         showToast(ToastType.SUCCESSFUL, it.message)
 
-                        //add analytics
-                        val ana = FirebaseAnalytics.getInstance(this@AddActivity)
-                        val bundle = Bundle()
-                        bundle.putString("Data_added", "Data Put in the local database")
-                        ana.logEvent("add_data", bundle)
+//                        //add analytics
+//                        val ana = FirebaseAnalytics.getInstance(this@AddActivity)
+//                        val bundle = Bundle()
+//                        bundle.putString("Data_added", "Data Put in the local database")
+//                        ana.logEvent("add_data", bundle)
                     }
+                } else if (!it.status && it.title == WORD) {
+                    if (::wordTV.isInitialized) wordTV.error = it.message
+                } else if (!it.status && it.title == DES) {
+                    if (::desTV.isInitialized) desTV.error = it.message
                 }
             }
         })
@@ -142,11 +149,11 @@ class AddActivity : AppCompatActivity() {
         val dialogView = LayoutInflater.from(this)
                 .inflate(R.layout.add_dialog, null)
 
-        val builder = AlertDialog.Builder(this,R.style.MyDialogStyle)
+        val builder = AlertDialog.Builder(this, R.style.MyDialogStyle)
         builder.setView(dialogView)
 
-        val wordTV: TextInputEditText = dialogView.add_word
-        val desTV: TextInputEditText = dialogView.add_des
+        wordTV = dialogView.add_word
+        desTV = dialogView.add_des
         val button: AppCompatImageButton = dialogView.add_btn
 
         button.setOnClickListener {
@@ -155,16 +162,6 @@ class AddActivity : AppCompatActivity() {
 
             model.addData(word, des)
         }
-
-        model.dialogStatus.observe(this, Observer { model ->
-            model?.let {
-                if (!it.status && it.title == WORD) {
-                    wordTV.error = it.message
-                } else if (!it.status && it.title == DES) {
-                    desTV.error = it.message
-                }
-            }
-        })
 
         dialog = builder.create()
 
