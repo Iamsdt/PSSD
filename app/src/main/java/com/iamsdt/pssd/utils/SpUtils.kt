@@ -11,12 +11,9 @@ import android.content.SharedPreferences
 import androidx.core.content.edit
 import com.iamsdt.pssd.utils.Constants.REMOTE.DATE_DOWNLOAD
 import com.iamsdt.pssd.utils.Constants.REMOTE.DATE_UPLOAD
-import com.iamsdt.pssd.utils.Constants.SP.ADD_FIRST_TIME
-import com.iamsdt.pssd.utils.Constants.SP.COLOR_FIRST_TIME
 import com.iamsdt.pssd.utils.Constants.SP.DATA_INSERT
 import com.iamsdt.pssd.utils.Constants.SP.DATA_RESTORE
 import com.iamsdt.pssd.utils.Constants.SP.DATA_VOLUME
-import com.iamsdt.pssd.utils.Constants.SP.DETAILS_FIRST_TIME
 import com.iamsdt.pssd.utils.Constants.SP.FIRST_TIME
 
 class SpUtils(val context: Context) {
@@ -25,24 +22,6 @@ class SpUtils(val context: Context) {
         get() = appSp.getBoolean(FIRST_TIME, true)
         set(v) = appSp.edit {
             putBoolean(FIRST_TIME, v)
-        }
-
-    var isDetailsFirstTime: Boolean
-        get() = appSp.getBoolean(DETAILS_FIRST_TIME, true)
-        set(v) = appSp.edit {
-            putBoolean(DETAILS_FIRST_TIME, v)
-        }
-
-    var isColorFirstTime: Boolean
-        get() = appSp.getBoolean(COLOR_FIRST_TIME, true)
-        set(v) = appSp.edit {
-            putBoolean(DETAILS_FIRST_TIME, v)
-        }
-
-    var isAddFirstTime: Boolean
-        get() = appSp.getBoolean(ADD_FIRST_TIME, true)
-        set(v) = appSp.edit {
-            putBoolean(DETAILS_FIRST_TIME, v)
         }
 
     var restore: Boolean

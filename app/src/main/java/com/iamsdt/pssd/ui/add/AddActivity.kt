@@ -22,9 +22,11 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputEditText
-import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.ext.*
+import com.iamsdt.pssd.ext.ToastType
+import com.iamsdt.pssd.ext.gone
+import com.iamsdt.pssd.ext.show
+import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.utils.Constants.ADD.DES
 import com.iamsdt.pssd.utils.Constants.ADD.DIALOG

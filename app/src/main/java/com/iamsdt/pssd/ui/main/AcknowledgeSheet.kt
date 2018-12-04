@@ -9,6 +9,7 @@ package com.iamsdt.pssd.ui.main
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -17,13 +18,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.layout
 import kotlinx.android.synthetic.main.app_bar_main.*
-import android.util.DisplayMetrics
 
 
-/**
- * Created by Shudipto Trafder on 10/30/2018.
- * at 7:59 PM
- */
 class AcknowledgeSheet : BottomSheetDialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -44,6 +40,11 @@ class AcknowledgeSheet : BottomSheetDialogFragment() {
 
 }
 
+
+/**
+ * Expand bottom sheet dialog
+ * and control the size
+ */
 class MyBottomSheetDialog(context: Context, style: Int) : BottomSheetDialog(context, style) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

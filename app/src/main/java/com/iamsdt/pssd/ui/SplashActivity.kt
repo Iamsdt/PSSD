@@ -14,18 +14,16 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.R.id.app_icon
 import com.iamsdt.pssd.ext.runThread
-import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.main.MainActivity
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.SpUtils
 import com.iamsdt.pssd.utils.sync.worker.DataInsertWorker
 import com.iamsdt.pssd.utils.sync.worker.DownloadWorker
 import com.iamsdt.pssd.utils.sync.worker.UploadWorker
+import kotlinx.android.synthetic.main.activity_splash.*
 import org.koin.android.ext.android.inject
 import java.util.*
-import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
 

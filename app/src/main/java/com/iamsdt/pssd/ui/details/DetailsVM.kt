@@ -15,7 +15,7 @@ import com.iamsdt.pssd.utils.ioThread
 class DetailsVM(val wordTableDao: WordTableDao) : ViewModel() {
 
     //track bookmark
-    val singleLiveEvent = SingleLiveEvent<Bookmark>()
+    private val singleLiveEvent = SingleLiveEvent<Bookmark>()
 
     //get single word
     fun getWord(id: Int) = wordTableDao.getSingleWord(id)

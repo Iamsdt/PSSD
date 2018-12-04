@@ -32,7 +32,7 @@ abstract class SwipeUtil(dragDirs: Int,
 
     var leftColorCode: Int = 0
 
-    var leftSwipeLabel: String = ""
+    private var leftSwipeLabel: String = ""
 
     private fun init() {
         background = ColorDrawable()

@@ -21,7 +21,7 @@ import org.junit.runner.RunWith
 class MultipleImport {
 
     private lateinit var wordTableDao: WordTableDao
-    lateinit var appContext: Context
+    private lateinit var appContext: Context
 
     @Before
     fun init() {

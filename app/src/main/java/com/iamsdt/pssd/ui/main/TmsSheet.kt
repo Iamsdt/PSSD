@@ -14,10 +14,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.iamsdt.pssd.R
 import kotlinx.android.synthetic.main.app_bar_main.*
 
-/**
- * Created by Shudipto Trafder on 10/30/2018.
- * at 7:56 PM
- */
+
 class TmsSheet : BottomSheetDialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

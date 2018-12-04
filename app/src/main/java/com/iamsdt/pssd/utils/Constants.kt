@@ -13,11 +13,6 @@ class Constants {
     companion object {
         const val DB_NAME = "SS.db"
 
-        const val SEARCH = "Search"
-        const val SEARCH_DATA = "Search_Data"
-
-        const val WORD_ID = "ID"
-
         const val PrivacyPolices = "https://docs.google.com/document/d/1dJOwpVjSbxbhe2KwY1TcYlt-fm882vjybjw1tYLUIuk"
 
     }
@@ -51,9 +46,6 @@ class Constants {
     object SP {
         const val appSp = "App"
         const val FIRST_TIME = "first"
-        const val DETAILS_FIRST_TIME = "details"
-        const val COLOR_FIRST_TIME = "color"
-        const val ADD_FIRST_TIME = "add"
         const val DATA_INSERT = "data"
         const val DATA_RESTORE = "restore"
 
@@ -64,14 +56,13 @@ class Constants {
         const val EXT = ".ss"
 
         const val SETTING_IMOUT_OPTION_FAVOURITE = "favourite$EXT"
-        val SETTING_IMOUT_OPTION_USER = "user$EXT"
+        const val SETTING_IMOUT_OPTION_USER = "user$EXT"
 
 
         val DEFAULT_PATH_STORAGE = Environment.getExternalStorageDirectory()
                 .absolutePath + "/SSDictionary/"
 
         const val STORAGE_PATH_KEY = "storage"
-        const val STORAGE_PATH = "path"
 
     }
 
@@ -82,7 +73,6 @@ class Constants {
         const val IMPORT_ADD = "IMPORT_Add"
         const val IMPORT_FAV = "IMPORT_Fav"
 
-        const val BACKUP = "backup"
     }
 
 }

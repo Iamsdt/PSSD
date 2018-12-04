@@ -12,16 +12,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.iamsdt.pssd.R
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-/**
- * Created by Shudipto Trafder on 9/22/2018.
- * at 9:25 AM
- */
+
 class MainFragment : Fragment() {
 
     private val viewModel: MainVM by viewModel()
@@ -34,13 +30,6 @@ class MainFragment : Fragment() {
         view.mainRcv.layoutManager = LinearLayoutManager(context)
         //adapter = MainAdapter(context!!)
         view.mainRcv.adapter = adapter
-
-//        val deco = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-//        @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-//        deco.setDrawable(context!!.getDrawable(R.drawable.dercoration))
-//
-//        // Complete: 8/22/18 add item decoration
-//        view.mainRcv.addItemDecoration(deco)
 
         viewModel.liveData.observe(activity!!, Observer {
             adapter.submitList(it)
