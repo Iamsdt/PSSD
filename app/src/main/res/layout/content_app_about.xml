@@ -21,11 +21,11 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/about_img_round"
+            android:layout_height="@dimen/about_img_round"
             android:elevation="6dp"
             android:padding="10dp"
-            app:cardCornerRadius="30dp"
+            app:cardCornerRadius="140dp"
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,6 +33,7 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageView6"
+                android:layout_gravity="center"
                 android:layout_width="@dimen/about_img"
                 android:layout_height="@dimen/about_img"
                 app:srcCompat="@drawable/icon" />

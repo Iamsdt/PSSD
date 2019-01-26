@@ -16,6 +16,7 @@
     <dimen name="dev_pic">150dp</dimen>
 
     <dimen name="about_img">300dp</dimen>
+    <dimen name="about_img_round">380dp</dimen>
 
     <dimen name="settings_margin">50dp</dimen>
 </resources>

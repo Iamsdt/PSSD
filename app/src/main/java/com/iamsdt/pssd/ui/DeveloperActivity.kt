@@ -11,11 +11,13 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageButton
 import com.iamsdt.pssd.R
+import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.customTab
 import com.iamsdt.pssd.ext.sendEmail
+import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import kotlinx.android.synthetic.main.activity_developer.*
-import kotlinx.android.synthetic.main.content_developer.*
+import kotlinx.android.synthetic.main.fragment_developer.*
 
 
 class DeveloperActivity : AppCompatActivity() {
@@ -27,34 +29,44 @@ class DeveloperActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
 
-        //scroll
-        //dev_scroll.background.alpha = 30
-
-        // complete: 8/30/18 update link
-
-        //complete update name pssd
-
         val subject = "Contact from Soil Science Dictionary"
 
         //dev 1
-        dev_fb.click("https://www.facebook.com/iamsdt/")
-        dev_ln.click("https://www.linkedin.com/in/iamsdt")
-        dev_git.click("https://github.com/Iamsdt")
-        dev_em.setOnClickListener {
+        fb1.click("https://www.facebook.com/iamsdt/")
+        linkedin1.click("https://www.linkedin.com/in/iamsdt")
+        github1.click("https://github.com/Iamsdt")
+        email1.setOnClickListener {
             sendEmail("Shudiptotrafder@gmail.com", subject)
         }
 
-        // complete: 8/31/18 add dev 2
 
+        //todo update dev 2
         //dev 2
-        dev2_fb.click("https://www.facebook.com/md.rimon.395017")
-        dev2_ln.click("https://www.linkedin.com/md-mahabubur-rahaman-rimon-2a3708142")
-        dev2_em.setOnClickListener {
+        fb2.click("https://www.facebook.com/md.rimon.395017")
+        linkedin2.click("https://www.linkedin.com/md-mahabubur-rahaman-rimon-2a3708142")
+        github2.setOnClickListener {
+            dummyToast()
+        }
+        email2.setOnClickListener {
+            sendEmail("mdrimon.kuss@gmail.com", subject)
+        }
+
+        //dev 3
+        fb3.click("https://www.facebook.com/md.rimon.395017")
+        linkedin3.click("https://www.linkedin.com/md-mahabubur-rahaman-rimon-2a3708142")
+        github3.setOnClickListener {
+            dummyToast()
+        }
+        email3.setOnClickListener {
             sendEmail("mdrimon.kuss@gmail.com", subject)
         }
 
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun dummyToast(){
+        showToast(ToastType.INFO,"No link found")
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

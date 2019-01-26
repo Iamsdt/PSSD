@@ -34,7 +34,7 @@ class UploadWorker(context: Context, workerParameters: WorkerParameters) :
 
     override fun doWork(): Result {
 
-        var result = Result.SUCCESS
+        var result = Result.success()
 
         //login
         val auth = FirebaseAuth.getInstance()
@@ -48,7 +48,7 @@ class UploadWorker(context: Context, workerParameters: WorkerParameters) :
                     ioThread {
                         result = writeDB(task.result?.user)
                     }
-                } else result = Result.RETRY
+                } else result = Result.retry()
             }
         } else {
             result = writeDB(user)
@@ -61,7 +61,7 @@ class UploadWorker(context: Context, workerParameters: WorkerParameters) :
 
         val data = wordTableDao.upload()
 
-        var result = Result.SUCCESS
+        var result = Result.success()
 
         //file name
         val fileName = user?.uid + "-${DateTime().toDate().time}"
@@ -80,11 +80,11 @@ class UploadWorker(context: Context, workerParameters: WorkerParameters) :
                     if (up > 0) {
                         spUtils.uploadDate = Date().time
                     } else {
-                        result = Result.RETRY
+                        result = Result.retry()
                     }
                 }
             } else {
-                result = Result.RETRY
+                result = Result.retry()
             }
         }
         return result

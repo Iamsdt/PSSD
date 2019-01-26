@@ -45,7 +45,7 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
 
         Timber.i("Download worker begin")
 
-        var result = Result.FAILURE
+        var result:Result = Result.failure()
 
         val auth = FirebaseAuth.getInstance()
 
@@ -60,7 +60,7 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
                         result = writeDB()
                     }
 
-                } else result = Result.RETRY
+                } else result = Result.retry()
             }
         } else {
             result = writeDB()
@@ -71,7 +71,7 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
 
     private fun writeDB(): Result {
 
-        var result = Result.FAILURE
+        var result = Result.failure()
 
         val db = FirebaseStorage.getInstance()
         val ref = db.reference
@@ -103,9 +103,9 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
                         getRemoteDataStatus(applicationContext, applicationContext.packageName)
                         Timber.i("Inserted: $insert")
                         spUtils.downloadDate = Date().time
-                        Result.SUCCESS
+                        Result.success()
                     } else {
-                        Result.RETRY
+                        Result.retry()
                     }
                 }
 

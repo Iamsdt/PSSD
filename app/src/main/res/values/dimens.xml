@@ -23,10 +23,13 @@
     <!--dev -->
     <dimen name="dev_name">20sp</dimen>
     <dimen name="dev_sub_name">18sp</dimen>
-    <dimen name="dev_pic">78dp</dimen>
+    <dimen name="dev_pic">150dp</dimen>
+    <dimen name="dev_round">180dp</dimen>
+    <dimen name="dev_radius">150dp</dimen>
 
     <dimen name="app_about_m">8dp</dimen>
     <dimen name="about_img">200dp</dimen>
+    <dimen name="about_img_round">280dp</dimen>
 
     <dimen name="settings_margin">0dp</dimen>
 </resources>

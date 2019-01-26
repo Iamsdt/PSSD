@@ -30,7 +30,7 @@ class DataInsertWorker(context: Context, workerParameters: WorkerParameters) :
 
     override fun doWork(): Result {
 
-        var result = Result.SUCCESS
+        var result = Result.success()
 
         val stream = applicationContext.assets.open("data.json")
 
@@ -54,7 +54,7 @@ class DataInsertWorker(context: Context, workerParameters: WorkerParameters) :
         }
 
         if (count > 0) spUtils.isDatabaseInserted = true
-        else result = Result.FAILURE
+        else result = Result.failure()
 
         Timber.i("Total added: $count")
 

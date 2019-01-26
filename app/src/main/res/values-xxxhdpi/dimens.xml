@@ -15,5 +15,5 @@
     <!--dev -->
     <dimen name="dev_name">30sp</dimen>
     <dimen name="dev_sub_name">23sp</dimen>
-    <dimen name="dev_pic">96dp</dimen>
+    <dimen name="dev_pic">150dp</dimen>
 </resources>
