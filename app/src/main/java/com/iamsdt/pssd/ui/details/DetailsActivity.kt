@@ -15,6 +15,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.ShareActionProvider
+import androidx.core.content.ContextCompat.startActivity
 import androidx.core.view.MenuItemCompat
 import androidx.lifecycle.Observer
 import com.iamsdt.pssd.R
@@ -40,10 +41,7 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     var id = 1
 
     //share
-    private lateinit var shareActionProvider: ShareActionProvider
-
-    //menu
-    private lateinit var menuItem: MenuItem
+    //private lateinit var shareActionProvider: ShareActionProvider
 
     private var isBookmarked = false
 
@@ -79,30 +77,26 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 des = it.des
 
                 //reset share action provider
-                resetSap()
+                //resetSap()
 
                 isBookmarked = it.bookmark
             }
         })
 
         viewModel.singleLiveEvent.observe(this, Observer { bookmark ->
-            if (::menuItem.isInitialized) {
-                bookmark?.let {
-                    Timber.i("Called")
-                    isBookmarked = when (it) {
-                        Bookmark.SET -> {
-                            showToast(ToastType.SUCCESSFUL, "Bookmarked")
-                            menuItem.setIcon(R.drawable.ic_like_fill)
-                            true
-                        }
-
-                        Bookmark.DELETE -> {
-                            showToast(ToastType.INFO, "Bookmark removed")
-                            menuItem.setIcon(R.drawable.ic_like_blank)
-                            false
-                        }
+            bookmark?.let {
+                Timber.i("Called")
+                isBookmarked = when (it) {
+                    Bookmark.SET -> {
+                        showToast(ToastType.SUCCESSFUL, "Bookmarked")
+                        true
+                    }
+                    Bookmark.DELETE -> {
+                        showToast(ToastType.INFO, "Bookmark removed")
+                        false
                     }
                 }
+                changeLoveIcon(isBookmarked)
             }
         })
 
@@ -111,7 +105,30 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             speakOut()
         }
 
+        details_text_size.setOnClickListener {
+            textIncrease()
+        }
+
+        changeLoveIcon(isBookmarked)
+
+        details_love.setOnClickListener {
+            viewModel.requestBookmark(id, isBookmarked)
+        }
+
+        details_share.setOnClickListener {
+            val intent = Intent.createChooser(createShareIntent(),"Share vi")
+            startActivity(intent)
+        }
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun changeLoveIcon(bookmark: Boolean) {
+
+        val id = if (bookmark) R.drawable.ic_like_fill
+        else R.drawable.ic_like_blank
+
+        details_love.setImageDrawable(getDrawable(id))
     }
 
     private fun speakOut() {
@@ -155,38 +172,31 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.details, menu)
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        menuInflater.inflate(R.menu.details, menu)
+//
+//        val shareMenu = menu.findItem(R.id.share)
+//        shareActionProvider = MenuItemCompat.getActionProvider(shareMenu) as ShareActionProvider
+//        shareActionProvider.setShareIntent(createShareIntent())
+//        return super.onCreateOptionsMenu(menu)
+//    }
 
-        menuItem = menu.findItem(R.id.action_favourite_d)
+//    private fun createShareIntent(): Intent? {
+//        val shareIntent = Intent(Intent.ACTION_SEND)
+//        shareIntent.type = "text/plain"
+//        val share = "$word:$des"
+//        shareIntent.putExtra(Intent.EXTRA_TEXT, share)
+//        return shareIntent
+//    }
 
-        if (isBookmarked)
-            menuItem.setIcon(R.drawable.ic_like_fill)
-
-        val shareMenu = menu.findItem(R.id.share)
-        shareActionProvider = MenuItemCompat.getActionProvider(shareMenu) as ShareActionProvider
-        shareActionProvider.setShareIntent(createShareIntent())
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    private fun createShareIntent(): Intent? {
+    private fun createShareIntent():Intent {
         val shareIntent = Intent(Intent.ACTION_SEND)
         shareIntent.type = "text/plain"
-        val share = "$word:$des"
+        val link = "https://play.google.com/store/apps/details?id=com.iamsdt.pssd"
+        val share = "$word:$des -> ${getString(R.string.app_name)}" +
+                "Gplay-$link"
         shareIntent.putExtra(Intent.EXTRA_TEXT, share)
         return shareIntent
-    }
-
-    private fun resetSap() {
-        if (::shareActionProvider.isInitialized) {
-            val shareIntent = Intent(Intent.ACTION_SEND)
-            shareIntent.type = "text/plain"
-            val link = "https://play.google.com/store/apps/details?id=com.iamsdt.pssd"
-            val share = "$word:$des -> ${getString(R.string.app_name)}" +
-                    "Gplay-$link"
-            shareIntent.putExtra(Intent.EXTRA_TEXT, share)
-            shareActionProvider.setShareIntent(shareIntent)
-        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -194,17 +204,6 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         when (item.itemId) {
             //back to home
             android.R.id.home -> onBackPressed()
-
-            R.id.action_favourite_d ->
-                viewModel.requestBookmark(id, isBookmarked)
-
-            R.id.action_settings -> {
-                toNextActivity(SettingsActivity::class)
-            }
-
-            R.id.action_txt_d -> {
-                textIncrease()
-            }
         }
 
         return super.onOptionsItemSelected(item)
