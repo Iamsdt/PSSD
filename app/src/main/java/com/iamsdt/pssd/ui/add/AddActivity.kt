@@ -21,7 +21,8 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.textfield.TextInputLayout
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.gone
@@ -33,8 +34,8 @@ import com.iamsdt.pssd.utils.Constants.ADD.DIALOG
 import com.iamsdt.pssd.utils.Constants.ADD.WORD
 import com.iamsdt.pssd.utils.SwipeUtil
 import kotlinx.android.synthetic.main.activity_add.*
-import kotlinx.android.synthetic.main.add_dialog.view.*
 import kotlinx.android.synthetic.main.content_add.*
+import kotlinx.android.synthetic.main.fragment_add.view.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -47,8 +48,9 @@ class AddActivity : AppCompatActivity() {
 
     private lateinit var dialog: AlertDialog
 
-    lateinit var wordTV: TextInputEditText
-    lateinit var desTV: TextInputEditText
+    lateinit var wordTV: TextInputLayout
+    lateinit var desTV: TextInputLayout
+    lateinit var refTV: TextInputLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -149,18 +151,20 @@ class AddActivity : AppCompatActivity() {
     @SuppressLint("InflateParams")
     private fun showDialog() {
         val dialogView = LayoutInflater.from(this)
-                .inflate(R.layout.add_dialog, null)
+                .inflate(R.layout.fragment_add, null)
 
         val builder = AlertDialog.Builder(this, R.style.MyDialogStyle)
         builder.setView(dialogView)
 
         wordTV = dialogView.add_word
         desTV = dialogView.add_des
-        val button: AppCompatImageButton = dialogView.add_btn
+        refTV = dialogView.refEditText
+        val button: MaterialButton = dialogView.add_btn
 
         button.setOnClickListener {
-            val word = wordTV.text ?: ""
-            val des = desTV.text ?: ""
+            val word = wordTV.editText?.text ?: ""
+            val des = desTV.editText?.text ?: ""
+            val ref = refTV.editText?.text ?: "Added by user"
 
             model.addData(word, des)
         }
