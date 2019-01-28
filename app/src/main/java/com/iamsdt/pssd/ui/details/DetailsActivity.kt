@@ -11,21 +11,15 @@ import android.os.Build
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.text.Layout
-import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.ShareActionProvider
-import androidx.core.content.ContextCompat.startActivity
-import androidx.core.view.MenuItemCompat
 import androidx.lifecycle.Observer
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.addStr
 import com.iamsdt.pssd.ext.showToast
-import com.iamsdt.pssd.ext.toNextActivity
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.main.MainVM
-import com.iamsdt.pssd.ui.settings.SettingsActivity
 import com.iamsdt.pssd.utils.Bookmark
 import kotlinx.android.synthetic.main.activity_details.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -109,6 +103,7 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             textIncrease()
         }
 
+        //change love icon
         changeLoveIcon(isBookmarked)
 
         details_love.setOnClickListener {
@@ -116,8 +111,8 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
 
         details_share.setOnClickListener {
-            val intent = Intent.createChooser(createShareIntent(),"Share vi")
-            startActivity(intent)
+            //val intent = createShareIntent()
+            startActivity(createShareIntent())
         }
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -191,11 +186,11 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private fun createShareIntent():Intent {
         val shareIntent = Intent(Intent.ACTION_SEND)
-        shareIntent.type = "text/plain"
         val link = "https://play.google.com/store/apps/details?id=com.iamsdt.pssd"
         val share = "$word:$des -> ${getString(R.string.app_name)}" +
                 "Gplay-$link"
         shareIntent.putExtra(Intent.EXTRA_TEXT, share)
+        shareIntent.type = "text/plain"
         return shareIntent
     }
 
