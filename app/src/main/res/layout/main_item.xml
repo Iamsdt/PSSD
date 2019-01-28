@@ -11,7 +11,10 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:maxWidth="700dp"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:foreground="?android:attr/selectableItemBackground"
+    tools:targetApi="m"
+    tools:ignore="UnusedAttribute">
 
     <TextView
         android:id="@+id/wordTV"
@@ -35,12 +38,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:maxLines="1"
+        android:maxLines="2"
         android:padding="5dp"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
         app:layout_constraintEnd_toEndOf="@+id/wordTV"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wordTV"
-        tools:text="Description of the word.Description of the word.Description of the word" />
+        tools:text="Description of the word.Description of the word.Description of the word Description of the word" />
 
 </LinearLayout>

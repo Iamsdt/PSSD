@@ -15,7 +15,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:maxWidth="700dp"
-        android:foreground="?android:attr/selectableItemBackground">
+        android:foreground="?android:attr/selectableItemBackground"
+        tools:targetApi="m"
+        tools:ignore="UnusedAttribute">
 
         <TextView
             android:id="@+id/color_list_name"

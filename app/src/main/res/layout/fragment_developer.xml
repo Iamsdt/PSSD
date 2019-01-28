@@ -19,13 +19,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             app:cardCornerRadius="20dp"
             app:cardElevation="2dp"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="UnusedAttribute"
+            tools:targetApi="m">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -87,11 +92,13 @@
                     android:layout_marginBottom="8dp"
                     android:background="@android:color/transparent"
                     android:contentDescription="Facebook Icon"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/linkedin1"
                     app:layout_constraintTop_toBottomOf="@+id/textView24"
                     app:srcCompat="@drawable/ic_007_facebook"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="HardcodedText,UnusedAttribute"
+                    tools:targetApi="m" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline2"
@@ -107,10 +114,12 @@
                     android:layout_marginEnd="16dp"
                     android:background="@android:color/transparent"
                     android:contentDescription="Linked in icon"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintEnd_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toTopOf="@+id/fb1"
                     app:srcCompat="@drawable/ic_009_linkedin_1"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="HardcodedText,UnusedAttribute"
+                    tools:targetApi="m" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/github1"
@@ -119,10 +128,12 @@
                     android:layout_marginStart="16dp"
                     android:background="@android:color/transparent"
                     android:contentDescription="Github icon"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
                     app:layout_constraintTop_toTopOf="@+id/linkedin1"
                     app:srcCompat="@drawable/ic_010_github"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="HardcodedText,UnusedAttribute"
+                    tools:targetApi="m" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/email1"
@@ -131,10 +142,12 @@
                     android:layout_marginStart="16dp"
                     android:background="@android:color/transparent"
                     android:contentDescription="Email Icon"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintStart_toEndOf="@+id/github1"
                     app:layout_constraintTop_toTopOf="@+id/github1"
                     app:srcCompat="@drawable/ic_012_email"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="HardcodedText,UnusedAttribute"
+                    tools:targetApi="m" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardView"
@@ -142,11 +155,13 @@
                     android:layout_height="@dimen/dev_round"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:cardCornerRadius="@dimen/dev_radius"
                     app:cardElevation="6dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView25">
+                    app:layout_constraintTop_toBottomOf="@+id/textView25"
+                    tools:targetApi="m">
 
                     <ImageView
                         android:id="@+id/imageView7"
@@ -181,13 +196,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             app:cardCornerRadius="20dp"
             app:cardElevation="2dp"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:targetApi="m">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -250,11 +269,13 @@
                     android:layout_marginBottom="8dp"
                     android:background="@android:color/transparent"
                     android:contentDescription="Facebook Icon"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/linkedin2"
                     app:layout_constraintTop_toBottomOf="@+id/textView224"
                     app:srcCompat="@drawable/ic_007_facebook"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="HardcodedText,UnusedAttribute"
+                    tools:targetApi="m" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline22"
@@ -271,10 +292,12 @@
                     android:layout_marginBottom="8dp"
                     android:background="@android:color/transparent"
                     android:contentDescription="Linked in icon"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/guideline22"
                     app:srcCompat="@drawable/ic_009_linkedin_1"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="HardcodedText,UnusedAttribute"
+                    tools:targetApi="m" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/github2"
@@ -284,10 +307,12 @@
                     android:layout_marginBottom="8dp"
                     android:background="@android:color/transparent"
                     android:contentDescription="Github icon"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/guideline22"
                     app:srcCompat="@drawable/ic_010_github"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="HardcodedText,UnusedAttribute"
+                    tools:targetApi="m" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/email2"
@@ -296,10 +321,12 @@
                     android:layout_marginStart="16dp"
                     android:background="@android:color/transparent"
                     android:contentDescription="Email Icon"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintStart_toEndOf="@+id/github2"
                     app:layout_constraintTop_toTopOf="@+id/github2"
                     app:srcCompat="@drawable/ic_012_email"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="HardcodedText,UnusedAttribute"
+                    tools:targetApi="m" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardView2"
@@ -307,11 +334,13 @@
                     android:layout_height="@dimen/dev_round"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:cardCornerRadius="@dimen/dev_radius"
                     app:cardElevation="6dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView225">
+                    app:layout_constraintTop_toBottomOf="@+id/textView225"
+                    tools:targetApi="m">
 
                     <ImageView
                         android:id="@+id/imageView27"
@@ -346,13 +375,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:foreground="?android:attr/selectableItemBackground"
             app:cardCornerRadius="20dp"
-            app:cardElevation="4dp"
+            app:cardElevation="2dp"
+            android:clickable="true"
+            android:focusable="true"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:targetApi="m">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -415,11 +448,13 @@
                     android:layout_marginBottom="8dp"
                     android:background="@android:color/transparent"
                     android:contentDescription="Facebook Icon"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/linkedin3"
                     app:layout_constraintTop_toBottomOf="@+id/textView324"
                     app:srcCompat="@drawable/ic_007_facebook"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="HardcodedText,UnusedAttribute"
+                    tools:targetApi="m" />
 
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline32"
@@ -436,10 +471,12 @@
                     android:layout_marginBottom="8dp"
                     android:background="@android:color/transparent"
                     android:contentDescription="Linked in icon"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/guideline32"
                     app:srcCompat="@drawable/ic_009_linkedin_1"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="HardcodedText,UnusedAttribute"
+                    tools:targetApi="m" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/github3"
@@ -448,10 +485,12 @@
                     android:layout_marginStart="16dp"
                     android:background="@android:color/transparent"
                     android:contentDescription="Github icon"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintStart_toStartOf="@+id/guideline32"
                     app:layout_constraintTop_toTopOf="@+id/linkedin3"
                     app:srcCompat="@drawable/ic_010_github"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="HardcodedText,UnusedAttribute"
+                    tools:targetApi="m" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/email3"
@@ -460,10 +499,12 @@
                     android:layout_marginStart="16dp"
                     android:background="@android:color/transparent"
                     android:contentDescription="Email Icon"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintStart_toEndOf="@+id/github3"
                     app:layout_constraintTop_toTopOf="@+id/github3"
                     app:srcCompat="@drawable/ic_012_email"
-                    tools:ignore="HardcodedText" />
+                    tools:ignore="HardcodedText,UnusedAttribute"
+                    tools:targetApi="m" />
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cardView3"
@@ -471,11 +512,13 @@
                     android:layout_height="@dimen/dev_round"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
+                    android:foreground="?android:attr/selectableItemBackground"
                     app:cardCornerRadius="@dimen/dev_radius"
                     app:cardElevation="6dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView325">
+                    app:layout_constraintTop_toBottomOf="@+id/textView325"
+                    tools:targetApi="m">
 
                     <ImageView
                         android:id="@+id/imageView37"

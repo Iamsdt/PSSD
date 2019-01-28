@@ -23,19 +23,24 @@
             android:id="@+id/materialCardView"
             android:layout_width="@dimen/about_img_round"
             android:layout_height="@dimen/about_img_round"
-            android:elevation="6dp"
-            android:padding="10dp"
-            app:cardCornerRadius="140dp"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="100dp"
+            app:cardElevation="4dp"
+            app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:targetApi="m">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/imageView6"
-                android:layout_gravity="center"
                 android:layout_width="@dimen/about_img"
                 android:layout_height="@dimen/about_img"
+                android:layout_gravity="center"
                 app:srcCompat="@drawable/icon" />
 
         </com.google.android.material.card.MaterialCardView>
@@ -49,10 +54,10 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/loboster"
             android:text="@string/app_name"
-            android:textStyle="bold"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textColor="?attr/colorPrimaryDark"
             android:textSize="@dimen/about_app_txt"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
@@ -84,8 +89,8 @@
             android:padding="10dp"
             android:text="@string/app_about2"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textSize="@dimen/empty_fav_txt"
             android:textColor="@color/txtColor"
+            android:textSize="@dimen/empty_fav_txt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView13" />
@@ -100,9 +105,9 @@
             android:padding="10dp"
             android:text="Github"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textSize="@dimen/empty_fav_txt"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/textView18"
-            android:textSize="@dimen/empty_fav_txt"
             app:layout_constraintStart_toEndOf="@+id/textView18"
             app:layout_constraintTop_toTopOf="@+id/textView18"
             tools:ignore="HardcodedText" />

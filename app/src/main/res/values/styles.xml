@@ -15,7 +15,7 @@
     </style>
 
     <style name="splashTheme" parent="AppTheme.NoActionBar">
-        <item name="colorPrimaryDark">@color/primary</item>
+        <item name="colorPrimaryDark">@color/light_blue_500</item>
         <item name="android:windowBackground">@drawable/splash_bcg</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -25,6 +25,8 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
+
+    <style name="MyEditText" parent="ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox.Dense"/>
 
     <style name="MyDialogStyle" parent="Theme.MaterialComponents.Dialog.Alert"/>
 
