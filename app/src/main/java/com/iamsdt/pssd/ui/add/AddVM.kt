@@ -25,7 +25,7 @@ class AddVM(private val wordTableDao: WordTableDao) : ViewModel() {
 
     val dialogStatus = SingleLiveEvent<StatusModel>()
 
-    fun addData(word: CharSequence, des: CharSequence) {
+    fun addData(word: CharSequence, des: CharSequence, ref: CharSequence) {
 
         if (word.isEmpty() || word.length <= 2) {
             dialogStatus.value = (StatusModel(false,
@@ -39,6 +39,12 @@ class AddVM(private val wordTableDao: WordTableDao) : ViewModel() {
                     DES, "Please input correct description")
 
             return
+        }
+
+        var r = ref
+
+        if (ref.isEmpty() || ref.length <= 3){
+            r = "Added by user"
         }
 
         ioThread {

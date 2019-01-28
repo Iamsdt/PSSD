@@ -15,7 +15,6 @@ import android.view.MenuItem
 import android.view.WindowManager
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatImageButton
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -160,13 +159,14 @@ class AddActivity : AppCompatActivity() {
         desTV = dialogView.add_des
         refTV = dialogView.refEditText
         val button: MaterialButton = dialogView.add_btn
+        val close = dialogView.imageButton
 
         button.setOnClickListener {
             val word = wordTV.editText?.text ?: ""
             val des = desTV.editText?.text ?: ""
             val ref = refTV.editText?.text ?: "Added by user"
 
-            model.addData(word, des)
+            model.addData(word, des,ref)
         }
 
         dialog = builder.create()
@@ -185,6 +185,11 @@ class AddActivity : AppCompatActivity() {
 
         window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
         dialog.setCanceledOnTouchOutside(false)
+        dialog.setCancelable(false)
+
+        close.setOnClickListener {
+            dialog.dismiss()
+        }
 
         dialog.show()
     }

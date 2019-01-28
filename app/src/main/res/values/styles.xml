@@ -26,9 +26,9 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
 
-    <style name="MyEditText" parent="ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox.Dense"/>
+    <style name="MyEditText" parent="ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"/>
 
-    <style name="MyDialogStyle" parent="Theme.MaterialComponents.Dialog.Alert"/>
+    <style name="MyDialogStyle" parent="Theme.MaterialComponents.DayNight.Dialog.Alert"/>
 
     <style name="MyAlertDialogStyle" parent="Theme.MaterialComponents.Dialog.Alert"
         tools:keep="@style/MyAlertDialogStyle">

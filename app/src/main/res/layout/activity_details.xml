@@ -4,7 +4,7 @@
   ~ Copyright (c) 2018 Shudipto Trafder.
   -->
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -22,195 +22,184 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/details_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:contentScrim="?attr/colorPrimary"
-            app:expandedTitleGravity="top"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="top"
+            android:background="?attr/colorPrimary"
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/details_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:layout_gravity="top"
-                android:background="?attr/colorPrimary"
-                app:layout_collapseMode="parallax"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
+            <ImageButton
+                android:id="@+id/details_share"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="8dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Share icon"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline4"
+                app:layout_constraintTop_toBottomOf="@+id/details_word"
+                app:srcCompat="@drawable/ic_menu_share"
+                tools:ignore="HardcodedText,UnusedAttribute"
+                tools:targetApi="m" />
+
+            <TextView
+                android:id="@+id/details_word"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="0.5">
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="5"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                android:textColor="@color/white"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/details_txt_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Acid Soil  " />
 
-                <ImageButton
-                    android:id="@+id/details_share"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@android:color/transparent"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    tools:targetApi="m"
-                    android:contentDescription="Share icon"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/guideline4"
-                    app:layout_constraintTop_toBottomOf="@+id/details_word"
-                    app:srcCompat="@drawable/ic_menu_share"
-                    tools:ignore="HardcodedText,UnusedAttribute" />
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="Pronounce"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/details_speak"
+                tools:ignore="HardcodedText" />
 
-                <TextView
-                    android:id="@+id/details_word"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="48dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="5"
-                    android:fontFamily="sans-serif"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                    android:textColor="@color/white"
-                    android:textIsSelectable="true"
-                    android:textSize="@dimen/details_txt_size"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Acid Soil  " />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".5" />
 
-                <TextView
-                    android:id="@+id/textView27"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="Pronounce"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline3"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/details_speak"
-                    tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="Text Size"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toBottomOf="@+id/details_text_size"
+                tools:ignore="HardcodedText" />
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent=".5" />
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="Bookmark"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/details_love"
+                tools:ignore="HardcodedText" />
 
-                <TextView
-                    android:id="@+id/textView28"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="Text Size"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline"
-                    app:layout_constraintStart_toStartOf="@+id/guideline3"
-                    app:layout_constraintTop_toBottomOf="@+id/details_text_size"
-                    tools:ignore="HardcodedText" />
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:padding="2dp"
+                android:text="Share"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline4"
+                app:layout_constraintTop_toBottomOf="@+id/details_share"
+                tools:ignore="HardcodedText" />
 
-                <TextView
-                    android:id="@+id/textView29"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="Bookmark"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline4"
-                    app:layout_constraintStart_toStartOf="@+id/guideline"
-                    app:layout_constraintTop_toBottomOf="@+id/details_love"
-                    tools:ignore="HardcodedText" />
+            <ImageButton
+                android:id="@+id/details_love"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="32dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Bookmark icon"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/details_word"
+                app:srcCompat="@drawable/ic_like_blank"
+                tools:ignore="HardcodedText,UnusedAttribute"
+                tools:targetApi="m" />
 
-                <TextView
-                    android:id="@+id/textView30"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:padding="2dp"
-                    android:text="Share"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/guideline4"
-                    app:layout_constraintTop_toBottomOf="@+id/details_share"
-                    tools:ignore="HardcodedText" />
+            <ImageButton
+                android:id="@+id/details_text_size"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="32dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Increase text size icon"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:layout_constraintEnd_toStartOf="@+id/guideline"
+                app:layout_constraintStart_toStartOf="@+id/guideline3"
+                app:layout_constraintTop_toBottomOf="@+id/details_word"
+                app:srcCompat="@drawable/ic_in_text_size"
+                tools:ignore="HardcodedText,UnusedAttribute"
+                tools:targetApi="m" />
 
-                <ImageButton
-                    android:id="@+id/details_love"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginTop="32dp"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="Bookmark icon"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    tools:targetApi="m"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline4"
-                    app:layout_constraintStart_toStartOf="@+id/guideline"
-                    app:layout_constraintTop_toBottomOf="@+id/details_word"
-                    app:srcCompat="@drawable/ic_like_blank"
-                    tools:ignore="HardcodedText,UnusedAttribute" />
+            <ImageButton
+                android:id="@+id/details_speak"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="32dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="Pronounce icon"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/details_word"
+                app:srcCompat="@drawable/ic_speaker"
+                tools:ignore="HardcodedText,UnusedAttribute"
+                tools:targetApi="m" />
 
-                <ImageButton
-                    android:id="@+id/details_text_size"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginTop="32dp"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="Increase text size icon"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    tools:targetApi="m"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline"
-                    app:layout_constraintStart_toStartOf="@+id/guideline3"
-                    app:layout_constraintTop_toBottomOf="@+id/details_word"
-                    app:srcCompat="@drawable/ic_in_text_size"
-                    tools:ignore="HardcodedText,UnusedAttribute" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".25" />
 
-                <ImageButton
-                    android:id="@+id/details_speak"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:layout_marginTop="32dp"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="Pronounce icon"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    tools:targetApi="m"
-                    app:layout_constraintEnd_toStartOf="@+id/guideline3"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/details_word"
-                    app:srcCompat="@drawable/ic_speaker"
-                    tools:ignore="HardcodedText,UnusedAttribute" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".75" />
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent=".25" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent=".75" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <!--
@@ -232,15 +221,16 @@
         android:id="@+id/details_des"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/roboto_r"
         android:padding="5dp"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textColor="@color/txtColor"
         android:textIsSelectable="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
         tools:text="A soil material having a pH of less than 7.0" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -11,4 +11,5 @@
     <color name="primary">#00838f</color>
     <color name="primaryDark">#006064</color>
     <color name="accent">#e64a19</color>
+    <color name="sheetTxt">#FFFFFF</color>
 </resources>
