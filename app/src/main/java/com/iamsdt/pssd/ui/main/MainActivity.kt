@@ -338,6 +338,8 @@ class MainActivity : AppCompatActivity(),
         if (word.id != wordTable.id) {
             details_word?.addStr(wordTable.word)
             details_des?.addStr(wordTable.des)
+            val r = "Reference: ${wordTable.reference}"
+            details_ref.addStr(r)
         }
 
         word = wordTable.copy()
