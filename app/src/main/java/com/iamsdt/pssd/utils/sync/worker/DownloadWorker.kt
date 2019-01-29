@@ -45,7 +45,7 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
 
         Timber.i("Download worker begin")
 
-        var result:Result = Result.failure()
+        var result: Result = Result.failure()
 
         val auth = FirebaseAuth.getInstance()
 
@@ -94,7 +94,7 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
                             .map { model ->
                                 var table: WordTable? = wordTableDao.getWord(model.word)
 
-                                table = table?.copy(des = model.des, ref = model.ref) ?: model.toWordTable()
+                                table = table?.copy(des = model.des, reference = model.ref) ?: model.toWordTable()
 
                                 insert = wordTableDao.add(table)
                             }

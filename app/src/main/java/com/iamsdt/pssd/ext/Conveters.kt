@@ -15,7 +15,7 @@ fun CharSequence.toDouble(): Double {
 }
 
 //convert model to word table
-fun Model.toWordTable() = WordTable(word = word, des = des, ref = ref)
+fun Model.toWordTable() = WordTable(word = word, des = des, reference = ref)
 
 fun CharSequence.toCapFirst(): String {
     val c = this[0].toUpperCase()

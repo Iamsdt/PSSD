@@ -94,7 +94,7 @@ class UploadWorker(context: Context, workerParameters: WorkerParameters) :
 
         val list: ArrayList<Model> = ArrayList()
         data.map {
-            list.add(Model(it.word, it.des, it.ref))
+            list.add(Model(it.word, it.des, ""))
         }
 
         val outputData = RemoteModel(

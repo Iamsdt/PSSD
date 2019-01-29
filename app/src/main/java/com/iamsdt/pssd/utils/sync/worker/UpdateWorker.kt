@@ -43,7 +43,7 @@ class UpdateWorker(context: Context, workerParameters: WorkerParameters) :
             }.forEach {
                 var table: WordTable? = wordTableDao.getWord(it.word)
 
-                table = table?.copy(ref = it.ref) ?: it.toWordTable()
+                table = table?.copy(reference = it.ref) ?: it.toWordTable()
 
                 count = wordTableDao.update(table)
             }

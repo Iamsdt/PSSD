@@ -51,8 +51,8 @@ class AddVM(private val wordTableDao: WordTableDao) : ViewModel() {
 
             var data: WordTable? = wordTableDao.getWord(word.toCapFirst())
 
-            data = data?.copy(des = des.toCapFirst(), ref = r, addByUser = true) ?: WordTable(
-                    word = word.toCapFirst(), ref = r.toCapFirst(), des = des.toCapFirst(),
+            data = data?.copy(des = des.toCapFirst(), reference = r, addByUser = true) ?: WordTable(
+                    word = word.toCapFirst(), reference = r.toCapFirst(), des = des.toCapFirst(),
                     addByUser = true)
 
             val status = wordTableDao.add(data)

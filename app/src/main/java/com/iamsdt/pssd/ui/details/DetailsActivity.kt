@@ -61,7 +61,7 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             table?.let {
                 details_word.addStr(it.word)
                 details_des.addStr(it.des)
-                val r = "Reference: ${it.ref}"
+                val r = "Reference: ${it.reference}"
                 details_ref.addStr(r)
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

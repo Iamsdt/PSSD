@@ -52,11 +52,10 @@ class SplashActivity : AppCompatActivity() {
             saveAppStartDate()
         }
 
-        //todo change to 5s
-        if (spUtils.isUpdateRequestForVersion4) {
+        //todo change to 1s
+        if (spUtils.isDatabaseInserted && spUtils.isUpdateRequestForVersion4) {
             val request = OneTimeWorkRequest.Builder(
-                    UpdateWorker::class.java)
-                    .setInitialDelay(10, TimeUnit.SECONDS).build()
+                    UpdateWorker::class.java).build()
             WorkManager.getInstance().beginUniqueWork("DataInsert",
                     ExistingWorkPolicy.KEEP, request).enqueue()
         }

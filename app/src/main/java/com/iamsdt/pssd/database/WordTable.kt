@@ -17,9 +17,9 @@ data class WordTable(
         var id: Int = 0,
         var word: String = "",
         var des: String = "",
-        var ref: String = "Added by user",
-        var recent: Date = Date(),
         var bookmark: Boolean = false,
         var addByUser: Boolean = false,
-        var uploaded: Boolean = false
+        var uploaded: Boolean = false,
+        var reference: String = "",
+        var recent: Date = Date()
 )
