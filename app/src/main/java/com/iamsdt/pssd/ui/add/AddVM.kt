@@ -41,9 +41,9 @@ class AddVM(private val wordTableDao: WordTableDao) : ViewModel() {
             return
         }
 
-        var r = ref
+        var r: String = ref.toString()
 
-        if (ref.isEmpty() || ref.length <= 3){
+        if (ref.isEmpty() || ref.length <= 3) {
             r = "Added by user"
         }
 
@@ -51,7 +51,8 @@ class AddVM(private val wordTableDao: WordTableDao) : ViewModel() {
 
             var data: WordTable? = wordTableDao.getWord(word.toCapFirst())
 
-            data = data?.copy(des = des.toCapFirst(), addByUser = true) ?: WordTable(word = word.toCapFirst(), des = des.toCapFirst(),
+            data = data?.copy(des = des.toCapFirst(), ref = r, addByUser = true) ?: WordTable(
+                    word = word.toCapFirst(), ref = r.toCapFirst(), des = des.toCapFirst(),
                     addByUser = true)
 
             val status = wordTableDao.add(data)

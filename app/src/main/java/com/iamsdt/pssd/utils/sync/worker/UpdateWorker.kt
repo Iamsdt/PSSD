@@ -1,15 +1,10 @@
-/*
- * Developed By Shudipto Trafder
- *  on 8/24/18 4:58 PM
- *  Copyright (c)2018  Shudipto Trafder.
- */
-
 package com.iamsdt.pssd.utils.sync.worker
 
 import android.content.Context
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.google.gson.Gson
+import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.toWordTable
 import com.iamsdt.pssd.utils.SpUtils
@@ -19,7 +14,7 @@ import org.koin.standalone.inject
 import timber.log.Timber
 import java.io.InputStreamReader
 
-class DataInsertWorker(context: Context, workerParameters: WorkerParameters) :
+class UpdateWorker(context: Context, workerParameters: WorkerParameters) :
         Worker(context, workerParameters), KoinComponent {
 
     private val gson: Gson by inject()
@@ -40,13 +35,17 @@ class DataInsertWorker(context: Context, workerParameters: WorkerParameters) :
                 reader.buffered(4096),
                 JsonModel::class.java)
 
-        var count = 0L
+        var count = 0
 
         data?.let { model ->
             model.collection.filter {
                 it.word.isNotEmpty()
             }.forEach {
-                count = wordTableDao.add(it.toWordTable())
+                var table: WordTable? = wordTableDao.getWord(it.word)
+
+                table = table?.copy(ref = it.ref) ?: it.toWordTable()
+
+                count = wordTableDao.update(table)
             }
 
             //save version
@@ -54,11 +53,7 @@ class DataInsertWorker(context: Context, workerParameters: WorkerParameters) :
         }
 
         if (count > 0) {
-            spUtils.isDatabaseInserted = true
-
-            if (spUtils.isUpdateRequestForVersion4) {
-                spUtils.isUpdateRequestForVersion4 = true
-            }
+            spUtils.isUpdateRequestForVersion4 = true
 
         } else result = Result.failure()
 

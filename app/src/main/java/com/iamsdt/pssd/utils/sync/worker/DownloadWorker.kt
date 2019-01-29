@@ -94,7 +94,7 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
                             .map { model ->
                                 var table: WordTable? = wordTableDao.getWord(model.word)
 
-                                table = table?.copy(des = model.des) ?: model.toWordTable()
+                                table = table?.copy(des = model.des, ref = model.ref) ?: model.toWordTable()
 
                                 insert = wordTableDao.add(table)
                             }

@@ -15,6 +15,7 @@ import com.iamsdt.pssd.utils.Constants.SP.DATA_INSERT
 import com.iamsdt.pssd.utils.Constants.SP.DATA_RESTORE
 import com.iamsdt.pssd.utils.Constants.SP.DATA_VOLUME
 import com.iamsdt.pssd.utils.Constants.SP.FIRST_TIME
+import com.iamsdt.pssd.utils.Constants.SP.UPDATE_4
 
 class SpUtils(val context: Context) {
 
@@ -40,6 +41,12 @@ class SpUtils(val context: Context) {
         get() = appSp.getInt(DATA_VOLUME, 1)
         set(value) = appSp.edit {
             putInt(DATA_VOLUME, value)
+        }
+
+    var isUpdateRequestForVersion4: Boolean
+        get() = appSp.getBoolean(UPDATE_4, true)
+        set(value) = appSp.edit {
+            putBoolean(UPDATE_4, value)
         }
 
     //app sp

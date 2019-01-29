@@ -10,5 +10,7 @@ import com.google.gson.annotations.SerializedName
 
 class Model(
         @SerializedName("word") val word: String,
-        @SerializedName("des") val des: String
+        @SerializedName("des") val des: String,
+        @SerializedName("ref") val ref: String
+
 )

@@ -20,10 +20,12 @@ import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.SpUtils
 import com.iamsdt.pssd.utils.sync.worker.DataInsertWorker
 import com.iamsdt.pssd.utils.sync.worker.DownloadWorker
+import com.iamsdt.pssd.utils.sync.worker.UpdateWorker
 import com.iamsdt.pssd.utils.sync.worker.UploadWorker
 import kotlinx.android.synthetic.main.activity_splash.*
 import org.koin.android.ext.android.inject
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 class SplashActivity : AppCompatActivity() {
 
@@ -48,6 +50,15 @@ class SplashActivity : AppCompatActivity() {
 
             //save app start date
             saveAppStartDate()
+        }
+
+        //todo change to 5s
+        if (spUtils.isUpdateRequestForVersion4) {
+            val request = OneTimeWorkRequest.Builder(
+                    UpdateWorker::class.java)
+                    .setInitialDelay(10, TimeUnit.SECONDS).build()
+            WorkManager.getInstance().beginUniqueWork("DataInsert",
+                    ExistingWorkPolicy.KEEP, request).enqueue()
         }
 
         val next = MainActivity::class

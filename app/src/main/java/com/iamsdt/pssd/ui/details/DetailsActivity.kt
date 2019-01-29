@@ -61,6 +61,8 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             table?.let {
                 details_word.addStr(it.word)
                 details_des.addStr(it.des)
+                val r = "Reference: ${it.ref}"
+                details_ref.addStr(r)
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     details_des.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
@@ -184,7 +186,7 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 //        return shareIntent
 //    }
 
-    private fun createShareIntent():Intent {
+    private fun createShareIntent(): Intent {
         val shareIntent = Intent(Intent.ACTION_SEND)
         val link = "https://play.google.com/store/apps/details?id=com.iamsdt.pssd"
         val share = "$word:$des -> ${getString(R.string.app_name)}" +

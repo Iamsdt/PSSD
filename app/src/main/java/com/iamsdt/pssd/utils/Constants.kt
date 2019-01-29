@@ -50,6 +50,8 @@ class Constants {
         const val DATA_RESTORE = "restore"
 
         const val DATA_VOLUME = "volume"
+
+        const val UPDATE_4 = "update4"
     }
 
     object Settings {
