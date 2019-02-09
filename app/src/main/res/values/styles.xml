@@ -52,6 +52,13 @@
         <item name="colorControlHighlight">@color/light_green_500</item>
     </style>
 
+    <style name="white" parent="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorAccent">@color/deep_orange_500</item>
+        <item name="colorControlHighlight">@color/light_green_500</item>
+    </style>
+
     <style name="orange" parent="AppTheme.NoActionBar">
         <item name="colorPrimary">@color/orange_500</item>
         <item name="colorPrimaryDark">@color/orange_700</item>

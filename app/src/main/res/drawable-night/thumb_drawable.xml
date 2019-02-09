@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Developed By Shudipto Trafder
+  ~  on 10/26/18 4:59 PM
+  ~  Copyright (c)2018  Shudipto Trafder.
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:state_pressed="true"
+        android:drawable="@drawable/thumb"/>
+
+    <item
+        android:drawable="@drawable/thumb"/>
+</selector>
