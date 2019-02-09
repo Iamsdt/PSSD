@@ -65,7 +65,6 @@
     <string name="syncLabel">Sync Interval</string>
 
 
-
     <string name="switchShare">ShareData</string>
     <string name="switchShareLabel">Share your added words</string>
     <string name="switchShareON">Data will be shared</string>
@@ -75,6 +74,12 @@
     <string name="switchSearchLabel">Search Keyboard</string>
     <string name="switchSearchON">Search keyboard will be shown on app start</string>
     <string name="switchSearchOFF">Search keyboard will be hidden on app start</string>
+
+    <string name="switchNight">night</string>
+    <string name="switchNightLabel">Enable night mode</string>
+    <string name="switchNightON">Click to disable night mode</string>
+    <string name="switchNightOFF">Click to enable night mode</string>
+
     <!-- ***************FINISH************* -->
 
     <!-- ***************Backup Preference Screen************* -->
@@ -147,7 +152,7 @@
     <string name="dev_find_me">Find me:</string>
     <string name="empty_fav_txt">You don\'t added \nany favourite word yet</string>
     <string name="add_word">Add Word</string>
-    
+
     <!--app about -->
     <string name="app_about">Dictionary of soil science terminologies</string>
     <string name="app_about1">Soil science dictionary is a completely open source app which is developed for the educational and informational purpose only. </string>
@@ -157,7 +162,7 @@
     <!--terms of conditions -->
     <string name="tms_label">Terms of Uses</string>
     <string name="tms_txt">Soil science dictionary is a completely open source app. This app developed for educational purpose only. No commercial intention involved with this app. Commercial use is strictly prohibited. Rebuilding and redistribution of this app without developer permission is offensive.</string>
-    
+
     <string name="ack">Acknowledgment</string>
     <string name="ack_txt">The developer greatly acknowledges the Soil Science Society of America and Canada Department of Agriculture for their books Glossary of Soil Science terms and Glossary of terms in Soil Science.</string>
     <string name="night_mode_main_menu">Night Mode</string>

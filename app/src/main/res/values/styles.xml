@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/primaryDark</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
         <item name="colorAccent">@color/accent</item>
     </style>
 
@@ -26,65 +26,14 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
 
-    <style name="MyEditText" parent="ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox"/>
+    <style name="MyEditText" parent="ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox" />
 
-    <style name="MyDialogStyle" parent="Theme.MaterialComponents.DayNight.Dialog.Alert"/>
+    <style name="MyDialogStyle" parent="Theme.MaterialComponents.DayNight.Dialog.Alert" />
 
-    <style name="MyAlertDialogStyle" parent="Theme.MaterialComponents.Dialog.Alert"
-        tools:keep="@style/MyAlertDialogStyle">
+    <style name="MyAlertDialogStyle" parent="Theme.MaterialComponents.Dialog.Alert" tools:keep="@style/MyAlertDialogStyle">
         <item name="colorAccent">?attr/colorAccent</item>
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowBackground">?attr/colorAccent</item>
-    </style>
-
-    <!-- deep amber theme -->
-    <style name="amber_dark" parent="AppTheme.NoActionBar">
-        <item name="colorPrimary">@color/amber_500</item>
-        <item name="colorPrimaryDark">@color/amber_700</item>
-        <item name="colorAccent">@color/blue_500</item>
-        <item name="colorControlHighlight">@color/cyan_500</item>
-    </style>
-
-    <style name="purple_dark" parent="AppTheme.NoActionBar">
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryDark">@color/purple_700</item>
-        <item name="colorAccent">@color/deep_orange_500</item>
-        <item name="colorControlHighlight">@color/light_green_500</item>
-    </style>
-
-    <style name="white" parent="AppTheme.NoActionBar">
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorPrimaryDark">@color/white</item>
-        <item name="colorAccent">@color/deep_orange_500</item>
-        <item name="colorControlHighlight">@color/light_green_500</item>
-    </style>
-
-    <style name="orange" parent="AppTheme.NoActionBar">
-        <item name="colorPrimary">@color/orange_500</item>
-        <item name="colorPrimaryDark">@color/orange_700</item>
-        <item name="colorAccent">@color/purple_500</item>
-        <item name="colorControlHighlight">@color/pink_500</item>
-    </style>
-
-    <style name="indigo" parent="AppTheme.NoActionBar">
-        <item name="colorPrimary">@color/indigo_500</item>
-        <item name="colorPrimaryDark">@color/indigo_700</item>
-        <item name="colorAccent">@color/pink_500</item>
-        <item name="colorControlHighlight">@color/lime_500</item>
-    </style>
-
-    <style name="deeporange" parent="AppTheme.NoActionBar">
-        <item name="colorPrimary">@color/deep_orange_500</item>
-        <item name="colorPrimaryDark">@color/deep_orange_700</item>
-        <item name="colorAccent">@color/light_green_200</item>
-        <item name="colorControlHighlight">@color/deep_purple_300</item>
-    </style>
-
-    <style name="green" parent="AppTheme.NoActionBar">
-        <item name="colorPrimary">@color/green_500</item>
-        <item name="colorPrimaryDark">@color/green_700</item>
-        <item name="colorAccent">@color/yellow_500</item>
-        <item name="colorControlHighlight">@color/teal_500</item>
     </style>
 
 </resources>

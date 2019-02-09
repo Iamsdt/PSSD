@@ -6,6 +6,8 @@
 
 package com.iamsdt.pssd.ui.settings
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +22,7 @@ class SettingsActivity : AppCompatActivity() {
         ThemeUtils.initialize(this)
         setContentView(R.layout.activity_settings)
         setSupportActionBar(toolbar)
+        toolbar.elevation = 0f
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
@@ -33,5 +36,8 @@ class SettingsActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    companion object {
+        fun createIntent(context: Context) = Intent(context, SettingsActivity::class.java)
+    }
 
 }

@@ -49,13 +49,7 @@ class ColorActivity : AppCompatActivity(), ClickListener {
     private fun fillThemeIds() {
         //fill array with styles ids
         val map = mapOf(
-                Pair("Default", R.style.AppTheme_NoActionBar),
-                Pair("Amber", R.style.amber_dark),
-                Pair("Purple", R.style.purple_dark),
-                Pair("Orange", R.style.orange),
-                Pair("Indigo", R.style.indigo),
-                Pair("Deep Orange", R.style.deeporange),
-                Pair("Green", R.style.green)
+                Pair("Default", R.style.AppTheme_NoActionBar)
         )
 
         for ((n, id) in map) {

@@ -36,7 +36,6 @@ import com.iamsdt.pssd.ui.AppAboutActivity
 import com.iamsdt.pssd.ui.DeveloperActivity
 import com.iamsdt.pssd.ui.add.AddActivity
 import com.iamsdt.pssd.ui.callback.ClickListener
-import com.iamsdt.pssd.ui.color.ColorActivity
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.details.DetailsActivity
 import com.iamsdt.pssd.ui.favourite.FavouriteActivity
@@ -481,10 +480,8 @@ class MainActivity : AppCompatActivity(),
                 toNextActivity(AddActivity::class)
             }
             R.id.nav_settings -> {
-                toNextActivity(SettingsActivity::class)
-            }
-            R.id.nav_themes -> {
-                startActivityForResult(ColorActivity.createIntent(this),
+                //toNextActivity(SettingsActivity::class)
+                startActivityForResult(SettingsActivity.createIntent(this),
                         themeRequestCode)
             }
             R.id.nav_notice -> {

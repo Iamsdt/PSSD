@@ -20,6 +20,7 @@ class AdvanceSettings : AppCompatActivity() {
         ThemeUtils.initialize(this)
         setContentView(R.layout.activity_settings_advance)
         setSupportActionBar(toolbar)
+        toolbar.elevation = 0f
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }

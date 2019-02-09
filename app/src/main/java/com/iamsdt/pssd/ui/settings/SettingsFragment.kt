@@ -6,24 +6,46 @@
 
 package com.iamsdt.pssd.ui.settings
 
+import android.app.Activity
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.preference.*
 import com.iamsdt.pssd.R
+import com.iamsdt.pssd.ui.color.ThemeUtils
 
 class SettingsFragment : PreferenceFragmentCompat(),
         SharedPreferences.OnSharedPreferenceChangeListener {
 
+    var state = false
+
     override fun onSharedPreferenceChanged(sp: SharedPreferences?, key: String?) {
+
+        if (key == getString(R.string.switchNight)) {
+            state = sp?.getBoolean(key, false) ?: false
+            ThemeUtils.turnOnOFNightMode(context!!, state)
+            restartActivity()
+        }
+
         findPreference(key)?.let {
             bindPreferenceSummaryToValue(it)
         }
     }
 
+    private fun restartActivity() {
+        val restartIntent = Intent(context,
+                SettingsActivity::class.java)
+        activity?.setResult(Activity.RESULT_OK)
+
+        activity?.finish()
+
+        startActivity(restartIntent)
+        activity?.overridePendingTransition(0, 0)
+    }
+
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         // Add 'general' preferences, defined in the XML file
         addPreferencesFromResource(R.xml.pref_general)
-
 
         val count = preferenceScreen.preferenceCount
 
@@ -40,6 +62,15 @@ class SettingsFragment : PreferenceFragmentCompat(),
 
         backup.setSummary(R.string.bps_summery)
         advance.setSummary(R.string.advance_summery)
+
+        //get night
+        state = PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean(getString(R.string.switchNight), false)
+
+        val pre = findPreference(getString(R.string.switchNight))
+
+        pre.icon = if (state) context?.getDrawable(R.drawable.ic_wb_sunny_black_24dp)
+        else context?.getDrawable(R.drawable.ic_half_moon)
 
     }
 

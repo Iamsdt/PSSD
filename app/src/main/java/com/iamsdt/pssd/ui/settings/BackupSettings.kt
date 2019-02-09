@@ -25,6 +25,7 @@ class BackupSettings : AppCompatActivity() {
         ThemeUtils.initialize(this)
         setContentView(R.layout.activity_settings_backup)
         setSupportActionBar(toolbar)
+        toolbar.elevation = 0f
 
 
         //boiler plate code

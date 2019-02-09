@@ -8,8 +8,13 @@
 <resources>
     <color name="txtColor">#ffffff</color>
 
-    <color name="primary">#000000</color>
+    <color name="primary">#303131</color>
     <color name="primaryDark">#000000</color>
-    <color name="accent">#e64a19</color>
+    <color name="accent">#ff5722</color>
     <color name="sheetTxt">#FFFFFF</color>
+
+    <color name="navigation_drawer_center">#303131</color>
+    <color name="navigation_drawer_end">#303131</color>
+    <color name="navigation_drawer_start">#303131</color>
+
 </resources>

@@ -2,7 +2,7 @@
 <resources>
     <color name="primary">#ffffff</color>
     <color name="primaryDark">#ffffff</color>
-    <color name="accent">#e64a19</color>
+    <color name="accent">#ff5722</color>
 
     <color name="white">#ffffff</color>
 
@@ -10,6 +10,10 @@
 
     <color name="sheetTxt">#000000</color>
     <color name="dialogHint">#9e9e9e</color>
+
+    <color name="navigation_drawer_center">@color/cyan_500</color>
+    <color name="navigation_drawer_end">@color/cyan_500</color>
+    <color name="navigation_drawer_start">@color/cyan_700</color>
 
 
     <!-- all material color code -->
