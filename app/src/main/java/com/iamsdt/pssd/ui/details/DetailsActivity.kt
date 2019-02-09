@@ -22,6 +22,7 @@ import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.main.MainVM
 import com.iamsdt.pssd.utils.Bookmark
 import kotlinx.android.synthetic.main.activity_details.*
+import kotlinx.android.synthetic.main.details_toolbar.*
 import kotlinx.android.synthetic.main.fragment_details.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
