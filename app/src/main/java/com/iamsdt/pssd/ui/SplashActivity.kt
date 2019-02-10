@@ -15,6 +15,7 @@ import androidx.work.WorkManager
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.runThread
+import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.main.MainActivity
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.SpUtils
@@ -25,7 +26,6 @@ import com.iamsdt.pssd.utils.sync.worker.UploadWorker
 import kotlinx.android.synthetic.main.activity_splash.*
 import org.koin.android.ext.android.inject
 import java.util.*
-import java.util.concurrent.TimeUnit
 
 class SplashActivity : AppCompatActivity() {
 
@@ -33,6 +33,7 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ThemeUtils.initialize(this)
         setContentView(R.layout.activity_splash)
 
         // complete: 8/31/18 add animation

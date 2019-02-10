@@ -23,7 +23,7 @@
         tools:targetApi="m"
         tools:ignore="UnusedAttribute"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        android:textColor="?attr/colorPrimary"
+        android:textColor="?attr/colorAccent"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/like"
         app:layout_constraintStart_toStartOf="parent"

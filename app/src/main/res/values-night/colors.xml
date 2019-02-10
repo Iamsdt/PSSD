@@ -8,8 +8,8 @@
 <resources>
     <color name="txtColor">#ffffff</color>
 
-    <color name="primary">#303131</color>
-    <color name="primaryDark">#000000</color>
+    <color name="primary">@android:color/transparent</color>
+    <color name="primaryDark">@android:color/transparent</color>
     <color name="accent">#ff5722</color>
     <color name="sheetTxt">#FFFFFF</color>
 

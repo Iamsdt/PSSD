@@ -15,39 +15,49 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:liftOnScroll="true"
+        android:background="@color/primary"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/main_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-        <LinearLayout
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
-            android:background="@color/white">
+            app:cardCornerRadius="10dp"
+            android:layout_margin="10dp"
+            app:cardElevation="2dp">
 
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/searchView"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/main_toolbar"
                 android:layout_width="match_parent"
+                android:layout_margin="2dp"
                 android:layout_height="wrap_content"
-                android:focusable="false"
-                android:focusableInTouchMode="true"
-                app:iconifiedByDefault="false"
-                app:queryHint="Search..."
-                app:voiceIcon="@android:drawable/ic_btn_speak_now" />
+                android:minHeight="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
 
-        </LinearLayout>
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    app:searchIcon="@null"
+                    app:submitBackground="@android:color/transparent"
+                    android:background="@android:color/transparent"
+                    android:backgroundTint="@android:color/transparent"
+                    app:queryBackground="@android:color/transparent"
+                    android:focusableInTouchMode="true"
+                    app:iconifiedByDefault="false"
+                    app:queryHint="Search..."
+                    app:voiceIcon="@drawable/ic_microphone"/>
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.card.MaterialCardView>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <include
+        layout="@layout/content_main" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

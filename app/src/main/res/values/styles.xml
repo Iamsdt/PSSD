@@ -1,10 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@android:color/transparent</item>
+        <item name="colorPrimaryDark">@color/primaryDark</item>
         <item name="colorAccent">@color/accent</item>
     </style>
 
@@ -15,7 +15,7 @@
     </style>
 
     <style name="splashTheme" parent="AppTheme.NoActionBar">
-        <item name="colorPrimaryDark">@color/light_blue_500</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
         <item name="android:windowBackground">@drawable/splash_bcg</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
