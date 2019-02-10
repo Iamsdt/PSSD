@@ -41,6 +41,7 @@ class SplashActivity : AppCompatActivity() {
                 R.anim.splash_screen_animation)
 
         app_icon.animation = set
+        textView32.animation = set
 
         if (!spUtils.isDatabaseInserted) {
             //save database

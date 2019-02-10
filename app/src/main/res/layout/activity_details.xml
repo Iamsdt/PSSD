@@ -20,8 +20,6 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="top"
-            app:titleTextColor="@color/txtColor"
-            app:subtitleTextColor="@color/txtColor"
             android:backgroundTint="@color/toolbar_bcg"
             android:background="@color/toolbar_bcg"
             android:minHeight="?attr/actionBarSize"
