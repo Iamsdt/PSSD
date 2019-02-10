@@ -47,7 +47,7 @@ class FlashCardActivity : AppCompatActivity(), ClickListener {
 
         flash_rcv.adapter = adapter
 
-        viewModel.getData().observe(this, Observer { list ->
+        viewModel.getData().observe(this@FlashCardActivity, Observer { list ->
             list?.let {
                 if (it.isNotEmpty()) {
                     regularView()

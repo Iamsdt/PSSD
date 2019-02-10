@@ -9,6 +9,7 @@ import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.toWordTable
 import com.iamsdt.pssd.utils.SpUtils
 import com.iamsdt.pssd.utils.model.JsonModel
+import kotlinx.coroutines.*
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 import timber.log.Timber
@@ -23,43 +24,56 @@ class UpdateWorker(context: Context, workerParameters: WorkerParameters) :
 
     private val spUtils: SpUtils by inject()
 
+    private val bgScope = CoroutineScope(Dispatchers.IO)
+
     override fun doWork(): Result {
 
         var result = Result.success()
 
-        val stream = applicationContext.assets.open("data.json")
+        bgScope.launch {
 
-        val reader = InputStreamReader(stream)
-
-        val data = gson.fromJson(
-                reader.buffered(4096),
-                JsonModel::class.java)
-
-        var count = 0
-
-        data?.let { model ->
-            model.collection.filter {
-                it.word.isNotEmpty()
-            }.forEach {
-                var table: WordTable? = wordTableDao.getWord(it.word)
-
-                table = table?.copy(reference = it.ref) ?: it.toWordTable()
-
-                count = wordTableDao.update(table)
+            val stream = withContext(Dispatchers.Main) {
+                applicationContext.assets.open("data.json")
             }
 
-            //save version
-            spUtils.dataVolume = model.volume
+            val reader = InputStreamReader(stream)
+
+            val data = gson.fromJson(
+                    reader.buffered(4096),
+                    JsonModel::class.java)
+
+            var count = 0
+
+            data?.let { model ->
+                model.collection.filter {
+                    it.word.isNotEmpty()
+                }.forEach {
+                    var table: WordTable? = wordTableDao.getWord(it.word)
+
+                    table = table?.copy(reference = it.ref) ?: it.toWordTable()
+
+                    count = wordTableDao.update(table)
+                }
+
+                //save version
+                spUtils.dataVolume = model.volume
+            }
+
+            if (count > 0) {
+                spUtils.isUpdateRequestForVersion4 = true
+
+            } else result = Result.failure()
+
+            Timber.i("Total added: $count")
+
         }
 
-        if (count > 0) {
-            spUtils.isUpdateRequestForVersion4 = true
-
-        } else result = Result.failure()
-
-        Timber.i("Total added: $count")
-
         return result
+    }
+
+    override fun onStopped() {
+        super.onStopped()
+        bgScope.coroutineContext.cancelChildren()
     }
 
 }

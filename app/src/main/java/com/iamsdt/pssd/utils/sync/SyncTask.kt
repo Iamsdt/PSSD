@@ -16,9 +16,11 @@ import com.iamsdt.pssd.utils.Constants.REMOTE.FB_REMOTE_CONFIG_STORAGE_KEY
 import com.iamsdt.pssd.utils.SettingsUtils
 import com.iamsdt.pssd.utils.SpUtils
 import com.iamsdt.pssd.utils.getDayInterval
-import com.iamsdt.pssd.utils.ioThread
 import com.iamsdt.pssd.utils.sync.worker.DownloadWorker
 import com.iamsdt.pssd.utils.sync.worker.UploadWorker
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.util.*
 
 
@@ -37,8 +39,9 @@ class SyncTask(private val wordTableDao: WordTableDao,
 
         //do this task once in a week
         if (isRunUpload()) {
-            ioThread {
+            GlobalScope.launch(Dispatchers.IO) {
                 val data = wordTableDao.upload()
+
                 if (data.isNotEmpty()) {
                     //start worker
                     // complete: 8/24/18 worker
@@ -47,7 +50,7 @@ class SyncTask(private val wordTableDao: WordTableDao,
 
                     WorkManager.getInstance().beginUniqueWork("Upload",
                             ExistingWorkPolicy.KEEP, request).enqueue()
-                } else{
+                } else {
                     //user has no data
                     //deon't need to check again
                     spUtils.uploadDate = Date().time

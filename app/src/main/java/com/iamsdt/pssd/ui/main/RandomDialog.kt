@@ -2,7 +2,8 @@ package com.iamsdt.pssd.ui.main
 
 import android.app.Dialog
 import android.content.Intent
-import android.os.*
+import android.os.Build
+import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.view.View
 import android.widget.ImageButton
@@ -12,12 +13,16 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTableDao
+import com.iamsdt.pssd.ext.MyMainScope
 import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.addStr
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.utils.TxtHelper
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.random_sheet.view.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 import java.util.*
@@ -36,10 +41,17 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
     var bookmark = false
 
+    val uiScope = MyMainScope()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AsyncTask.execute {
-            size = wordTableDao.getAllList().size
+
+        lifecycle.addObserver(uiScope)
+
+        uiScope.launch {
+            size = withContext(Dispatchers.IO) {
+                wordTableDao.getAllList().size
+            }
         }
     }
 
@@ -66,7 +78,7 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
         Timber.i("ID get: $id")
 
         //draw ui
-        wordTableDao.getSingleWord(id).observe(this, Observer { wordTable ->
+        wordTableDao.getSingleWord(id).observe(this@RandomDialog, Observer { wordTable ->
             wordTable?.let {
                 //save bookmark
                 bookmark = wordTable.bookmark
@@ -88,25 +100,27 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
             }
         })
 
+
         favIcon.setOnClickListener {
-            AsyncTask.execute {
+            uiScope.launch {
                 if (bookmark) {
-                    val status = wordTableDao.deleteBookmark(id)
+                    val status = withContext(Dispatchers.IO) {
+                        wordTableDao.deleteBookmark(id)
+                    }
                     if (status > 0) {
-                        Handler(Looper.getMainLooper()).post {
-                            showToast(ToastType.INFO, "Bookmark Delete")
-                        }
+                        showToast(ToastType.INFO, "Bookmark Delete")
                     }
                 } else {
-                    val status = wordTableDao.setBookmark(id)
+                    val status = withContext(Dispatchers.IO) {
+                        wordTableDao.setBookmark(id)
+                    }
                     if (status > 0) {
-                        Handler(Looper.getMainLooper()).post {
-                            showToast(ToastType.SUCCESSFUL, "Bookmarked")
-                        }
+                        showToast(ToastType.SUCCESSFUL, "Bookmarked")
                     }
                 }
             }
         }
+
 
         speak.setOnClickListener {
             speakOut()

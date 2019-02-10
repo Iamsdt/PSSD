@@ -12,14 +12,15 @@ import androidx.room.*
 
 @Dao
 interface WordTableDao {
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun add(table: WordTable): Long
+    suspend fun add(table: WordTable): Long
 
     @Update
-    fun update(table: WordTable): Int
+    suspend fun update(table: WordTable): Int
 
     @Delete
-    fun delete(pageTable: WordTable): Int
+    suspend fun delete(pageTable: WordTable): Int
 
     @Query("Select * From WordTable")
     fun getAllData(): DataSource.Factory<Int, WordTable>

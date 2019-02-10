@@ -17,15 +17,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.Gson
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.toWordTable
 import com.iamsdt.pssd.ui.main.MainActivity
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.Constants.REMOTE.DOWNLOAD_FILE_NAME
 import com.iamsdt.pssd.utils.SpUtils
-import com.iamsdt.pssd.utils.ioThread
 import com.iamsdt.pssd.utils.model.RemoteModel
+import kotlinx.coroutines.*
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 import timber.log.Timber
@@ -41,11 +40,13 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
 
     private val spUtils: SpUtils by inject()
 
+    private val bgScope = CoroutineScope(Dispatchers.IO)
+
     override fun doWork(): Result {
 
         Timber.i("Download worker begin")
 
-        var result: Result = Result.failure()
+        var result: Result = Result.success()
 
         val auth = FirebaseAuth.getInstance()
 
@@ -56,10 +57,9 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
             auth.signInAnonymously().addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     //write in  the database
-                    ioThread {
+                    bgScope.launch {
                         result = writeDB()
                     }
-
                 } else result = Result.retry()
             }
         } else {
@@ -87,20 +87,25 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
             val data = gson.fromJson(file.bufferedReader(bufferSize = 4096),
                     RemoteModel::class.java)
 
-            ioThread {
-                data?.let { it ->
+            bgScope.launch {
+                data?.let {
                     var insert = 0L
                     it.list.filter { model -> model.word.isNotEmpty() }
                             .map { model ->
-                                var table: WordTable? = wordTableDao.getWord(model.word)
+                                val word = async {
+                                    wordTableDao.getWord(model.word)
+                                }
 
-                                table = table?.copy(des = model.des, reference = model.ref) ?: model.toWordTable()
+                                val table = word.await()?.copy(des = model.des, reference = model.ref)
+                                        ?: model.toWordTable()
 
                                 insert = wordTableDao.add(table)
                             }
 
                     result = if (insert > 0) {
-                        getRemoteDataStatus(applicationContext, applicationContext.packageName)
+                        withContext(Dispatchers.Main) {
+                            getRemoteDataStatus(applicationContext, applicationContext.packageName)
+                        }
                         Timber.i("Inserted: $insert")
                         spUtils.downloadDate = Date().time
                         Result.success()
@@ -113,6 +118,11 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
         }
 
         return result
+    }
+
+    override fun onStopped() {
+        super.onStopped()
+        bgScope.coroutineContext.cancelChildren()
     }
 
     private fun getRemoteDataStatus(context: Context, packageName: String) {

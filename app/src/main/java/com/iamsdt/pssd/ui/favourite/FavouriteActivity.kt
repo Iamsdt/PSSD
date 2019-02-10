@@ -30,8 +30,6 @@ class FavouriteActivity : AppCompatActivity() {
 
     private val viewModel: FavouriteVM by viewModel()
 
-    // complete: 8/21/18 add swap option
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ThemeUtils.initialize(this)
@@ -53,7 +51,8 @@ class FavouriteActivity : AppCompatActivity() {
 //        fav_rcv.addItemDecoration(deco)
         setSwipeForRecyclerView(fav_rcv)
 
-        viewModel.getData().observe(this, Observer {
+
+        viewModel.getData().observe(this@FavouriteActivity, Observer {
             if (it.isNotEmpty()) {
                 regularView()
                 adapter.submitList(it)

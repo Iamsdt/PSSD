@@ -59,7 +59,8 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         textToSpeech = TextToSpeech(this, this)
 
-        viewModel.getWord(id).observe(this, Observer { table ->
+
+        viewModel.getWord(id).observe(this@DetailsActivity, Observer { table ->
             table?.let {
                 details_word.addStr(it.word)
                 details_des.addStr(it.des)
@@ -80,6 +81,7 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 isBookmarked = it.bookmark
             }
         })
+
 
         viewModel.singleLiveEvent.observe(this, Observer { bookmark ->
             bookmark?.let {

@@ -19,7 +19,6 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.ShareActionProvider
 import androidx.core.view.GravityCompat
@@ -57,10 +56,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetSequence
-import uk.co.samuelwall.materialtaptargetprompt.extras.backgrounds.RectanglePromptBackground
-import uk.co.samuelwall.materialtaptargetprompt.extras.focals.RectanglePromptFocal
 
-class MainActivity : AppCompatActivity(),
+class MainActivity : BaseActivity(),
         NavigationView.OnNavigationItemSelectedListener,
         ClickListener {
 
@@ -230,18 +227,6 @@ class MainActivity : AppCompatActivity(),
 
     private fun tapTarget() {
         MaterialTapTargetSequence()
-                .addPrompt(
-                        MaterialTapTargetPrompt.Builder(this)
-                                .setTarget(searchView)
-                                .setPrimaryText("Search Option")
-                                .setSecondaryText("Input here for searching")
-                                .setPromptBackground(RectanglePromptBackground())
-                                .setPromptFocal(RectanglePromptFocal())
-                                .setAutoDismiss(true)
-                                .setCaptureTouchEventOutsidePrompt(true)
-                                .setCaptureTouchEventOnFocal(true)
-
-                ).show()
                 .addPrompt(
                         MaterialTapTargetPrompt.Builder(this)
                                 .setTarget(fab)

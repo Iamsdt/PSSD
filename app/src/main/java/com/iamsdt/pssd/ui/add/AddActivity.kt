@@ -57,8 +57,6 @@ class AddActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add)
         setSupportActionBar(toolbar)
 
-        // complete: 8/24/18 add empty view
-
         addRcv.layoutManager = LinearLayoutManager(this)
         addRcv.adapter = adapter
 
@@ -69,7 +67,8 @@ class AddActivity : AppCompatActivity() {
 //        deco.setDrawable(getDrawable(R.drawable.dercoration))
 //        addRcv.addItemDecoration(deco)
 
-        model.getWord().observe(this, Observer { list ->
+
+        model.getWord().observe(this@AddActivity, Observer { list ->
             list?.let {
                 if (it.isNotEmpty()) {
                     regularView()
@@ -80,6 +79,7 @@ class AddActivity : AppCompatActivity() {
             }
         })
 
+
         model.dialogStatus.observe(this, Observer { model ->
             model?.let {
                 if (it.status && it.title == DIALOG) {
@@ -87,12 +87,6 @@ class AddActivity : AppCompatActivity() {
                     if (::dialog.isInitialized && dialog.isShowing) {
                         dialog.dismiss()
                         showToast(ToastType.SUCCESSFUL, it.message)
-
-//                        //add analytics
-//                        val ana = FirebaseAnalytics.getInstance(this@AddActivity)
-//                        val bundle = Bundle()
-//                        bundle.putString("Data_added", "Data Put in the local database")
-//                        ana.logEvent("add_data", bundle)
                     }
                 } else if (!it.status && it.title == WORD) {
                     if (::wordTV.isInitialized) wordTV.error = it.message
@@ -166,7 +160,7 @@ class AddActivity : AppCompatActivity() {
             val des = desTV.editText?.text ?: ""
             val ref = refTV.editText?.text ?: "Added by user"
 
-            model.addData(word, des,ref)
+            model.addData(word, des, ref)
         }
 
         dialog = builder.create()

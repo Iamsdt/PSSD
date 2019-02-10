@@ -11,6 +11,6 @@ import com.iamsdt.pssd.database.WordTableDao
 
 class FlashVM(val wordTableDao: WordTableDao) : ViewModel() {
 
-    val data get() = wordTableDao.getBookmarkData()
+    fun data() = wordTableDao.getBookmarkData()
 
 }

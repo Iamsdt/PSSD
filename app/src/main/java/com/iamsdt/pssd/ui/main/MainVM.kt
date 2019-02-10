@@ -7,18 +7,20 @@
 package com.iamsdt.pssd.ui.main
 
 import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
+import com.iamsdt.pssd.ext.ScopeViewModel
 import com.iamsdt.pssd.ext.SingleLiveEvent
 import com.iamsdt.pssd.utils.Bookmark
 import com.iamsdt.pssd.utils.PAGE_CONFIG
-import com.iamsdt.pssd.utils.ioThread
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 
-class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
+class MainVM(val wordTableDao: WordTableDao) : ScopeViewModel() {
 
     val searchEvent = SingleLiveEvent<WordTable>()
 
@@ -34,8 +36,10 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
     }
 
     fun getSingleWord(id: Int) {
-        ioThread {
-            val word = wordTableDao.getWordByID(id)
+        uiScope.launch(Dispatchers.Main) {
+            val word = withContext(Dispatchers.IO) {
+                wordTableDao.getWordByID(id)
+            }
             singleWord.postValue(word)
         }
     }
@@ -54,7 +58,9 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
 
     fun requestSearch(query: String) {
 
-        val source = wordTableDao.getSearchData(query)
+        val source =
+                wordTableDao.getSearchData(query)
+
 
         val data = LivePagedListBuilder(source, PAGE_CONFIG).build()
 
@@ -64,18 +70,21 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
                 liveData.value = it
             }
         }
+
     }
 
 
     fun submit(query: String?) {
-        query?.let { it ->
+        query?.let {
             //make first latter capital
-            val w = it.replaceFirst(it[0], it[0].toUpperCase(), false)
-            ioThread {
-                val word: WordTable? = wordTableDao.getSearchResult(w)
+            uiScope.launch {
+                val w = it.replaceFirst(it[0], it[0].toUpperCase(), false)
+
+                val word: WordTable? = withContext(Dispatchers.IO) { wordTableDao.getSearchResult(w) }
                 Timber.i("Word:$word")
                 //complete 10/23/2018 fix latter
                 searchEvent.postValue(word)
+
             }
         }
     }
@@ -87,16 +96,20 @@ class MainVM(val wordTableDao: WordTableDao) : ViewModel() {
     fun getWord(id: Int) = wordTableDao.getSingleWord(id)
 
     private fun setBookmark(id: Int) {
-        ioThread {
-            val update = wordTableDao.setBookmark(id)
+        uiScope.launch {
+            val update = withContext(Dispatchers.IO) {
+                wordTableDao.setBookmark(id)
+            }
             if (update > 0)
                 singleLiveEvent.postValue(Bookmark.SET)
         }
     }
 
     private fun deleteBookmark(id: Int) {
-        ioThread {
-            val delete = wordTableDao.deleteBookmark(id)
+        uiScope.launch {
+            val delete = withContext(Dispatchers.IO) {
+                wordTableDao.deleteBookmark(id)
+            }
             if (delete > 0)
                 singleLiveEvent.postValue(Bookmark.DELETE)
         }

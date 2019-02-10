@@ -18,25 +18,29 @@ import com.iamsdt.pssd.utils.Constants.Settings.SETTING_IMOUT_OPTION_FAVOURITE
 import com.iamsdt.pssd.utils.Constants.Settings.SETTING_IMOUT_OPTION_USER
 import com.iamsdt.pssd.utils.model.OutputModel
 import com.iamsdt.pssd.utils.model.StatusModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
-import java.lang.Thread.sleep
 import java.util.*
-import kotlin.concurrent.thread
 
 class FileImportExportUtils(
         private val wordTableDao: WordTableDao,
         private val settingsUtils: SettingsUtils,
         private val gson: Gson) {
 
+    val bgScope = CoroutineScope(Dispatchers.IO)
+
     /**
      * Export user favourite data
      * export in a text file just favourite word only
      */
     fun exportFileFavourite() {
-        ioThread {
+        bgScope.launch{
             val list = wordTableDao.getBookmarkList()
             if (list.isNotEmpty()) {
                 generateFile(list, "favourite")
@@ -101,9 +105,9 @@ class FileImportExportUtils(
             writer.close()
 
             //wait 1 sec
-            thread {
+            bgScope.launch {
                 try {
-                    sleep(1000)
+                    delay(1000)
                 } catch (e: Exception) {
                     e.printStackTrace()
                 } finally {
@@ -125,7 +129,7 @@ class FileImportExportUtils(
      * export in a text file just favourite word only
      */
     fun exportFileUser() {
-        ioThread {
+        bgScope.launch {
             val list = wordTableDao.getAddedWordList()
             if (list.isNotEmpty()) {
                 generateFile(list, "Added")
@@ -154,11 +158,11 @@ class FileImportExportUtils(
         val data = gson.fromJson(file.bufferedReader(bufferSize = 4096),
                 OutputModel::class.java)
 
-        data?.let {out->
-            ioThread {
+        data?.let { out ->
+            bgScope.launch {
                 var insert = 0L
                 out.list.filter { it.word.isNotEmpty() }
-                        .map {insert = wordTableDao.add(it)}
+                        .map { insert = wordTableDao.add(it) }
 
                 if (insert > 0) {
                     val model = if (title == EXPORT_FAV)

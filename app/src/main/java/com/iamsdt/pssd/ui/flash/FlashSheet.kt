@@ -19,6 +19,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTableDao
+import com.iamsdt.pssd.ext.MyMainScope
 import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.addStr
 import com.iamsdt.pssd.ext.showToast
@@ -26,6 +27,7 @@ import com.iamsdt.pssd.ui.main.MyBottomSheetDialog
 import com.iamsdt.pssd.utils.TxtHelper
 import kotlinx.android.synthetic.main.activity_flash_card.*
 import kotlinx.android.synthetic.main.flash_sheet.view.*
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 import java.util.*
@@ -41,7 +43,11 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
     private var wordTxt = ""
 
+    private val uiScope = MyMainScope()
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+
+        lifecycle.addObserver(uiScope)
 
         val dialog = MyBottomSheetDialog(context!!, theme)
 
@@ -63,18 +69,20 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
         Timber.i("Tag: $id")
 
         //draw ui
-        wordTableDao.getSingleWord(id).observe(this, Observer { table ->
-            table?.let {
-                wordTv.addStr(it.word)
-                desTV.addStr(it.des)
+        uiScope.launch {
+            wordTableDao.getSingleWord(id).observe(this@FlashSheet, Observer { table ->
+                table?.let {
+                    wordTv.addStr(it.word)
+                    desTV.addStr(it.des)
 
-                txtHelper.setSize(wordTv, desTV)
+                    txtHelper.setSize(wordTv, desTV)
 
-                //save word
-                wordTxt = it.word
+                    //save word
+                    wordTxt = it.word
 
-            }
-        })
+                }
+            })
+        }
 
 
         speakBtn.setOnClickListener {

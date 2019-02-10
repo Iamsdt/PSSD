@@ -12,9 +12,12 @@ import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.SpUtils
-import com.iamsdt.pssd.utils.ioThread
 import com.iamsdt.pssd.utils.model.Model
 import com.iamsdt.pssd.utils.model.RemoteModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.launch
 import org.joda.time.DateTime
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
@@ -32,6 +35,8 @@ class UploadWorker(context: Context, workerParameters: WorkerParameters) :
 
     private val spUtils: SpUtils by inject()
 
+    private val bgScope = CoroutineScope(Dispatchers.IO)
+
     override fun doWork(): Result {
 
         var result = Result.success()
@@ -43,12 +48,10 @@ class UploadWorker(context: Context, workerParameters: WorkerParameters) :
 
         if (user == null) {
             auth.signInAnonymously().addOnCompleteListener { task ->
-                if (task.isSuccessful) {
+                result = if (task.isSuccessful) {
                     //write in  the database
-                    ioThread {
-                        result = writeDB(task.result?.user)
-                    }
-                } else result = Result.retry()
+                    writeDB(task.result?.user)
+                } else Result.retry()
             }
         } else {
             result = writeDB(user)
@@ -69,12 +72,17 @@ class UploadWorker(context: Context, workerParameters: WorkerParameters) :
         val ref = db.reference.child(Constants.REMOTE.USER)
                 .child(fileName)
 
-        ref.putFile(Uri.fromFile(getFile(data))).addOnCompleteListener { it ->
-            if (it.isSuccessful) {
-                ioThread {
+        bgScope.launch {
+
+            ref.putFile(Uri.fromFile(getFile(data))).addOnCompleteListener {
+                if (it.isSuccessful) {
+
                     var up = 0
-                    data.forEach {
-                        up = wordTableDao.update((it.copy(uploaded = true)))
+
+                    launch {
+                        data.forEach { word ->
+                            up = wordTableDao.update((word.copy(uploaded = true)))
+                        }
                     }
 
                     if (up > 0) {
@@ -82,12 +90,18 @@ class UploadWorker(context: Context, workerParameters: WorkerParameters) :
                     } else {
                         result = Result.retry()
                     }
+
+                } else {
+                    result = Result.retry()
                 }
-            } else {
-                result = Result.retry()
             }
         }
         return result
+    }
+
+    override fun onStopped() {
+        super.onStopped()
+        bgScope.coroutineContext.cancelChildren()
     }
 
     private fun getFile(data: List<WordTable>): File {

@@ -9,25 +9,28 @@ package com.iamsdt.pssd.ui.add
 import android.content.Context
 import android.content.Intent
 import android.os.Handler
-import android.os.HandlerThread
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
+import com.iamsdt.pssd.ext.UIScope
 import com.iamsdt.pssd.ext.gone
 import com.iamsdt.pssd.ext.show
 import com.iamsdt.pssd.ui.details.DetailsActivity
 import com.iamsdt.pssd.ui.favourite.FavouriteVH
 import com.iamsdt.pssd.ui.main.MainAdapter.Companion.DIFF_CALLBACK
 import es.dmoral.toasty.Toasty
+import kotlinx.coroutines.*
 
 class AddAdapter(var context: Context,
                  val wordTableDao: WordTableDao) :
         PagedListAdapter<WordTable, FavouriteVH>(DIFF_CALLBACK) {
+
+    private val uiScope = UIScope()
 
     private val pendingItemRemoval = 3000 // 3sec
     // handler for running delayed runnable
@@ -57,16 +60,20 @@ class AddAdapter(var context: Context,
         notifyItemChanged(id)
     }
 
+    override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
+        super.onDetachedFromRecyclerView(recyclerView)
+        uiScope.coroutineContext.cancelChildren()
+    }
+
     private fun deletePost(model: WordTable?) {
 
-        val thread = HandlerThread("Bookmark")
-        thread.start()
-        Handler(thread.looper).post {
+        GlobalScope.launch(Dispatchers.IO) {
             if (model != null) {
                 //book mark
-                val delete = wordTableDao.delete(model)
+                val delete =
+                        wordTableDao.delete(model)
 
-                Handler(Looper.getMainLooper()).post {
+                uiScope.launch {
                     if (delete > 0) {
                         Toasty.info(context, "Item Removed", Toast.LENGTH_SHORT, true).show()
                         //holder.bookmarkImg.setImageDrawable(context.getDrawable(R.drawable.ic_bookmark))
@@ -76,8 +83,6 @@ class AddAdapter(var context: Context,
                     }
                 }
             }
-
-            thread.quitSafely()
         }
     }
 

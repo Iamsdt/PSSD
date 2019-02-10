@@ -9,24 +9,27 @@ package com.iamsdt.pssd.ui.favourite
 import android.content.Context
 import android.content.Intent
 import android.os.Handler
-import android.os.HandlerThread
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
+import com.iamsdt.pssd.ext.UIScope
 import com.iamsdt.pssd.ext.gone
 import com.iamsdt.pssd.ext.show
 import com.iamsdt.pssd.ui.details.DetailsActivity
 import com.iamsdt.pssd.ui.main.MainAdapter.Companion.DIFF_CALLBACK
 import es.dmoral.toasty.Toasty
+import kotlinx.coroutines.*
 
 class FavouriteAdapter(var context: Context,
                        val wordTableDao: WordTableDao) :
-        PagedListAdapter<WordTable,FavouriteVH>(DIFF_CALLBACK) {
+        PagedListAdapter<WordTable, FavouriteVH>(DIFF_CALLBACK) {
+
+    val uiScope = UIScope()
 
     private val pendingItemRemoval = 3000 // 3sec
     private val handler = Handler() // handler for running delayed runnable
@@ -54,15 +57,20 @@ class FavouriteAdapter(var context: Context,
         notifyItemChanged(id)
     }
 
+    override fun onDetachedFromRecyclerView(recyclerView: RecyclerView) {
+        super.onDetachedFromRecyclerView(recyclerView)
+        uiScope.coroutineContext.cancelChildren()
+    }
+
     private fun deletePost(model: WordTable?) {
-        val thread = HandlerThread("Bookmark")
-        thread.start()
-        Handler(thread.looper).post {
+
+        GlobalScope.launch(Dispatchers.IO) {
             if (model != null) {
                 //book mark
-                val delete = wordTableDao.deleteBookmark(model.id)
+                val delete =
+                        wordTableDao.deleteBookmark(model.id)
 
-                Handler(Looper.getMainLooper()).post {
+                uiScope.launch {
                     if (delete > 0) {
                         Toasty.info(context, "Bookmark deleted", Toast.LENGTH_SHORT, true).show()
                         //holder.bookmarkImg.setImageDrawable(context.getDrawable(R.drawable.ic_bookmark))
@@ -72,8 +80,6 @@ class FavouriteAdapter(var context: Context,
                     }
                 }
             }
-
-            thread.quitSafely()
         }
     }
 
@@ -112,7 +118,7 @@ class FavouriteAdapter(var context: Context,
 
     override fun onBindViewHolder(holder: FavouriteVH, position: Int) {
 
-        val model: WordTable?= getItem(position)
+        val model: WordTable? = getItem(position)
 
         model?.let {
             if (itemsPendingRemoval.contains(model)) {

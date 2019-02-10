@@ -12,6 +12,9 @@ import com.iamsdt.pssd.ext.SingleLiveEvent
 import com.iamsdt.pssd.utils.Constants.SP.DATA_RESTORE
 import com.iamsdt.pssd.utils.model.OutputModel
 import com.iamsdt.pssd.utils.model.StatusModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileFilter
 
@@ -54,7 +57,7 @@ class RestoreData(private val settingsUtils: SettingsUtils,
         //get list of file
         //only .ss file will read
 
-        ioThread {
+        GlobalScope.launch(Dispatchers.IO) {
 
             var size = 0L
 
