@@ -93,3 +93,10 @@
 -printmapping mapping.txt
 -keep class com.crashlytics.** { *; }
 -dontwarn com.crashlytics.**
+
+# kotlin coroutine
+-keepnames class kotlinx.coroutines.internal.MainDispatcherFactory {}
+-keepnames class kotlinx.coroutines.CoroutineExceptionHandler {}
+-keepclassmembernames class kotlinx.** {
+    volatile <fields>;
+}

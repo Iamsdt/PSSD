@@ -13,6 +13,11 @@
     <color name="accent">#ff5722</color>
     <color name="sheetTxt">#FFFFFF</color>
 
+    <color name="menu_color">#FFFFFF</color>
+    <color name="add_text_hint">#FFFFFF</color>
+
+    <color name="main_toolbar">#A5A3A3</color>
+
     <color name="navigation_drawer_center">#303131</color>
     <color name="navigation_drawer_end">#303131</color>
     <color name="navigation_drawer_start">#303131</color>
