@@ -79,6 +79,8 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 //resetSap()
 
                 isBookmarked = it.bookmark
+                //change love icon
+                changeLoveIcon(isBookmarked)
             }
         })
 
@@ -108,9 +110,6 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         details_text_size.setOnClickListener {
             textIncrease()
         }
-
-        //change love icon
-        changeLoveIcon(isBookmarked)
 
         details_love.setOnClickListener {
             viewModel.requestBookmark(id, isBookmarked)

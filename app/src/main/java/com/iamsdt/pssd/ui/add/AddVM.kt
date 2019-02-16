@@ -52,7 +52,7 @@ class AddVM(private val wordTableDao: WordTableDao) : ScopeViewModel() {
         uiScope.launch {
 
             withContext(Dispatchers.IO) {
-                val data =
+                val data:WordTable ?=
                         wordTableDao.getWord(word.toCapFirst())
 
                 val table = data?.copy(des = des.toCapFirst(), reference = r, addByUser = true)
