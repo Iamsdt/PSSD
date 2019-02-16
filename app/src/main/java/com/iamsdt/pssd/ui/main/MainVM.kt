@@ -75,6 +75,11 @@ class MainVM(val wordTableDao: WordTableDao) : ScopeViewModel() {
 
 
     fun submit(query: String?) {
+
+        if (query?.isEmpty() == true) {
+            return
+        }
+
         query?.let {
             //make first latter capital
             uiScope.launch {
