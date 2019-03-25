@@ -1,12 +1,23 @@
 # Soil Science Dictionary
 A complete dictionary app contains soil science related terminologies
 
+### List of used component
+    #### Design pattern
+    MVVM
+
+    #### TextView
+    precomputed text
+
+    #### Kotlin Corotines
+
+
+
 ### Android Architecture
     Live Data
     View model
     Room
     Paging
-    Workmanager
+    WorkManager
 
 ### other 3rd parties
     KOIN

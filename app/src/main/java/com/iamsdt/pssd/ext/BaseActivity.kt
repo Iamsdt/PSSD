@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 @SuppressLint("Registered")
 open class BaseActivity : AppCompatActivity() {
 
-
     val uiScope = MyMainScope()
 
     override fun onCreate(savedInstanceState: Bundle?) {

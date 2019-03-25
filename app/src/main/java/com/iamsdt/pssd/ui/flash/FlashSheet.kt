@@ -21,7 +21,7 @@ import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.MyMainScope
 import com.iamsdt.pssd.ext.ToastType
-import com.iamsdt.pssd.ext.addStr
+import com.iamsdt.pssd.ext.addStrK
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ui.main.MyBottomSheetDialog
 import com.iamsdt.pssd.utils.TxtHelper
@@ -72,8 +72,8 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
         uiScope.launch {
             wordTableDao.getSingleWord(id).observe(this@FlashSheet, Observer { table ->
                 table?.let {
-                    wordTv.addStr(it.word)
-                    desTV.addStr(it.des)
+                    wordTv.addStrK(it.word)
+                    desTV.addStrK(it.des)
 
                     txtHelper.setSize(wordTv, desTV)
 

@@ -19,6 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
+import java.util.*
 
 class MainVM(val wordTableDao: WordTableDao) : ScopeViewModel() {
 
@@ -117,6 +118,13 @@ class MainVM(val wordTableDao: WordTableDao) : ScopeViewModel() {
             }
             if (delete > 0)
                 singleLiveEvent.postValue(Bookmark.DELETE)
+        }
+    }
+
+    fun setRecent(id: Int){
+        val date = Date().time
+        uiScope.launch(Dispatchers.IO) {
+            wordTableDao.setRecent(id,date)
         }
     }
 

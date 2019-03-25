@@ -15,7 +15,7 @@ import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.MyMainScope
 import com.iamsdt.pssd.ext.ToastType
-import com.iamsdt.pssd.ext.addStr
+import com.iamsdt.pssd.ext.addStrK
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.utils.TxtHelper
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -86,8 +86,8 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
                 //save word txt
                 wordTxt = wordTable.word
 
-                wordTV.addStr(wordTable.word)
-                desTV.addStr(wordTable.des)
+                wordTV.addStrK(wordTable.word)
+                desTV.addStrK(wordTable.des)
 
                 txtHelper.setSize(wordTV, desTV)
 

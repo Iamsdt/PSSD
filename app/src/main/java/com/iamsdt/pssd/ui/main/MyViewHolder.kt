@@ -10,7 +10,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.iamsdt.pssd.database.WordTable
-import com.iamsdt.pssd.ext.addStr
+import com.iamsdt.pssd.ext.addStrK
 import kotlinx.android.synthetic.main.main_item.view.*
 
 class MyViewHolder(val view: View)
@@ -20,8 +20,8 @@ class MyViewHolder(val view: View)
     private val desTV: TextView = view.desTV
 
     fun bind(wordTable: WordTable) {
-        wordTV.addStr(wordTable.word)
-        desTV.addStr(wordTable.des)
+        wordTV.addStrK(wordTable.word)
+        desTV.addStrK(wordTable.des)
     }
 
 }

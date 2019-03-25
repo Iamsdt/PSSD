@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
-import com.iamsdt.pssd.ext.addStr
+import com.iamsdt.pssd.ext.addStrK
 import com.iamsdt.pssd.ui.callback.ClickListener
 import com.iamsdt.pssd.ui.main.MainAdapter.Companion.DIFF_CALLBACK
 import kotlinx.android.synthetic.main.flash_item.view.*
@@ -49,7 +49,7 @@ class FlashAdapter(private val click: ClickListener) :
         val word: TextView = view.word
 
         fun bind(wordTable: WordTable) {
-            word.addStr(wordTable.word)
+            word.addStrK(wordTable.word)
         }
     }
 }

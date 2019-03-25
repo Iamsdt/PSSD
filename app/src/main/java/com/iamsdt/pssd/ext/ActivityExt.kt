@@ -22,8 +22,7 @@ fun AppCompatActivity.runThread(timer: Long, clazz: KClass<out AppCompatActivity
             } catch (e: Exception) {
                 e.printStackTrace()
             } finally {
-                toNextActivity(clazz)
-                finish()
+                toNextActivity(clazz,finish = true)
             }
         }.start()
 

@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.ToastType
-import com.iamsdt.pssd.ext.addStr
+import com.iamsdt.pssd.ext.addStrK
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.main.MainVM
@@ -62,10 +62,16 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         viewModel.getWord(id).observe(this@DetailsActivity, Observer { table ->
             table?.let {
-                details_word.addStr(it.word)
-                details_des.addStr(it.des)
+                details_word.addStrK(it.word)
+                details_des.addStrK(it.des)
                 val r = "Reference: ${it.reference}"
-                details_ref.addStr(r)
+                details_ref.addStrK(r)
+
+                //save recent
+                if (!isSaved) {
+                    viewModel.setRecent(it.id)
+                    isSaved = true
+                }
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     details_des.justificationMode = Layout.JUSTIFICATION_MODE_INTER_WORD
@@ -213,6 +219,10 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private fun textIncrease() {
         size++
         details_des.textSize = size
+    }
+
+    companion object {
+        var isSaved = false
     }
 
 

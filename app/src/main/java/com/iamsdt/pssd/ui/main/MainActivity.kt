@@ -320,10 +320,10 @@ class MainActivity : BaseActivity(),
 
         //update ui
         if (word.id != wordTable.id) {
-            details_word?.addStr(wordTable.word)
-            details_des?.addStr(wordTable.des)
+            details_word?.addStrK(wordTable.word)
+            details_des?.addStrK(wordTable.des)
             val r = "Reference: ${wordTable.reference}"
-            details_ref.addStr(r)
+            details_ref.addStrK(r)
         }
 
         word = wordTable.copy()

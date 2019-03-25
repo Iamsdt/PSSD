@@ -12,7 +12,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
-import com.iamsdt.pssd.ext.addStr
+import com.iamsdt.pssd.ext.addStrK
 import kotlinx.android.synthetic.main.bookmark_list.view.*
 import kotlinx.android.synthetic.main.fav_list.view.*
 import kotlinx.android.synthetic.main.undo_layout.view.*
@@ -29,8 +29,8 @@ class FavouriteVH(val view: View)
     val undo: TextView = view.undoBtn
 
     fun bind(wordTable: WordTable){
-        wordTV.addStr(wordTable.word)
-        desTV.addStr(wordTable.des)
+        wordTV.addStrK(wordTable.word)
+        desTV.addStrK(wordTable.des)
 
         // complete: 8/17/2018 favourite icon
         if (wordTable.bookmark){

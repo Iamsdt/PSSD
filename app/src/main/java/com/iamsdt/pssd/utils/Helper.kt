@@ -26,6 +26,10 @@ fun ioThread(f: () -> Unit) {
     AsyncTask.execute(f)
 }
 
+fun myThread(f:() -> Unit){
+    AsyncTask.execute(f)
+}
+
 //return interval date
 fun getDayInterval(oldDate: Long): Int {
 

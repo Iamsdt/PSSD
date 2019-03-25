@@ -66,4 +66,7 @@ interface WordTableDao {
 
     @Query("Select * From WordTable where uploaded = 0 and addByUser = 1")
     fun upload(): List<WordTable>
+
+    @Query("Update WordTable set recent = :time where id = :id")
+    fun setRecent(id: Int, time:Long):Int
 }
