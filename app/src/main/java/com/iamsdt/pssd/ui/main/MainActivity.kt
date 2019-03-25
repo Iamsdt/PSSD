@@ -32,11 +32,11 @@ import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.ext.*
 import com.iamsdt.pssd.ui.AppAboutActivity
-import com.iamsdt.pssd.ui.DeveloperActivity
 import com.iamsdt.pssd.ui.add.AddActivity
 import com.iamsdt.pssd.ui.callback.ClickListener
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.details.DetailsActivity
+import com.iamsdt.pssd.ui.dev.DeveloperActivity
 import com.iamsdt.pssd.ui.favourite.FavouriteActivity
 import com.iamsdt.pssd.ui.flash.FlashCardActivity
 import com.iamsdt.pssd.ui.search.MySuggestionProvider

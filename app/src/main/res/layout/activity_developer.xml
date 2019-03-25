@@ -10,7 +10,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.DeveloperActivity">
+    tools:context=".ui.dev.DeveloperActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -26,6 +26,14 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/fragment_developer" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/dev_rcv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:listitem="@layout/dev_item"
+        tools:litsitem="" />
+    <!--
+    <include layout="@layout/fragment_developer" /> -->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

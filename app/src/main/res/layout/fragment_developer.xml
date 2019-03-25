@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ui.DeveloperActivity"
+    tools:context=".ui.dev.DeveloperActivity"
     tools:showIn="@layout/activity_developer">
 
     <LinearLayout
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/textView23"
+                    android:id="@+id/dev_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -53,7 +53,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
                 <TextView
-                    android:id="@+id/textView24"
+                    android:id="@+id/dev_work_type"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -66,10 +66,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView26" />
+                    app:layout_constraintTop_toBottomOf="@+id/dev_bio" />
 
                 <TextView
-                    android:id="@+id/textView25"
+                    android:id="@+id/dev_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -84,7 +84,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/fb1"
+                    android:id="@+id/dev_fb"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginTop="8dp"
@@ -94,8 +94,8 @@
                     android:contentDescription="Facebook Icon"
                     android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/linkedin1"
-                    app:layout_constraintTop_toBottomOf="@+id/textView24"
+                    app:layout_constraintEnd_toStartOf="@+id/dev_linkedin"
+                    app:layout_constraintTop_toBottomOf="@+id/dev_work_type"
                     app:srcCompat="@drawable/ic_007_facebook"
                     tools:ignore="HardcodedText,UnusedAttribute"
                     tools:targetApi="m" />
@@ -108,7 +108,7 @@
                     app:layout_constraintGuide_percent="0.5" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/linkedin1"
+                    android:id="@+id/dev_linkedin"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginEnd="16dp"
@@ -116,13 +116,13 @@
                     android:contentDescription="Linked in icon"
                     android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintEnd_toStartOf="@+id/guideline2"
-                    app:layout_constraintTop_toTopOf="@+id/fb1"
+                    app:layout_constraintTop_toTopOf="@+id/dev_fb"
                     app:srcCompat="@drawable/ic_009_linkedin_1"
                     tools:ignore="HardcodedText,UnusedAttribute"
                     tools:targetApi="m" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/github1"
+                    android:id="@+id/dev_git"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginStart="16dp"
@@ -130,21 +130,21 @@
                     android:contentDescription="Github icon"
                     android:foreground="?android:attr/selectableItemBackground"
                     app:layout_constraintStart_toStartOf="@+id/guideline2"
-                    app:layout_constraintTop_toTopOf="@+id/linkedin1"
+                    app:layout_constraintTop_toTopOf="@+id/dev_linkedin"
                     app:srcCompat="@drawable/ic_010_github"
                     tools:ignore="HardcodedText,UnusedAttribute"
                     tools:targetApi="m" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/email1"
+                    android:id="@+id/dev_email"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:layout_marginStart="16dp"
                     android:background="@android:color/transparent"
                     android:contentDescription="Email Icon"
                     android:foreground="?android:attr/selectableItemBackground"
-                    app:layout_constraintStart_toEndOf="@+id/github1"
-                    app:layout_constraintTop_toTopOf="@+id/github1"
+                    app:layout_constraintStart_toEndOf="@+id/dev_git"
+                    app:layout_constraintTop_toTopOf="@+id/dev_git"
                     app:srcCompat="@drawable/ic_012_email"
                     tools:ignore="HardcodedText,UnusedAttribute"
                     tools:targetApi="m" />
@@ -160,11 +160,11 @@
                     app:cardElevation="6dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView25"
+                    app:layout_constraintTop_toBottomOf="@+id/dev_type"
                     tools:targetApi="m">
 
                     <ImageView
-                        android:id="@+id/imageView7"
+                        android:id="@+id/dev_image"
                         android:layout_width="@dimen/dev_pic"
                         android:layout_height="@dimen/dev_pic"
                         android:layout_gravity="center"
@@ -174,7 +174,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <TextView
-                    android:id="@+id/textView26"
+                    android:id="@+id/dev_bio"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -186,7 +186,7 @@
                     android:textSize="@dimen/dev_sub_name"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView23" />
+                    app:layout_constraintTop_toBottomOf="@+id/dev_name" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>

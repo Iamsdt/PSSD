@@ -87,7 +87,7 @@
             android:label="@string/title_activity_app_about"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.DeveloperActivity"
+            android:name=".ui.dev.DeveloperActivity"
             android:label="@string/title_activity_developer"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>
