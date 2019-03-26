@@ -36,14 +36,14 @@ class DevAdapter(val context: Context, var list: List<DevModel>) : RecyclerView.
     inner class DevVH(val view: View) : RecyclerView.ViewHolder(view) {
 
         val name: TextView = view.dev_name
-        val bio: TextView = view.dev_name
+        private val bio: TextView = view.dev_name
         val work: TextView = view.dev_name
         val type: TextView = view.dev_name
-        val devImage: ImageView = view.dev_image
-        val fb: AppCompatImageButton = view.dev_fb
-        val linkedin: AppCompatImageButton = view.dev_linkedin
-        val git: AppCompatImageButton = view.dev_git
-        val email: AppCompatImageButton = view.dev_email
+        private val devImage: ImageView = view.dev_image
+        private val fb: AppCompatImageButton = view.dev_fb
+        private val linkedin: AppCompatImageButton = view.dev_linkedin
+        private val git: AppCompatImageButton = view.dev_git
+        private val email: AppCompatImageButton = view.dev_email
 
 
         fun bind(model: DevModel, context: Context) {
@@ -52,8 +52,8 @@ class DevAdapter(val context: Context, var list: List<DevModel>) : RecyclerView.
             work.addStrK(model.workType)
             type.addStrK(model.type)
 
-            val drawable = context.resources.getDrawable(model.image.toInt())
-            devImage.setImageDrawable(drawable)
+            @Suppress("DEPRECATION")
+            devImage.setImageDrawable(model.image)
 
             fb.set(model.fb, context)
             git.set(model.fb, context)

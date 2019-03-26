@@ -6,6 +6,7 @@
 
 package com.iamsdt.pssd.ui.dev
 
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -29,7 +30,7 @@ class DeveloperActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         dev_rcv.layoutManager = LinearLayoutManager(this)
-        val adapter = DevAdapter(this,fillData())
+        val adapter = DevAdapter(this, fillData())
         dev_rcv.adapter = adapter
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -42,8 +43,18 @@ class DeveloperActivity : AppCompatActivity() {
                     "https://www.facebook.com/iamsdt/",
                     "https://www.linkedin.com/in/iamsdt",
                     "https://github.com/Iamsdt",
-                    "Shudiptotrafder@gmail.com")
+                    "Shudiptotrafder@gmail.com",
+                    drawable(1))
     )
+
+    fun drawable(pos: Int): Drawable {
+        val id = when (pos) {
+            1 -> R.drawable.sdt_round
+            else -> R.drawable.sdt_round
+        }
+        @Suppress("DEPRECATION")
+        return resources.getDrawable(id)
+    }
 
     private fun dummyToast() {
         showToast(ToastType.INFO, "No link found")
