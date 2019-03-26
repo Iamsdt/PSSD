@@ -6,20 +6,18 @@
 
 package com.iamsdt.pssd.ui.main
 
-import androidx.lifecycle.MediatorLiveData
-import androidx.paging.LivePagedListBuilder
-import androidx.paging.PagedList
+import androidx.lifecycle.MutableLiveData
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.ScopeViewModel
 import com.iamsdt.pssd.ext.SingleLiveEvent
 import com.iamsdt.pssd.utils.Bookmark
-import com.iamsdt.pssd.utils.PAGE_CONFIG
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.util.*
+
 
 class MainVM(val wordTableDao: WordTableDao) : ScopeViewModel() {
 
@@ -27,13 +25,10 @@ class MainVM(val wordTableDao: WordTableDao) : ScopeViewModel() {
 
     val singleWord = SingleLiveEvent<WordTable>()
 
-    lateinit var liveData: MediatorLiveData<PagedList<WordTable>>
+    val searchWord: MutableLiveData<List<WordTable>> = MutableLiveData()
 
     init {
-        if (!::liveData.isInitialized) {
-            liveData = MediatorLiveData()
-            getData()
-        }
+        getData()
     }
 
     fun getSingleWord(id: Int) {
@@ -46,32 +41,17 @@ class MainVM(val wordTableDao: WordTableDao) : ScopeViewModel() {
     }
 
     private fun getData() {
-
-        val source = wordTableDao.getAllData()
-
-        val date = LivePagedListBuilder(source, PAGE_CONFIG)
-                .build()
-
-        liveData.addSource(date) {
-            liveData.value = it
+        uiScope.launch(Dispatchers.IO) {
+            val source = wordTableDao.getSearchList("")
+            searchWord.postValue(source)
         }
     }
 
-    fun requestSearch(query: String) {
-
-        val source =
-                wordTableDao.getSearchData(query)
-
-
-        val data = LivePagedListBuilder(source, PAGE_CONFIG).build()
-
-        liveData.addSource(data) {
-            if (liveData.value != it) {
-                //prevent multiple update
-                liveData.value = it
-            }
+    fun requestSearch(query: String = "") {
+        uiScope.launch(Dispatchers.IO) {
+            val source = wordTableDao.getSearchList(query)
+            searchWord.postValue(source)
         }
-
     }
 
 
@@ -90,7 +70,6 @@ class MainVM(val wordTableDao: WordTableDao) : ScopeViewModel() {
                 Timber.i("Word:$word")
                 //complete 10/23/2018 fix latter
                 searchEvent.postValue(word)
-
             }
         }
     }
@@ -121,10 +100,10 @@ class MainVM(val wordTableDao: WordTableDao) : ScopeViewModel() {
         }
     }
 
-    fun setRecent(id: Int){
+    fun setRecent(id: Int) {
         val date = Date().time
         uiScope.launch(Dispatchers.IO) {
-            wordTableDao.setRecent(id,date)
+            wordTableDao.setRecent(id, date)
         }
     }
 

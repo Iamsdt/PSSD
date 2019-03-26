@@ -111,8 +111,9 @@ class MainActivity : BaseActivity(),
 //        // Complete: 8/22/18 add item decoration
 //        mainRcv.addItemDecoration(deco)
 
-        viewModel.liveData.observe(this, Observer {
-            adapter.submitList(it)
+        viewModel.searchWord.observe(this, Observer { list ->
+            Timber.i("List Size: ${list.size}")
+            adapter.submitList(list)
         })
 
         //for two pen ui

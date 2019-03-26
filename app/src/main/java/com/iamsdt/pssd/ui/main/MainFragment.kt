@@ -11,7 +11,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.iamsdt.pssd.R
 import kotlinx.android.synthetic.main.fragment_main.view.*
@@ -31,9 +30,9 @@ class MainFragment : Fragment() {
         //adapter = MainAdapter(context!!)
         view.mainRcv.adapter = adapter
 
-        viewModel.liveData.observe(activity!!, Observer {
-            adapter.submitList(it)
-        })
+//        viewModel.liveData.observe(activity!!, Observer {
+//            adapter.submitList(it)
+//        })
 
 
         return view

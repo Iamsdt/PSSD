@@ -96,8 +96,7 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
                                     wordTableDao.getWord(model.word)
                                 }
 
-                                val table = word.await()?.copy(des = model.des, reference = model.ref)
-                                        ?: model.toWordTable()
+                                val table = word.await()?.copy(des = model.des, reference = model.ref) ?: model.toWordTable()
 
                                 insert = wordTableDao.add(table)
                             }
