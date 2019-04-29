@@ -63,12 +63,12 @@ dependencies {
     //settings
     implementation 'androidx.preference:preference:1.0.0'
 
-    implementation 'com.google.android.material:material:1.1.0-alpha03'
+    implementation 'com.google.android.material:material:1.1.0-alpha05'
 
     //test
     androidTestImplementation "androidx.test.ext:junit:1.1.0"
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    androidTestImplementation 'androidx.test:runner:1.2.0-alpha04'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha04'
 
     //lifecycle
     def lifecycle_version = "2.0.0"
@@ -78,19 +78,19 @@ dependencies {
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 
     //room
-    def room_version = "2.1.0-alpha03"
+    def room_version = "2.1.0-alpha07"
     implementation "androidx.room:room-runtime:$room_version"
-    implementation "androidx.room:room-coroutines:$room_version"
+    //implementation "androidx.room:room-coroutines:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.2.1"
 
     //work manager
     //def work_version = "1.0.0-beta03"
     //implementation("android.arch.work:work-runtime:$work_version")
 
     //work
-    implementation 'android.arch.work:work-runtime-ktx:1.0.0-beta05'
+    implementation 'android.arch.work:work-runtime-ktx:1.0.1'
 
     //paging
     implementation 'androidx.paging:paging-runtime-ktx:2.1.0'
@@ -99,8 +99,8 @@ dependencies {
     //androidTestImplementation "android.arch.work:work-testing:$work_version"
 
     //ktx
-    def ktx_version = "1.0.1"
-    implementation "androidx.core:core-ktx:$ktx_version"
+    //def ktx_version = "1.0.1"
+    implementation "androidx.core:core-ktx:1.1.0-alpha05"
 
     //custom tab
     implementation 'androidx.browser:browser:1.0.0'
@@ -121,7 +121,7 @@ dependencies {
     }
 
     //timber for logger
-    implementation 'com.jakewharton.timber:timber:4.6.0'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
     //gson
     implementation 'com.google.code.gson:gson:2.8.5'
@@ -131,19 +131,19 @@ dependencies {
 
     //firebase
     //Analytics
-    implementation "com.google.firebase:firebase-core:16.0.7"
+    implementation "com.google.firebase:firebase-core:16.0.8"
     //storage
-    implementation "com.google.firebase:firebase-storage:16.0.5"
+    implementation "com.google.firebase:firebase-storage:16.1.0"
 
     implementation 'com.crashlytics.sdk.android:crashlytics:2.9.9'
     //auth
-    implementation "com.google.firebase:firebase-auth:16.1.0"
+    implementation "com.google.firebase:firebase-auth:16.2.1"
     //messaging
-    implementation "com.google.firebase:firebase-messaging:17.3.4"
+    implementation "com.google.firebase:firebase-messaging:17.6.0"
     //remote config
-    implementation "com.google.firebase:firebase-config:16.3.0"
+    implementation "com.google.firebase:firebase-config:16.5.0"
 
-    implementation "com.google.firebase:firebase-perf:16.2.3"
+    implementation "com.google.firebase:firebase-perf:16.2.5"
 
     implementation 'uk.co.samuelwall:material-tap-target-prompt:2.14.0'
 
