@@ -14,7 +14,7 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.ext.runThread
+import com.iamsdt.pssd.ext.runThreadK
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.main.MainActivity
 import com.iamsdt.pssd.utils.Constants
@@ -65,16 +65,13 @@ class SplashActivity : AppCompatActivity() {
                     ExistingWorkPolicy.KEEP, request).enqueue()
         }
 
-        val next = MainActivity::class
-
-        runThread(1000L, next)
+        runThreadK<MainActivity>(1000L)
 
         //put data on analytics
         val ana = FirebaseAnalytics.getInstance(this)
         val bundle = Bundle()
         bundle.putString("app_open", "App open")
         ana.logEvent(FirebaseAnalytics.Event.APP_OPEN, bundle)
-
 
     }
 

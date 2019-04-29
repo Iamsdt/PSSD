@@ -457,13 +457,13 @@ class MainActivity : BaseActivity(),
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_favourite -> {
-                toNextActivity(FavouriteActivity::class)
+                nextActivity<FavouriteActivity>()
             }
             R.id.nav_card -> {
-                toNextActivity(FlashCardActivity::class)
+                nextActivity<FlashCardActivity>()
             }
             R.id.nav_add -> {
-                toNextActivity(AddActivity::class)
+                nextActivity<AddActivity>()
             }
             R.id.nav_settings -> {
                 //toNextActivity(SettingsActivity::class)
@@ -482,10 +482,10 @@ class MainActivity : BaseActivity(),
                 dialog.show(supportFragmentManager, "tms")
             }
             R.id.nav_about -> {
-                toNextActivity(AppAboutActivity::class)
+                nextActivity<AppAboutActivity>()
             }
             R.id.nav_developer -> {
-                toNextActivity(DeveloperActivity::class)
+                nextActivity<DeveloperActivity>()
             }
         }
 
