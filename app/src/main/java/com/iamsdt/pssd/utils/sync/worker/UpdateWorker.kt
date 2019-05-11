@@ -33,7 +33,7 @@ class UpdateWorker(context: Context, workerParameters: WorkerParameters) :
         bgScope.launch {
 
             val stream = withContext(Dispatchers.Main) {
-                applicationContext.assets.open("data.json")
+                applicationContext.assets.open("soil_database.json")
             }
 
             val reader = InputStreamReader(stream)

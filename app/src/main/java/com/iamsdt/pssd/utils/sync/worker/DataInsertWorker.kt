@@ -38,7 +38,7 @@ class DataInsertWorker(context: Context, workerParameters: WorkerParameters) :
         bgScope.launch {
 
             val stream = async(Dispatchers.Main) {
-                applicationContext.assets.open("data.json")
+                applicationContext.assets.open("soil_database.json")
             }
 
             val reader = InputStreamReader(stream.await())

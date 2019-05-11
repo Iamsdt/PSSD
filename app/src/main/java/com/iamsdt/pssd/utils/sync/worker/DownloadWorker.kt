@@ -18,7 +18,6 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.gson.Gson
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTableDao
-import com.iamsdt.pssd.ext.toWordTable
 import com.iamsdt.pssd.ui.main.MainActivity
 import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.Constants.REMOTE.DOWNLOAD_FILE_NAME
@@ -96,7 +95,7 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
                                     wordTableDao.getWord(model.word)
                                 }
 
-                                val table = word.await()?.copy(des = model.des, reference = model.ref) ?: model.toWordTable()
+                                val table = word.await().copy(des = model.des, reference = model.ref)
 
                                 insert = wordTableDao.add(table)
                             }

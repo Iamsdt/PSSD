@@ -62,7 +62,7 @@ fun TextView.addStrK(string: String) {
         val weakReference = WeakReference(this)
 
         GlobalScope.launch(Dispatchers.IO) {
-            val text = PrecomputedText.create("Hello", params)
+            val text = PrecomputedText.create(string, params)
             val textView = weakReference.get()
             textView?.post {
                 val textViewRef = weakReference.get()

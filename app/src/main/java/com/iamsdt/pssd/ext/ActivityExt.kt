@@ -16,8 +16,6 @@ import com.iamsdt.pssd.R
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.lang.Thread.sleep
-import kotlin.concurrent.thread
 
 inline fun <reified T : AppCompatActivity> AppCompatActivity.nextActivity(
         extraKey: String = "", extra: Any = "", finish: Boolean = false
@@ -40,14 +38,6 @@ inline fun <reified T : AppCompatActivity> AppCompatActivity.nextActivity(
     startActivity(intent)
 
     if (finish) finish()
-}
-
-inline fun <reified T : AppCompatActivity> AppCompatActivity.runThread(timer: Long = 1000) {
-    thread(priority = 10) {
-        sleep(timer)
-        nextActivity<T>()
-        finish()
-    }
 }
 
 inline fun <reified T : AppCompatActivity> AppCompatActivity.runThreadK(timer: Long = 1000) {

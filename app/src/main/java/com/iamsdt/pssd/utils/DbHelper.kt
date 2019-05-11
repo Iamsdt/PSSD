@@ -6,7 +6,14 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 
 class DbHelper {
     companion object {
-        val migration_1_2: Migration = object : Migration(2, 3) {
+
+        val migration_1_2: Migration = object : Migration(1, 2) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                // Since we didn't alter the table, there's nothing else to do here.
+            }
+        }
+
+        val migration_2_3: Migration = object : Migration(2, 3) {
             override fun migrate(database: SupportSQLiteDatabase) {
                 // Since we didn't alter the table, there's nothing else to do here.
             }
