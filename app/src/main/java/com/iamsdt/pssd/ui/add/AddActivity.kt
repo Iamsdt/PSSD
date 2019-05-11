@@ -23,21 +23,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.ext.ToastType
 import com.iamsdt.pssd.ext.gone
+import com.iamsdt.pssd.ext.nextActivity
 import com.iamsdt.pssd.ext.show
-import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ui.color.ThemeUtils
-import com.iamsdt.pssd.utils.Constants.ADD.DES
-import com.iamsdt.pssd.utils.Constants.ADD.DIALOG
-import com.iamsdt.pssd.utils.Constants.ADD.WORD
 import com.iamsdt.pssd.utils.SwipeUtil
 import kotlinx.android.synthetic.main.activity_add.*
 import kotlinx.android.synthetic.main.content_add.*
 import kotlinx.android.synthetic.main.fragment_add.view.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class AddActivity : AppCompatActivity() {
 
@@ -79,25 +74,8 @@ class AddActivity : AppCompatActivity() {
             }
         })
 
-
-        model.dialogStatus.observe(this, Observer { model ->
-            model?.let {
-                if (it.status && it.title == DIALOG) {
-                    Timber.i("Called")
-                    if (::dialog.isInitialized && dialog.isShowing) {
-                        dialog.dismiss()
-                        showToast(ToastType.SUCCESSFUL, it.message)
-                    }
-                } else if (!it.status && it.title == WORD) {
-                    if (::wordTV.isInitialized) wordTV.error = it.message
-                } else if (!it.status && it.title == DES) {
-                    if (::desTV.isInitialized) desTV.error = it.message
-                }
-            }
-        })
-
         fab.setOnClickListener {
-            showDialog()
+            nextActivity<InsertActivity>()
         }
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -160,7 +138,7 @@ class AddActivity : AppCompatActivity() {
             val des = desTV.editText?.text ?: ""
             val ref = refTV.editText?.text ?: "Added by user"
 
-            model.addData(word, des, ref)
+            //model.addData(word, des, ref)
         }
 
         dialog = builder.create()

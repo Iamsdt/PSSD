@@ -14,9 +14,7 @@ import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.ScopeViewModel
 import com.iamsdt.pssd.ext.SingleLiveEvent
 import com.iamsdt.pssd.ext.toCapFirst
-import com.iamsdt.pssd.utils.Constants.ADD.DES
 import com.iamsdt.pssd.utils.Constants.ADD.DIALOG
-import com.iamsdt.pssd.utils.Constants.ADD.WORD
 import com.iamsdt.pssd.utils.PAGE_CONFIG
 import com.iamsdt.pssd.utils.model.StatusModel
 import kotlinx.coroutines.Dispatchers
@@ -25,29 +23,9 @@ import kotlinx.coroutines.withContext
 
 class AddVM(private val wordTableDao: WordTableDao) : ScopeViewModel() {
 
-    val dialogStatus = SingleLiveEvent<StatusModel>()
+    val insertStatus = SingleLiveEvent<StatusModel>()
 
-    fun addData(word: CharSequence, des: CharSequence, ref: CharSequence) {
-
-        if (word.isEmpty() || word.length <= 2) {
-            dialogStatus.value = (StatusModel(false,
-                    WORD, "Please input correct word"))
-
-            return
-        }
-
-        if (des.isEmpty() || des.length <= 2) {
-            dialogStatus.value = StatusModel(false,
-                    DES, "Please input correct description")
-
-            return
-        }
-
-        var r: String = ref.toString()
-
-        if (ref.isEmpty() || ref.length <= 3) {
-            r = "Added by user"
-        }
+    fun addData(word: String, des: String, ref: String) {
 
         uiScope.launch {
 
@@ -55,14 +33,14 @@ class AddVM(private val wordTableDao: WordTableDao) : ScopeViewModel() {
                 val data:WordTable ?=
                         wordTableDao.getWord(word.toCapFirst())
 
-                val table = data?.copy(des = des.toCapFirst(), reference = r, addByUser = true)
+                val table = data?.copy(des = des.toCapFirst(), reference = ref, addByUser = true)
                         ?: WordTable(
-                                word = word.toCapFirst(), reference = r.toCapFirst(), des = des.toCapFirst(),
+                                word = word.toCapFirst(), reference = ref.toCapFirst(), des = des.toCapFirst(),
                                 addByUser = true)
 
                 val status = wordTableDao.add(table)
                 if (status >= 0) {
-                    dialogStatus.postValue(StatusModel(true, DIALOG,
+                    insertStatus.postValue(StatusModel(true, DIALOG,
                             "Word added successfully"))
                 }
             }
