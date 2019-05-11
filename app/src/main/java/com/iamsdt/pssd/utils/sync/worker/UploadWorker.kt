@@ -1,16 +1,14 @@
 package com.iamsdt.pssd.utils.sync.worker
 
 import android.content.Context
-import android.net.Uri
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
-import com.iamsdt.pssd.utils.Constants
 import com.iamsdt.pssd.utils.SpUtils
 import com.iamsdt.pssd.utils.model.Model
 import com.iamsdt.pssd.utils.model.RemoteModel
@@ -18,7 +16,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
-import org.joda.time.DateTime
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 import java.io.File
@@ -68,34 +65,34 @@ class UploadWorker(context: Context, workerParameters: WorkerParameters) :
 
         bgScope.launch {
             val data = wordTableDao.upload()
-
-            //file name
-            val fileName = user?.uid + "-${DateTime().toDate().time}"
-            val db = FirebaseStorage.getInstance()
-            val ref = db.reference.child(Constants.REMOTE.USER)
-                    .child(fileName)
-
-            ref.putFile(Uri.fromFile(getFile(data))).addOnCompleteListener {
-                if (it.isSuccessful) {
-
-                    var up = 0
-
-                    launch {
-                        data.forEach { word ->
-                            up = wordTableDao.update((word.copy(uploaded = true)))
-                        }
-                    }
-
-                    if (up > 0) {
-                        spUtils.uploadDate = Date().time
-                    } else {
-                        result = Result.retry()
-                    }
-
-                } else {
-                    result = Result.retry()
+            val uid = user?.uid ?: ""
+            val db = FirebaseFirestore.getInstance()
+            var up = 0
+            if (data.isNotEmpty()) {
+                data.forEach {
+                    val path = it.word + Date().time
+                    db.collection("User").document(path)
+                            .set(it)
+                            .addOnCompleteListener { t ->
+                                if (t.isSuccessful) {
+                                    launch {
+                                        data.forEach { word ->
+                                            up = wordTableDao.update((word.copy(uploaded = true)))
+                                        }
+                                    }
+                                } else {
+                                    result = Result.retry()
+                                }
+                            }
                 }
             }
+            if (up > 0) {
+                spUtils.uploadDate = Date().time
+            } else {
+                result = Result.retry()
+            }
+
+
         }
         return result
     }
