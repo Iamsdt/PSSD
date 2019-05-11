@@ -111,9 +111,13 @@ class MainActivity : BaseActivity(),
 //        // Complete: 8/22/18 add item decoration
 //        mainRcv.addItemDecoration(deco)
 
-        viewModel.searchWord.observe(this, Observer { list ->
+        //tell the viewModel with empty search
+        viewModel.submitQuery()
+        viewModel.myLiveData.observe(this, Observer { list ->
             Timber.i("List Size: ${list.size}")
-            adapter.submitList(list)
+            if (list?.isNotEmpty() == true) {
+                adapter.submitList(list)
+            }
         })
 
         //for two pen ui
@@ -284,7 +288,7 @@ class MainActivity : BaseActivity(),
                 Timber.i("call")
                 newText?.let {
                     Timber.i("new text is $newText")
-                    viewModel.requestSearch(it)
+                    viewModel.submitQuery(it)
                     mQuery = it
                 }
 
@@ -362,6 +366,7 @@ class MainActivity : BaseActivity(),
     override fun onNewIntent(intent: Intent) {
         handleSearch(intent)
         Timber.i("voice search")
+        super.onNewIntent(intent)
     }
 
     private fun handleSearch(intent: Intent) {

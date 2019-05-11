@@ -15,9 +15,6 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import java.lang.ref.WeakReference
 
 fun View.gone() {
@@ -57,22 +54,7 @@ fun TextView.addStr(string: String) {
 }
 
 fun TextView.addStrK(string: String) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-        val params = this.textMetricsParams
-        val weakReference = WeakReference(this)
-
-        GlobalScope.launch(Dispatchers.IO) {
-            val text = PrecomputedText.create(string, params)
-            val textView = weakReference.get()
-            textView?.post {
-                val textViewRef = weakReference.get()
-                textViewRef?.text = text
-            }
-        }
-
-    } else {
-        this.text = string
-    }
+    text = string
 }
 
 fun View.showSnackbar(snackbarText: String, timeLength: Int = Snackbar.LENGTH_SHORT) {

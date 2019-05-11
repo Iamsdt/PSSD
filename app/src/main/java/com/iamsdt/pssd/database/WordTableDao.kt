@@ -26,19 +26,19 @@ interface WordTableDao {
     fun getAllData(): DataSource.Factory<Int, WordTable>
 
     @Query("Select * From WordTable")
-    fun getAllList(): List<WordTable>
+    suspend fun getAllList(): List<WordTable>
 
     @Query("Update WordTable set bookmark = 1 where id = :id ")
-    fun setBookmark(id: Int): Int
+    suspend fun setBookmark(id: Int): Int
 
     @Query("Update WordTable set bookmark = 0 where id = :id ")
-    fun deleteBookmark(id: Int): Int
+    suspend fun deleteBookmark(id: Int): Int
 
     @Query("Select * From WordTable where bookmark = 1")
     fun getBookmarkData(): DataSource.Factory<Int, WordTable>
 
     @Query("Select * From WordTable where bookmark = 1")
-    fun getBookmarkList(): List<WordTable>
+    suspend fun getBookmarkList(): List<WordTable>
 
     @Query("Select * From WordTable where id =:id")
     fun getSingleWord(id: Int): LiveData<WordTable>
@@ -47,10 +47,10 @@ interface WordTableDao {
     fun getWord(word: String): WordTable
 
     @Query("Select * From WordTable where id =:id")
-    fun getWordByID(id: Int): WordTable
+    suspend fun getWordByID(id: Int): WordTable
 
     @Query("Select * From WordTable where addByUser = 1")
-    fun getAddedWordList(): List<WordTable>
+    suspend fun getAddedWordList(): List<WordTable>
 
     @Query("Select * From WordTable where addByUser = 1")
     fun getAddedWordByUser(): DataSource.Factory<Int, WordTable>
@@ -59,17 +59,17 @@ interface WordTableDao {
     fun getSearchData(query: String): DataSource.Factory<Int, WordTable>
 
     @Query("Select * From WordTable where word like :query||'%' ")
-    fun getSearchList(query: String): List<WordTable>
+    suspend fun getSearchList(query: String): List<WordTable>
 
     @Query("Select * From WordTable where word = :word")
-    fun getSearchResult(word: String): WordTable
+    suspend fun getSearchResult(word: String): WordTable
 
     @Query("Select * From WordTable order by Random() limit 1")
     fun getRandomData(): LiveData<WordTable>
 
     @Query("Select * From WordTable where uploaded = 0 and addByUser = 1")
-    fun upload(): List<WordTable>
+    suspend fun upload(): List<WordTable>
 
     @Query("Update WordTable set recent = :time where id = :id")
-    fun setRecent(id: Int, time:Long):Int
+    suspend fun setRecent(id: Int, time:Long):Int
 }

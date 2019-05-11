@@ -16,10 +16,10 @@
     <color name="menu_color">#FFFFFF</color>
     <color name="add_text_hint">#FFFFFF</color>
 
-    <color name="main_toolbar">#6F6D6D</color>
+    <color name="main_toolbar">#0C0C0C</color>
 
-    <color name="navigation_drawer_center">#303131</color>
-    <color name="navigation_drawer_end">#303131</color>
-    <color name="navigation_drawer_start">#303131</color>
+    <color name="navigation_drawer_center">#0A0A0A</color>
+    <color name="navigation_drawer_end">#090808</color>
+    <color name="navigation_drawer_start">#0E0E0E</color>
 
 </resources>

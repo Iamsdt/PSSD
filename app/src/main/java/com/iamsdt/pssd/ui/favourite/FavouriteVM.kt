@@ -18,9 +18,7 @@ class FavouriteVM(
         val wordTableDao: WordTableDao) : ViewModel() {
 
     fun getData(): LiveData<PagedList<WordTable>> {
-
         val source = wordTableDao.getBookmarkData()
-
         return LivePagedListBuilder(source, PAGE_CONFIG).build()
     }
 

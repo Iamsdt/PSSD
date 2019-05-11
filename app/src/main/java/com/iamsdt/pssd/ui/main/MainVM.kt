@@ -6,18 +6,22 @@
 
 package com.iamsdt.pssd.ui.main
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.ScopeViewModel
 import com.iamsdt.pssd.ext.SingleLiveEvent
 import com.iamsdt.pssd.utils.Bookmark
+import com.iamsdt.pssd.utils.PAGE_CONFIG
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.util.*
-
 
 class MainVM(val wordTableDao: WordTableDao) : ScopeViewModel() {
 
@@ -25,35 +29,29 @@ class MainVM(val wordTableDao: WordTableDao) : ScopeViewModel() {
 
     val singleWord = SingleLiveEvent<WordTable>()
 
-    val searchWord: MutableLiveData<List<WordTable>> = MutableLiveData()
+    private val queryLiveData = MutableLiveData<String>()
 
-    init {
-        getData()
+    val myLiveData: LiveData<PagedList<WordTable>> =
+            Transformations.switchMap(queryLiveData, ::temp)
+
+    private fun temp(string: String = ""): LiveData<PagedList<WordTable>> {
+        val source = wordTableDao.getSearchData(string)
+        return LivePagedListBuilder(source, PAGE_CONFIG)
+                .build()
+    }
+
+    fun submitQuery(query: String = "") {
+        apply {
+            queryLiveData.value = query
+        }
     }
 
     fun getSingleWord(id: Int) {
-        uiScope.launch(Dispatchers.Main) {
-            val word = withContext(Dispatchers.IO) {
-                wordTableDao.getWordByID(id)
-            }
+        uiScope.launch(Dispatchers.IO) {
+            val word = wordTableDao.getWordByID(id)
             singleWord.postValue(word)
         }
     }
-
-    private fun getData() {
-        uiScope.launch(Dispatchers.IO) {
-            val source = wordTableDao.getSearchList("")
-            searchWord.postValue(source)
-        }
-    }
-
-    fun requestSearch(query: String = "") {
-        uiScope.launch(Dispatchers.IO) {
-            val source = wordTableDao.getSearchList(query)
-            searchWord.postValue(source)
-        }
-    }
-
 
     fun submit(query: String?) {
 

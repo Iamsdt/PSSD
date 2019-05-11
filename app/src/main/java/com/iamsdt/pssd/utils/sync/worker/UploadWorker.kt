@@ -37,6 +37,8 @@ class UploadWorker(context: Context, workerParameters: WorkerParameters) :
 
     private val bgScope = CoroutineScope(Dispatchers.IO)
 
+    //todo change to firebase firestone
+
     override fun doWork(): Result {
 
         var result = Result.success()
@@ -62,17 +64,16 @@ class UploadWorker(context: Context, workerParameters: WorkerParameters) :
 
     private fun writeDB(user: FirebaseUser?): Result {
 
-        val data = wordTableDao.upload()
-
         var result = Result.success()
 
-        //file name
-        val fileName = user?.uid + "-${DateTime().toDate().time}"
-        val db = FirebaseStorage.getInstance()
-        val ref = db.reference.child(Constants.REMOTE.USER)
-                .child(fileName)
-
         bgScope.launch {
+            val data = wordTableDao.upload()
+
+            //file name
+            val fileName = user?.uid + "-${DateTime().toDate().time}"
+            val db = FirebaseStorage.getInstance()
+            val ref = db.reference.child(Constants.REMOTE.USER)
+                    .child(fileName)
 
             ref.putFile(Uri.fromFile(getFile(data))).addOnCompleteListener {
                 if (it.isSuccessful) {

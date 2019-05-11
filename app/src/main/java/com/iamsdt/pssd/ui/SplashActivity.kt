@@ -15,6 +15,7 @@ import androidx.work.WorkManager
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.runThreadK
+import com.iamsdt.pssd.ext.showSnackbar
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.main.MainActivity
 import com.iamsdt.pssd.utils.Constants
@@ -53,6 +54,10 @@ class SplashActivity : AppCompatActivity() {
 
             //save app start date
             saveAppStartDate()
+            main_splash.showSnackbar("Preparing database...")
+            runThreadK<MainActivity>(2000L)
+        } else {
+            runThreadK<MainActivity>(1000L)
         }
 
         //complete change to 1s
@@ -64,8 +69,6 @@ class SplashActivity : AppCompatActivity() {
             WorkManager.getInstance().beginUniqueWork("DataInsert",
                     ExistingWorkPolicy.KEEP, request).enqueue()
         }
-
-        runThreadK<MainActivity>(1000L)
 
         //put data on analytics
         val ana = FirebaseAnalytics.getInstance(this)

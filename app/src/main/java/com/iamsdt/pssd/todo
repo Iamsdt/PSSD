@@ -42,9 +42,9 @@ fix to use corotine
 fix add word dialog
 fix mic input issue
 
-todo add recent option in main activity or nav drawer
-todo fix data insert faster
-todo change the app
-todo change the color of scroll view
+todo latter add recent option in main activity or nav drawer
+fix data insert faster
+change the app
+fix change the color of scroll view
 todo add admob in main and details screen, list and card just banner ads
 todo add remove duplicate
