@@ -2,6 +2,8 @@ package com.iamsdt.pssd.utils
 
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.crashlytics.android.Crashlytics
+import timber.log.Timber
 
 
 class DbHelper {
@@ -22,8 +24,13 @@ class DbHelper {
         //3 to 4
         val migration_3_4: Migration = object : Migration(3, 4) {
             override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE `WordTable` ADD COLUMN `reference` TEXT DEFAULT '' NOT NULL")
-                database.execSQL("ALTER TABLE `WordTable` ADD COLUMN `recent` INTEGER DEFAULT 0 NOT NULL")
+                try {
+                    database.execSQL("ALTER TABLE `WordTable` ADD COLUMN `reference` TEXT DEFAULT '' NOT NULL")
+                    database.execSQL("ALTER TABLE `WordTable` ADD COLUMN `recent` INTEGER DEFAULT 0 NOT NULL")
+                } catch (e: Exception) {
+                    Timber.e(e, "Error in database alter")
+                    Crashlytics.logException(e)
+                }
             }
         }
     }
