@@ -9,7 +9,9 @@ package com.iamsdt.pssd
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.content.Context
 import android.os.Build
+import androidx.multidex.MultiDex
 import com.crashlytics.android.Crashlytics
 import com.iamsdt.pssd.di.appModule
 import com.iamsdt.pssd.di.dbModule
@@ -36,6 +38,12 @@ class MyApp : Application() {
 
         createNotificationChannel()
     }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
+    }
+
 
     //create notification channel
     private fun createNotificationChannel() {

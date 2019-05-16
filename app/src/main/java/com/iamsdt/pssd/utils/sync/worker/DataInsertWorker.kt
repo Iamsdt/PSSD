@@ -7,21 +7,22 @@
 package com.iamsdt.pssd.utils.sync.worker
 
 import android.content.Context
-import androidx.work.Worker
-import androidx.work.WorkerParameters
 import com.google.gson.Gson
 import com.iamsdt.pssd.database.WordTableDao
+import com.iamsdt.pssd.ext.SingleLiveEvent
 import com.iamsdt.pssd.ext.toWordTable
 import com.iamsdt.pssd.utils.SpUtils
 import com.iamsdt.pssd.utils.model.JsonModel
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
 import timber.log.Timber
 import java.io.InputStreamReader
 
-class DataInsertWorker(context: Context, workerParameters: WorkerParameters) :
-        Worker(context, workerParameters), KoinComponent {
+class DataInsertWorker(val context: Context) : KoinComponent {
 
     private val gson: Gson by inject()
 
@@ -31,17 +32,17 @@ class DataInsertWorker(context: Context, workerParameters: WorkerParameters) :
 
     private val bgScope = CoroutineScope(Dispatchers.IO)
 
-    override fun doWork(): Result {
+    val status = SingleLiveEvent<Boolean>()
 
-        var result = Result.success()
+    fun doWork() {
 
-        bgScope.launch {
+        bgScope.launch(Dispatchers.IO) {
 
-            val stream = async(Dispatchers.Main) {
-                applicationContext.assets.open("soil_database.json")
+            val stream = withContext(Dispatchers.Main) {
+                context.assets.open("soil_database.json")
             }
 
-            val reader = InputStreamReader(stream.await())
+            val reader = InputStreamReader(stream)
 
             val data =
                     gson.fromJson(
@@ -54,7 +55,9 @@ class DataInsertWorker(context: Context, workerParameters: WorkerParameters) :
                 model.collection.filter {
                     it.word.isNotEmpty()
                 }.forEach {
-                    count = wordTableDao.add(it.toWordTable())
+                    count = withContext(Dispatchers.IO) {
+                        wordTableDao.add(it.toWordTable())
+                    }
                 }
 
                 //save version
@@ -64,21 +67,15 @@ class DataInsertWorker(context: Context, workerParameters: WorkerParameters) :
             if (count > 0) {
                 spUtils.isDatabaseInserted = true
 
+                status.postValue(true)
+
                 if (spUtils.isUpdateRequestForVersion4) {
-                    spUtils.isUpdateRequestForVersion4 = true
+                    spUtils.isUpdateRequestForVersion4 = false
                 }
 
-            } else result = Result.failure()
+            }
 
             Timber.i("Total added: $count")
-
         }
-        return result
     }
-
-    override fun onStopped() {
-        super.onStopped()
-        bgScope.coroutineContext.cancelChildren()
-    }
-
 }

@@ -9,7 +9,6 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
-import com.iamsdt.pssd.BuildConfig
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.utils.Constants.REMOTE.DOWNLOAD_TAG
 import com.iamsdt.pssd.utils.Constants.REMOTE.FB_REMOTE_CONFIG_STORAGE_KEY
@@ -24,6 +23,7 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 
+@Suppress("DEPRECATION")
 class SyncTask(private val wordTableDao: WordTableDao,
                private val spUtils: SpUtils,
                private val settingsSpUtils: SettingsUtils) {
@@ -110,7 +110,6 @@ class SyncTask(private val wordTableDao: WordTableDao,
         val remoteConfig = FirebaseRemoteConfig.getInstance()
 
         val remoteSetting = FirebaseRemoteConfigSettings.Builder()
-                .setDeveloperModeEnabled(BuildConfig.DEBUG)
                 .build()
 
         remoteConfig.setConfigSettings(remoteSetting)

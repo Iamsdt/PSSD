@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.runThreadK
@@ -47,15 +48,16 @@ class SplashActivity : AppCompatActivity() {
 
         if (!spUtils.isDatabaseInserted) {
             //save database
-            val request = OneTimeWorkRequest.Builder(
-                    DataInsertWorker::class.java).build()
-            WorkManager.getInstance().beginUniqueWork("DataInsert",
-                    ExistingWorkPolicy.KEEP, request).enqueue()
+            val data = DataInsertWorker(this)
+            data.doWork()
+            data.status.observe(this, androidx.lifecycle.Observer {
+                if (it) runThreadK<MainActivity>(500L)
+            })
 
             //save app start date
             saveAppStartDate()
-            main_splash.showSnackbar("Preparing database...")
-            runThreadK<MainActivity>(2000L)
+            main_splash.showSnackbar("Preparing database...",Snackbar.LENGTH_INDEFINITE)
+
         } else {
             runThreadK<MainActivity>(1000L)
         }

@@ -41,9 +41,7 @@ class MainVM(val wordTableDao: WordTableDao) : ScopeViewModel() {
     }
 
     fun submitQuery(query: String = "") {
-        apply {
-            queryLiveData.value = query
-        }
+        queryLiveData.value = query
     }
 
     fun getSingleWord(id: Int) {
@@ -63,7 +61,6 @@ class MainVM(val wordTableDao: WordTableDao) : ScopeViewModel() {
             //make first latter capital
             uiScope.launch {
                 val w = it.replaceFirst(it[0], it[0].toUpperCase(), false)
-
                 val word: WordTable? = withContext(Dispatchers.IO) { wordTableDao.getSearchResult(w) }
                 Timber.i("Word:$word")
                 //complete 10/23/2018 fix latter

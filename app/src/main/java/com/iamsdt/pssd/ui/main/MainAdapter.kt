@@ -8,14 +8,15 @@ package com.iamsdt.pssd.ui.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
+import com.iamsdt.pssd.ext.gone
 import com.iamsdt.pssd.ui.callback.ClickListener
 
 class MainAdapter(
-        private val clickListener: ClickListener) : ListAdapter<WordTable, MyViewHolder>(DIFF_CALLBACK) {
+        private val clickListener: ClickListener) : PagedListAdapter<WordTable, MyViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -28,8 +29,10 @@ class MainAdapter(
 
         val model: WordTable? = getItem(position)
 
-        model?.let { table ->
-            holder.bind(table)
+        if (model == null) {
+            holder.itemView.gone()
+        } else {
+            holder.bind(model)
 
             //send model id to main activity
             holder.itemView.setOnClickListener {
@@ -40,15 +43,9 @@ class MainAdapter(
 
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<WordTable>() {
-            // Concert details may have changed if reloaded from the database,
-            // but ID is fixed.
             override fun areItemsTheSame(oldConcert: WordTable,
                                          newConcert: WordTable): Boolean {
-
-//                Timber.i("compare callback item ${oldConcert.id}:${newConcert.id} " +
-//                        "${oldConcert.bookmark}:${newConcert.bookmark}")
-
-                return oldConcert.id == newConcert.id && oldConcert.bookmark == newConcert.bookmark
+                return oldConcert.word == newConcert.word && oldConcert.bookmark == newConcert.bookmark
             }
 
             override fun areContentsTheSame(oldConcert: WordTable,
