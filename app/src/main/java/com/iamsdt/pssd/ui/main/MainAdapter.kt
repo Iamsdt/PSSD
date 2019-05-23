@@ -8,15 +8,15 @@ package com.iamsdt.pssd.ui.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.ext.gone
 import com.iamsdt.pssd.ui.callback.ClickListener
 
 class MainAdapter(
-        private val clickListener: ClickListener) : PagedListAdapter<WordTable, MyViewHolder>(DIFF_CALLBACK) {
+        private val clickListener: ClickListener) : ListAdapter<WordTable, MyViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context)

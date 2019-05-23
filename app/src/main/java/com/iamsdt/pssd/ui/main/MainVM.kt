@@ -9,14 +9,11 @@ package com.iamsdt.pssd.ui.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
-import androidx.paging.LivePagedListBuilder
-import androidx.paging.PagedList
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.ScopeViewModel
 import com.iamsdt.pssd.ext.SingleLiveEvent
 import com.iamsdt.pssd.utils.Bookmark
-import com.iamsdt.pssd.utils.PAGE_CONFIG
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -31,14 +28,11 @@ class MainVM(val wordTableDao: WordTableDao) : ScopeViewModel() {
 
     private val queryLiveData = MutableLiveData<String>()
 
-    val myLiveData: LiveData<PagedList<WordTable>> =
+    val myLiveData: LiveData<List<WordTable>> =
             Transformations.switchMap(queryLiveData, ::temp)
 
-    private fun temp(string: String = ""): LiveData<PagedList<WordTable>> {
-        val source = wordTableDao.getSearchData(string)
-        return LivePagedListBuilder(source, PAGE_CONFIG)
-                .build()
-    }
+    private fun temp(string: String = ""): LiveData<List<WordTable>> =
+            wordTableDao.getSearchLiveData(string)
 
     fun submitQuery(query: String = "") {
         queryLiveData.value = query
