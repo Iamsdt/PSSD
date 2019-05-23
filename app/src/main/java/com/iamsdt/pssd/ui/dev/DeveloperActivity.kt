@@ -10,11 +10,9 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.ext.ToastType
-import com.iamsdt.pssd.ext.customTab
 import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.utils.model.DevModel
@@ -38,18 +36,46 @@ class DeveloperActivity : AppCompatActivity() {
 
     private fun fillData() = listOf(
             DevModel("Shudipto", "Learner, Programmer, Dreamer",
-                    "Working as Android App Developer",
+                    "Work as Android App Developer",
                     "Developer",
                     "https://www.facebook.com/iamsdt/",
                     "https://www.linkedin.com/in/iamsdt",
                     "https://github.com/Iamsdt",
                     "Shudiptotrafder@gmail.com",
-                    drawable(1))
+                    drawable(1)),
+            DevModel("MD. Imran Hossain", "Student",
+                    "Work as Icon Designer",
+                    "Designer",
+                    "https://www.facebook.com/imranhossain.raju.142",
+                    "",
+                    "",
+                    "expendableimran@gmail.com",
+                    drawable(2)),
+            DevModel("Jannatun Nayeema",
+                    "Dreamer, Learner",
+                    "Work on Database v2",
+                    "Database Developer",
+                    "https://www.facebook.com/100027839883903",
+                    "",
+                    "",
+                    "Jannatunnayeema2@gmail.com",
+                    drawable(3)),
+            DevModel("Shudipto", "Student, Dreamer",
+                    "Work on Database v1",
+                    "Database Developer",
+                    "https://www.facebook.com/md.rimon.395017",
+                    "https://www.linkedin.com/in/md-mahabubur-rahaman-rimon-2a3708142/",
+                    "",
+                    "mdrimon.kuss@gmail.com",
+                    drawable(4))
     )
 
     fun drawable(pos: Int): Drawable {
         val id = when (pos) {
             1 -> R.drawable.sdt_round
+            2 -> R.drawable.imran
+            3 -> R.drawable.nayeema
+            4 -> R.drawable.ri_round
             else -> R.drawable.sdt_round
         }
         @Suppress("DEPRECATION")
@@ -67,13 +93,6 @@ class DeveloperActivity : AppCompatActivity() {
         }
 
         return super.onOptionsItemSelected(item)
-    }
-
-    //click method for image button
-    private fun AppCompatImageButton.click(url: String) {
-        this.setOnClickListener {
-            customTab(url)
-        }
     }
 
 }
