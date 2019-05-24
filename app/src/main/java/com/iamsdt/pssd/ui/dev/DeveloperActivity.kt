@@ -35,7 +35,7 @@ class DeveloperActivity : AppCompatActivity() {
     }
 
     private fun fillData() = listOf(
-            DevModel("Shudipto", "Learner, Programmer, Dreamer",
+            DevModel("Shudipto Trafder", "Learner, Programmer, Dreamer",
                     "Work as Android App Developer",
                     "Developer",
                     "https://www.facebook.com/iamsdt/",
@@ -60,7 +60,7 @@ class DeveloperActivity : AppCompatActivity() {
                     "",
                     "Jannatunnayeema2@gmail.com",
                     drawable(3)),
-            DevModel("Shudipto", "Student, Dreamer",
+            DevModel("Md Mahabubur Rahaman Rimon", "Student, Dreamer",
                     "Work on Database v1",
                     "Database Developer",
                     "https://www.facebook.com/md.rimon.395017",

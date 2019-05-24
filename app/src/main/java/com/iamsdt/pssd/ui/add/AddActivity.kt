@@ -57,11 +57,6 @@ class AddActivity : AppCompatActivity() {
 
         setSwipeForRecyclerView(addRcv)
 
-//        val deco = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-//        @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-//        deco.setDrawable(getDrawable(R.drawable.dercoration))
-//        addRcv.addItemDecoration(deco)
-
 
         model.getWord().observe(this@AddActivity, Observer { list ->
             list?.let {

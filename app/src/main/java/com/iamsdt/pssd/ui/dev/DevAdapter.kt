@@ -36,9 +36,9 @@ class DevAdapter(val context: Context, var list: List<DevModel>) : RecyclerView.
     inner class DevVH(val view: View) : RecyclerView.ViewHolder(view) {
 
         val name: TextView = view.dev_name
-        private val bio: TextView = view.dev_name
-        val work: TextView = view.dev_name
-        val type: TextView = view.dev_name
+        private val bio: TextView = view.dev_bio
+        val work: TextView = view.dev_work_type
+        val type: TextView = view.dev_type
         private val devImage: ImageView = view.dev_image
         private val fb: AppCompatImageButton = view.dev_fb
         private val linkedin: AppCompatImageButton = view.dev_linkedin
@@ -55,9 +55,24 @@ class DevAdapter(val context: Context, var list: List<DevModel>) : RecyclerView.
             @Suppress("DEPRECATION")
             devImage.setImageDrawable(model.image)
 
-            fb.set(model.fb, context)
-            git.set(model.fb, context)
-            linkedin.set(model.fb, context)
+            if (model.fb.isNotEmpty()) {
+                fb.set(model.fb, context)
+            } else {
+                fb.gone()
+            }
+
+            if (model.git.isNotEmpty()) {
+                git.set(model.fb, context)
+            } else {
+                git.gone()
+            }
+
+            if (model.linkedin.isNotEmpty()) {
+                linkedin.set(model.fb, context)
+            } else {
+                linkedin.gone()
+            }
+
 
             //email
             email.setOnClickListener {
@@ -67,12 +82,8 @@ class DevAdapter(val context: Context, var list: List<DevModel>) : RecyclerView.
     }
 
     private fun AppCompatImageButton.set(link: String, context: Context) {
-        if (link.isNotEmpty()) {
-            setOnClickListener {
-                customTab(link, context)
-            }
-        } else {
-            gone()
+        setOnClickListener {
+            customTab(link, context)
         }
     }
 
@@ -97,5 +108,4 @@ class DevAdapter(val context: Context, var list: List<DevModel>) : RecyclerView.
         val customTabsIntent = builder.build()
         customTabsIntent.launchUrl(context, Uri.parse(link))
     }
-
 }

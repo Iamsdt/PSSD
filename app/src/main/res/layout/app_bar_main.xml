@@ -25,7 +25,7 @@
             app:cardCornerRadius="10dp"
             android:layout_margin="10dp"
             android:backgroundTint="@color/main_toolbar"
-            app:cardElevation="3dp">
+            app:cardElevation="4dp">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/main_toolbar"

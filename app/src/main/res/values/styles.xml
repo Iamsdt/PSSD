@@ -9,6 +9,9 @@
         <item name="actionMenuTextColor">@color/menu_color</item>
         <item name="android:textColorSecondary">@color/menu_color</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+
+        <item name="android:statusBarColor">@color/primary</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
 
     <style name="DrawerArrowStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
@@ -45,6 +48,15 @@
         <item name="colorAccent">?attr/colorAccent</item>
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowBackground">?attr/colorAccent</item>
+    </style>
+
+    <style name="app_about_text">
+        <item name="android:layout_marginStart">@dimen/app_about_m</item>
+        <item name="android:layout_marginEnd">@dimen/app_about_m</item>
+        <item name="android:fontFamily">@font/loboster</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/txtColor</item>
+        <item name="android:textSize">@dimen/about_app_txt</item>
     </style>
 
 </resources>

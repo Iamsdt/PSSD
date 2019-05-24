@@ -9,14 +9,14 @@
     <color name="txtColor">#ffffff</color>
 
     <color name="primary">@android:color/transparent</color>
-    <color name="primaryDark">@android:color/transparent</color>
+    <color name="primaryDark">#303030</color>
     <color name="accent">#ff5722</color>
     <color name="sheetTxt">#FFFFFF</color>
 
     <color name="menu_color">#FFFFFF</color>
     <color name="add_text_hint">#FFFFFF</color>
 
-    <color name="main_toolbar">#0C0C0C</color>
+    <color name="main_toolbar">#303030</color>
 
     <color name="navigation_drawer_center">#0A0A0A</color>
     <color name="navigation_drawer_end">#090808</color>
