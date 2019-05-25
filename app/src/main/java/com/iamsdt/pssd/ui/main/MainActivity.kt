@@ -11,6 +11,7 @@ import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import android.provider.SearchRecentSuggestions
 import android.view.Menu
@@ -19,8 +20,10 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.ShareActionProvider
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.view.GravityCompat
 import androidx.core.view.MenuItemCompat
 import androidx.core.view.isGone
@@ -28,9 +31,9 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.iamsdt.androidextension.*
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
-import com.iamsdt.pssd.ext.*
 import com.iamsdt.pssd.ui.AppAboutActivity
 import com.iamsdt.pssd.ui.add.AddActivity
 import com.iamsdt.pssd.ui.callback.ClickListener
@@ -139,13 +142,13 @@ class MainActivity : BaseActivity(),
                 bookmark?.let {
                     isBookmarked = when (it) {
                         Bookmark.SET -> {
-                            showToast(ToastType.SUCCESSFUL, "Bookmarked")
+                            showToasty("Bookmarked", ToastType.SUCCESSFUL)
                             menuItem.setIcon(R.drawable.ic_like_fill)
                             true
                         }
 
                         Bookmark.DELETE -> {
-                            showToast(ToastType.INFO, "Bookmark removed")
+                            showToasty("Bookmark removed")
                             menuItem.setIcon(R.drawable.ic_like_blank)
                             false
                         }
@@ -171,7 +174,7 @@ class MainActivity : BaseActivity(),
                     startActivity(intent)
                 }
             } else {
-                showToast(ToastType.WARNING, "Word not found")
+                showToasty("Word not found", ToastType.WARNING)
                 if (::mSearchView.isInitialized) {
                     searchView.setQuery(mQuery, false)
                 }
@@ -325,10 +328,10 @@ class MainActivity : BaseActivity(),
 
         //update ui
         if (word.id != wordTable.id) {
-            details_word?.addStrK(wordTable.word)
-            details_des?.addStrK(wordTable.des)
+            details_word?.addText(wordTable.word)
+            details_des?.addText(wordTable.des)
             val r = "Reference: ${wordTable.reference}"
-            details_ref.addStrK(r)
+            details_ref.addText(r)
         }
 
         word = wordTable.copy()
@@ -352,7 +355,7 @@ class MainActivity : BaseActivity(),
         RestoreData.ioStatus.observe(this, Observer {
             it?.let { model ->
                 //only one type provide
-                showToast(ToastType.SUCCESSFUL, model.message)
+                showToasty(model.message, ToastType.SUCCESSFUL)
             }
         })
         restoreDataHelper(restoreData, this)
@@ -505,6 +508,17 @@ class MainActivity : BaseActivity(),
         if (requestCode == themeRequestCode && resultCode == Activity.RESULT_OK) {
             recreate()
         }
+    }
+
+    fun AppCompatActivity.customTab(link: String) {
+        val builder = CustomTabsIntent.Builder()
+        builder.setToolbarColor(R.attr.colorPrimary)
+        builder.setShowTitle(true)
+        builder.addDefaultShareMenuItem()
+        //builder.setCloseButtonIcon(BitmapFactory.decodeResource(
+        //resources, R.drawable.dialog_back))
+        val customTabsIntent = builder.build()
+        customTabsIntent.launchUrl(this, Uri.parse(link))
     }
 
 

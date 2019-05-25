@@ -6,9 +6,9 @@ import androidx.work.WorkerParameters
 import com.google.gson.Gson
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
-import com.iamsdt.pssd.ext.toWordTable
 import com.iamsdt.pssd.utils.SpUtils
 import com.iamsdt.pssd.utils.model.JsonModel
+import com.iamsdt.pssd.utils.toWordTable
 import kotlinx.coroutines.*
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject

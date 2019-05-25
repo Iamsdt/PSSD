@@ -9,11 +9,11 @@ package com.iamsdt.pssd.ui.add
 import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import com.iamsdt.androidextension.ScopeViewModel
+import com.iamsdt.androidextension.SingleLiveEvent
+import com.iamsdt.androidextension.toCapFirst
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
-import com.iamsdt.pssd.ext.ScopeViewModel
-import com.iamsdt.pssd.ext.SingleLiveEvent
-import com.iamsdt.pssd.ext.toCapFirst
 import com.iamsdt.pssd.utils.Constants.ADD.DIALOG
 import com.iamsdt.pssd.utils.PAGE_CONFIG
 import com.iamsdt.pssd.utils.model.StatusModel

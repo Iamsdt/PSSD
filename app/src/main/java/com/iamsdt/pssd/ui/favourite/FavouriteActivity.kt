@@ -14,9 +14,9 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.iamsdt.androidextension.gone
+import com.iamsdt.androidextension.show
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.ext.gone
-import com.iamsdt.pssd.ext.show
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.utils.SwipeUtil
 import kotlinx.android.synthetic.main.activity_favourite.*

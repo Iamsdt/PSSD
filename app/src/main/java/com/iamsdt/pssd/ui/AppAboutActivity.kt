@@ -6,11 +6,12 @@
 
 package com.iamsdt.pssd.ui
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.browser.customtabs.CustomTabsIntent
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.ext.customTab
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import kotlinx.android.synthetic.main.activity_app_about.*
 import kotlinx.android.synthetic.main.content_app_about.*
@@ -39,6 +40,17 @@ class AppAboutActivity : AppCompatActivity() {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    fun AppCompatActivity.customTab(link: String) {
+        val builder = CustomTabsIntent.Builder()
+        builder.setToolbarColor(R.attr.colorPrimary)
+        builder.setShowTitle(true)
+        builder.addDefaultShareMenuItem()
+        //builder.setCloseButtonIcon(BitmapFactory.decodeResource(
+        //resources, R.drawable.dialog_back))
+        val customTabsIntent = builder.build()
+        customTabsIntent.launchUrl(this, Uri.parse(link))
     }
 
 }

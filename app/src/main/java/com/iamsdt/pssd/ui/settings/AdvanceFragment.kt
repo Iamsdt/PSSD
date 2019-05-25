@@ -17,9 +17,9 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import com.codekidlabs.storagechooser.StorageChooser
+import com.iamsdt.androidextension.ToastType
+import com.iamsdt.androidextension.showToasty
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.ext.ToastType
-import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.utils.Constants.Settings.DEFAULT_PATH_STORAGE
 import com.iamsdt.pssd.utils.Constants.Settings.STORAGE_PATH_KEY
 import com.iamsdt.pssd.utils.SettingsUtils
@@ -145,7 +145,7 @@ class AdvanceFragment : PreferenceFragmentCompat(),
             } else {
                 val txt = "Oh! you did not give the permission to access storage." +
                         " To backup your added word, you must grant permission"
-                showToast(ToastType.WARNING, txt)
+                showToasty( txt, ToastType.WARNING)
             }
         }
 

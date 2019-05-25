@@ -16,7 +16,7 @@
     tools:targetApi="m"
     tools:ignore="UnusedAttribute">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/wordTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Word 1" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/desTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

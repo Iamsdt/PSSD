@@ -14,12 +14,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.iamsdt.androidextension.gone
+import com.iamsdt.androidextension.show
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
 import com.iamsdt.pssd.ext.UIScope
-import com.iamsdt.pssd.ext.gone
-import com.iamsdt.pssd.ext.show
 import com.iamsdt.pssd.ui.details.DetailsActivity
 import com.iamsdt.pssd.ui.main.MainAdapter.Companion.DIFF_CALLBACK
 import es.dmoral.toasty.Toasty

@@ -7,8 +7,8 @@
 package com.iamsdt.pssd.utils
 
 import com.google.gson.Gson
+import com.iamsdt.androidextension.SingleLiveEvent
 import com.iamsdt.pssd.database.WordTableDao
-import com.iamsdt.pssd.ext.SingleLiveEvent
 import com.iamsdt.pssd.utils.Constants.SP.DATA_RESTORE
 import com.iamsdt.pssd.utils.model.OutputModel
 import com.iamsdt.pssd.utils.model.StatusModel

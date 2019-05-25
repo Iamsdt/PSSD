@@ -15,8 +15,8 @@ import android.view.View
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.iamsdt.androidextension.layout
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.ext.layout
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 

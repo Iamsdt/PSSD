@@ -7,13 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageButton
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.recyclerview.widget.RecyclerView
+import com.iamsdt.androidextension.addText
+import com.iamsdt.androidextension.gone
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.ext.addStrK
-import com.iamsdt.pssd.ext.gone
 import com.iamsdt.pssd.utils.model.DevModel
 import kotlinx.android.synthetic.main.dev_item.view.*
 
@@ -35,10 +35,10 @@ class DevAdapter(val context: Context, var list: List<DevModel>) : RecyclerView.
 
     inner class DevVH(val view: View) : RecyclerView.ViewHolder(view) {
 
-        val name: TextView = view.dev_name
-        private val bio: TextView = view.dev_bio
-        val work: TextView = view.dev_work_type
-        val type: TextView = view.dev_type
+        val name: AppCompatTextView = view.dev_name
+        private val bio: AppCompatTextView = view.dev_bio
+        val work: AppCompatTextView = view.dev_work_type
+        val type: AppCompatTextView = view.dev_type
         private val devImage: ImageView = view.dev_image
         private val fb: AppCompatImageButton = view.dev_fb
         private val linkedin: AppCompatImageButton = view.dev_linkedin
@@ -47,10 +47,10 @@ class DevAdapter(val context: Context, var list: List<DevModel>) : RecyclerView.
 
 
         fun bind(model: DevModel, context: Context) {
-            name.addStrK(model.name)
-            bio.addStrK(model.bio)
-            work.addStrK(model.workType)
-            type.addStrK(model.type)
+            name.addText(model.name)
+            bio.addText(model.bio)
+            work.addText(model.workType)
+            type.addText(model.type)
 
             @Suppress("DEPRECATION")
             devImage.setImageDrawable(model.image)

@@ -6,9 +6,9 @@
 
 package com.iamsdt.pssd.ui.details
 
+import com.iamsdt.androidextension.ScopeViewModel
+import com.iamsdt.androidextension.SingleLiveEvent
 import com.iamsdt.pssd.database.WordTableDao
-import com.iamsdt.pssd.ext.ScopeViewModel
-import com.iamsdt.pssd.ext.SingleLiveEvent
 import com.iamsdt.pssd.utils.Bookmark
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

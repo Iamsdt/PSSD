@@ -12,8 +12,6 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.ext.ToastType
-import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.utils.model.DevModel
 import kotlinx.android.synthetic.main.activity_developer.*
@@ -80,10 +78,6 @@ class DeveloperActivity : AppCompatActivity() {
         }
         @Suppress("DEPRECATION")
         return resources.getDrawable(id)
-    }
-
-    private fun dummyToast() {
-        showToast(ToastType.INFO, "No link found")
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -7,16 +7,15 @@ import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.view.View
 import android.widget.ImageButton
-import android.widget.TextView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.lifecycle.Observer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.iamsdt.androidextension.MyCoroutineContext
+import com.iamsdt.androidextension.ToastType
+import com.iamsdt.androidextension.showToasty
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTableDao
-import com.iamsdt.pssd.ext.MyMainScope
-import com.iamsdt.pssd.ext.ToastType
-import com.iamsdt.pssd.ext.addStrK
-import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.utils.TxtHelper
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.random_sheet.view.*
@@ -41,7 +40,7 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
     var bookmark = false
 
-    val uiScope = MyMainScope()
+    val uiScope = MyCoroutineContext()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,8 +67,8 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
         textToSpeech = TextToSpeech(context, this)
 
-        val wordTV: TextView = view.wordTV
-        val desTV: TextView = view.desTV
+        val wordTV: AppCompatTextView = view.wordTV
+        val desTV: AppCompatTextView = view.desTV
         val favIcon: ImageButton = view.like
         val speak: ImageButton = view.speak
 
@@ -86,8 +85,8 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
                 //save word txt
                 wordTxt = wordTable.word
 
-                wordTV.addStrK(wordTable.word)
-                desTV.addStrK(wordTable.des)
+                wordTV.text = (wordTable.word)
+                desTV.text = (wordTable.des)
 
                 txtHelper.setSize(wordTV, desTV)
 
@@ -108,14 +107,14 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
                         wordTableDao.deleteBookmark(id)
                     }
                     if (status > 0) {
-                        showToast(ToastType.INFO, "Bookmark Delete")
+                        showToasty("Bookmark Delete")
                     }
                 } else {
                     val status = withContext(Dispatchers.IO) {
                         wordTableDao.setBookmark(id)
                     }
                     if (status > 0) {
-                        showToast(ToastType.SUCCESSFUL, "Bookmarked")
+                        showToasty("Bookmarked", ToastType.SUCCESSFUL)
                     }
                 }
             }
@@ -144,7 +143,7 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
     private fun speakOut() {
 
         if (!::textToSpeech.isInitialized) {
-            showToast(ToastType.ERROR, "Can not speak right now. Try again")
+            showToasty("Can not speak right now. Try again", ToastType.ERROR)
             return
         }
 

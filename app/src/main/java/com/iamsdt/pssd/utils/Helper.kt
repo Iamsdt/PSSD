@@ -8,6 +8,8 @@ package com.iamsdt.pssd.utils
 
 import android.os.AsyncTask
 import androidx.paging.PagedList
+import com.iamsdt.pssd.database.WordTable
+import com.iamsdt.pssd.utils.model.Model
 import org.joda.time.DateTime
 import org.joda.time.Days
 import timber.log.Timber
@@ -29,6 +31,8 @@ fun ioThread(f: () -> Unit) {
 fun myThread(f:() -> Unit){
     AsyncTask.execute(f)
 }
+
+fun Model.toWordTable() = WordTable(word = word, des = des, reference = ref)
 
 //return interval date
 fun getDayInterval(oldDate: Long): Int {

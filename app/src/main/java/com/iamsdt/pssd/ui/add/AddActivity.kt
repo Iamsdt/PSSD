@@ -22,10 +22,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
+import com.iamsdt.androidextension.gone
+import com.iamsdt.androidextension.nextActivity
+import com.iamsdt.androidextension.show
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.ext.gone
-import com.iamsdt.pssd.ext.nextActivity
-import com.iamsdt.pssd.ext.show
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.utils.SwipeUtil
 import kotlinx.android.synthetic.main.activity_add.*

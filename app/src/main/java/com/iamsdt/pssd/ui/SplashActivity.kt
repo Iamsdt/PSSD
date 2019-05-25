@@ -7,6 +7,7 @@
 package com.iamsdt.pssd.ui
 
 import android.os.Bundle
+import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import androidx.work.ExistingWorkPolicy
@@ -14,9 +15,8 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.iamsdt.androidextension.runThreadK
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.ext.runThreadK
-import com.iamsdt.pssd.ext.showSnackbar
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.main.MainActivity
 import com.iamsdt.pssd.utils.Constants
@@ -56,7 +56,7 @@ class SplashActivity : AppCompatActivity() {
 
             //save app start date
             saveAppStartDate()
-            main_splash.showSnackbar("Preparing database...",Snackbar.LENGTH_INDEFINITE)
+            main_splash.showSnackbar("Preparing database...\nIt will take awhile...",Snackbar.LENGTH_INDEFINITE)
 
         } else {
             runThreadK<MainActivity>(1000L)
@@ -78,6 +78,10 @@ class SplashActivity : AppCompatActivity() {
         bundle.putString("app_open", "App open")
         ana.logEvent(FirebaseAnalytics.Event.APP_OPEN, bundle)
 
+    }
+
+    fun View.showSnackbar(snackbarText: String, timeLength: Int = Snackbar.LENGTH_SHORT) {
+        Snackbar.make(this, snackbarText, timeLength).show()
     }
 
     //complete:8/24/18 only remove latter

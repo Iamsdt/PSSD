@@ -7,21 +7,21 @@
 package com.iamsdt.pssd.ui.main
 
 import android.view.View
-import android.widget.TextView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
+import com.iamsdt.androidextension.addText
 import com.iamsdt.pssd.database.WordTable
-import com.iamsdt.pssd.ext.addStrK
 import kotlinx.android.synthetic.main.main_item.view.*
 
 class MyViewHolder(val view: View)
     : RecyclerView.ViewHolder(view) {
 
-    private val wordTV: TextView = view.wordTV
-    private val desTV: TextView = view.desTV
+    private val wordTV: AppCompatTextView = view.wordTV
+    private val desTV: AppCompatTextView = view.desTV
 
     fun bind(wordTable: WordTable) {
-        wordTV.addStrK(wordTable.word)
-        desTV.addStrK(wordTable.des)
+        wordTV.addText(wordTable.word)
+        desTV.addText(wordTable.des)
     }
 
 }

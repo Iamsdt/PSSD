@@ -8,11 +8,11 @@ package com.iamsdt.pssd.utils.sync.worker
 
 import android.content.Context
 import com.google.gson.Gson
+import com.iamsdt.androidextension.SingleLiveEvent
 import com.iamsdt.pssd.database.WordTableDao
-import com.iamsdt.pssd.ext.SingleLiveEvent
-import com.iamsdt.pssd.ext.toWordTable
 import com.iamsdt.pssd.utils.SpUtils
 import com.iamsdt.pssd.utils.model.JsonModel
+import com.iamsdt.pssd.utils.toWordTable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

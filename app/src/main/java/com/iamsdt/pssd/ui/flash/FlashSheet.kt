@@ -13,16 +13,15 @@ import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.view.View
 import android.widget.ImageButton
-import android.widget.TextView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.lifecycle.Observer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.iamsdt.androidextension.MyCoroutineContext
+import com.iamsdt.androidextension.ToastType
+import com.iamsdt.androidextension.showToasty
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTableDao
-import com.iamsdt.pssd.ext.MyMainScope
-import com.iamsdt.pssd.ext.ToastType
-import com.iamsdt.pssd.ext.addStrK
-import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ui.main.MyBottomSheetDialog
 import com.iamsdt.pssd.utils.TxtHelper
 import kotlinx.android.synthetic.main.activity_flash_card.*
@@ -43,7 +42,7 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
     private var wordTxt = ""
 
-    private val uiScope = MyMainScope()
+    private val uiScope = MyCoroutineContext()
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
@@ -60,8 +59,8 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
         textToSpeech = TextToSpeech(context, this)
 
-        val wordTv: TextView = view.wordTV
-        val desTV: TextView = view.desTV
+        val wordTv: AppCompatTextView = view.wordTV
+        val desTV: AppCompatTextView = view.desTV
         val speakBtn: ImageButton = view.speak
 
         val id = tag?.toInt() ?: 0
@@ -72,8 +71,8 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
         uiScope.launch {
             wordTableDao.getSingleWord(id).observe(this@FlashSheet, Observer { table ->
                 table?.let {
-                    wordTv.addStrK(it.word)
-                    desTV.addStrK(it.des)
+                    wordTv.text = (it.word)
+                    desTV.text = (it.des)
 
                     txtHelper.setSize(wordTv, desTV)
 
@@ -95,7 +94,7 @@ class FlashSheet : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
     private fun speakOut() {
 
         if (!::textToSpeech.isInitialized) {
-            showToast(ToastType.ERROR, "Can not speak right now. Try again")
+            showToasty("Can not speak right now. Try again", ToastType.ERROR)
             return
         }
 

@@ -9,12 +9,12 @@ package com.iamsdt.pssd.ui.flash
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.iamsdt.androidextension.addText
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
-import com.iamsdt.pssd.ext.addStrK
 import com.iamsdt.pssd.ui.callback.ClickListener
 import com.iamsdt.pssd.ui.main.MainAdapter.Companion.DIFF_CALLBACK
 import kotlinx.android.synthetic.main.flash_item.view.*
@@ -46,10 +46,10 @@ class FlashAdapter(private val click: ClickListener) :
 
     inner class MyVH(view: View) : RecyclerView.ViewHolder(view) {
 
-        val word: TextView = view.word
+        val word: AppCompatTextView = view.word
 
         fun bind(wordTable: WordTable) {
-            word.addStrK(wordTable.word)
+            word.addText(wordTable.word)
         }
     }
 }

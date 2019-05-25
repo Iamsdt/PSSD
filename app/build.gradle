@@ -151,4 +151,7 @@ dependencies {
     implementation 'uk.co.samuelwall:material-tap-target-prompt:2.14.0'
 
     implementation 'androidx.multidex:multidex:2.0.1'
+
+    //helper
+    implementation 'com.github.Iamsdt:AndroidExtensionHelper:v2.0'
 }

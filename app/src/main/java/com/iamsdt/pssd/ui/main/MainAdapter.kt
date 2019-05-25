@@ -10,9 +10,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import com.iamsdt.androidextension.gone
 import com.iamsdt.pssd.R
 import com.iamsdt.pssd.database.WordTable
-import com.iamsdt.pssd.ext.gone
 import com.iamsdt.pssd.ui.callback.ClickListener
 
 class MainAdapter(

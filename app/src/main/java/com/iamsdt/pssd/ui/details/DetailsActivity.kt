@@ -14,10 +14,11 @@ import android.text.Layout
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.iamsdt.androidextension.ToastType
+import com.iamsdt.androidextension.addText
+import com.iamsdt.androidextension.gone
+import com.iamsdt.androidextension.showToasty
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.ext.ToastType
-import com.iamsdt.pssd.ext.addStrK
-import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.main.MainVM
 import com.iamsdt.pssd.utils.Bookmark
@@ -47,7 +48,7 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private lateinit var textToSpeech: TextToSpeech
 
     //text size
-    var size = 20F
+    var size = 22F
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,10 +63,14 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         viewModel.getWord(id).observe(this@DetailsActivity, Observer { table ->
             table?.let {
-                details_word.addStrK(it.word)
-                details_des.addStrK(it.des)
-                val r = "Reference: ${it.reference}"
-                details_ref.addStrK(r)
+                details_word.addText(it.word)
+                details_des.addText(it.des)
+                if (it.reference.isNotEmpty()) {
+                    val r = "Reference: ${it.reference}"
+                    details_ref.addText(r)
+                } else {
+                    text2.gone()
+                }
 
                 //save recent
                 if (!isSaved) {
@@ -96,11 +101,11 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 Timber.i("Called")
                 isBookmarked = when (it) {
                     Bookmark.SET -> {
-                        showToast(ToastType.SUCCESSFUL, "Bookmarked")
+                        showToasty("Bookmarked", ToastType.SUCCESSFUL)
                         true
                     }
                     Bookmark.DELETE -> {
-                        showToast(ToastType.INFO, "Bookmark removed")
+                        showToasty("Bookmark removed", ToastType.WARNING)
                         false
                     }
                 }
@@ -140,7 +145,7 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private fun speakOut() {
 
         if (!::textToSpeech.isInitialized) {
-            showToast(ToastType.ERROR, "Can not speak right now. Try again")
+            showToasty("Can not speak right now. Try again", ToastType.ERROR)
             return
         }
 

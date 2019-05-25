@@ -3,9 +3,9 @@ package com.iamsdt.pssd.ui.add
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.iamsdt.androidextension.ToastType
+import com.iamsdt.androidextension.showToasty
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.ext.ToastType
-import com.iamsdt.pssd.ext.showToast
 import kotlinx.android.synthetic.main.activity_insert.*
 import kotlinx.android.synthetic.main.add_dialog.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -21,7 +21,7 @@ class InsertActivity : AppCompatActivity() {
 
         model.insertStatus.observe(this, Observer {
             if (it != null && it.status) {
-                showToast(ToastType.SUCCESSFUL, "Added Successfully")
+                showToasty("Added Successfully", ToastType.SUCCESSFUL)
                 finish()
             }
         })

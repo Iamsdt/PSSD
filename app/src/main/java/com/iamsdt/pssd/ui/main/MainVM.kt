@@ -9,10 +9,10 @@ package com.iamsdt.pssd.ui.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import com.iamsdt.androidextension.ScopeViewModel
+import com.iamsdt.androidextension.SingleLiveEvent
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.database.WordTableDao
-import com.iamsdt.pssd.ext.ScopeViewModel
-import com.iamsdt.pssd.ext.SingleLiveEvent
 import com.iamsdt.pssd.utils.Bookmark
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

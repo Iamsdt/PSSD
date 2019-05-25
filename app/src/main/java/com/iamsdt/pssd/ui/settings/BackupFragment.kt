@@ -14,9 +14,9 @@ import android.os.Bundle
 import android.os.Environment
 import androidx.preference.PreferenceFragmentCompat
 import com.codekidlabs.storagechooser.StorageChooser
+import com.iamsdt.androidextension.ToastType
+import com.iamsdt.androidextension.showToasty
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.ext.ToastType
-import com.iamsdt.pssd.ext.showToast
 import com.iamsdt.pssd.ui.settings.SettingsFragment.Companion.bindPreferenceSummaryToValue
 import com.iamsdt.pssd.utils.Constants.IO.IMPORT_ADD
 import com.iamsdt.pssd.utils.Constants.IO.IMPORT_FAV
@@ -228,7 +228,7 @@ class BackupFragment : PreferenceFragmentCompat(),
                 "Your storage is not readable and writable. " +
                 "Your storage option is different from others device." +
                 "Make sure you grant permission"
-        showToast(ToastType.WARNING, txt)
+        showToasty(txt, ToastType.WARNING)
     }
 
 
@@ -245,7 +245,7 @@ class BackupFragment : PreferenceFragmentCompat(),
                     readFavouriteData()
                 } else {
                     val txt = "$perTxt To import your favourite word, you must grant permission"
-                    showToast(ToastType.WARNING, txt)
+                    showToasty(txt, ToastType.WARNING)
                 }
 
             readAdded ->
@@ -255,7 +255,7 @@ class BackupFragment : PreferenceFragmentCompat(),
 
                 } else {
                     val txt = "$perTxt To import your added word, you must grant permission"
-                    showToast(ToastType.WARNING, txt)
+                    showToasty(txt, ToastType.WARNING)
                 }
 
             writeFavourite ->
@@ -265,7 +265,7 @@ class BackupFragment : PreferenceFragmentCompat(),
 
                 } else {
                     val txt = "$perTxt To backup your favourite word, you must grant permission"
-                    showToast(ToastType.WARNING, txt)
+                    showToasty(txt, ToastType.WARNING)
                 }
 
             writeAdded ->
@@ -275,7 +275,7 @@ class BackupFragment : PreferenceFragmentCompat(),
 
                 } else {
                     val txt = "$perTxt To backup your added word, you must grant permission"
-                    showToast(ToastType.WARNING, txt)
+                    showToasty(txt, ToastType.WARNING)
                 }
 
             else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)

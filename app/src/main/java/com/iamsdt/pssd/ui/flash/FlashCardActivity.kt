@@ -13,9 +13,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.iamsdt.androidextension.gone
+import com.iamsdt.androidextension.show
 import com.iamsdt.pssd.R
-import com.iamsdt.pssd.ext.gone
-import com.iamsdt.pssd.ext.show
 import com.iamsdt.pssd.ui.callback.ClickListener
 import com.iamsdt.pssd.ui.color.ThemeUtils
 import com.iamsdt.pssd.ui.favourite.FavouriteVM
