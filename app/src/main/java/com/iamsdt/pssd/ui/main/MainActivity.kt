@@ -358,7 +358,7 @@ class MainActivity : BaseActivity(),
                 showToasty(model.message, ToastType.SUCCESSFUL)
             }
         })
-        restoreDataHelper(restoreData, this)
+        restoreDataHelper(restoreData, this, spUtils)
     }
 
     private fun setRecentQuery(query: String) {

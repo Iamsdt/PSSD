@@ -11,6 +11,7 @@ import android.content.Context
 import android.content.Intent
 import com.iamsdt.pssd.database.WordTable
 import com.iamsdt.pssd.utils.RestoreData
+import com.iamsdt.pssd.utils.SpUtils
 
 /**
  * Restore data helper
@@ -20,7 +21,7 @@ import com.iamsdt.pssd.utils.RestoreData
  * @param restoreData Helper class for restore option
  * @param context for dialog
  */
-fun restoreDataHelper(restoreData: RestoreData, context: Context) {
+fun restoreDataHelper(restoreData: RestoreData, context: Context, spUtils: SpUtils) {
 
     if (restoreData.isFound()) {
 
@@ -35,6 +36,7 @@ fun restoreDataHelper(restoreData: RestoreData, context: Context) {
 
         builder.setNegativeButton("No") { _, _ ->
             //nothing to do
+            spUtils.restore = true
         }
 
         val dialog = builder.create()
