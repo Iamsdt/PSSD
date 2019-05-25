@@ -1,6 +1,7 @@
 package com.iamsdt.pssd.ui.add
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.iamsdt.androidextension.ToastType
@@ -34,6 +35,8 @@ class InsertActivity : AppCompatActivity() {
 
             model.addData(word, des, ref)
         }
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun check(word: String, des: String, ref: String): Boolean {
@@ -54,6 +57,15 @@ class InsertActivity : AppCompatActivity() {
 
 
         return false
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        if (item.itemId == android.R.id.home) {
+            onBackPressed()
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
 }

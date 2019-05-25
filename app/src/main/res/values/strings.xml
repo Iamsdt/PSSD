@@ -19,8 +19,8 @@
     <string name="title_activity_flash">Flashcard</string>
 
     <!-- hint option for add by user -->
-    <string name="hintWord">Write Word</string>
-    <string name="hintDescription">Write description of word</string>
+    <string name="hintWord">Input Word</string>
+    <string name="hintDescription">Input description</string>
 
     <!-- Favourite activity dummy text -->
     <string name="search">Search…</string>
@@ -169,7 +169,7 @@
     <string name="ok">OK</string>
     <string name="reference">Reference</string>
     <string name="reference1">Reference:</string>
-    <string name="title_activity_insert">InsertActivity</string>
+    <string name="title_activity_insert">""</string>
 
 
 </resources>

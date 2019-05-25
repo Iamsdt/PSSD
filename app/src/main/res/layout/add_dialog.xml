@@ -14,11 +14,13 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/add_word"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:backgroundTint="@android:color/transparent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/et_bcg"
         android:hint="@string/hintWord"
         android:inputType="text"
         android:padding="10dp"
@@ -27,7 +29,6 @@
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
         app:boxCornerRadiusTopEnd="10dp"
-        android:background="@drawable/et_bcg"
         app:boxCornerRadiusTopStart="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,21 +37,22 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:inputType="text"
-            android:background="@drawable/et_bcg"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/add_des"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/edit_text_bcg"
-        android:backgroundTint="@android:color/transparent"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/et_bcg"
         android:hint="@string/hintDescription"
         android:inputType="textMultiLine"
         android:padding="10dp"
@@ -68,9 +70,12 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center|start"
             android:inputType="textMultiLine"
-            android:background="@drawable/et_bcg"
-            android:minLines="5" />
+            android:minLines="5"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,7 +83,7 @@
         android:id="@+id/textView11"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="Word Title:"
@@ -94,7 +99,7 @@
         android:id="@+id/textView12"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="Description:"
@@ -109,7 +114,7 @@
         android:id="@+id/textView13"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="Refference:"
@@ -122,16 +127,16 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/add_ref"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/edit_text_bcg"
-        android:backgroundTint="@android:color/transparent"
-        android:hint="Write the refference"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/et_bcg"
         android:inputType="text"
         android:padding="10dp"
+        android:hint="Input refference"
         android:textColor="@color/sheetTxt"
         android:textColorHint="@color/dialogHint"
         app:boxCornerRadiusBottomEnd="10dp"
@@ -146,9 +151,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
             android:inputType="text"
-            android:background="@drawable/et_bcg"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -160,12 +166,12 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:fontFamily="@font/loboster"
+        android:gravity="center"
         android:padding="10dp"
         android:text="Add your  own custom word"
-        android:gravity="center"
-        android:fontFamily="@font/loboster"
-        android:textColor="@color/accent"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/accent"
         app:layout_constraintBottom_toTopOf="@+id/textView11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
