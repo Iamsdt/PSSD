@@ -36,7 +36,7 @@ class MultipleImport {
     }
 
     @Test
-    fun test() {
+    suspend fun test() {
         val add = add()
         println("Data add: $add")
 
@@ -60,7 +60,7 @@ class MultipleImport {
 
 
     //add data to database
-    private fun add(): Long {
+    private suspend fun add(): Long {
         val list = ArrayList<WordTable>()
         list.add(WordTable(word = "Word 1", des = "des 1"))
         list.add(WordTable(word = "Word 2", des = "des 2"))
@@ -74,7 +74,7 @@ class MultipleImport {
 
         var long = 0L
         list.map {
-            long = wordTableDao.add(it)
+            long = wordTableDao.add(table = it)
         }
         return long
     }

@@ -43,7 +43,7 @@ class UploadWorker(context: Context, workerParameters: WorkerParameters) :
         //login
         val auth = FirebaseAuth.getInstance()
 
-        val user = auth?.currentUser
+        val user = auth.currentUser
 
         if (user == null) {
             auth.signInAnonymously().addOnCompleteListener { task ->

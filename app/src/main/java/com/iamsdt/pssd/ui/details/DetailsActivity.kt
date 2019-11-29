@@ -101,11 +101,11 @@ class DetailsActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 Timber.i("Called")
                 isBookmarked = when (it) {
                     Bookmark.SET -> {
-                        showToasty("Bookmarked", ToastType.SUCCESSFUL)
+                        showToasty("Saved as Favourite", ToastType.SUCCESSFUL)
                         true
                     }
                     Bookmark.DELETE -> {
-                        showToasty("Bookmark removed", ToastType.WARNING)
+                        showToasty("Removed from favourite", ToastType.WARNING)
                         false
                     }
                 }

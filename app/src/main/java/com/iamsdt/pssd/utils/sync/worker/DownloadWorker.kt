@@ -49,7 +49,7 @@ class DownloadWorker(context: Context, workerParameters: WorkerParameters) :
 
         val auth = FirebaseAuth.getInstance()
 
-        val user = auth?.currentUser
+        val user = auth.currentUser
 
         if (user == null) {
             //sign in
