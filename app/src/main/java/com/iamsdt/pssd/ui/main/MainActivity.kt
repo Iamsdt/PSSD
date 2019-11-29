@@ -380,7 +380,7 @@ class MainActivity : BaseActivity(),
 
             Timber.i("Search Called")
 
-            mQuery = query
+            mQuery = query ?: ""
         }
     }
 
