@@ -35,8 +35,9 @@ class AdvanceFragment : PreferenceFragmentCompat(),
     private val settingUtils: SettingsUtils by inject()
 
 
-    override fun onSharedPreferenceChanged(sp: SharedPreferences?, key: String?) {
-        findPreference(key)?.let {
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        val s:CharSequence = key as CharSequence
+        findPreference<Preference>(s)?.let {
             bindPreferenceSummaryToValue(it)
         }
     }

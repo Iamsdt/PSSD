@@ -12,6 +12,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.codekidlabs.storagechooser.StorageChooser
 import com.iamsdt.androidextension.ToastType
@@ -41,7 +42,7 @@ class BackupFragment : PreferenceFragmentCompat(),
     private var path = ""
 
     override fun onSharedPreferenceChanged(sp: SharedPreferences?, key: String?) {
-        findPreference(key)?.let {
+        findPreference<Preference>(key as CharSequence)?.let {
             bindPreferenceSummaryToValue(it)
         }
     }
@@ -65,24 +66,24 @@ class BackupFragment : PreferenceFragmentCompat(),
 
 
         //my all preference
-        val exportFavourite = findPreference(getString(R.string.bps_ex_fav_key))
-        val importFavourite = findPreference(getString(R.string.bps_im_fav_key))
-        val exportAddWord = findPreference(getString(R.string.bps_ex_add_key))
-        val importAddWord = findPreference(getString(R.string.bps_im_add_key))
+        val exportFavourite = findPreference<Preference>(getString(R.string.bps_ex_fav_key))
+        val importFavourite = findPreference<Preference>(getString(R.string.bps_im_fav_key))
+        val exportAddWord = findPreference<Preference>(getString(R.string.bps_ex_add_key))
+        val importAddWord = findPreference<Preference>(getString(R.string.bps_im_add_key))
 
         path = settingUtils.filePath
 
-        exportFavourite.summary = "File saved on $path directory"
-        exportAddWord.summary = "File saved on $path directory"
-        importFavourite.summary = context?.getString(
+        exportFavourite?.summary = "File saved on $path directory"
+        exportAddWord?.summary = "File saved on $path directory"
+        importFavourite?.summary = context?.getString(
                 R.string.bps_im_fav_summery)
 
-        importAddWord.summary = context?.getString(
+        importAddWord?.summary = context?.getString(
                 R.string.bps_im_add_summery)
 
 
         //export favourite
-        exportFavourite.setOnPreferenceClickListener {
+        exportFavourite?.setOnPreferenceClickListener {
             if (Build.VERSION.SDK_INT >= 23) {
                 if (context?.checkCallingOrSelfPermission(
                                 Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
@@ -100,7 +101,7 @@ class BackupFragment : PreferenceFragmentCompat(),
         }
 
         //import favourite
-        importFavourite.setOnPreferenceClickListener {
+        importFavourite?.setOnPreferenceClickListener {
             if (Build.VERSION.SDK_INT >= 23) {
                 requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), readFavourite)
             } else {
@@ -111,7 +112,7 @@ class BackupFragment : PreferenceFragmentCompat(),
         }
 
         //export added word
-        exportAddWord.setOnPreferenceClickListener {
+        exportAddWord?.setOnPreferenceClickListener {
 
             if (Build.VERSION.SDK_INT >= 23) {
                 requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
@@ -124,7 +125,7 @@ class BackupFragment : PreferenceFragmentCompat(),
         }
 
         //import added word
-        importAddWord.setOnPreferenceClickListener {
+        importAddWord?.setOnPreferenceClickListener {
 
             if (Build.VERSION.SDK_INT >= 23) {
                 requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),

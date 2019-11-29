@@ -27,7 +27,7 @@ class SettingsFragment : PreferenceFragmentCompat(),
             restartActivity()
         }
 
-        findPreference(key)?.let {
+        findPreference<Preference>(key as CharSequence)?.let {
             bindPreferenceSummaryToValue(it)
         }
     }
@@ -57,19 +57,19 @@ class SettingsFragment : PreferenceFragmentCompat(),
                 }
 
         // complete: 8/17/2018 check this
-        val backup = findPreference(getString(R.string.bps_key))
-        val advance = findPreference(getString(R.string.advance_key))
+        val backup = findPreference<Preference>(getString(R.string.bps_key))
+        val advance = findPreference<Preference>(getString(R.string.advance_key))
 
-        backup.setSummary(R.string.bps_summery)
-        advance.setSummary(R.string.advance_summery)
+        backup?.setSummary(R.string.bps_summery)
+        advance?.setSummary(R.string.advance_summery)
 
         //get night
         state = PreferenceManager.getDefaultSharedPreferences(context)
                 .getBoolean(getString(R.string.switchNight), false)
 
-        val pre = findPreference(getString(R.string.switchNight))
+        val pre = findPreference<SwitchPreference>(getString(R.string.switchNight))
 
-        pre.icon = if (state) context?.getDrawable(R.drawable.ic_wb_sunny_black_24dp)
+        pre?.icon = if (state) context?.getDrawable(R.drawable.ic_wb_sunny_black_24dp)
         else context?.getDrawable(R.drawable.ic_half_moon)
 
     }
