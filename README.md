@@ -1,13 +1,23 @@
 # Soil Science Dictionary
-A complete dictionary app contains soil science related terminologies
+A complete dictionary app contains soil science related terminologies. 
+
+## Screenshots
+
+| ![](img/README/Screenshot_1575019871-1575020514840.png) | ![](img/README/Screenshot_1575019878.png) | ![](img/README/Screenshot_1575019885.png) |
+| ------------------------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| ![](img/README/Screenshot_1575019896.png)               | ![](img/README/Screenshot_1575019903.png) | ![](img/README/Screenshot_1575019915.png) |
+
+
+
+
 
 ### List of used component
     #### Design pattern
     MVVM
-
+    
     #### TextView
     precomputed text
-
+    
     #### Kotlin Corotines
 
 
