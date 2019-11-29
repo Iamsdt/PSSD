@@ -102,7 +102,7 @@
             android:title="Developer">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:targetClass="com.iamsdt.pssd.ui.DeveloperActivity"
+                android:targetClass="com.iamsdt.pssd.ui.dev.DeveloperActivity"
                 android:targetPackage="com.iamsdt.pssd" />
         </Preference>
 

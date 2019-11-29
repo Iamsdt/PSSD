@@ -36,10 +36,11 @@
 
     <item android:title="@string/nav_polices">
         <menu>
+            <!--
             <item
                 android:id="@+id/nav_notice"
                 android:icon="@drawable/ic_039_legal_hammer"
-                android:title="@string/nav_legal_notice" />
+                android:title="@string/nav_legal_notice" /> -->
 
             <item
                 android:id="@+id/nav_police"

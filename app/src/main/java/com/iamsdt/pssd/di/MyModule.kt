@@ -31,7 +31,13 @@ val dbModule = module {
     single {
         Room.databaseBuilder(androidContext(),
                 MyDatabase::class.java, Constants.DB_NAME)
-                .addMigrations(DbHelper.migration_1_2, DbHelper.migration_2_3, DbHelper.migration_3_4)
+                .addMigrations(
+                        DbHelper.migration_1_2,
+                        DbHelper.migration_2_3,
+                        DbHelper.migration_3_4,
+                        DbHelper.migration_1_4,
+                        DbHelper.migration_2_4,
+                        DbHelper.migration_4_5)
                 .enableMultiInstanceInvalidation()
                 .build()
     }

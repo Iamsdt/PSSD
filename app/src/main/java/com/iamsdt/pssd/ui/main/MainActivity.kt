@@ -478,10 +478,10 @@ class MainActivity : BaseActivity(),
                 startActivityForResult(SettingsActivity.createIntent(this),
                         themeRequestCode)
             }
-            R.id.nav_notice -> {
-                val dialog = AcknowledgeSheet()
-                dialog.show(supportFragmentManager, "acknowledge")
-            }
+//            R.id.nav_notice -> {
+//                val dialog = AcknowledgeSheet()
+//                dialog.show(supportFragmentManager, "acknowledge")
+//            }
             R.id.nav_police -> {
                 customTab(PrivacyPolices)
             }
