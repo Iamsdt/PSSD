@@ -29,7 +29,7 @@ class FavouriteAdapter(var context: Context,
                        val wordTableDao: WordTableDao) :
         PagedListAdapter<WordTable, FavouriteVH>(DIFF_CALLBACK) {
 
-    val uiScope = UIScope()
+    private val uiScope = UIScope()
 
     private val pendingItemRemoval = 3000 // 3sec
     private val handler = Handler() // handler for running delayed runnable

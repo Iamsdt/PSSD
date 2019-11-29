@@ -33,7 +33,7 @@ class FileImportExportUtils(
         private val settingsUtils: SettingsUtils,
         private val gson: Gson) {
 
-    val bgScope = CoroutineScope(Dispatchers.IO)
+    private val bgScope = CoroutineScope(Dispatchers.IO)
 
     /**
      * Export user favourite data

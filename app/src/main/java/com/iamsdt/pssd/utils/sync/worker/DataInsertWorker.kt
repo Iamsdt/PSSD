@@ -38,9 +38,7 @@ class DataInsertWorker(val context: Context) : KoinComponent {
 
         bgScope.launch(Dispatchers.IO) {
 
-            val stream = withContext(Dispatchers.Main) {
-                context.assets.open("soil_database.json")
-            }
+            val stream = context.assets.open("soil_database.json")
 
             val reader = InputStreamReader(stream)
 

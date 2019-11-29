@@ -26,7 +26,7 @@ class TmsSheet : BottomSheetDialogFragment() {
 
         val b = BottomSheetBehavior.from(view.parent as View)
 
-        b?.state = BottomSheetBehavior.STATE_EXPANDED
+        b.state = BottomSheetBehavior.STATE_EXPANDED
 
         return dialog
     }
