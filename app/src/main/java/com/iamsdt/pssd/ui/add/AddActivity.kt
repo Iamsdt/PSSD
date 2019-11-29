@@ -44,7 +44,7 @@ class AddActivity : AppCompatActivity() {
 
     lateinit var wordTV: TextInputLayout
     lateinit var desTV: TextInputLayout
-    lateinit var refTV: TextInputLayout
+    private lateinit var refTV: TextInputLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

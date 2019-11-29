@@ -2,8 +2,8 @@
 .gradle
 .idea
 /local.properties
-.DS_Store
 /build
-/captures
-.externalNativeBuild
 app/google-services.json
+app/mapping.txt
+app/release/
+app/src/main/assets/soil_database.json

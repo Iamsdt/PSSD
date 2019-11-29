@@ -35,7 +35,7 @@ class UploadCheck {
     }
 
     @Test
-    fun test() {
+    suspend fun test() {
         val add = add()
         println("Data add: $add")
 
@@ -48,7 +48,7 @@ class UploadCheck {
 
 
     //add data to database
-    private fun add(): Long {
+    private suspend fun add(): Long {
         val list = ArrayList<WordTable>()
         list.add(WordTable(word = "Word 1", des = "des 1", addByUser = true, uploaded = false))
         list.add(WordTable(word = "Word 2", des = "des 1", addByUser = true, uploaded = true))

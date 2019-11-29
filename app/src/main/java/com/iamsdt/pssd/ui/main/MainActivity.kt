@@ -380,7 +380,7 @@ class MainActivity : BaseActivity(),
 
             Timber.i("Search Called")
 
-            mQuery = query
+            mQuery = query ?: ""
         }
     }
 
@@ -478,10 +478,10 @@ class MainActivity : BaseActivity(),
                 startActivityForResult(SettingsActivity.createIntent(this),
                         themeRequestCode)
             }
-            R.id.nav_notice -> {
-                val dialog = AcknowledgeSheet()
-                dialog.show(supportFragmentManager, "acknowledge")
-            }
+//            R.id.nav_notice -> {
+//                val dialog = AcknowledgeSheet()
+//                dialog.show(supportFragmentManager, "acknowledge")
+//            }
             R.id.nav_police -> {
                 customTab(PrivacyPolices)
             }
@@ -510,7 +510,7 @@ class MainActivity : BaseActivity(),
         }
     }
 
-    fun AppCompatActivity.customTab(link: String) {
+    private fun AppCompatActivity.customTab(link: String) {
         val builder = CustomTabsIntent.Builder()
         builder.setToolbarColor(R.attr.colorPrimary)
         builder.setShowTitle(true)

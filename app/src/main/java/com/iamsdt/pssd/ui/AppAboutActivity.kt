@@ -42,7 +42,7 @@ class AppAboutActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun AppCompatActivity.customTab(link: String) {
+    private fun AppCompatActivity.customTab(link: String) {
         val builder = CustomTabsIntent.Builder()
         builder.setToolbarColor(R.attr.colorPrimary)
         builder.setShowTitle(true)

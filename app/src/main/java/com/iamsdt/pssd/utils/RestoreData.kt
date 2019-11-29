@@ -63,7 +63,7 @@ class RestoreData(private val settingsUtils: SettingsUtils,
 
             dir.listFiles(FileFilter {
                 it?.name?.contains(Constants.Settings.EXT) == true
-            }).forEach { file ->
+            })?.forEach { file ->
                 val data = gson.fromJson(file.bufferedReader(bufferSize = 4096),
                         OutputModel::class.java)
 

@@ -80,7 +80,7 @@ class SplashActivity : AppCompatActivity() {
 
     }
 
-    fun View.showSnackbar(snackbarText: String, timeLength: Int = Snackbar.LENGTH_SHORT) {
+    private fun View.showSnackbar(snackbarText: String, timeLength: Int = Snackbar.LENGTH_SHORT) {
         Snackbar.make(this, snackbarText, timeLength).show()
     }
 

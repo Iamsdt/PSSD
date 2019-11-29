@@ -40,7 +40,7 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
     var bookmark = false
 
-    val uiScope = MyCoroutineContext()
+    private val uiScope = MyCoroutineContext()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,7 +63,7 @@ class RandomDialog : BottomSheetDialogFragment(), TextToSpeech.OnInitListener {
 
         val b = BottomSheetBehavior.from(view.parent as View)
 
-        b?.state = BottomSheetBehavior.STATE_EXPANDED
+        b.state = BottomSheetBehavior.STATE_EXPANDED
 
         textToSpeech = TextToSpeech(context, this)
 

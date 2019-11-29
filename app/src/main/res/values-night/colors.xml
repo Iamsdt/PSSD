@@ -9,7 +9,7 @@
     <color name="txtColor">#ffffff</color>
 
     <color name="primary">@android:color/transparent</color>
-    <color name="primaryDark">#303030</color>
+    <color name="primaryDark">#72303030</color>
     <color name="accent">#ff5722</color>
     <color name="sheetTxt">#FFFFFF</color>
 

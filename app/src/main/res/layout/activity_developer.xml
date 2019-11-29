@@ -33,7 +33,5 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:listitem="@layout/dev_item"
         tools:litsitem="" />
-    <!--
-    <include layout="@layout/fragment_developer" /> -->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
